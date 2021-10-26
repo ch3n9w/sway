@@ -47,4 +47,6 @@ vim.o.wrap = true
 vim.g.mapleader = ' '
 
 -- load preview view
-vim.cmd('autocmd VimEnter * silent! loadview')
+vim.o.viewoptions='folds,cursor,curdir'
+vim.cmd('autocmd BufWinLeave * silent! mkview')
+vim.cmd('autocmd BufEnter * silent! loadview')

@@ -1,6 +1,6 @@
-local lsp_plugins = {}
+Lsp_plugins = {}
 
-lsp_plugins.plugins = {
+Lsp_plugins.plugins = {
     -- concrete syntax tree for source file
     'nvim-treesitter/nvim-treesitter',
 
@@ -24,11 +24,9 @@ lsp_plugins.plugins = {
     'ray-x/lsp_signature.nvim',
 }
 
-function lsp_plugins.load()
-    
+function Lsp_plugins.load()
+
     local nvim_treesitter = require('nvim-treesitter.configs')
-    local lspkind = require('lspkind')
-    local cmp = require('cmp')
     local lspconfig = require('lspconfig')
     local lsp_signature = require('lsp_signature')
     -- local lspinstall = require('nvim-lsp-installer')
@@ -36,22 +34,8 @@ function lsp_plugins.load()
 
     local lspsaga = require('lspsaga')
 
-    lspsaga.init_lsp_saga()
-
-    lsp_signature.setup({
-        hint_prefix = " "
-    })
-
-    vim.api.nvim_command('autocmd CursorHold * Lspsaga show_line_diagnostics')
-
-    nvim_treesitter.setup {
-        ensure_installed = "maintained",
-        highlight = {
-            enable = true,
-            additional_vim_regex_highlighting = false,
-        },
-    }
-
+    local lspkind = require('lspkind')
+    local cmp = require('cmp')
     lspkind.init({
         with_text = true,
         preset = 'codicons',
@@ -83,23 +67,19 @@ function lsp_plugins.load()
             TypeParameter = ""
         },
     })
-
-
-    vim.o.completeopt='menu,menuone,noselect'
-    
     cmp.setup({
         formatting = {
             format = lspkind.cmp_format(),
         },
         snippet = {
             expand = function(args)
-              vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-              -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-              -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-              -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
+                vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+                -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+                -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+                -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
             end,
-          },
-          mapping = {
+        },
+        mapping = {
             ['<C-d>'] = cmp.mapping.scroll_docs(-4),
             ['<C-f>'] = cmp.mapping.scroll_docs(4),
             ['<C-Space>'] = cmp.mapping.complete(),
@@ -107,20 +87,40 @@ function lsp_plugins.load()
             ['<C-y>'] = cmp.config.disable, -- If you want to remove the default `<C-y>` mapping, You can specify `cmp.config.disable` value.
             ['<CR>'] = cmp.mapping.confirm({ select = true }),
             ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' })
-          },
-          sources = cmp.config.sources({
+        },
+        sources = cmp.config.sources({
             { name = 'nvim_lsp' },
             { name = 'vsnip' }, -- For vsnip users.
             -- { name = 'luasnip' }, -- For luasnip users.
             -- { name = 'ultisnips' }, -- For ultisnips users.
             -- { name = 'snippy' }, -- For snippy users.
-          }, {
+        }, {
             { name = 'buffer' },
-          })
+        })
+    })
+    lspsaga.init_lsp_saga()
+
+    lsp_signature.setup({
+        hint_prefix = " "
     })
 
+    vim.api.nvim_command('autocmd CursorHold * Lspsaga show_line_diagnostics')
+
+    nvim_treesitter.setup {
+        ensure_installed = "maintained",
+        highlight = {
+            enable = true,
+            additional_vim_regex_highlighting = false,
+        },
+    }
+
+
+
+    vim.o.completeopt='menu,menuone,noselect'
+
+
     local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-   
+
     lspinstall.setup()
     local servers = lspinstall.installed_servers()
     for _, lsp in pairs(servers) do
@@ -130,11 +130,10 @@ function lsp_plugins.load()
     end
 
     -- lspinstall.on_server_ready(function(server)
-    --     server:setup({capabilities = capabilities,})
-    --     vim.cmd [[ do User LspAttachBuffers ]]
-    -- end)
+        --     server:setup({capabilities = capabilities,})
+        --     vim.cmd [[ do User LspAttachBuffers ]]
+        -- end)
 
+    end
 
-end
-
-return lsp_plugins
+    return Lsp_plugins

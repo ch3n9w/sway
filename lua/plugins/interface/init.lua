@@ -76,7 +76,6 @@ function interface_plugins.load()
         }
     }
 
-    require('lualine').setup{options={theme='tokyonight'}}
 
 end
 

@@ -25,9 +25,9 @@ key_mapper('n', ')', '$')
 key_mapper('v', ')', '$')
 key_mapper('n', '(', '^')
 key_mapper('v', '(', '^')
-key_mapper('n', '<C-q>', '<ESC>:silent mkview<CR>:wq<CR>')
-key_mapper('i', '<C-q>', '<ESC>:silent mkview<CR>:wq<CR>')
-key_mapper('v', '<C-q>', '<ESC>:silent mkview<CR>:wq<CR>')
+key_mapper('n', '<C-q>', '<ESC>:wq<CR>')
+key_mapper('i', '<C-q>', '<ESC>:wq<CR>')
+key_mapper('v', '<C-q>', '<ESC>:wq<CR>')
 key_mapper('n', 'w', ':w<CR>w')
 key_mapper('n', '<leader>h', '<C-w>h')
 key_mapper('n', '<leader>j', '<C-w>j')
@@ -66,7 +66,7 @@ key_mapper('n','sf', ':Telescope find_files<CR>')
 
 
 -- nvim-tree settings
--- key_mapper('n', '<leader>t', ':NvimTreeToggle<CR>')
+key_mapper('n', '<leader>t', ':NvimTreeToggle<CR>')
 
 -- key_mapper('n', '<C-_>', '<Plug>kommentary_line_default', {})
 -- key_mapper('v', '<C-_>', '<Plug>kommentary_visual_default', {})

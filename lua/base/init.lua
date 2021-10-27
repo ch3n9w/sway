@@ -50,3 +50,9 @@ vim.g.mapleader = ' '
 vim.o.viewoptions='folds,cursor,curdir'
 vim.cmd('autocmd BufWinLeave * silent! mkview')
 vim.cmd('autocmd BufEnter * silent! loadview')
+
+-- fcitx5
+vim.cmd('autocmd InsertLeave * :silent !fcitx5-remote -c')
+vim.cmd('autocmd BufCreate *  :silent !fcitx5-remote -c')
+vim.cmd('autocmd BufEnter *  :silent !fcitx5-remote -c ')
+vim.cmd('autocmd BufLeave *  :silent !fcitx5-remote -c ')

@@ -128,7 +128,7 @@ function Lsp_plugins.load()
             capabilities = capabilities,
         }
     end
-
+    
     -- lspinstall.on_server_ready(function(server)
         --     server:setup({capabilities = capabilities,})
         --     vim.cmd [[ do User LspAttachBuffers ]]

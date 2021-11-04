@@ -129,8 +129,15 @@ function Lsp_plugins.load()
         -- }
     -- end
     
+
     lspinstall.on_server_ready(function(server)
-            server:setup({capabilities = capabilities,})
+            server:setup({
+                capabilities = capabilities,
+                init_options = {
+                    licenceKey='/home/ch4ser/.config/nvim/intelephense_license_key',
+                    globalStoragePath='/home/ch4ser/.config'
+                }
+            })
             -- vim.cmd [[ do User LspAttachBuffers ]]
         end)
 

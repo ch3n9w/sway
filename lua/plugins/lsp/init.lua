@@ -14,9 +14,9 @@ Lsp_plugins.plugins = {
     'hrsh7th/cmp-vsnip',
     'hrsh7th/vim-vsnip',
 
-    -- 'williamboman/nvim-lsp-installer',
+    'williamboman/nvim-lsp-installer',
     -- deperate but still in use
-    'kabouzeid/nvim-lspinstall',
+    --'kabouzeid/nvim-lspinstall',
     -- code action
     'glepnir/lspsaga.nvim',
     -- completion icon set
@@ -29,8 +29,8 @@ function Lsp_plugins.load()
     local nvim_treesitter = require('nvim-treesitter.configs')
     local lspconfig = require('lspconfig')
     local lsp_signature = require('lsp_signature')
-    -- local lspinstall = require('nvim-lsp-installer')
-    local lspinstall = require('lspinstall')
+    local lspinstall = require('nvim-lsp-installer')
+    -- local lspinstall = require('lspinstall')
 
     local lspsaga = require('lspsaga')
 
@@ -121,18 +121,18 @@ function Lsp_plugins.load()
 
     local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-    lspinstall.setup()
-    local servers = lspinstall.installed_servers()
-    for _, lsp in pairs(servers) do
-        lspconfig[lsp].setup {
-            capabilities = capabilities,
-        }
-    end
+    -- lspinstall.setup()
+    -- local servers = lspinstall.installed_servers()
+    -- for _, lsp in pairs(servers) do
+        -- lspconfig[lsp].setup {
+            -- capabilities = capabilities,
+        -- }
+    -- end
     
-    -- lspinstall.on_server_ready(function(server)
-        --     server:setup({capabilities = capabilities,})
-        --     vim.cmd [[ do User LspAttachBuffers ]]
-        -- end)
+    lspinstall.on_server_ready(function(server)
+            server:setup({capabilities = capabilities,})
+            -- vim.cmd [[ do User LspAttachBuffers ]]
+        end)
 
     end
 

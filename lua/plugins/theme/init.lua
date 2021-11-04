@@ -8,7 +8,7 @@ theme_plugins.plugins = {
 }
 
 function theme_plugins.load()
-    vim.g.tokyonight_style = "day"
+    vim.g.tokyonight_style = "storm"
     vim.cmd[[colorscheme tokyonight]]
     require('lualine').setup{options={theme='tokyonight'}}
 

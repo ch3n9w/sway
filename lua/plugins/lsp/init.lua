@@ -85,7 +85,7 @@ function Lsp_plugins.load()
             ['<C-Space>'] = cmp.mapping.complete(),
             ['<C-e>'] = cmp.mapping.close(),
             ['<C-y>'] = cmp.config.disable, -- If you want to remove the default `<C-y>` mapping, You can specify `cmp.config.disable` value.
-            ['<CR>'] = cmp.mapping.confirm({ select = true }),
+            ['<CR>'] = cmp.mapping.confirm({ select = false }),
             ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' })
         },
         sources = cmp.config.sources({
@@ -121,26 +121,23 @@ function Lsp_plugins.load()
 
     local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-    -- lspinstall.setup()
-    -- local servers = lspinstall.installed_servers()
-    -- for _, lsp in pairs(servers) do
-        -- lspconfig[lsp].setup {
-            -- capabilities = capabilities,
-        -- }
-    -- end
-    
+
 
     lspinstall.on_server_ready(function(server)
-            server:setup({
-                capabilities = capabilities,
-                init_options = {
-                    licenceKey='/home/ch4ser/.config/nvim/intelephense_license_key',
-                    globalStoragePath='/home/ch4ser/.config'
-                }
-            })
-            -- vim.cmd [[ do User LspAttachBuffers ]]
-        end)
+        -- if server.name == 'jdtls' then
+            -- xxx
+        -- elseif then
+        -- else
+        -- end
 
-    end
-
+        server:setup({
+            capabilities = capabilities,
+            init_options = {
+                -- for intelephense
+                licenceKey='/home/ch4ser/.config/nvim/intelephense_license_key',
+                globalStoragePath='/home/ch4ser/.config',
+            }
+        })
+    end)
+end
     return Lsp_plugins

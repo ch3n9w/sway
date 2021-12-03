@@ -1,0 +1,102 @@
+{
+    "position": "bottom", 
+    "height": 30,
+    "modules-left": ["sway/workspaces"],
+    "modules-right": ["temperature","pulseaudio", "network", "battery", "custom/date", "clock", "custom/power"],
+    // Modules configuration
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": true,
+		"format": "{icon}",
+	 	"persistent_workspaces": {
+	 		"1": [],
+	 		"2": [],
+	 		"3": [],
+	 		"4": [],
+	 		"5": [],
+	 		"6": [],
+	 		"7": [],
+	 		"8": [],
+	 		"9": [],
+	 		"10": []
+	    },
+         	"format-icons": {
+             		"1": "临",
+             		"2": "兵",
+             		"3": "斗",
+             		"4": "者",
+             		"5": "皆",
+             		"6": "阵",
+             		"7": "列",
+             		"8": "在",
+             		"9": "前",
+             		"10": "炎爆"
+         },
+         	"format-icons": {
+             		"1": "壹",
+             		"2": "贰",
+             		"3": "叁",
+             		"4": "肆",
+             		"5": "伍",
+             		"6": "陆",
+             		"7": "柒",
+             		"8": "捌",
+             		"9": "玖",
+             		"10": "拾"
+         },
+     },
+	"custom/date": {
+    		"format": " {}",
+		"interval": 3600,
+		"exec": "/home/ch4ser/.config/waybar/bin/waybar-date.sh"
+	},
+	"custom/power": {
+		"format": " ",
+		"on-click": "/home/ch4ser/.config/waybar/bin/waybar-power.sh"
+	},
+	"clock": {
+		"format": " {:%H:%M}",
+        	"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        	"format-alt": "{:%Y-%m-%d}"
+	},
+	"battery": {
+        	"states": {
+            		"warning": 30,
+            		"critical": 15
+        	},
+        	"format": "{icon} {capacity}%",
+        	"format-charging": " {capacity}%",
+        	"format-plugged": " {capacity}%",
+        	"format-alt": "{time} {icon}",
+        	"format-full": "  {capacity}%",
+        	"format-icons": [" ", " ", " "]
+	},
+	"network": {
+        	"format-wifi": "  {essid}",
+        	"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        	"format-linked": "{ifname} (No IP) ",
+        	"format-disconnected": "Disconnected",
+        	"format-alt": "{ifname}: {ipaddr}/{cidr}"
+	},
+	"pulseaudio": {
+		"format": "{icon} {volume}%",
+        	"format-muted": "ﱝ Muted",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        "hwmon-path": "/sys/class/hwmon/hwmon7/temp1_input",
+        "critical-threshold": 70,
+        "format-critical": " !{temperatureC}°C",
+        "format": " {temperatureC}°C"
+    }
+}

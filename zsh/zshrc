@@ -1,0 +1,250 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export WORKSPACE=$HOME/.local/workspace
+#
+# If you come from bash you might have to change your $PATH.
+export PATH=$HOME/bin:/usr/local/bin:/opt:/usr/bin:$PATH:$GOPATH/bin:$GOROOT/bin:/usr/lib
+export GOPATH=$HOME/Projects/go
+export GOPROXY=https://goproxy.cn
+export GO111MODULE=on
+export XDG_CONFIG_HOME=$HOME/.config
+export https_proxy=http://127.0.0.1:7890
+export http_proxy=http://127.0.0.1:7890
+export no_proxy='*.tuna.tsinghua.edu.cn'
+# export LD_PRELOAD=/usr/lib/libproxychains.so.4
+
+# For jetbrains
+export IDEA_JDK=/usr/lib/jvm/jre-jetbrains
+export PHPSTORM_JDK=/usr/lib/jvm/jre-jetbrains
+export WEBIDE_JDK=/usr/lib/jvm/jre-jetbrains
+export PYCHARM_JDK=/usr/lib/jvm/jre-jetbrains
+export RUBYMINE_JDK=/usr/lib/jvm/jre-jetbrains
+export CL_JDK=/usr/lib/jvm/jre-jetbrains
+export DATAGRIP_JDK=/usr/lib/jvm/jre-jetbrains
+export GOLAND_JDK=/usr/lib/jvm/jre-jetbrains
+export STUDIO_JDK=/usr/lib/jvm/jre-jetbrains
+
+# for tomcat debug
+#export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+#export JRE_HOME=$JAVA_HOME/jre
+#export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+#export CATALINA_HOME=/usr/local/tomcat/apache-tomcat-8.5.30
+#export CLASSPATH=$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$CATALINA_HOME/lib
+#export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin:$CATALINA_HOME/bin
+# for tomcat debug
+
+# Path to your oh-my-zsh installation.
+#
+#
+# fzf setting
+#
+##export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
+#export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --preview 'bat --color=always --italic-text=always --style=numbers,changes,header --line-range :500 {} '"
+export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --preview '~/Documents/Other/fzf-scope.sh {} '"
+export FZF_DEFAULT_COMMAND="fd --exclude={.wine,.git,.idea,.vscode,.sass-cache,node_modules,build,.local,.steam,.m2,.rangerdir,.ssh,.ghidra,.mozilla} --type f --hidden --follow"
+
+vim_fzf() {
+    local fzf_result=$(fzf)
+    echo $fzf_result
+    if [ -z "$fzf_result" ]
+    then
+        echo "No file specific, Interupt tne vim command"
+    else
+        nvim  $fzf_result
+    fi
+}
+
+xdg_fzf() {
+    cd ~/Documents/sec_public_articles/
+    local fzf_result=$(fzf)
+    if [ -z "$fzf_result" ]
+    then
+        echo "No file specific, Interupt tne xdg-open command"
+    else
+        xdg-open "$fzf_result"
+    fi
+}
+
+
+export LC_ALL="en_US.UTF-8"
+export SAL_DISABLEGL=1
+export NVM_NODEJS_ORG_MIRROR=http://npm.taobao.org/mirrors/node
+# export _JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+# alias qq=" nohup /opt/deepinwine/apps/Deepin-TIM/run.sh &"
+# alias we=" nohup /opt/deepinwine/apps/Deepin-WeChat/run.sh &"
+#
+# launch tmux automatically when start
+# [[ $- != *i* ]] && return
+# [[ -z "$TMUX" ]] && exec tmux
+#
+alias kali="docker start kali ; docker attach kali"
+alias rasp="ssh root@192.168.31.73"
+alias save_mode="sudo ryzenadj --stapm-limit=20000 --fast-limit=45000 --slow-limit=20000 --tctl-temp=60"
+alias burst_mode="sudo ryzenadj --stapm-limit=45000 --fast-limit=45000 --slow-limit=45000 --tctl-temp=70"
+alias volatility="vol"
+alias msf="msfconsole"
+alias wechat="/opt/apps/com.qq.weixin.deepin/files/run.sh"
+alias clear_cache="yay -Scc;yay -Rns $(yay -Qtdq)"
+alias clear_packages="yay -Qtdq | yay -Rs -"
+# alias burst_mode="echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor"
+# alias normal_mode="echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor"
+alias idea="nohup /opt/intellij-idea-ultimate-edition/bin/idea.sh .  >/dev/null 2>&1 &"
+alias check_log="journalctl -p5"
+alias vim="nvim"
+# alias cat="bat"
+alias cdda="cataclysm"
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias nvmstart="source /usr/share/nvm/init-nvm.sh"
+alias java7="/usr/lib/jvm/java-7-openjdk/bin/java"
+alias javac7="/usr/lib/jvm/java-7-openjdk/bin/javac"
+alias java8="/usr/lib/jvm/java-8-openjdk/bin/java"
+alias javac8="/usr/lib/jvm/java-8-openjdk/bin/javac"
+alias py="python"
+alias py2="python2"
+alias ipy="ipython"
+alias ipy2="ipython2"
+alias pipi="pipenv shell"
+alias server="ssh root@39.105.176.37"
+alias vmwareon="sudo systemctl start vmware vmware-usbarbitrator vmware-networks-server vmware-workstation-server"
+alias mach_on='xinput set-prop "AT Translated Set 2 keyboard" "Device Enabled" 0'
+alias mach_off='xinput set-prop "AT Translated Set 2 keyboard" "Device Enabled" 1'
+
+alias weather="curl -m 1 wttr.in\?format=3 2>/dev/null"
+export ZSH="/usr/share/oh-my-zsh"
+export EDITOR=/usr/bin/nvim
+export VISUAL=/usr/bin/nvim
+
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# ZSH_THEME="agnoster-light"
+# ZSH_THEME="agnoster"
+# ZSH_THEME="xiong-chiamiov-plus"
+# ZSH_THEME="funky"
+# ZSH_THEME="darkblood"
+
+# ZSH_THEME="jonathan"
+# ZSH_THEME="random"
+#
+# funky 
+# ╭─[~]─[ch4ser@T480]─[0]─[892]
+# ╰─[:)] % 
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=9,bold'
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+# plugins=(git zsh-autosuggestions zsh-syntax-highlighting extract)
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+bindkey -e
+bindkey -s '\er' 'ranger\n'
+#bindkey -s '\ev' 'vim $(fzf)\n'
+bindkey -s '\ev' 'vim_fzf\n'
+bindkey -s '\eo' 'xdg_fzf\n'
+bindkey -s '\ex' 'tmux\n'
+bindkey -s '\ed' 'dolphin .\n'
+
+# source /usr/share/nvm/init-nvm.sh
+source /usr/share/autojump/autojump.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-extract/extract.plugin.zsh
+source /usr/share/nvm/init-nvm.sh
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+eval $(thefuck --alias)
+

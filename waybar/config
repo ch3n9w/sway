@@ -52,7 +52,7 @@
 	},
 	"custom/power": {
 		"format": " ",
-		"on-click": "/home/ch4ser/.config/waybar/bin/waybar-power.sh"
+		//"on-click": "/home/ch4ser/.config/waybar/bin/waybar-power.sh"
 	},
 	"clock": {
 		"format": " {:%H:%M}",

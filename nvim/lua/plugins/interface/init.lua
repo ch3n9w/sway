@@ -8,7 +8,10 @@ interface_plugins.plugins = {
     'lukas-reineke/indent-blankline.nvim',
     -- statusline
     'hoob3rt/lualine.nvim',
-    'goolord/alpha-nvim'
+    -- start interface
+    'goolord/alpha-nvim',
+    -- key pop nemu
+    'folke/which-key.nvim'
     
 }
 
@@ -79,6 +82,7 @@ function interface_plugins.load()
     }
 
     require'alpha'.setup(require'alpha.themes.startify'.opts)
+    require'which-key'.setup{}
 
 
 end

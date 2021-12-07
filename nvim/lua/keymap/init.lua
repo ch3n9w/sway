@@ -46,15 +46,15 @@ key_mapper('n', '<C-k>', '<PageUp>')
 key_mapper('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 key_mapper('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
 
--- key_mapper('n', 'H', ':Lspsaga hover_doc<CR>')
--- key_mapper('n', 'gs', ':Lspsaga signature_help<CR>')
--- key_mapper('n', 'gr', ':Lspsaga rename<CR>')
--- key_mapper('n', 'gd', ':Lspsaga preview_definition<CR>')
+key_mapper('n', 'H', ':Lspsaga hover_doc<CR>')
+key_mapper('n', 'gs', ':Lspsaga signature_help<CR>')
+key_mapper('n', 'gr', ':Lspsaga rename<CR>')
+key_mapper('n', 'gd', ':Lspsaga preview_definition<CR>')
 
 -- floating terminal open and close
--- key_mapper('n', 'ss', ':Lspsaga open_floaterm<CR>')
--- key_mapper('t', 'ss', '<C-\\><C-n>:Lspsaga close_floaterm<CR>:wincmd l<CR>')
--- key_mapper('t', '<ESC>', '<C-\\><C-n>:Lspsaga close_floaterm<CR>:wincmd l<CR>')
+key_mapper('n', 'ss', ':Lspsaga open_floaterm<CR>')
+key_mapper('t', 'ss', '<C-\\><C-n>:Lspsaga close_floaterm<CR>:wincmd l<CR>')
+key_mapper('t', '<ESC>', '<C-\\><C-n>:Lspsaga close_floaterm<CR>:wincmd l<CR>')
 
 key_mapper('n', '<C-s>', ':SymbolsOutline<CR>')
 
@@ -70,8 +70,9 @@ key_mapper('n','sf', ':Telescope find_files<CR>')
 -- nvim-tree settings
 key_mapper('n', '<leader>t', ':NvimTreeToggle<CR>')
 
--- key_mapper('n', '<C-_>', '<Plug>kommentary_line_default', {})
--- key_mapper('v', '<C-_>', '<Plug>kommentary_visual_default', {})
+-- <C-_> is <C-/>
+key_mapper('n', '<C-_>', '<Plug>kommentary_line_default', {})
+key_mapper('v', '<C-_>', '<Plug>kommentary_visual_default<ESC>', {})
 
 -- easymotion settings
 key_mapper('n', 'm', ':HopWord<CR>')

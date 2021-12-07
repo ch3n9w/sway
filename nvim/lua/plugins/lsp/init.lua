@@ -6,19 +6,18 @@ Lsp_plugins.plugins = {
 
     -- LSP support
     'neovim/nvim-lspconfig',
-
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
     'hrsh7th/nvim-cmp',
 
     'hrsh7th/cmp-vsnip',
     'hrsh7th/vim-vsnip',
 
     'williamboman/nvim-lsp-installer',
-    -- deperate but still in use
-    --'kabouzeid/nvim-lspinstall',
     -- code action
-    -- 'glepnir/lspsaga.nvim',
+    -- NOTE: the creator of lspsaga is in hospital and stop maintaining
+    'tami5/lspsaga.nvim',
     -- completion icon set
     'onsails/lspkind-nvim',
     'ray-x/lsp_signature.nvim',
@@ -30,9 +29,8 @@ function Lsp_plugins.load()
     local lspconfig = require('lspconfig')
     local lsp_signature = require('lsp_signature')
     local lspinstall = require('nvim-lsp-installer')
-    -- local lspinstall = require('lspinstall')
 
-    -- local lspsaga = require('lspsaga')
+    local lspsaga = require('lspsaga')
 
     local lspkind = require('lspkind')
     local cmp = require('cmp')
@@ -98,12 +96,13 @@ function Lsp_plugins.load()
             { name = 'buffer' },
         })
     })
-    -- lspsaga.init_lsp_saga()
+    lspsaga.init_lsp_saga()
 
     lsp_signature.setup({
         hint_prefix = " "
     })
 
+    
     -- vim.api.nvim_command('autocmd CursorHold * Lspsaga show_line_diagnostics')
 
     nvim_treesitter.setup {

@@ -11,9 +11,6 @@ Lsp_plugins.plugins = {
     'hrsh7th/cmp-path',
     'hrsh7th/nvim-cmp',
 
-    'hrsh7th/cmp-vsnip',
-    'hrsh7th/vim-vsnip',
-
     'williamboman/nvim-lsp-installer',
     -- code action
     -- NOTE: the creator of lspsaga is in hospital and stop maintaining
@@ -69,29 +66,28 @@ function Lsp_plugins.load()
         formatting = {
             format = lspkind.cmp_format(),
         },
-        snippet = {
-            expand = function(args)
-                vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-                -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-                -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-                -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
-            end,
-        },
         mapping = {
-            ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-            ['<C-f>'] = cmp.mapping.scroll_docs(4),
-            ['<C-Space>'] = cmp.mapping.complete(),
             ['<C-e>'] = cmp.mapping.close(),
             ['<C-y>'] = cmp.config.disable, -- If you want to remove the default `<C-y>` mapping, You can specify `cmp.config.disable` value.
             ['<CR>'] = cmp.mapping.confirm({ select = false }),
-            ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' })
+            ['<Tab>'] = function(fallback)
+                if cmp.visible() then
+                    cmp.select_next_item()
+                else
+                    -- print(fallback)
+                    fallback()
+                end
+            end,
+            ['<S-Tab>'] = function(fallback)
+                if cmp.visible() then
+                    cmp.select_prev_item()
+                else
+                    fallback()
+                end
+            end
         },
         sources = cmp.config.sources({
             { name = 'nvim_lsp' },
-            { name = 'vsnip' }, -- For vsnip users.
-            -- { name = 'luasnip' }, -- For luasnip users.
-            -- { name = 'ultisnips' }, -- For ultisnips users.
-            -- { name = 'snippy' }, -- For snippy users.
         }, {
             { name = 'buffer' },
         })
@@ -102,7 +98,7 @@ function Lsp_plugins.load()
         hint_prefix = " "
     })
 
-    
+
     -- vim.api.nvim_command('autocmd CursorHold * Lspsaga show_line_diagnostics')
 
     nvim_treesitter.setup {
@@ -124,7 +120,7 @@ function Lsp_plugins.load()
 
     lspinstall.on_server_ready(function(server)
         -- if server.name == 'jdtls' then
-            -- xxx
+        -- xxx
         -- elseif then
         -- else
         -- end
@@ -135,8 +131,9 @@ function Lsp_plugins.load()
                 -- for intelephense
                 licenceKey='/home/ch4ser/.config/nvim/intelephense_license_key',
                 globalStoragePath='/home/ch4ser/.config',
-            }
+            },
+            single_file_mode=true
         })
     end)
 end
-    return Lsp_plugins
+return Lsp_plugins

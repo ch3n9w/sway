@@ -6,8 +6,6 @@ vim.o.mouse = 'a'
 vim.o.modifiable = true
 -- the refresh time will affect lspsaga's reaction time
 -- vim.o.updatetime = 300
--- the timeoutlen will affect which-key
-vim.o.timeoutlen = 200
 -- case setting
 vim.o.smartcase = true
 vim.o.ignorecase = true

@@ -9,7 +9,7 @@ interface_plugins.plugins = {
     -- statusline
     'hoob3rt/lualine.nvim',
     -- start interface
-    'goolord/alpha-nvim',
+    -- 'goolord/alpha-nvim',
     
 }
 
@@ -79,7 +79,7 @@ function interface_plugins.load()
         }
     }
 
-    require'alpha'.setup(require'alpha.themes.startify'.opts)
+    -- require'alpha'.setup(require'alpha.themes.startify'.opts)
 
 
 end

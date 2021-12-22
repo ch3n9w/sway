@@ -62,6 +62,8 @@ export NVM_NODEJS_ORG_MIRROR=http://npm.taobao.org/mirrors/node
 # [[ $- != *i* ]] && return
 # [[ -z "$TMUX" ]] && exec tmux
 #
+alias nmlist="nmcli device wifi list"
+alias nmconnect="nmcli device wifi connect"
 alias kali="docker start kali ; docker attach kali"
 alias rasp="ssh root@192.168.31.73"
 alias save_mode="sudo ryzenadj --stapm-limit=20000 --fast-limit=45000 --slow-limit=20000 --tctl-temp=60"
@@ -114,6 +116,7 @@ bindkey -s '\ed' 'dolphin .\n'
 # source /usr/share/autojump/autojump.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh 
 source /usr/share/zsh/plugins/zsh-extract/extract.plugin.zsh
 source /usr/share/nvm/init-nvm.sh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme

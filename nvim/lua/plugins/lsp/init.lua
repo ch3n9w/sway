@@ -2,7 +2,7 @@ Lsp_plugins = {}
 
 Lsp_plugins.plugins = {
     -- concrete syntax tree for source file
-    'nvim-treesitter/nvim-treesitter',
+    {'nvim-treesitter/nvim-treesitter', run=':TSUpdate'},
 
     -- LSP support
     'neovim/nvim-lspconfig',
@@ -10,6 +10,8 @@ Lsp_plugins.plugins = {
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     'hrsh7th/nvim-cmp',
+    'hrsh7th/cmp-vsnip',
+    'hrsh7th/vim-vsnip',
 
     'williamboman/nvim-lsp-installer',
     -- code action
@@ -63,6 +65,15 @@ function Lsp_plugins.load()
         },
     })
     cmp.setup({
+        snippet = {
+            -- REQUIRED - you must specify a snippet engine
+            expand = function(args)
+                vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+                -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+                -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+                -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
+            end,
+        },
         formatting = {
             format = lspkind.cmp_format(),
         },
@@ -70,24 +81,12 @@ function Lsp_plugins.load()
             ['<C-e>'] = cmp.mapping.close(),
             ['<C-y>'] = cmp.config.disable, -- If you want to remove the default `<C-y>` mapping, You can specify `cmp.config.disable` value.
             ['<CR>'] = cmp.mapping.confirm({ select = false }),
-            ['<Tab>'] = function(fallback)
-                if cmp.visible() then
-                    cmp.select_next_item()
-                else
-                    -- print(fallback)
-                    fallback()
-                end
-            end,
-            ['<S-Tab>'] = function(fallback)
-                if cmp.visible() then
-                    cmp.select_prev_item()
-                else
-                    fallback()
-                end
-            end
+            ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
+            ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's'})
         },
         sources = cmp.config.sources({
             { name = 'nvim_lsp' },
+            { name = 'vsnip' },
         }, {
             { name = 'buffer' },
         })

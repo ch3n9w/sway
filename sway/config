@@ -55,6 +55,7 @@ floating_modifier $mod normal
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
+    bindsym $mod+Tab focus right
 
 # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left

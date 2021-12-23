@@ -2,6 +2,9 @@
 本仓库用于备份个人配置文件
 ![](./image/2021-12-23-14-42-51.png)
 
+## zsh
+使用powerlevel10k,并自定义一些快捷键比如ranger的打开等
+
 ## sway
 - sway 基础配置
 - swaylock 负责锁屏

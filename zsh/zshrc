@@ -22,9 +22,6 @@ export no_proxy='*.tuna.tsinghua.edu.cn'
 export IDEA_JDK=/usr/lib/jvm/jre-jetbrains
 export STUDIO_JDK=/usr/lib/jvm/jre-jetbrains
 
-# fzf setting
-##export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
-#export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --preview 'bat --color=always --italic-text=always --style=numbers,changes,header --line-range :500 {} '"
 export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --preview '~/Documents/Other/fzf-scope.sh {} '"
 export FZF_DEFAULT_COMMAND="fd --exclude={.wine,.git,.idea,.vscode,.sass-cache,node_modules,build,.local,.steam,.m2,.rangerdir,.ssh,.ghidra,.mozilla} --type f --hidden --follow"
 
@@ -39,29 +36,10 @@ vim_fzf() {
     fi
 }
 
-xdg_fzf() {
-    cd ~/Documents/sec_public_articles/
-    local fzf_result=$(fzf)
-    if [ -z "$fzf_result" ]
-    then
-        echo "No file specific, Interupt tne xdg-open command"
-    else
-        xdg-open "$fzf_result"
-    fi
-}
-
-
 export LC_ALL="en_US.UTF-8"
 export SAL_DISABLEGL=1
 export NVM_NODEJS_ORG_MIRROR=http://npm.taobao.org/mirrors/node
 # export _JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
-# alias qq=" nohup /opt/deepinwine/apps/Deepin-TIM/run.sh &"
-# alias we=" nohup /opt/deepinwine/apps/Deepin-WeChat/run.sh &"
-#
-# launch tmux automatically when start
-# [[ $- != *i* ]] && return
-# [[ -z "$TMUX" ]] && exec tmux
-#
 alias nmlist="nmcli device wifi list"
 alias nmconnect="nmcli device wifi connect"
 alias kali="docker start kali ; docker attach kali"
@@ -70,7 +48,6 @@ alias save_mode="sudo ryzenadj --stapm-limit=20000 --fast-limit=45000 --slow-lim
 alias burst_mode="sudo ryzenadj --stapm-limit=45000 --fast-limit=45000 --slow-limit=45000 --tctl-temp=70"
 alias volatility="vol"
 alias msf="msfconsole"
-alias wechat="/opt/apps/com.qq.weixin.deepin/files/run.sh"
 alias clear_cache="yay -Scc;yay -Rns $(yay -Qtdq)"
 alias clear_packages="yay -Qtdq | yay -Rs -"
 alias idea="nohup /opt/intellij-idea-ultimate-edition/bin/idea.sh .  >/dev/null 2>&1 &"
@@ -97,7 +74,6 @@ export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 
 
-
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=9,bold'
 
 plugins=(git)
@@ -106,10 +82,7 @@ source $ZSH/oh-my-zsh.sh
 
 bindkey -e
 bindkey -s '\er' 'ranger\n'
-#bindkey -s '\ev' 'vim $(fzf)\n'
 bindkey -s '\ev' 'vim_fzf\n'
-bindkey -s '\eo' 'xdg_fzf\n'
-bindkey -s '\ex' 'tmux\n'
 bindkey -s '\ed' 'dolphin .\n'
 
 # source /usr/share/nvm/init-nvm.sh
@@ -120,7 +93,6 @@ source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring
 source /usr/share/zsh/plugins/zsh-extract/extract.plugin.zsh
 source /usr/share/nvm/init-nvm.sh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

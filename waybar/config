@@ -1,8 +1,9 @@
 {
     "position": "bottom", 
-    "height": 30,
-    "modules-left": ["sway/workspaces"],
-    "modules-right": ["temperature","pulseaudio", "network", "battery", "custom/date", "clock", "custom/power"],
+    "height": 36,
+    "modules-left": ["memory","temperature","network"],
+    "modules-center": ["sway/workspaces"],
+    "modules-right": ["pulseaudio",  "battery", "custom/date", "clock", "custom/power"],
     // Modules configuration
 	"sway/workspaces": {
 		"disable-scroll": true,
@@ -21,9 +22,9 @@
 	 		"10": []
 	    },
          	"format-icons": {
-             		"1": "临",
-             		"2": "兵",
-             		"3": "斗",
+             		"1": "𐂂",
+             		"2": "𐂃",
+             		"3": "𐂄",
              		"4": "者",
              		"5": "皆",
              		"6": "阵",
@@ -32,6 +33,7 @@
              		"9": "前",
              		"10": "炎爆"
          },
+
          	"format-icons": {
              		"1": "壹",
              		"2": "贰",
@@ -50,10 +52,10 @@
 		"interval": 3600,
 		"exec": "/home/ch4ser/.config/waybar/bin/waybar-date.sh"
 	},
-	"custom/power": {
+	/* "custom/power": {
 		"format": " ",
 		//"on-click": "/home/ch4ser/.config/waybar/bin/waybar-power.sh"
-	},
+	}, */
 	"clock": {
 		"format": " {:%H:%M}",
         	"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -98,5 +100,10 @@
         "critical-threshold": 70,
         "format-critical": " !{temperatureC}°C",
         "format": " {temperatureC}°C"
+    },
+    "memory": {
+        "interval": 30,
+        "format": "{}%  ",
+        "max-length": 10
     }
 }

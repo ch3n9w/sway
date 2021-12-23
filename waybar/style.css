@@ -37,7 +37,7 @@ window#waybar {
 	border-radius: 5px;
 }
 
-#custom-date, #clock, #battery, #pulseaudio, #network, #temperature{
+#custom-date, #clock, #battery, #pulseaudio, #network, #temperature,#memory{
 	background-color: #4c566a;
 	padding: 0px 10px;
 	margin: 5px 0px;
@@ -91,6 +91,10 @@ window#waybar {
 
 #network {
 	color: #2aa198;
+}
+
+#memory {
+    color: #2aa000;
 }
 
 #temperature {

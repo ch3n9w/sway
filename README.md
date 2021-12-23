@@ -3,14 +3,15 @@
 ![](./image/photo_2021-12-03_23-59-04.jpg)
 
 ## sway
-这部分看配置文件大体能看懂.swaylock负责锁屏,waybar负责底部栏展示,没有配置通知,因为不喜欢被打扰.
+### sway basic config
+这部分看配置文件大体能看懂.swaylock负责锁屏,waybar负责底部栏展示,**没有配置通知,因为不喜欢被打扰**.
 
 ## ranger
 这部分除了修改了ranger中的部分默认图标之外,主要是让ranger可以和fzf进行联动,从而实现在ranger中模糊查询的功能,在ranger中按下f开始从当前目录开始进行模糊查找,在ranger中按Ctrl-h显示隐藏文件后再按f可以从当前目录开始对包含隐藏目录在内的所有目录开始模糊查找.
 
-## Neovim
-个人自用的neovim配置文件
+具体参考 https://github.com/ranger/ranger/wiki/Custom-Commands#fzf-integration
 
+## Neovim
 这部分配置文件对于像我一样对lua完全不熟悉但是又无意对lua深入学习但是又希望享受lua带来的好处的用户来说比较好理解。大部分插件所使用的配置都是从他们的项目中直接复制过来的，每一个插件的init.lua中包括了插件列表和load函数，load函数是用来setup插件的，插件列表是用来在packer中被use 的。
 
 ```

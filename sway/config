@@ -1,16 +1,3 @@
-
-# choose:
-# - terminal: konsole TODO:
-# - launcher: rofi  TODO:
-# - image viewer: imv TODO:
-# - notification: Dunst WARNING:
-# - pdf viewer: zathura TODO:
-# - screen locking: swaylock
-# - screenshot: grimshot TODO:
-# - Status Bars: Waybar TODO:
-# - video player: mpv TODO:
-
-
 # let title bar friendly with chinese
 for_window [title=".*"] title_format ゜%title゜
 titlebar_border_thickness 2
@@ -157,19 +144,15 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-#
+
 # INFO: Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
 bar {
 	swaybar_command waybar
 }
 
 #
 # INFO: Hardware setting:
-#
-
-
+# HACK: sway caplocks and esc
 input "type:keyboard" {           
     xkb_options caps:swapescape
 }
@@ -190,20 +173,15 @@ bindsym --locked XF86AudioMute exec sh -c "pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym --locked XF86MonBrightnessDown exec "sudo light -U 5"
 bindsym --locked XF86MonBrightnessUp exec "sudo light -A 5"
 
-#bindsym XF86MonBrightnessUp exec light -A 10 && notify-send "󰃞 Light" "Brightness: $(light)%"
-#bindsym XF86MonBrightnessDown exec light -U 10 && notify-send "󰃞 Light" "Brightness: $(light)%"
-
+# display setting
 output 'Unknown 0xA195 0x00000000' {
     scale 1
     resolution 2240x1400
 } 
-output 'Dell Inc. DELL S2718D 8R33926O00QS' {
-    scale 1
-}
-#default_border pixel 3
+# default_border pixel 1
 default_border none
-#gaps inner 1
-#gaps outer 1
+# gaps inner 1
+# gaps outer 1
 
 exec fcitx5 
 
@@ -217,7 +195,3 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 # prevent middle click from pasting something
 exec wl-paste --primary --watch wl-copy --primary --clear 
-# #exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
-#exec hash dbus-update-activation-environment 2>/dev/null && \
-#dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-#include /etc/sway/config.d/*

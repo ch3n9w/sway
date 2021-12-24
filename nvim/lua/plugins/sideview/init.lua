@@ -5,7 +5,7 @@ sideview_plugins.plugins = {
     'kyazdani42/nvim-web-devicons',
     'kyazdani42/nvim-tree.lua',
     -- code structure tree view
-    'simrat39/symbols-outline.nvim'
+    -- 'simrat39/symbols-outline.nvim'
 }
 
 function sideview_plugins.load_filetree()
@@ -91,9 +91,9 @@ function sideview_plugins.load()
     vim.cmd("autocmd VimResized * if winwidth(0) > 70 | execute 'NvimTreeOpen' | execute 'NvimTreeFocus' | wincmd p | else | execute 'NvimTreeClose' | endif")
 
 
-    require('symbols-outline').setup{}
+    -- require('symbols-outline').setup{}
 
-    vim.g.symbols_outline = {
+    --[[ vim.g.symbols_outline = {
         highlight_hovered_item = true,
         show_guides = true,
         auto_preview = true,
@@ -140,7 +140,7 @@ function sideview_plugins.load()
         Operator = {icon = "+", hl = "TSOperator"},
         TypeParameter = {icon = "𝙏", hl = "TSParameter"}
     }
-}
+} ]]
 
 
         end

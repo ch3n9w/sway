@@ -5,6 +5,9 @@
 ## zsh
 使用powerlevel10k,并自定义一些快捷键比如ranger的打开等
 
+## konsole
+使用solarized主题和Jetbrain Nerd Font字体,profile文件已经给出
+
 ## sway
 - sway 基础配置
 - swaylock 负责锁屏

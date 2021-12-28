@@ -93,6 +93,7 @@ source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring
 source /usr/share/zsh/plugins/zsh-extract/extract.plugin.zsh
 source /usr/share/nvm/init-nvm.sh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+[[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

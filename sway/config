@@ -17,6 +17,7 @@ set $menu rofi -show  drun -theme Arc-Dark -font "JetBrainsMono Nerd Font 18"| x
 
 #output * bg ~/Pictures/2k/kali-glitchsea-16x9.jpg fill
 output * bg ~/Pictures/2k/wallhaven-3z2med_3840x2160.png fill
+output * bg ~/Pictures/2k/kali-nova.png fill
 #output * bg ~/Pictures/2k/blueeye.jpg fill
 
 
@@ -194,4 +195,4 @@ exec swayidle -w \
 exec hash dbus-update-activation-environment 2>/dev/null && \
     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 # prevent middle click from pasting something
-exec wl-paste --primary --watch wl-copy --primary --clear 
+# exec wl-paste --primary --watch wl-copy --primary --clear 

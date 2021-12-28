@@ -123,16 +123,22 @@ function Lsp_plugins.load()
         -- elseif then
         -- else
         -- end
-
-        server:setup({
-            capabilities = capabilities,
-            init_options = {
-                -- for intelephense
-                licenceKey='/home/ch4ser/.config/nvim/intelephense_license_key',
-                globalStoragePath='/home/ch4ser/.config',
-            },
-            single_file_mode=true
-        })
+        if server.name == 'intelephense' then
+            server:setup({
+                capabilities = capabilities,
+                init_options = {
+                    -- for intelephense
+                    licenceKey='/home/ch4ser/.config/nvim/intelephense_license_key',
+                    globalStoragePath='/home/ch4ser/.config',
+                },
+                single_file_mode=true
+            })
+        else 
+            server:setup({
+                capabilities = capabilities,
+                single_file_mode = true
+            })
+        end
     end)
 end
 return Lsp_plugins

@@ -1,6 +1,5 @@
 * {
     border: none;
-    border-radius: 5px;
     font-family: JetBrainsMono Nerd Font;
     font-size: 20px;
     min-height: 0;
@@ -91,9 +90,12 @@ window#waybar {
 
 #network {
 	color: #2aa198;
+    border-radius: 0px 5px 5px 0px;
 }
 
 #memory {
+    border-radius: 5px 0px 0px 5px;
+    margin-left: 10px;
     color: #2aa000;
 }
 

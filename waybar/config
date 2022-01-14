@@ -3,7 +3,7 @@
     "height": 36,
     "modules-left": ["memory","temperature","network"],
     "modules-center": ["sway/workspaces"],
-    "modules-right": ["pulseaudio",  "battery", "custom/date", "clock", "custom/power"],
+    "modules-right": ["bluetooth","pulseaudio",  "battery", "custom/date", "clock", "custom/power"],
     // Modules configuration
 	"sway/workspaces": {
 		"disable-scroll": true,
@@ -82,7 +82,8 @@
 	},
 	"pulseaudio": {
 		"format": "{icon} {volume}%",
-        	"format-muted": "ﱝ Muted",
+        "format-muted": "ﱝ Muted",
+        "format-bluetooth": " {volume}%",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -90,7 +91,7 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": ["", "", ""],
         },
         "on-click": "pavucontrol"
     },
@@ -105,5 +106,16 @@
         "interval": 30,
         "format": "{}%  ",
         "max-length": 10
+    },
+    "bluetooth": {
+        "interval": 30,
+        "format": "{icon}",
+        "format-alt": "bluetooth: {status}",
+        "format-icons": {
+            "enabled": "",
+            "disabled": ""
+        },
+        "tooltip-format": "{status}",
+        "on-click": "bluedevil-wizard"
     }
 }

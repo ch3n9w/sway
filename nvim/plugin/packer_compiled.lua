@@ -57,7 +57,7 @@ end
 time([[Luarocks path setup]], false)
 time([[try_loadstring definition]], true)
 local function try_loadstring(s, component, name)
-  local success, result = pcall(loadstring(s))
+  local success, result = pcall(loadstring(s), name, _G.packer_plugins[name])
   if not success then
     vim.schedule(function()
       vim.api.nvim_notify('packer.nvim: Error running ' .. component .. ' for ' .. name .. ': ' .. result, vim.log.levels.ERROR, {})
@@ -69,11 +69,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["alpha-nvim"] = {
-    loaded = true,
-    path = "/home/ch4ser/.local/share/nvim/site/pack/packer/start/alpha-nvim",
-    url = "https://github.com/goolord/alpha-nvim"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/ch4ser/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -84,15 +79,15 @@ _G.packer_plugins = {
     path = "/home/ch4ser/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "/home/ch4ser/.local/share/nvim/site/pack/packer/start/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
+  },
   ["cmp-vsnip"] = {
     loaded = true,
     path = "/home/ch4ser/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
     url = "https://github.com/hrsh7th/cmp-vsnip"
-  },
-  ["github-nvim-theme"] = {
-    loaded = true,
-    path = "/home/ch4ser/.local/share/nvim/site/pack/packer/start/github-nvim-theme",
-    url = "https://github.com/projekt0n/github-nvim-theme"
   },
   ["hop.nvim"] = {
     loaded = true,
@@ -119,20 +114,15 @@ _G.packer_plugins = {
     path = "/home/ch4ser/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
     url = "https://github.com/onsails/lspkind-nvim"
   },
+  ["lspsaga.nvim"] = {
+    loaded = true,
+    path = "/home/ch4ser/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
+    url = "https://github.com/tami5/lspsaga.nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/home/ch4ser/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/hoob3rt/lualine.nvim"
-  },
-  ["nightfox.nvim"] = {
-    loaded = true,
-    path = "/home/ch4ser/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
-    url = "https://github.com/EdenEast/nightfox.nvim"
-  },
-  ["nord.nvim"] = {
-    loaded = true,
-    path = "/home/ch4ser/.local/share/nvim/site/pack/packer/start/nord.nvim",
-    url = "https://github.com/shaunsingh/nord.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -148,11 +138,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ch4ser/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
-  },
-  ["nvim-cursorline"] = {
-    loaded = true,
-    path = "/home/ch4ser/.local/share/nvim/site/pack/packer/start/nvim-cursorline",
-    url = "https://github.com/yamatsum/nvim-cursorline"
   },
   ["nvim-lsp-installer"] = {
     loaded = true,
@@ -189,11 +174,6 @@ _G.packer_plugins = {
     path = "/home/ch4ser/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  ["symbols-outline.nvim"] = {
-    loaded = true,
-    path = "/home/ch4ser/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",
-    url = "https://github.com/simrat39/symbols-outline.nvim"
-  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/ch4ser/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -203,11 +183,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ch4ser/.local/share/nvim/site/pack/packer/start/todo-comments.nvim",
     url = "https://github.com/folke/todo-comments.nvim"
-  },
-  ["tokyonight.nvim"] = {
-    loaded = true,
-    path = "/home/ch4ser/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
-    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["vim-vsnip"] = {
     loaded = true,

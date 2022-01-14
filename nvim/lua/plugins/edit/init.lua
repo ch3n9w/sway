@@ -9,7 +9,6 @@ edit_plugins.plugins = {
     'windwp/nvim-autopairs',
     -- easymotion
     'phaazon/hop.nvim',
-    'yamatsum/nvim-cursorline',
     'nvim-telescope/telescope.nvim',
     -- dependencies
     'nvim-lua/plenary.nvim',

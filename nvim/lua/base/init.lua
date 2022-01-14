@@ -9,6 +9,7 @@ vim.o.modifiable = true
 -- case setting
 vim.o.smartcase = true
 vim.o.ignorecase = true
+-- vim.o.cursorline = true
 
 -- clipboard
 vim.o.clipboard = 'unnamedplus'

@@ -86,9 +86,9 @@ function sideview_plugins.load()
         }
     }
 
-    vim.cmd("autocmd VimEnter * if winwidth(0) > 70 | execute 'NvimTreeOpen' | wincmd p | endif")
+    vim.cmd("autocmd VimEnter * if winwidth(0) > 100 | execute 'NvimTreeOpen' | wincmd p | endif")
     -- vim.cmd("autocmd VimResized * if winwidth(0) > 70 | execute 'echo winwidth(0)' | endif")
-    vim.cmd("autocmd VimResized * if winwidth(0) > 70 | execute 'NvimTreeOpen' | execute 'NvimTreeFocus' | wincmd p | else | execute 'NvimTreeClose' | endif")
+    vim.cmd("autocmd VimResized * if winwidth(0) > 100 | execute 'NvimTreeOpen' | execute 'NvimTreeFocus' | wincmd p | else | execute 'NvimTreeClose' | endif")
 
 
     -- require('symbols-outline').setup{}

@@ -1,7 +1,7 @@
 ignore-empty-password
 
 disable-caps-lock-text
-image=/home/ch4ser/.config/swaylock/wall.png
+image=/home/ch4ser/Pictures/kali/kali-actiniaria-16x9.png
 font=JetBrainMono Nerd Font
 
 clock
@@ -37,8 +37,8 @@ line-caps-lock-color=009ddcFF
 line-ver-color=d9d8d8FF
 line-wrong-color=ee2e24FF
 
-text-clear-color=ffd20400
-text-ver-color=d9d8d800
+text-clear-color=009ddc
+text-ver-color=009ddc
 text-wrong-color=ee2e2400
 
 bs-hl-color=ee2e24FF

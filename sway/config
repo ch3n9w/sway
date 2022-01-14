@@ -15,10 +15,12 @@ set $right l
 set $term konsole
 set $menu rofi -show  drun -theme Arc-Dark -font "JetBrainsMono Nerd Font 18"| xargs swaymsg exec --
 
-#output * bg ~/Pictures/2k/kali-glitchsea-16x9.jpg fill
-output * bg ~/Pictures/2k/wallhaven-3z2med_3840x2160.png fill
-output * bg ~/Pictures/2k/kali-nova.png fill
+# output * bg ~/Pictures/2k/kali-glitchsea-16x9.jpg fill
+# output * bg ~/Pictures/2k/wallhaven-3z2med_3840x2160.png fill
+# output * bg ~/Pictures/2k/kali-nova.png fill
 #output * bg ~/Pictures/2k/blueeye.jpg fill
+output * bg ~/Pictures/2k/stardust.jpg fill
+# output * bg ~/Pictures/kali/kali-layers-16x9.png fill
 
 
 bindsym $mod+Return exec $term
@@ -90,8 +92,8 @@ floating_modifier $mod normal
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    bindsym $mod+x splith
+    bindsym $mod+z splitv
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
@@ -102,10 +104,11 @@ floating_modifier $mod normal
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    # bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    # bindsym $mod+space focus mode_toggle
+    bindsym $mod+space floating toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
@@ -178,6 +181,12 @@ bindsym --locked XF86MonBrightnessUp exec "sudo light -A 5"
 output 'Unknown 0xA195 0x00000000' {
     scale 1
     resolution 2240x1400
+    pos 0 0
+} 
+output 'Unknown Mi Monitor 2479800115814' {
+    scale 0.8
+    resolution 1920x1080
+    pos 2240 0
 } 
 # default_border pixel 1
 default_border none
@@ -188,8 +197,13 @@ exec fcitx5
 
 bindsym $mod+Ctrl+l exec swaylock
 exec swayidle -w \
-     timeout 1800 'swaylock -f' \
-     before-sleep 'swaylock -f'
+     timeout 1800 'swaymsg "output * dpms off"' \
+         resume 'swaymsg "output * dpms on"' \
+# exec swayidle -w \
+#      timeout 1800 'swaylock -f' \
+#      timeout 120 'swaymsg "output * dpms off"' \
+#          resume 'swaymsg "output * dpms on"' \
+#      before-sleep 'swaylock -f'
 
 # make waybar start immediately
 exec hash dbus-update-activation-environment 2>/dev/null && \

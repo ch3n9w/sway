@@ -184,21 +184,23 @@ output 'Unknown 0xA195 0x00000000' {
     pos 0 0
 } 
 output 'Unknown Mi Monitor 2479800115814' {
-    scale 0.8
+    scale 0.9
     resolution 1920x1080
     pos 2240 0
 } 
-# default_border pixel 1
+# default_border pixel 3
 default_border none
 # gaps inner 1
 # gaps outer 1
 
-exec fcitx5 
 
 bindsym $mod+Ctrl+l exec swaylock
+
+exec fcitx5 
+
 exec swayidle -w \
      timeout 1800 'swaymsg "output * dpms off"' \
-         resume 'swaymsg "output * dpms on"' \
+         resume 'swaymsg "output * dpms on"' 
 # exec swayidle -w \
 #      timeout 1800 'swaylock -f' \
 #      timeout 120 'swaymsg "output * dpms off"' \
@@ -208,5 +210,6 @@ exec swayidle -w \
 # make waybar start immediately
 exec hash dbus-update-activation-environment 2>/dev/null && \
     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
 # prevent middle click from pasting something
 # exec wl-paste --primary --watch wl-copy --primary --clear 

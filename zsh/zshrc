@@ -13,8 +13,8 @@ export GOPATH=$HOME/Projects/go
 export GOPROXY=https://goproxy.cn
 export GO111MODULE=on
 export XDG_CONFIG_HOME=$HOME/.config
-export https_proxy=http://127.0.0.1:7890
-export http_proxy=http://127.0.0.1:7890
+# export https_proxy=http://127.0.0.1:7890
+# export http_proxy=http://127.0.0.1:7890
 export no_proxy='*.tuna.tsinghua.edu.cn'
 # export LD_PRELOAD=/usr/lib/libproxychains.so.4
 
@@ -85,6 +85,14 @@ bindkey -e
 bindkey -s '\er' 'ranger\n'
 bindkey -s '\ev' 'vim_fzf\n'
 bindkey -s '\ed' 'dolphin .\n'
+
+# for tomcat debug
+# export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+# export JRE_HOME=$JAVA_HOME/jre
+# export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+# export CATALINA_HOME=/usr/share/tomcat8
+# export CLASSPATH=$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$CATALINA_HOME/lib
+# export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin:$CATALINA_HOME/bin
 
 # source /usr/share/nvm/init-nvm.sh
 # source /usr/share/autojump/autojump.zsh

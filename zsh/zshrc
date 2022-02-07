@@ -13,8 +13,8 @@ export GOPATH=$HOME/Projects/go
 export GOPROXY=https://goproxy.cn
 export GO111MODULE=on
 export XDG_CONFIG_HOME=$HOME/.config
-# export https_proxy=http://127.0.0.1:7890
-# export http_proxy=http://127.0.0.1:7890
+export https_proxy=http://127.0.0.1:7890
+export http_proxy=http://127.0.0.1:7890
 export no_proxy='*.tuna.tsinghua.edu.cn'
 # export LD_PRELOAD=/usr/lib/libproxychains.so.4
 

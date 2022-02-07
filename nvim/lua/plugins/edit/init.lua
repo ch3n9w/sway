@@ -10,6 +10,8 @@ edit_plugins.plugins = {
     -- easymotion
     'phaazon/hop.nvim',
     'nvim-telescope/telescope.nvim',
+    -- paste image from clipboard
+    'ekickx/clipboard-image.nvim',
     -- dependencies
     'nvim-lua/plenary.nvim',
 }
@@ -23,6 +25,15 @@ function edit_plugins.load()
     require("todo-comments").setup {}
     require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     require('telescope').setup{}
+
+    require('clipboard-image').setup{
+        markdown = {
+            img_dir = function() return "/home/ch4ser/Documents/NOTES/.images/" .. vim.fn.expand('%:t:r') end,
+            img_dir_txt = function() return vim.fn.expand('%:t:r') end,
+            img_name = function() return os.date('%y-%m-%d-%H-%M-%S') end,
+            affix = "![](/home/ch4ser/Documents/NOTES/.images/%s)"
+        }
+    }
 
 end
 

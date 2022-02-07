@@ -18,7 +18,7 @@ Lsp_plugins.plugins = {
     -- NOTE: the creator of lspsaga is in hospital and stop maintaining
     'tami5/lspsaga.nvim',
     -- completion icon set
-    'onsails/lspkind-nvim',
+    -- 'onsails/lspkind-nvim',
     'ray-x/lsp_signature.nvim',
 }
 
@@ -33,37 +33,6 @@ function Lsp_plugins.load()
 
     local lspkind = require('lspkind')
     local cmp = require('cmp')
-    lspkind.init({
-        with_text = true,
-        preset = 'codicons',
-        symbol_map = {
-            Text = "",
-            Method = "",
-            Function = "",
-            Constructor = "",
-            Field = "ﰠ",
-            Variable = "",
-            Class = "ﴯ",
-            Interface = "",
-            Module = "",
-            Property = "ﰠ",
-            Unit = "塞",
-            Value = "",
-            Enum = "",
-            Keyword = "",
-            Snippet = "",
-            Color = "",
-            File = "",
-            Reference = "",
-            Folder = "",
-            EnumMember = "",
-            Constant = "",
-            Struct = "פּ",
-            Event = "",
-            Operator = "",
-            TypeParameter = ""
-        },
-    })
     cmp.setup({
         snippet = {
             -- REQUIRED - you must specify a snippet engine
@@ -75,7 +44,10 @@ function Lsp_plugins.load()
             end,
         },
         formatting = {
-            format = lspkind.cmp_format(),
+            format = lspkind.cmp_format({
+                mode = 'symbol', -- show only symbol annotations
+                maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+            }),
         },
         mapping = {
             ['<C-e>'] = cmp.mapping.close(),

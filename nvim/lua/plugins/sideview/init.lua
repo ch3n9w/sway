@@ -8,37 +8,26 @@ sideview_plugins.plugins = {
     -- 'simrat39/symbols-outline.nvim'
 }
 
-function sideview_plugins.load_filetree()
-end
 
 function sideview_plugins.load()
     require'nvim-tree'.setup {
-        -- disables netrw completely
-        disable_netrw       = true,
-        -- hijack netrw window on startup
-        hijack_netrw        = true,
-        -- open the tree when running this setup function
-        open_on_setup       = false,
-        -- will not open on setup if the filetype is in this list
-        ignore_ft_on_setup  = {},
-        -- closes neovim automatically when the tree is the last **WINDOW** in the view
-        auto_close          = true,
-        -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
-        open_on_tab         = true,
-        -- hijacks new directory buffers when they are opened.
-        update_to_buf_dir   = {
-            -- enable the feature
+        disable_netrw        = true,
+        hijack_netrw         = true,
+        open_on_setup        = false,
+        ignore_buffer_on_setup = false,
+        ignore_ft_on_setup   = {},
+        auto_close           = true,
+        auto_reload_on_write = true,
+        open_on_tab          = true,
+        hijack_cursor        = false,
+        update_cwd           = false,
+        hijack_unnamed_buffer_when_opening = false,
+        hijack_directories   = {
             enable = true,
-            -- allow to open the tree if it was previously closed
             auto_open = true,
         },
-        -- hijack the cursor in the tree to put it at the start of the filename
-        hijack_cursor       = false,
-        -- updates the root directory of the tree on `DirChanged` (when you run `:cd` usually)
-        update_cwd          = false,
-        -- show lsp diagnostics in the signcolumn
         diagnostics = {
-            enable = false,
+            enable = true,
             icons = {
                 hint = "",
                 info = "",
@@ -46,106 +35,30 @@ function sideview_plugins.load()
                 error = "",
             }
         },
-        -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
-        update_focused_file = {
-            -- enables the feature
-            enable      = false,
-            -- update the root directory of the tree to the one of the folder containing the file if the file is not under the current root directory
-            -- only relevant when `update_focused_file.enable` is true
-            update_cwd  = false,
-            -- list of buffer names / filetypes that will not update the cwd if the file isn't found under the current root directory
-            -- only relevant when `update_focused_file.update_cwd` is true and `update_focused_file.enable` is true
-            ignore_list = {}
-        },
-        -- configuration options for the system open command (`s` in the tree by default)
-        system_open = {
-            -- the command to run this, leaving nil should work in most cases
-            cmd  = nil,
-            -- the command arguments as a list
-            args = {}
-        },
-
         view = {
-            -- width of the window, can be either a number (columns) or a string in `%`, for left or right side placement
-            width = 25,
-            -- height of the window, can be either a number (columns) or a string in `%`, for top or bottom side placement
+            width = 20,
             height = 30,
-            -- Hide the root path of the current folder on top of the tree 
             hide_root_folder = false,
-            -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
             side = 'left',
-            -- if true the tree will resize itself after opening a file
-            auto_resize = false,
+            preserve_window_proportions = true,
             mappings = {
-                -- custom only false will merge the list with the default mappings
-                -- if true, it will only use your list to set the mappings
                 custom_only = false,
-                -- list of mappings to set on the tree manually
                 list = {}
-            }
-        }
+            },
+            number = false,
+            relativenumber = false,
+            signcolumn = "yes"
+        },
     }
 
-    vim.cmd("autocmd VimEnter * if winwidth(0) > 100 | execute 'NvimTreeOpen' | wincmd p | endif")
-    -- vim.cmd("autocmd VimResized * if winwidth(0) > 70 | execute 'echo winwidth(0)' | endif")
+    vim.cmd("autocmd VimEnter * if winwidth(0) > 100  | execute 'NvimTreeOpen' | wincmd p | else | execute 'NvimTreeClose' | endif")
+
+    --[[ if vim.fn.winwidth(0)>100 then
+        require'nvim-tree'.toggle(false,true)
+    end ]]
+
     vim.cmd("autocmd VimResized * if winwidth(0) > 100 | execute 'NvimTreeOpen' | execute 'NvimTreeFocus' | wincmd p | else | execute 'NvimTreeClose' | endif")
 
+end
 
-    -- require('symbols-outline').setup{}
-
-    --[[ vim.g.symbols_outline = {
-        highlight_hovered_item = true,
-        show_guides = true,
-        auto_preview = true,
-        position = 'right',
-        width = 25,
-        show_numbers = false,
-        show_relative_numbers = false,
-        show_symbol_details = true,
-        keymaps = { -- These keymaps can be a string or a table for multiple keys
-        close = {"<Esc>", "q"},
-        goto_location = "<Cr>",
-        focus_location = "o",
-        hover_symbol = "<C-space>",
-        rename_symbol = "r",
-        code_actions = "a",
-    },
-    lsp_blacklist = {},
-    symbol_blacklist = {},
-    symbols = {
-        File = {icon = "", hl = "TSURI"},
-        Module = {icon = "", hl = "TSNamespace"},
-        Namespace = {icon = "", hl = "TSNamespace"},
-        Package = {icon = "", hl = "TSNamespace"},
-        Class = {icon = "𝓒", hl = "TSType"},
-        Method = {icon = "ƒ", hl = "TSMethod"},
-        Property = {icon = "", hl = "TSMethod"},
-        Field = {icon = "", hl = "TSField"},
-        Constructor = {icon = "", hl = "TSConstructor"},
-        Enum = {icon = "ℰ", hl = "TSType"},
-        Interface = {icon = "ﰮ", hl = "TSType"},
-        Function = {icon = "", hl = "TSFunction"},
-        Variable = {icon = "", hl = "TSConstant"},
-        Constant = {icon = "", hl = "TSConstant"},
-        String = {icon = "𝓐", hl = "TSString"},
-        Number = {icon = "#", hl = "TSNumber"},
-        Boolean = {icon = "⊨", hl = "TSBoolean"},
-        Array = {icon = "", hl = "TSConstant"},
-        Object = {icon = "⦿", hl = "TSType"},
-        Key = {icon = "", hl = "TSType"},
-        Null = {icon = "NULL", hl = "TSType"},
-        EnumMember = {icon = "", hl = "TSField"},
-        Struct = {icon = "𝓢", hl = "TSType"},
-        Event = {icon = "🗲", hl = "TSType"},
-        Operator = {icon = "+", hl = "TSOperator"},
-        TypeParameter = {icon = "𝙏", hl = "TSParameter"}
-    }
-} ]]
-
-
-        end
-
-
-
-
-        return sideview_plugins
+return sideview_plugins

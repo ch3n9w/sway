@@ -19,7 +19,9 @@ set $menu rofi -show  drun -theme Arc-Dark -font "JetBrainsMono Nerd Font 18"| x
 # output * bg ~/Pictures/2k/wallhaven-3z2med_3840x2160.png fill
 # output * bg ~/Pictures/2k/kali-nova.png fill
 #output * bg ~/Pictures/2k/blueeye.jpg fill
-output * bg ~/Pictures/2k/stardust.jpg fill
+# output * bg ~/Pictures/2k/stardust.jpg fill
+# output * bg ~/Pictures/1080/spaceship.png fill
+output * bg /home/ch4ser/Pictures/1080/wallpaper_switch/5-54902_high-resolution-macbook-wallpaper-hd.jpg fill
 # output * bg ~/Pictures/kali/kali-layers-16x9.png fill
 
 
@@ -154,7 +156,6 @@ bar {
 	swaybar_command waybar
 }
 
-#
 # INFO: Hardware setting:
 # HACK: sway caplocks and esc
 input "type:keyboard" {           
@@ -166,7 +167,7 @@ input "type:touchpad" {
     tap enabled
     natural_scroll disabled
     middle_emulation disabled
-    dwt enabled
+    dwt disabled
     accel_profile "adaptive" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
     pointer_accel 0.6 # set mouse sensitivity (between -1 and 1)
 }
@@ -181,13 +182,18 @@ bindsym --locked XF86MonBrightnessUp exec "sudo light -A 5"
 output 'Unknown 0xA195 0x00000000' {
     scale 1
     resolution 2240x1400
-    pos 0 0
+    pos 0 720
 } 
 output 'Unknown Mi Monitor 2479800115814' {
     scale 0.9
     resolution 1920x1080
     pos 2240 0
 } 
+output 'Unknown MSI G273Q CA8A521900577' {
+        scale 1
+        resolution 2560x1440
+        pos 2240 0
+    }
 # default_border pixel 3
 default_border none
 # gaps inner 1
@@ -201,11 +207,6 @@ exec fcitx5
 exec swayidle -w \
      timeout 1800 'swaymsg "output * dpms off"' \
          resume 'swaymsg "output * dpms on"' 
-# exec swayidle -w \
-#      timeout 1800 'swaylock -f' \
-#      timeout 120 'swaymsg "output * dpms off"' \
-#          resume 'swaymsg "output * dpms on"' \
-#      before-sleep 'swaylock -f'
 
 # make waybar start immediately
 exec hash dbus-update-activation-environment 2>/dev/null && \

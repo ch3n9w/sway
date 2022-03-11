@@ -18,7 +18,7 @@ Lsp_plugins.plugins = {
     -- NOTE: the creator of lspsaga is in hospital and stop maintaining
     'tami5/lspsaga.nvim',
     -- completion icon set
-    -- 'onsails/lspkind-nvim',
+    'onsails/lspkind-nvim',
     'ray-x/lsp_signature.nvim',
 }
 
@@ -85,7 +85,7 @@ function Lsp_plugins.load()
     vim.o.completeopt='menu,menuone,noselect'
 
 
-    -- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 
 
@@ -105,7 +105,22 @@ function Lsp_plugins.load()
                 },
                 single_file_mode=true
             })
-        else 
+        elseif server.name == 'pyright' then
+            server:setup({
+                capabilities = capabilities,
+                settings = {
+                    python = {
+                        analysis = {
+                            autoSearchPaths = true,
+                            useLibraryCodeForTypes = true,
+                            diagnosticMode = 'workspace',
+                            typeCheckingMode = 'off'
+                        },
+                    },
+                },
+            })
+
+        else
             server:setup({
                 capabilities = capabilities,
                 single_file_mode = true

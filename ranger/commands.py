@@ -79,3 +79,37 @@ class fzf_select(Command):
            else:
                self.fm.select_file(selected)       
 
+class set_cut_flag(Command):
+    flag_file_name = 'cut_flag'
+    def execute(self):
+        fname = self.fm.datapath(self.flag_file_name)
+        try:
+            with open(fname, 'w', encoding='utf-8') as f:
+                f.write('1')
+        except:
+            return self.fm.notify('Cannot write %s' % (fname or self.flag_file_name), bad=True)
+        return None
+class custom_cut(Command):
+    flag_file_name = 'cut_flag'
+    def execute(self):
+        fname = self.fm.datapath(self.flag_file_name)
+        try:
+            with open(fname, 'r+', encoding='utf-8') as f:
+                flag = int(f.read())
+                assert(flag == 0 | flag == 1)
+                f.write('0')
+                if flag == 1:
+                    self.fm.do_cut = True
+        except Exception as e:
+            return self.fm.notify(e)
+
+class unset_cut_flag(Command):
+    flag_file_name = 'cut_flag'
+    def execute(self):
+        fname = self.fm.datapath(self.flag_file_name)
+        try:
+            with open(fname, 'w', encoding='utf-8') as f:
+                f.write('0')
+        except Exception as e:
+            return self.fm.notify(e)
+        return None

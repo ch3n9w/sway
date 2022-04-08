@@ -8,6 +8,7 @@
 window#waybar {
     background: #3b4252;
     color: white;
+    opacity: 1;
 }
 
 #workspaces {

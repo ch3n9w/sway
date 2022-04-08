@@ -28,10 +28,11 @@ function edit_plugins.load()
 
     require('clipboard-image').setup{
         markdown = {
-            img_dir = function() return "/home/ch4ser/Documents/NOTES/.images/" .. vim.fn.expand('%:t:r') end,
+            -- img_dir = function() return "/home/ch4ser/Documents/NOTES/.images/" .. vim.fn.expand('%:t:r') end,
+            img_dir = function() return "./images/" .. vim.fn.expand('%:t:r') end,
             img_dir_txt = function() return vim.fn.expand('%:t:r') end,
             img_name = function() return os.date('%y-%m-%d-%H-%M-%S') end,
-            affix = "![](/home/ch4ser/Documents/NOTES/.images/%s)"
+            affix = "![](./images/%s)"
         }
     }
 

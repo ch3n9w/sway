@@ -20,7 +20,7 @@ vim.o.foldmethod='indent'
 vim.o.foldlevel=99
 
 
-vim.o.scrolloff=12
+vim.o.scrolloff=0
 
 -- indent setting
 vim.o.autoindent = true

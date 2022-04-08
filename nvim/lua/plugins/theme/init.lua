@@ -1,8 +1,8 @@
 local theme_plugins = {}
 
 theme_plugins.plugins = {
-    --[[ 'folke/tokyonight.nvim',
-    'projekt0n/github-nvim-theme', ]]
+    'folke/tokyonight.nvim',
+    'projekt0n/github-nvim-theme',
     'ishan9299/nvim-solarized-lua'
 }
 

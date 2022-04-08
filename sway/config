@@ -1,5 +1,12 @@
+xwayland enabled
 # let title bar friendly with chinese
 for_window [title=".*"] title_format ゜%title゜
+for_window [title="^(File|Folder)\s*Already Exists\s*—\s*" app_id="dolphin|org.kde.ark"] floating enable
+for_window [title="^(Copying|Moving|Deleting)\s*—\s*Dolphin" app_id="dolphin"] inhibit_idle open; floating enable
+for_window [title="^Extracting\s" app_id="(dolphin|org.kde.ark)"] inhibit_idle open; floating enable
+for_window [title="^Information\s*—\s*Dolphin" app_id="dolphin"] floating enable
+for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable, resize set width 1030 height 710
+
 titlebar_border_thickness 2
 set $mod Mod4
 font JetBrainsMono Nerd Font Bold 9
@@ -22,9 +29,11 @@ set $menu rofi -show  drun -theme Arc-Dark -font "JetBrainsMono Nerd Font 18"| x
 # output * bg ~/Pictures/2k/stardust.jpg fill
 # output * bg ~/Pictures/1080/spaceship.png fill
 output * bg /home/ch4ser/Pictures/1080/wallpaper_switch/5-54902_high-resolution-macbook-wallpaper-hd.jpg fill
+# output * bg /home/ch4ser/Pictures/yinyang.png fill
 # output * bg ~/Pictures/kali/kali-layers-16x9.png fill
 
 
+bindsym $mod+m exec "VBoxManage startvm 'windows_the_one'"
 bindsym $mod+Return exec $term
 bindsym $mod+c reload
 bindsym $mod+q kill
@@ -163,9 +172,10 @@ input "type:keyboard" {
 }
 
 input "type:touchpad" {
-    left_handed enabled
     tap enabled
-    natural_scroll disabled
+    drag enabled
+    natural_scroll enabled
+    scroll_factor 0.5
     middle_emulation disabled
     dwt disabled
     accel_profile "adaptive" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
@@ -182,7 +192,7 @@ bindsym --locked XF86MonBrightnessUp exec "sudo light -A 5"
 output 'Unknown 0xA195 0x00000000' {
     scale 1
     resolution 2240x1400
-    pos 0 720
+    pos 0 0
 } 
 output 'Unknown Mi Monitor 2479800115814' {
     scale 0.9
@@ -194,10 +204,10 @@ output 'Unknown MSI G273Q CA8A521900577' {
         resolution 2560x1440
         pos 2240 0
     }
-# default_border pixel 3
+# default_border pixel 0
 default_border none
-# gaps inner 1
-# gaps outer 1
+gaps inner 0
+gaps outer 0
 
 
 bindsym $mod+Ctrl+l exec swaylock

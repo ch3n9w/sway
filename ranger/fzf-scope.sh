@@ -1,7 +1,6 @@
 #!/bin/bash
 
 case "$1" in
-	*.pdf) pdftotext "$1" ;;
 	*.md) glow -s dark "$1" ;;
 	*.zip) zipinfo "$1" ;;
 	*.7z) 7z l "$1" ;;

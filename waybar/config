@@ -21,31 +21,18 @@
 	 		"9": [],
 	 		"10": []
 	    },
-         	"format-icons": {
-             		"1": "𐂂",
-             		"2": "𐂃",
-             		"3": "𐂄",
-             		"4": "者",
-             		"5": "皆",
-             		"6": "阵",
-             		"7": "列",
-             		"8": "在",
-             		"9": "前",
-             		"10": "炎爆"
-         },
-
-         	"format-icons": {
-             		"1": "壹",
-             		"2": "贰",
-             		"3": "叁",
-             		"4": "肆",
-             		"5": "伍",
-             		"6": "陆",
-             		"7": "柒",
-             		"8": "捌",
-             		"9": "玖",
-             		"10": "拾"
-         },
+        "format-icons": {
+                "1": "壹",
+                "2": "贰",
+                "3": "叁",
+                "4": "肆",
+                "5": "伍",
+                "6": "陆",
+                "7": "柒",
+                "8": "捌",
+                "9": "玖",
+                "10": "拾"
+     },
      },
 	"custom/date": {
     		"format": " {}",
@@ -75,8 +62,8 @@
 	},
 	"network": {
         	"format-wifi": "  {essid}",
-        	"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-        	"format-linked": "{ifname} (No IP) ",
+        	"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        	"format-linked": "{ifname} (No IP) ",
         	"format-disconnected": "Disconnected",
         	"format-alt": "{ifname}: {ipaddr}/{cidr}"
 	},

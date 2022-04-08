@@ -15,7 +15,8 @@ export GO111MODULE=on
 export XDG_CONFIG_HOME=$HOME/.config
 export https_proxy=http://127.0.0.1:7890
 export http_proxy=http://127.0.0.1:7890
-export no_proxy='aur.archlinux.org'
+export ALL_PROXY="socks5://127.0.0.1:7891"
+export no_proxy='*.tuna.*'
 
 # export LD_PRELOAD=/usr/lib/libproxychains.so.4
 
@@ -42,9 +43,11 @@ export SAL_DISABLEGL=1
 export NVM_NODEJS_ORG_MIRROR=http://npm.taobao.org/mirrors/node
 # export _JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 alias android-studio="QT_QPA_PLATFORM=xcb _JAVA_AWT_WM_NONREPARENTING=1 android-studio"
-alias mount="mkdir -p /home/ch4ser/Downloads/ShareFolder/usb;sudo mount /dev/sd* /home/ch4ser/Downloads/ShareFolder/usb"
-alias umount="sudo umount /home/ch4ser/Downloads/ShareFolder/usb"
+alias mountusb="mkdir -p /home/ch4ser/Downloads/ShareFolder/usb;sudo mount /dev/sd* /home/ch4ser/Downloads/ShareFolder/usb"
+alias umountusb="sudo umount /home/ch4ser/Downloads/ShareFolder/usb"
+alias windows="VBoxManage startvm 'windows_the_one'"
 alias kali="docker start kali ; docker attach kali"
+alias ubuntu="docker start ubuntu ; docker attach ubuntu"
 alias rasp="ssh root@192.168.31.75"
 alias save_mode="sudo ryzenadj --stapm-limit=20000 --fast-limit=45000 --slow-limit=20000 --tctl-temp=60"
 alias burst_mode="sudo ryzenadj --stapm-limit=45000 --fast-limit=45000 --slow-limit=45000 --tctl-temp=70"
@@ -87,6 +90,7 @@ bindkey -e
 bindkey -s '\er' 'ranger\n'
 bindkey -s '\ev' 'vim_fzf\n'
 bindkey -s '\ed' 'dolphin .\n'
+bindkey -s '\ew' 'windows\n'
 
 # for tomcat debug
 # export JAVA_HOME=/usr/lib/jvm/java-8-openjdk

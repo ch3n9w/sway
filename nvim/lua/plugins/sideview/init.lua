@@ -16,11 +16,10 @@ function sideview_plugins.load()
         open_on_setup        = false,
         ignore_buffer_on_setup = false,
         ignore_ft_on_setup   = {},
-        auto_close           = true,
         auto_reload_on_write = true,
         open_on_tab          = true,
         hijack_cursor        = false,
-        update_cwd           = false,
+        update_cwd           = true,
         hijack_unnamed_buffer_when_opening = false,
         hijack_directories   = {
             enable = true,
@@ -51,13 +50,14 @@ function sideview_plugins.load()
         },
     }
 
-    vim.cmd("autocmd VimEnter * if winwidth(0) > 100  | execute 'NvimTreeOpen' | wincmd p | else | execute 'NvimTreeClose' | endif")
+    -- vim.cmd("autocmd VimEnter * if winwidth(0) > 100  | execute 'NvimTreeOpen' | wincmd p | else | execute 'NvimTreeClose' | endif")
 
     --[[ if vim.fn.winwidth(0)>100 then
         require'nvim-tree'.toggle(false,true)
     end ]]
 
     vim.cmd("autocmd VimResized * if winwidth(0) > 100 | execute 'NvimTreeOpen' | execute 'NvimTreeFocus' | wincmd p | else | execute 'NvimTreeClose' | endif")
+    vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
 
 end
 

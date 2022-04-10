@@ -1,10 +1,9 @@
 {
-    "position": "bottom", 
-    "height": 36,
-    "modules-left": ["memory","temperature","network"],
+    "position": "top", 
+    "height": 30,
+    "modules-left": ["cpu","memory","temperature","bluetooth","network",],
     "modules-center": ["sway/workspaces"],
-    "modules-right": ["bluetooth","pulseaudio",  "battery", "custom/date", "clock", "custom/power"],
-    // Modules configuration
+    "modules-right": ["custom/books", "pulseaudio",  "battery",  "clock", "custom/power"],
 	"sway/workspaces": {
 		"disable-scroll": true,
 		"all-outputs": true,
@@ -12,30 +11,22 @@
 	 	"persistent_workspaces": {
 	 		"1": [],
 	 		"2": [],
-	 		"3": [],
-	 		"4": [],
-	 		"5": [],
-	 		"6": [],
-	 		"7": [],
+            "3": [],
 	 		"8": [],
 	 		"9": [],
-	 		"10": []
+            "10": [],
 	    },
         "format-icons": {
-                "1": "壹",
-                "2": "贰",
-                "3": "叁",
-                "4": "肆",
-                "5": "伍",
-                "6": "陆",
-                "7": "柒",
-                "8": "捌",
-                "9": "玖",
-                "10": "拾"
+            "1": "1 <span font='JetBrainsMono Nerd Font 17'> </span>",
+            "2": "2 <span font='JetBrainsMono Nerd Font 17'> </span>",
+            "3": "3 <span font='JetBrainsMono Nerd Font 17'> </span>",
+            "8": "8 <span font='JetBrainsMono Nerd Font 17'> </span>",
+            "9": "9 <span font='JetBrainsMono Nerd Font 17'> </span>",
+            "10": "10 <span font='JetBrainsMono Nerd Font 17'> </span>",
      },
      },
 	"custom/date": {
-    		"format": " {}",
+        "format": " {}",
 		"interval": 3600,
 		"exec": "/home/ch4ser/.config/waybar/bin/waybar-date.sh"
 	},
@@ -49,23 +40,23 @@
         	"format-alt": "{:%Y-%m-%d}"
 	},
 	"battery": {
-        	"states": {
-            		"warning": 30,
-            		"critical": 15
-        	},
-        	"format": "{icon} {capacity}%",
-        	"format-charging": " {capacity}%",
-        	"format-plugged": " {capacity}%",
-        	"format-alt": "{time} {icon}",
-        	"format-full": "  {capacity}%",
-        	"format-icons": [" ", " ", " "]
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-full": "  {capacity}%",
+        "format-icons": [" ", " ", " "]
 	},
 	"network": {
-        	"format-wifi": "  {essid}",
-        	"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-        	"format-linked": "{ifname} (No IP) ",
-        	"format-disconnected": "Disconnected",
-        	"format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-wifi": "  {essid}",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected",
+        "on-click": "~/.config/waybar/bin/rofi-wifi-menu.sh"
 	},
 	"pulseaudio": {
 		"format": "{icon} {volume}%",
@@ -83,26 +74,48 @@
         "on-click": "pavucontrol"
     },
     "temperature": {
-        // "thermal-zone": 2,
         "hwmon-path": "/sys/class/hwmon/hwmon8/temp1_input",
         "critical-threshold": 70,
         "format-critical": " !{temperatureC}°C",
         "format": " {temperatureC}°C"
     },
+    "cpu": {
+        "interval": 5,
+        "format": "︁ {}%",
+        "max-length": 10
+    },
     "memory": {
         "interval": 30,
-        "format": "{}%  ",
+        "format": " {}%",
         "max-length": 10
     },
     "bluetooth": {
         "interval": 30,
         "format": "{icon}",
-        "format-alt": "bluetooth: {status}",
         "format-icons": {
             "enabled": "",
             "disabled": ""
         },
         "tooltip-format": "{status}",
-        "on-click": "bluedevil-wizard"
+        "exec": "rofi-bluetooth --status",
+        "on-click": "rofi-bluetooth &"
+    },
+    "custom/books": {
+        "on-click": "~/.config/waybar/bin/books-search.sh",
+        "format": " Books"
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 20,
+        "icon-theme": "candy-icons",
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "ignore-list": [
+           "Alacritty"
+        ],
+        "app_ids-mapping": {
+          "firefoxdeveloperedition": "firefox-developer-edition"
+        }
     }
 }

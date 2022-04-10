@@ -7,6 +7,8 @@
 
 window#waybar {
     background: #3b4252;
+    background: #212124;
+    /* background: #002b36; */
     color: white;
     opacity: 1;
 }
@@ -14,21 +16,21 @@ window#waybar {
 #workspaces {
 	background-color: #4c566a;
     color: white;
-	margin: 5px;
+	margin: 0px;
 	margin-left: 10px;
-	border-radius: 5px;
+	border-radius: 10px;
 }
 #workspaces button {
     padding: 0 10px;
-    color: #2e3440;
     color: white;
-    background-color: #4c566a;
+	background-color: #373737;
+    min-width: 45px;
 }
 
 #workspaces button.focused {
-    color: #268bd2;
-    background-color: #88c0d0;
-    border-radius: 5px;
+    color: #7aa2f7;
+    border-top: 1px solid #7aa2f7;
+    border-bottom: 1px solid #7aa2f7;
 }
 
 #workspaces button:hover {
@@ -37,10 +39,12 @@ window#waybar {
 	border-radius: 5px;
 }
 
-#custom-date, #clock, #battery, #pulseaudio, #network, #temperature,#memory, #bluetooth{
+
+#custom-date, #clock, #battery, #pulseaudio, #network, #temperature,#cpu,#memory, #bluetooth, #custom-books{
 	background-color: #4c566a;
+	background-color: #373737;
 	padding: 0px 10px;
-	margin: 5px 0px;
+	margin: 0px 0px;
 }
 
 #custom-date {
@@ -94,9 +98,13 @@ window#waybar {
     border-radius: 0px 5px 5px 0px;
 }
 
-#memory {
+#cpu {
     border-radius: 5px 0px 0px 5px;
     margin-left: 10px;
+    color: #ff0000;
+    min-width: 100px;
+}
+#memory {
     color: #2aa000;
 }
 
@@ -110,6 +118,9 @@ window#waybar {
 
 #bluetooth {
     color: #268bd2;
-	border-radius: 5px 0px 0px 5px;
 }
 
+#custom-books {
+    color: #ffffff;
+	border-radius: 5px 0px 0px 5px;
+}

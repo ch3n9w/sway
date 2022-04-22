@@ -22,23 +22,24 @@ set $right l
 set $term konsole
 set $menu rofi -show  drun -theme ~/.config/rofi/nord.rasi | xargs swaymsg exec --
 
-# output * bg ~/Pictures/1080/spaceship.png fill
 # output * bg /home/ch4ser/Pictures/1080/wallpaper_switch/5-54902_high-resolution-macbook-wallpaper-hd.jpg fill
 # output * bg /home/ch4ser/Pictures/yinyang.png fill
-# output * bg ~/Pictures/kali/kali-layers-16x9.png fill
+# output * bg ~/Pictures/OS/kali/kali-layers-16x9.png fill
+# output * bg /home/ch4ser/Pictures/GameorCarton/doge.png fill
 output * bg /home/ch4ser/Pictures/OS/kali/kali-nova.png fill
+# output * bg /home/ch4ser/Pictures/OS/kali/kali-glitchsea-16x9.jpg fill
 
 # launcher settings
 # for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
 # set $menu exec $term --class=launcher -e ~/.config/sway/sway-launcher-desktop.sh
 
-bindsym $mod+m exec "VBoxManage startvm 'windows_the_one'"
+bindsym $mod+w exec "VBoxManage startvm 'windows_the_one'"
 bindsym $mod+Return exec $term
-bindsym $mod+c reload
+bindsym $mod+p reload
 bindsym $mod+q kill
 bindsym $mod+d exec $menu
 bindsym Alt+Ctrl+a exec grimshot copy area
-bindsym $mod+b exec --no-startup-id rofi-bluetooth
+# bindsym $mod+b exec --no-startup-id rofi-bluetooth
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -68,9 +69,17 @@ floating_modifier $mod normal
 #
 # Switch to workspace
 #
+    bindsym $mod+z workspace number 1
+    bindsym $mod+x workspace number 2
+    bindsym $mod+c workspace number 3
+    bindsym $mod+v workspace number 4
+    bindsym $mod+b workspace number 8
+    bindsym $mod+n workspace number 9
+    bindsym $mod+m workspace number 10
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
     bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
     bindsym $mod+0 workspace number 10
@@ -79,9 +88,17 @@ floating_modifier $mod normal
     bindsym $mod+Left workspace prev
     bindsym $mod+Right workspace next
 ## Move focused container to workspace
+    bindsym $mod+Shift+z move container to workspace number 1
+    bindsym $mod+Shift+x move container to workspace number 2
+    bindsym $mod+Shift+c move container to workspace number 3
+    bindsym $mod+Shift+v move container to workspace number 4
+    bindsym $mod+Shift+b move container to workspace number 8
+    bindsym $mod+Shift+n move container to workspace number 9
+    bindsym $mod+Shift+m move container to workspace number 10
     bindsym $mod+Shift+1 move container to workspace number 1
     bindsym $mod+Shift+2 move container to workspace number 2
     bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
     bindsym $mod+Shift+8 move container to workspace number 8
     bindsym $mod+Shift+9 move container to workspace number 9
     bindsym $mod+Shift+0 move container to workspace number 10
@@ -91,12 +108,12 @@ floating_modifier $mod normal
 #
 # INFO: Layout stuff:
 #
-    bindsym $mod+x splith
-    bindsym $mod+z splitv
+    # bindsym $mod+x splith
+    # bindsym $mod+z splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
+    # bindsym $mod+s layout stacking
+    bindsym $mod+t layout tabbed
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
@@ -105,6 +122,7 @@ floating_modifier $mod normal
     bindsym $mod+space floating toggle
 
     bindsym $mod+a focus parent
+
 #
 # INFO: Scratchpad:
 #
@@ -112,11 +130,11 @@ floating_modifier $mod normal
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+Shift+s move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    bindsym $mod+s scratchpad show
 #
 # INFO: Resizing containers:
 #
@@ -142,7 +160,6 @@ bar {
 }
 
 # INFO: Hardware setting:
-# HACK: sway caplocks and esc
 input "type:keyboard" {           
     xkb_options caps:swapescape
 }
@@ -153,7 +170,7 @@ input "type:touchpad" {
     natural_scroll enabled
     scroll_factor 0.5
     middle_emulation disabled
-    dwt disabled
+    dwt enable
     accel_profile "adaptive" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
     pointer_accel 0.6 # set mouse sensitivity (between -1 and 1)
 }
@@ -189,9 +206,9 @@ client.focused_inactive  #16161d #16161d #c0caf5 #16161d   #16161d
 client.unfocused         #16161d #16161d #c0caf5 #16161d   #16161d
 
 gaps inner 2
-gaps outer 1
-gaps top 1
-gaps bottom 1
+gaps outer 0
+gaps top 0
+gaps bottom 0
 smart_gaps on
 
 
@@ -207,5 +224,3 @@ exec swayidle -w \
 exec hash dbus-update-activation-environment 2>/dev/null && \
     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
-# prevent middle click from pasting something
-# exec wl-paste --primary --watch wl-copy --primary --clear 

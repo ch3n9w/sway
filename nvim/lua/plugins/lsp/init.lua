@@ -73,7 +73,7 @@ function Lsp_plugins.load()
     -- vim.api.nvim_command('autocmd CursorHold * Lspsaga show_line_diagnostics')
 
     nvim_treesitter.setup {
-        ensure_installed = "maintained",
+        ensure_installed = "all",
         highlight = {
             enable = true,
             additional_vim_regex_highlighting = false,

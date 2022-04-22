@@ -1,121 +1,131 @@
 {
     "position": "top", 
-    "height": 30,
-    "modules-left": ["cpu","memory","temperature","bluetooth","network",],
-    "modules-center": ["sway/workspaces"],
-    "modules-right": ["custom/books", "pulseaudio",  "battery",  "clock", "custom/power"],
-	"sway/workspaces": {
-		"disable-scroll": true,
-		"all-outputs": true,
-		"format": "{icon}",
-	 	"persistent_workspaces": {
-	 		"1": [],
-	 		"2": [],
-            "3": [],
-	 		"8": [],
-	 		"9": [],
-            "10": [],
-	    },
-        "format-icons": {
-            "1": "1 <span font='JetBrainsMono Nerd Font 17'> </span>",
-            "2": "2 <span font='JetBrainsMono Nerd Font 17'> </span>",
-            "3": "3 <span font='JetBrainsMono Nerd Font 17'> </span>",
-            "8": "8 <span font='JetBrainsMono Nerd Font 17'> </span>",
-            "9": "9 <span font='JetBrainsMono Nerd Font 17'> </span>",
-            "10": "10 <span font='JetBrainsMono Nerd Font 17'> </span>",
-     },
-     },
-	"custom/date": {
-        "format": " {}",
-		"interval": 3600,
-		"exec": "/home/ch4ser/.config/waybar/bin/waybar-date.sh"
-	},
-	/* "custom/power": {
-		"format": " ",
-		//"on-click": "/home/ch4ser/.config/waybar/bin/waybar-power.sh"
-	}, */
-	"clock": {
-		"format": " {:%H:%M}",
-        	"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        	"format-alt": "{:%Y-%m-%d}"
-	},
-	"battery": {
-        "states": {
-            "warning": 30,
-            "critical": 15
+        "height": 30,
+        "modules-left": ["cpu","memory","temperature","bluetooth","network",],
+        "modules-center": ["sway/workspaces"],
+        "modules-right": ["custom/books", "pulseaudio",  "battery",  "clock", "custom/power"],
+        "sway/workspaces": {
+            "disable-scroll": true,
+            "all-outputs": true,
+            "format": "{icon}",
+            "persistent_workspaces": {
+                "1": [],
+                "2": [],
+                "3": [],
+                "4": [],
+                "8": [],
+                "9": [],
+                "10": [],
+            },
+            "format-icons": {
+                "1": "1 <span font='JetBrainsMono Nerd Font 17'> </span>",
+                "2": "2 <span font='JetBrainsMono Nerd Font 17'> </span>",
+                "3": "3 <span font='JetBrainsMono Nerd Font 17'> </span>",
+                "4": "4 <span font='JetBrainsMono Nerd Font 17'> </span>",
+                "8": "8 <span font='JetBrainsMono Nerd Font 17'> </span>",
+                "9": "9 <span font='JetBrainsMono Nerd Font 17'> </span>",
+                "10": "10 <span font='JetBrainsMono Nerd Font 17'> </span>",
+            },
         },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{time} {icon}",
-        "format-full": "  {capacity}%",
-        "format-icons": [" ", " ", " "]
-	},
-	"network": {
-        "format-wifi": "  {essid}",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected",
-        "on-click": "~/.config/waybar/bin/rofi-wifi-menu.sh"
-	},
-	"pulseaudio": {
-		"format": "{icon} {volume}%",
-        "format-muted": "ﱝ Muted",
-        "format-bluetooth": " {volume}%",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""],
+        "custom/date": {
+            "format": " {}",
+            "interval": 3600,
+            "exec": "/home/ch4ser/.config/waybar/bin/waybar-date.sh"
         },
-        "on-click": "pavucontrol"
-    },
-    "temperature": {
-        "hwmon-path": "/sys/class/hwmon/hwmon8/temp1_input",
-        "critical-threshold": 70,
-        "format-critical": " !{temperatureC}°C",
-        "format": " {temperatureC}°C"
-    },
-    "cpu": {
-        "interval": 5,
-        "format": "︁ {}%",
-        "max-length": 10
-    },
-    "memory": {
-        "interval": 30,
-        "format": " {}%",
-        "max-length": 10
-    },
-    "bluetooth": {
-        "interval": 30,
-        "format": "{icon}",
-        "format-icons": {
-            "enabled": "",
-            "disabled": ""
+        /* "custom/power": {
+           "format": " ",
+        //"on-click": "/home/ch4ser/.config/waybar/bin/waybar-power.sh"
+        }, */
+        "clock": {
+            "format": " {:%H:%M}",
+            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+            "format-alt": "{:%Y-%m-%d}"
         },
-        "tooltip-format": "{status}",
-        "exec": "rofi-bluetooth --status",
-        "on-click": "rofi-bluetooth &"
-    },
-    "custom/books": {
-        "on-click": "~/.config/waybar/bin/books-search.sh",
-        "format": " Books"
-    },
-    "wlr/taskbar": {
-        "format": "{icon}",
-        "icon-size": 20,
-        "icon-theme": "candy-icons",
-        "tooltip-format": "{title}",
-        "on-click": "activate",
-        "on-click-middle": "close",
-        "ignore-list": [
-           "Alacritty"
-        ],
-        "app_ids-mapping": {
-          "firefoxdeveloperedition": "firefox-developer-edition"
+        "battery": {
+            "states": {
+                "warning": 30,
+                "critical": 15
+            },
+            "format": "{icon} {capacity}%",
+            "format-charging": " {capacity}%",
+            "format-plugged": " {capacity}%",
+            "format-alt": "{time} {icon}",
+            "format-full": "  {capacity}%",
+            "format-icons": [" ", " ", " "]
+        },
+        "network": {
+            "format-wifi": " ({signalStrength}%) {essid} ",
+            "format-ethernet": " {ipaddr}/{cidr}",
+            "format-linked": "{ifname} (No IP) ",
+            "format-disconnected": "Disconnected",
+            "on-click": "~/.config/waybar/bin/rofi-wifi-menu.sh",
+        },
+        "pulseaudio": {
+            "format": "{icon} {volume}%",
+            "format-muted": "ﱝ Muted",
+            "format-bluetooth": " {volume}%",
+            "format-icons": {
+                "headphone": "",
+                "hands-free": "",
+                "headset": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "default": ["", "", ""],
+            },
+            "on-click": "pavucontrol"
+        },
+        "temperature": {
+            "hwmon-path": "/sys/class/hwmon/hwmon8/temp1_input",
+            "critical-threshold": 70,
+            "format-critical": " !{temperatureC}°C",
+            "format": " {temperatureC}°C"
+        },
+        "cpu": {
+            "interval": 5,
+            "format": "︁ {}%",
+            "max-length": 10
+        },
+        "memory": {
+            "interval": 30,
+            "format": " {}%",
+            "max-length": 10
+        },
+        "bluetooth": {
+            "interval": 30,
+            "format": "{icon}",
+            "format-icons": {
+                "enabled": "",
+                "disabled": ""
+            },
+            "tooltip-format": "{status}",
+            "exec": "rofi-bluetooth --status",
+            "on-click": "rofi-bluetooth &"
+        },
+        "custom/books": {
+            "on-click": "~/.config/waybar/bin/books-search.sh",
+            "format": " Books"
+        },
+        "wlr/taskbar": {
+            "format": "{icon}",
+            "icon-size": 20,
+            "icon-theme": "candy-icons",
+            "tooltip-format": "{title}",
+            "on-click": "activate",
+            "on-click-middle": "close",
+            "ignore-list": [
+                "Alacritty"
+            ],
+            "app_ids-mapping": {
+                "firefoxdeveloperedition": "firefox-developer-edition"
+            }
+        },
+        "custom/spotify": {
+            "exec": "/usr/bin/python3 ~/.config/waybar/bin/mediaplayer.py --player spotify",
+            "format": "{}  ",
+            "return-type": "json",
+            "on-click": "playerctl play-pause",
+            "on-scroll-up": "playerctl next",
+            "on-scroll-down": "playerctl previous"
         }
-    }
 }

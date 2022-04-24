@@ -86,7 +86,7 @@ some screenshot:
 call terminal in neovim
 ![](./image/2021-12-23-14-46-23.png)
 
-fuzz file search
+fuzzy file search
 ![](./image/2021-12-23-14-45-36.png)
 
 code completion

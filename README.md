@@ -1,3 +1,4 @@
+[中文介绍](./README-zh.md)
 # ch4xer's personal configuration
 
 This repo aimed to backup my configuration, including configuration of sway, waybar, neovim, alacritty, zsh and ranger. Introductions are as follows.

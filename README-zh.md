@@ -1,14 +1,30 @@
 # ch4ser 的私人配置
 本仓库用于备份个人配置文件
-![](./image/2021-12-23-14-42-51.png)
+![](./image/first.png)
+
+## zsh
+使用powerlevel10k,并自定义一些快捷键比如ranger的打开等
+
+## Alacritty
+使用solarized主题和Jetbrain Nerd Font字体,profile文件已经给出
 
 ## sway
-- sway 基础配置
-- swaylock 负责锁屏
-- waybar 底部栏显示
+- 同时使用了数字区和最下面一排字母按键来用于工作区切换, 方便了手指操作
 
 **没有配置通知,因为不喜欢被打扰**
 
+## waybar
+including:
+- cpu
+- ram
+- temprature
+- network
+- 7 workspace
+- book search
+- volumn
+- battery status
+- date
+- clock
 ## ranger
 - ranger devicon plugin 负责显示文件图标,同时个性化了部分图标
 - 使用fzf & ag 来在ranger下进行模糊文件查找,
@@ -18,7 +34,6 @@
 
 
 ## Neovim
-这部分配置文件对于像我一样对lua完全不熟悉但是又无意对lua深入学习但是又希望享受lua带来的好处的用户来说比较好理解。大部分插件所使用的配置都是从他们的项目中直接复制过来的，每一个插件的init.lua中包括了插件列表和load函数，load函数是用来setup插件的，插件列表是用来在packer中被use 的。
 
 ```
 .
@@ -44,27 +59,7 @@
 │   └── packer_compiled.lua // 这个packer.nvim自动生成的，不用管
 ```
 
-在neovim中呼出终端
-![](./image/2021-12-23-14-46-23.png)
 
-模糊文件查找
-![](./image/2021-12-23-14-45-36.png)
-
-代码补全
-![](./image/2021-12-23-14-50-58.png)
-
-
-如果发现换行的时候出现
-```
-E5108: Error executing lua ...site/pack/packer/start/nvim-cmp/lua/cmp/utils/keymap.lua:246: attempt to index local 'definition' (a nil value)
-```
-这是由于lsp-cmp插件导致的，具体原因作者也不知道，经过网友们测试将mkview和loadview取消掉就可以避免掉这个错误,但是这个功能也挺重要的，所以我没有注释掉
-
-```
-vim.o.viewoptions='folds,cursor,curdir'
-vim.cmd('autocmd BufWinLeave * silent! mkview')
-vim.cmd('autocmd BufEnter * silent! loadview')
-```
 
 如果有人想不开想要使用我的配置文件的话，安装步骤如下
 - 安装packer.nvim 
@@ -80,3 +75,12 @@ lsp_plugins.load()
 - 打开neovim运行PackerInstall
 - 将刚刚注释的代码解除注释
 - 保存，重新打开就行了
+
+在neovim中呼出终端
+![](./image/2021-12-23-14-46-23.png)
+
+模糊文件查找
+![](./image/2021-12-23-14-45-36.png)
+
+代码补全
+![](./image/2021-12-23-14-50-58.png)

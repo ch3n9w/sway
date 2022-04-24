@@ -42,17 +42,13 @@ export LC_ALL="en_US.UTF-8"
 export SAL_DISABLEGL=1
 export NVM_NODEJS_ORG_MIRROR=http://npm.taobao.org/mirrors/node
 # export _JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+alias suspend="sudo systemctl suspend"
 alias android-studio="QT_QPA_PLATFORM=xcb _JAVA_AWT_WM_NONREPARENTING=1 android-studio"
-alias mountusb="mkdir -p /home/ch4ser/Downloads/ShareFolder/usb;sudo mount /dev/sd* /home/ch4ser/Downloads/ShareFolder/usb"
-alias umountusb="sudo umount /home/ch4ser/Downloads/ShareFolder/usb"
 alias windows="VBoxManage startvm 'windows_the_one'"
 alias kali="docker start kali ; docker attach kali"
 alias ubuntu="docker start ubuntu ; docker attach ubuntu"
-alias rasp="ssh root@192.168.31.75"
 alias save_mode="sudo ryzenadj --stapm-limit=20000 --fast-limit=45000 --slow-limit=20000 --tctl-temp=60"
 alias burst_mode="sudo ryzenadj --stapm-limit=45000 --fast-limit=45000 --slow-limit=45000 --tctl-temp=70"
-alias volatility="vol"
-alias msf="msfconsole"
 alias clear_cache="yay -Scc;yay -Rns $(yay -Qtdq)"
 alias clear_packages="yay -Qtdq | yay -Rs -"
 alias idea="nohup /opt/intellij-idea-ultimate-edition/bin/idea.sh .  >/dev/null 2>&1 &"
@@ -70,11 +66,7 @@ alias py2="python2"
 alias ipy="ipython"
 alias ipy2="ipython2"
 alias pipi="pipenv shell"
-alias server="ssh root@39.105.176.37"
-alias tencent="ssh root@120.53.236.211"
-alias vmwareon="sudo systemctl start vmware vmware-usbarbitrator vmware-networks-server vmware-workstation-server"
 
-alias weather="curl -m 1 wttr.in\?format=3 2>/dev/null"
 export ZSH="/usr/share/oh-my-zsh"
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
@@ -92,14 +84,6 @@ bindkey -s '\ev' 'vim_fzf\n'
 bindkey -s '\ed' 'dolphin .\n'
 bindkey -s '\ew' 'windows\n'
 
-# for tomcat debug
-# export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
-# export JRE_HOME=$JAVA_HOME/jre
-# export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
-# export CATALINA_HOME=/usr/share/tomcat8
-# export CLASSPATH=$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$CATALINA_HOME/lib
-# export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin:$CATALINA_HOME/bin
-
 # source /usr/share/nvm/init-nvm.sh
 source /usr/share/autojump/autojump.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -114,8 +98,3 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /opt/miniconda/etc/profile.d/conda.sh
 
 
-# lf config
-LFCD="/home/ch4ser/.config/lf/lfcd.sh"                                #  pre-built binary, make sure to use absolute path
-if [ -f "$LFCD" ]; then
-    source "$LFCD"
-fi

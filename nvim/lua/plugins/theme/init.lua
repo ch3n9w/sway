@@ -13,6 +13,7 @@ function theme_plugins.load()
     -- require('lualine').setup{options={theme='tokyonight'}}
     require('lualine').setup{}
 
+    vim.cmd[[hi! Normal ctermbg=none ctermfg=none guifg=none guibg=none]]
 
     -- require('github-theme').setup({theme_style='dark_default'})
 

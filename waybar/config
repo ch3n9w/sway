@@ -3,7 +3,7 @@
         "height": 30,
         "modules-left": ["cpu","memory","temperature","bluetooth","network",],
         "modules-center": ["sway/workspaces"],
-        "modules-right": ["custom/books", "pulseaudio",  "battery",  "clock", "custom/power"],
+        "modules-right": ["custom/books", "pulseaudio",  "battery", "custom/date", "clock", "custom/power"],
         "sway/workspaces": {
             "disable-scroll": true,
             "all-outputs": true,

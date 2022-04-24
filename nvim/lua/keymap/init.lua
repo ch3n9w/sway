@@ -45,6 +45,13 @@ key_mapper('n', '<C-k>', '<PageUp>')
 key_mapper('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 key_mapper('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
 
+
+key_mapper('i', '<C-l>', '<ESC>$a')
+key_mapper('i', '<C-h>', '<ESC>^i')
+key_mapper('i', '<C-j>', '<ESC>o')
+key_mapper('i', '<C-k>', '<ESC>O')
+
+
 key_mapper('n', 'H', ':Lspsaga hover_doc<CR>')
 key_mapper('n', 'gs', ':Lspsaga signature_help<CR>')
 key_mapper('n', 'gr', ':Lspsaga rename<CR>')

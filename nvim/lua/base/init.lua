@@ -49,7 +49,9 @@ vim.g.mapleader = ' '
 
 -- load preview view
 vim.o.viewoptions='folds,cursor,curdir'
-vim.cmd('autocmd BufWinLeave * silent! mkview')
+vim.cmd('autocmd BufLeave * silent! mkview')
+-- vim.cmd('autocmd BufWinEnter * silent! loadview')
+-- vim.cmd('autocmd WinEnter * silent! loadview')
 vim.cmd('autocmd BufEnter * silent! loadview')
 
 -- fcitx5

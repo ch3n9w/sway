@@ -22,7 +22,8 @@ set $term alacritty
 # set $term konsole
 set $menu rofi -show  drun -theme ~/.config/rofi/nord.rasi | xargs swaymsg exec --
 
-output * bg /home/ch4ser/Pictures/landscape/ocean6.png fill
+output * bg /home/ch4ser/Pictures/landscape/ocean3.png fill
+# output * bg /home/ch4ser/Pictures/landscape/ocean6.png fill
 # output * bg /home/ch4ser/Pictures/1080/wallpaper_switch/5-54902_high-resolution-macbook-wallpaper-hd.jpg fill
 # output * bg /home/ch4ser/Pictures/yinyang.png fill
 # output * bg ~/Pictures/OS/kali/kali-layers-16x9.png fill

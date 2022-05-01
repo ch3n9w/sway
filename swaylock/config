@@ -1,7 +1,7 @@
 ignore-empty-password
 
 disable-caps-lock-text
-image=/home/ch4ser/.config/swaylock/arknights.jpg
+image=~/.config/swaylock/arknights.jpg
 font=JetBrainMono Nerd Font
 
 clock

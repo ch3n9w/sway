@@ -30,7 +30,7 @@
         "custom/date": {
             "format": " {}",
             "interval": 3600,
-            "exec": "/home/ch4ser/.config/waybar/bin/waybar-date.sh"
+            "exec": "~/.config/waybar/bin/waybar-date.sh"
         },
         /* "custom/power": {
            "format": " ",

@@ -22,14 +22,7 @@ set $term alacritty
 # set $term konsole
 set $menu rofi -show  drun -theme ~/.config/rofi/nord.rasi | xargs swaymsg exec --
 
-output * bg /home/ch4ser/Pictures/landscape/ocean3.png fill
-# output * bg /home/ch4ser/Pictures/landscape/ocean6.png fill
-# output * bg /home/ch4ser/Pictures/1080/wallpaper_switch/5-54902_high-resolution-macbook-wallpaper-hd.jpg fill
-# output * bg /home/ch4ser/Pictures/yinyang.png fill
-# output * bg ~/Pictures/OS/kali/kali-layers-16x9.png fill
-# output * bg /home/ch4ser/Pictures/GameorCarton/doge.png fill
-# output * bg /home/ch4ser/Pictures/OS/kali/kali-nova.png fill
-# output * bg /home/ch4ser/Pictures/OS/kali/kali-glitchsea-16x9.jpg fill
+output * bg ~/Pictures/landscape/ocean3.png fill
 
 # launcher settings
 # for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10

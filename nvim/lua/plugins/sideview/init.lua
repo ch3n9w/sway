@@ -56,15 +56,19 @@ end)
 
     -- vim.cmd("autocmd BufEnter * if winwidth(0) > 100  | execute 'NvimTreeOpen' | execute 'NvimTreeFocus'| wincmd p | endif")
 
-
     --[[ if vim.fn.winwidth(0)>100 then
         require'nvim-tree'.toggle(false,true)
     end ]]
+    function tree_toggle_on_setup()
+        require'nvim-tree'.toggle(false,true)
+    end
 
     vim.cmd("autocmd VimResized * if winwidth(0) > 100 | execute 'NvimTreeOpen' | execute 'NvimTreeFocus' | wincmd p | else | execute 'NvimTreeClose' | endif")
 
     vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
-
+    vim.fn.timer_start(0, tree_toggle_on_setup)
+    -- tree_toggle_on_setup()
+    
 end
 
 return sideview_plugins

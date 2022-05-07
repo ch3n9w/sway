@@ -22,7 +22,7 @@ set $term alacritty
 # set $term konsole
 set $menu rofi -show  drun -theme ~/.config/rofi/nord.rasi | xargs swaymsg exec --
 
-output * bg ~/Pictures/landscape/ocean3.png fill
+output * bg ~/Pictures/landscape/ocean-shark.png fill
 
 # launcher settings
 # for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10

@@ -39,7 +39,7 @@ window#waybar {
 }
 
 
-#custom-date, #clock, #battery, #pulseaudio, #network, #temperature,#cpu,#memory, #bluetooth, #custom-books{
+#custom-date, #clock, #battery, #pulseaudio, #network, #temperature,#cpu,#memory, #bluetooth, #custom-books, #custom-ML,#custom-papers{
 	background-color: #4c566a;
 	background-color: #373737;
 	padding: 0px 10px;
@@ -121,5 +121,14 @@ window#waybar {
 
 #custom-books {
     color: #ffffff;
+}
+
+#custom-papers {
+    color: #00FA9A;
+}
+
+#custom-ML {
+    color: #00FFFF;
 	border-radius: 5px 0px 0px 5px;
 }
+

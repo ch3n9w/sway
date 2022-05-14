@@ -22,7 +22,11 @@ set $term alacritty
 # set $term konsole
 set $menu rofi -show  drun -theme ~/.config/rofi/nord.rasi | xargs swaymsg exec --
 
-output * bg ~/Pictures/landscape/ocean-shark.png fill
+# output * bg ~/Pictures/landscape/ocean-shark.png fill
+output * bg ~/Pictures/1080/OS/kali/kali_vector.png fill
+# output * bg ~/Pictures/1080/spaceship.png fill
+# output * bg ~/Pictures/landscape/misty_forest.png fill
+
 
 # launcher settings
 # for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
@@ -120,15 +124,7 @@ floating_modifier $mod normal
 
 #
 # INFO: Scratchpad:
-#
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
-
-    # Move the currently focused window to the scratchpad
     bindsym $mod+Shift+s move scratchpad
-
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+s scratchpad show
 #
 # INFO: Resizing containers:
@@ -196,9 +192,9 @@ output 'Unknown 0xA195 0x00000000' {
 default_border pixel 2
 default_floating_border pixel 2
 hide_edge_borders smart
-client.focused           #9aa5ce #16161d #c0caf5 #9aa5ce   #9aa5ce
-client.focused_inactive  #16161d #16161d #c0caf5 #16161d   #16161d
-client.unfocused         #16161d #16161d #c0caf5 #16161d   #16161d
+# client.focused           #9aa5ce #16161d #c0caf5 #9aa5ce   #9aa5ce
+# client.focused_inactive  #16161d #16161d #c0caf5 #16161d   #16161d
+# client.unfocused         #16161d #16161d #c0caf5 #16161d   #16161d
 
 gaps inner 2
 gaps outer 0
@@ -209,6 +205,7 @@ smart_gaps on
 
 bindsym $mod+Ctrl+l exec swaylock
 
+exec ~/.config/sway/autosplit.py
 exec fcitx5 
 
 exec swayidle -w \

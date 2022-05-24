@@ -1,0 +1,134 @@
+* {
+    border: none;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 20px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: #3b4252;
+    background: #212124;
+    /* background: #002b36; */
+    color: white;
+    opacity: 1;
+}
+
+#workspaces {
+	/* background-color: #373737; */
+    color: white;
+	margin: 0px;
+	margin-left: 10px;
+	border-radius: 10px;
+}
+#workspaces button {
+    padding: 0 10px;
+    color: white;
+    min-width: 50px;
+}
+
+#workspaces button.focused {
+    color: #7aa2f7;
+    border-top: 1px solid #7aa2f7;
+    border-bottom: 1px solid #7aa2f7;
+}
+
+#workspaces button:hover {
+    color: white;
+	background-color: #5e81ac;
+	border-radius: 10px;
+}
+
+
+#custom-date, #clock, #battery, #pulseaudio, #network, #temperature,#cpu,#memory, #bluetooth, #custom-books, #custom-ML,#custom-notes{
+	background-color: #4c566a;
+	background-color: #373737;
+	padding: 0px 10px;
+	margin: 0px 0px;
+}
+
+#custom-date {
+	color: #8fbcbb;
+}
+
+#custom-power {
+	color: #2e3440;
+	background-color: #268bd2;
+	border-radius: 5px;
+	margin-right: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 0px;
+	padding: 0px 10px;
+}
+
+#clock {
+    color: #b48ead;
+    border-radius: 0px 5px 5px 0px;
+    margin-right: 10px;
+}
+
+#battery {
+    color: #a3be8c;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
+}
+
+#battery.charging {
+    color: #a3be8c;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network {
+	color: #2aa198;
+    border-radius: 0px 5px 5px 0px;
+}
+
+#cpu {
+    border-radius: 5px 0px 0px 5px;
+    margin-left: 10px;
+    color: #ff0000;
+    min-width: 100px;
+}
+#memory {
+    color: #2aa000;
+}
+
+#temperature {
+	color: #d08770;
+}
+
+#pulseaudio {
+	color: #ebcb8b;
+}
+
+#bluetooth {
+    color: #268bd2;
+}
+
+#custom-books {
+    color: #ffffff;
+}
+
+#custom-notes {
+    color: #00FA9A;
+	border-radius: 5px 0px 0px 5px;
+}
+
+#custom-ML {
+    color: #00FFFF;
+}
+

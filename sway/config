@@ -8,20 +8,27 @@ for_window [title="^Information\s*—\s*Dolphin" app_id="dolphin"] floating enab
 for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable, resize set width 1030 height 710
 
 assign [app_id="firefox"] 1
+assign [app_id="terminal"] 2
 assign [class="jetbrains"] 3
 assign [class="burp"] 4
-assign [app_id="security"] 5
+assign [title="Godzilla"] 5
+assign [class="behinder"] 5
 assign [class="Typora"] 6
-assign [class="wps"] 6
-assign [app_id="zathura"] 6
-assign [app_id="dolphin"] 7
+assign [class="wps"] 7
+assign [title="Spreadsheets"] 7
+assign [app_id="zathura"] 7
+assign [app_id="dolphin"] 8
 assign [app_id="waydroid"] 9
+assign [app_id="Waydroid"] 9
+assign [class="Steam"] 9
+assign [class="hmcl"] 9
+assign [class="Minecraft"] 9
 assign [app_id="mpv"] 10
 assign [class="music"] 10
 assign [title="Wine System Tray"] 10
 
 
-titlebar_border_thickness 2
+# titlebar_border_thickness 2
 set $mod Mod4
 font JetBrainsMono Nerd Font Bold 9
 
@@ -33,21 +40,21 @@ set $right l
 
 # unable to use fcitx5
 set $term alacritty 
-# set $term konsole
 set $menu rofi -show  drun -theme ~/.config/rofi/nord.rasi | xargs swaymsg exec --
 
-# output * bg ~/Pictures/landscape/ocean-shark.png fill
-output * bg ~/Pictures/1080/OS/kali/kali_vector.png fill
-# output * bg ~/Pictures/1080/spaceship.png fill
-# output * bg ~/Pictures/landscape/misty_forest.png fill
+output * bg ~/Pictures/wallhaven-q6zj2l.jpg fill
+# output * bg ~/Media/Pictures/1080/OS/kali/kali_vector.png fill
+# output * bg ~/Media/Pictures/1080/spaceship.png fill
+# output * bg ~/Media/Pictures/1080/others/Minecraft/daemon_sword.jpg fill
+# output * bg ~/Media/Pictures/OS/kali/kali-strips-16x10.png fill
 
 
 # launcher settings
 # for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
 # set $menu exec $term --class=launcher -e ~/.config/sway/sway-launcher-desktop.sh
 
-bindsym $mod+w exec "VBoxManage startvm 'windows_the_one'"
-bindsym Ctrl+Return exec "alacritty --class security,security"
+# bindsym $mod+w exec "VBoxManage startvm 'windows_the_one'"
+bindsym Ctrl+Return exec $term --class=terminal
 bindsym $mod+Return exec $term
 bindsym $mod+p reload
 bindsym $mod+q kill
@@ -78,6 +85,10 @@ floating_modifier $mod normal
     bindsym $mod+Mod1+$up move up
     bindsym $mod+Mod1+$right move right
 
+bindsym $mod+Control+Shift+Right move workspace to output right
+bindsym $mod+Control+Shift+Left move workspace to output left
+bindsym $mod+Control+Shift+Down move workspace to output down
+bindsym $mod+Control+Shift+Up move workspace to output up
 #
 # INFO: workspaces:
 #
@@ -87,6 +98,8 @@ floating_modifier $mod normal
     bindsym $mod+2 workspace number 2
     bindsym $mod+3 workspace number 3
     bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
     bindsym $mod+7 workspace number 7
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
@@ -100,6 +113,8 @@ floating_modifier $mod normal
     bindsym $mod+Mod1+2 move container to workspace number 2
     bindsym $mod+Mod1+3 move container to workspace number 3
     bindsym $mod+Mod1+4 move container to workspace number 4
+    bindsym $mod+Mod1+5 move container to workspace number 5
+    bindsym $mod+Mod1+6 move container to workspace number 6
     bindsym $mod+Mod1+7 move container to workspace number 7
     bindsym $mod+Mod1+8 move container to workspace number 8
     bindsym $mod+Mod1+9 move container to workspace number 9
@@ -130,25 +145,21 @@ floating_modifier $mod normal
     bindsym Mod1+Tab scratchpad show
 
 
-# INFO: Status Bar:
-bar {
-	swaybar_command waybar
-}
 
 # INFO: Hardware setting:
 input "type:keyboard" {           
     xkb_options caps:swapescape
 }
+seat seat0 xcursor_theme breeze_cursors 20
 
 input "type:touchpad" {
     tap enabled
     drag enabled
     natural_scroll enabled
     scroll_factor 0.5
-    middle_emulation disabled
     dwt enable
-    accel_profile "adaptive" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
-    pointer_accel 0.6 # set mouse sensitivity (between -1 and 1)
+    accel_profile "adaptive"
+    pointer_accel 0.6
 }
 
 bindsym --locked XF86AudioRaiseVolume exec sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume @DEFAULT_SINK@ +5%"
@@ -163,15 +174,15 @@ output 'Unknown 0xA195 0x00000000' {
     resolution 2240x1400
     pos 0 0
 } 
-# output 'Unknown Mi Monitor 2479800115814' {
-#     scale 0.9
-#     resolution 1920x1080
-#     pos 2240 0
-# } 
+output 'Unknown Mi Monitor 2479800115814' {
+    scale 0.9
+    resolution 1920x1080
+    pos 2240 0
+} 
 # output 'Unknown MSI G273Q CA8A521900577' {
 #         scale 1
 #         resolution 2560x1440
-#         pos 2240 0
+#         pos 0 0
 #     }
 
 default_border pixel 2
@@ -181,21 +192,29 @@ hide_edge_borders smart
 # client.focused_inactive  #16161d #16161d #c0caf5 #16161d   #16161d
 # client.unfocused         #16161d #16161d #c0caf5 #16161d   #16161d
 
-gaps inner 2
-gaps outer 0
-gaps top 0
-gaps bottom 0
+gaps inner 10
+# gaps outer 10
 smart_gaps on
 
 
-bindsym $mod+Ctrl+l exec swaylock
+# bindsym $mod+Ctrl+l exec 'if [ $SWAYLOCK -lt $SWAYLOCK_STATUS ]; then SWAYLOCK=1; swaylock; SWAYLOCK=0; fi'
+bindsym $mod+Ctrl+l exec 'sudo systemctl suspend'
+
+bar {
+	swaybar_command waybar
+}
 
 exec ~/.config/sway/autosplit.py
 exec fcitx5 
 
+# exec swayidle -w \
+#      timeout 1800 'swaymsg "output * dpms off"' \
+#          resume 'swaymsg "output * dpms on"' 
+# exec mpvpaper -o "no-audio --loop-playlist --hwdec=auto" eDP-1 ~/Media/Pictures/videos/mylivewallpapers-com-Boreal-Valley-Dark-Souls-3.mp4
+
+
 exec swayidle -w \
-     timeout 1800 'swaymsg "output * dpms off"' \
-         resume 'swaymsg "output * dpms on"' 
+     timeout 1800 'sudo systemctl suspend' 
 
 # make waybar start immediately
 exec hash dbus-update-activation-environment 2>/dev/null && \

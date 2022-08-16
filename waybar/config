@@ -1,8 +1,8 @@
 {
     "position": "top", 
-        "modules-left": ["battery","memory","temperature","bluetooth","network",],
+        "modules-left": ["battery","custom/gpu-usage","memory","temperature","bluetooth","network",],
         "modules-center": ["sway/workspaces"],
-        "modules-right": ["custom/notes","custom/ML","custom/books", "pulseaudio","clock"],
+        "modules-right": ["custom/forest","custom/notes","custom/books", "pulseaudio","clock"],
         "sway/workspaces": {
             "disable-scroll": true,
             "all-outputs": true,
@@ -15,10 +15,10 @@
                 "2": " ",
                 "3": " ",
                 "4": " ",
-                "5": " ",
-                "6": " ",
-                "7": " ",
-                "8": " ",
+                "5": " ",
+                "6": " ",
+                "7": " ",
+                "8": " ",
                 "9": " ",
                 "10": " ",
             },
@@ -42,12 +42,14 @@
             "format-icons": [" ", " ", " "]
         },
         "network": {
-            "format-wifi": " ({signalStrength}%) {essid} ",
+            "format-wifi": " {essid} ",
             "tooltip": false,
             "format-ethernet": " {ipaddr}/{cidr}",
             "format-linked": "{ifname} (No IP) ",
             "format-disconnected": "Disconnected",
-            "on-click": "~/.config/waybar/bin/rofi-wifi-menu.sh"
+            "format-disabled": "Disabled",
+            "on-click": "~/.config/waybar/bin/rofi-wifi-menu.sh",
+            "max-length": 8,
         },
         "pulseaudio": {
             "format": "{icon} {volume}%",
@@ -71,32 +73,50 @@
             "format": " {}%",
             "max-length": 10
         },
+        "custom/gpu-usage": {
+            "exec": "cat /sys/class/hwmon/hwmon8/device/gpu_busy_percent",
+            "format": " {}%",
+            "return-type": "",
+            "interval": 1,
+            "max-length": 5,
+            "min-length":5,
+        },
         "memory": {
-            "interval": 30,
+            "interval": 10,
             "format": " {}%",
             "max-length": 10
         },
-        "bluetooth": {
-            "format": "{icon}",
-            "tooltip": false,
-            "tooltip-format": "{status}",
-            "format-on": "",
-            "format-off": "!",
-            "on-click": "rofi-bluetooth &"
-        },
-        "custom/books": {
-            "on-click": "~/.config/waybar/bin/books-search.sh",
-            "format": " Books",
-            "tooltip": false,
-        },
-        "custom/ML": {
-            "format": " ML",
-            "on-click": "code ~/Documents/NOTES/ML",
-            "tooltip": false,
-        },
-        "custom/notes": {
-            "format": " NOTE",
-            "on-click": "typora",
-            "tooltip": false,
-        }
+            "bluetooth": {
+                "format": "{icon}",
+                "format-connected": " {device_alias}",
+                "tooltip": false,
+                "tooltip-format": "{status}",
+                "format-on": "",
+                "format-off": "",
+                "on-click": "rofi-bluetooth &",
+                "max-length": 8,
+            },
+            "custom/books": {
+                "on-click": "~/.config/waybar/bin/books-search.sh",
+                "format": " Books",
+                "tooltip": false,
+            },
+            "custom/ML": {
+                "format": " ML",
+                "on-click": "code ~/Documents/NOTES/ML",
+                "tooltip": false,
+            },
+            "custom/notes": {
+                "format": " NOTE",
+                "on-click": "typora",
+                "tooltip": false,
+            },
+            "custom/forest": {
+                "exec":  "~/.config/waybar/bin/forest status",
+                "format": " {}",
+                "interval": 1,
+                "return-type": "string",
+                "on-click": "~/.config/waybar/bin/forest start --email 'ch4xer@gmail.com' --password roottoor --time 5",
+                "tooltip": false,
+            }
 }

@@ -44,7 +44,7 @@ export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 
 
-plugins=(git)
+plugins=(git minikube)
 source /usr/share/oh-my-zsh/oh-my-zsh.sh
 
 bindkey -e
@@ -70,7 +70,8 @@ export CLASSPATH=$HOME:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOM
 
 # source /usr/share/nvm/init-nvm.sh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=9,bold'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=9,bold,white'
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-extract/extract.plugin.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
@@ -100,9 +101,11 @@ alias ipy2="ipython2"
 alias pipi="pipenv shell"
 alias server="ssh root@39.105.176.37"
 alias tencent="ssh root@120.53.236.211"
+alias k="kubectl"
 alias cat="bat --style=plain"
 alias top="btm"
 alias ls="exa --icons"
+alias t="todo.sh"
 eval "$(zoxide init zsh --cmd cd)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

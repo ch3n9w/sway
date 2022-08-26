@@ -10,19 +10,24 @@ for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable, resize se
 assign [app_id="firefox"] 1
 assign [app_id="terminal"] 2
 assign [class="jetbrains"] 3
+assign [title="Visual Studio Code"] 3
 assign [class="burp"] 4
+assign [app_id="wireshark"] 4
 assign [title="Godzilla"] 5
 assign [class="behinder"] 5
 assign [class="Typora"] 6
-assign [class="wps"] 7
-assign [title="Spreadsheets"] 7
+assign [class="wps"] 8
+assign [title="Spreadsheets"] 8
+assign [app_id="libreoffice"] 8
 assign [app_id="zathura"] 7
-assign [app_id="dolphin"] 8
-assign [app_id="waydroid"] 9
-assign [app_id="Waydroid"] 9
-assign [class="Steam"] 9
-assign [class="hmcl"] 9
-assign [class="Minecraft"] 9
+assign [app_id="okular"] 7
+assign [app_id="dolphin"] 9
+assign [app_id="waydroid"] 10
+assign [app_id="Waydroid"] 10
+assign [class="VirtualBox"] 10
+assign [class="Steam"] 10
+assign [class="hmcl"] 10
+assign [class="Minecraft"] 10
 assign [app_id="mpv"] 10
 assign [class="music"] 10
 assign [title="Wine System Tray"] 10
@@ -40,9 +45,9 @@ set $right l
 
 # unable to use fcitx5
 set $term alacritty 
-set $menu rofi -show  drun -theme ~/.config/rofi/nord.rasi | xargs swaymsg exec --
+set $menu rofi -show  drun -m -2 -theme ~/.config/rofi/nord.rasi | xargs swaymsg exec --
 
-output * bg ~/Pictures/wallhaven-q6zj2l.jpg fill
+output * bg ~/Media/Pictures/1080/wallpaper_switch/5-54902_high-resolution-macbook-wallpaper-hd.jpg fill
 # output * bg ~/Media/Pictures/1080/OS/kali/kali_vector.png fill
 # output * bg ~/Media/Pictures/1080/spaceship.png fill
 # output * bg ~/Media/Pictures/1080/others/Minecraft/daemon_sword.jpg fill
@@ -52,7 +57,8 @@ output * bg ~/Pictures/wallhaven-q6zj2l.jpg fill
 # launcher settings
 # for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
 # set $menu exec $term --class=launcher -e ~/.config/sway/sway-launcher-desktop.sh
-
+# bindgesture swipe:right workspace prev
+# bindgesture swipe:left workspace next
 # bindsym $mod+w exec "VBoxManage startvm 'windows_the_one'"
 bindsym Ctrl+Return exec $term --class=terminal
 bindsym $mod+Return exec $term
@@ -161,6 +167,8 @@ input "type:touchpad" {
     accel_profile "adaptive"
     pointer_accel 0.6
 }
+bindswitch lid:on output eDP-1 disable
+bindswitch lid:off output eDP-1 enable
 
 bindsym --locked XF86AudioRaiseVolume exec sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume @DEFAULT_SINK@ +5%"
 bindsym --locked XF86AudioLowerVolume exec sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume @DEFAULT_SINK@ -5%"
@@ -198,13 +206,14 @@ smart_gaps on
 
 
 # bindsym $mod+Ctrl+l exec 'if [ $SWAYLOCK -lt $SWAYLOCK_STATUS ]; then SWAYLOCK=1; swaylock; SWAYLOCK=0; fi'
-bindsym $mod+Ctrl+l exec 'sudo systemctl suspend'
+bindsym $mod+Ctrl+l exec 'sudo systemctl stop waydroid-container.service;sudo systemctl suspend'
 
 bar {
 	swaybar_command waybar
 }
 
-exec ~/.config/sway/autosplit.py
+# exec ~/.config/sway/autosplit.py
+exec_always autotiling
 exec fcitx5 
 
 # exec swayidle -w \
@@ -214,7 +223,7 @@ exec fcitx5
 
 
 exec swayidle -w \
-     timeout 1800 'sudo systemctl suspend' 
+     timeout 1800 'sudo systemctl stop waydroid-container.service;sudo systemctl suspend;swaylock' 
 
 # make waybar start immediately
 exec hash dbus-update-activation-environment 2>/dev/null && \

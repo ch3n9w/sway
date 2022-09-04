@@ -1,3 +1,3 @@
 
 
-au UIAttach * ++once lua require('ginit')
+au UIAttach * ++once lua require('init')

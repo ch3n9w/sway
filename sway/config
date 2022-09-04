@@ -50,7 +50,8 @@ set $term alacritty
 set $menu rofi -show  drun -m -1 -theme ~/.config/rofi/nord.rasi | xargs swaymsg exec --
 
 # output * bg ~/Media/Pictures/1080/wallpaper_switch/5-54902_high-resolution-macbook-wallpaper-hd.jpg fill
-output * bg ~/Media/Pictures/1080/OS/thinkpad_wallpaper.png fill
+# output * bg ~/Media/Pictures/1080/OS/thinkpad_wallpaper.png fill
+output * bg ~/Media/Pictures/landscape/lake_mountains_forest.png fill
 # output * bg ~/Media/Pictures/1080/spaceship.png fill
 # output * bg ~/Media/Pictures/1080/others/Minecraft/daemon_sword.jpg fill
 

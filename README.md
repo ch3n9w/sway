@@ -78,7 +78,7 @@ Using the solarized theme and Jetbrain Nerd Font, the profile file has been give
 - customize copy paste and cut command to let ranger paste file in different instances
 
 
-### 编辑器/IDE (Neovim + nvim-qt + jetbrains)
+### Editor/IDE (Neovim + nvim-qt + jetbrains)
 #### Neovim
 
 ```

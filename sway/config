@@ -16,6 +16,8 @@ assign [app_id="wireshark"] 4
 assign [title="Godzilla"] 5
 assign [class="behinder"] 5
 assign [class="Typora"] 6
+assign [app_id="nvim-qt"] 6
+assign [title="Freeplane"] 6
 assign [class="wps"] 8
 assign [title="Spreadsheets"] 8
 assign [app_id="libreoffice"] 8
@@ -45,13 +47,12 @@ set $right l
 
 # unable to use fcitx5
 set $term alacritty 
-set $menu rofi -show  drun -m -2 -theme ~/.config/rofi/nord.rasi | xargs swaymsg exec --
+set $menu rofi -show  drun -m -1 -theme ~/.config/rofi/nord.rasi | xargs swaymsg exec --
 
-output * bg ~/Media/Pictures/1080/wallpaper_switch/5-54902_high-resolution-macbook-wallpaper-hd.jpg fill
-# output * bg ~/Media/Pictures/1080/OS/kali/kali_vector.png fill
+# output * bg ~/Media/Pictures/1080/wallpaper_switch/5-54902_high-resolution-macbook-wallpaper-hd.jpg fill
+output * bg ~/Media/Pictures/1080/OS/thinkpad_wallpaper.png fill
 # output * bg ~/Media/Pictures/1080/spaceship.png fill
 # output * bg ~/Media/Pictures/1080/others/Minecraft/daemon_sword.jpg fill
-# output * bg ~/Media/Pictures/OS/kali/kali-strips-16x10.png fill
 
 
 # launcher settings
@@ -68,11 +69,6 @@ bindsym $mod+d exec $menu
 bindsym Mod1+Ctrl+a exec grim -g "$(slurp)" - | swappy -f - -o - | wl-copy
 # bindsym $mod+b exec --no-startup-id rofi-bluetooth
 
-# Drag floating windows by holding down $mod and left mouse button.
-# Resize them with right mouse button + $mod.
-# Despite the name, also works for non-floating windows.
-# Change normal to inverse to use left mouse button for resizing and right
-# mouse button for dragging.
 floating_modifier $mod normal
 
 #
@@ -112,6 +108,8 @@ bindsym $mod+Control+Shift+Up move workspace to output up
     bindsym $mod+0 workspace number 10
 
 
+    bindsym --whole-window --border $mod+button5 workspace next
+    bindsym --whole-window --border $mod+button4 workspace prev
     bindsym Mod1+1 workspace prev
     bindsym Mod1+2 workspace next
 ## Move focused container to workspace
@@ -128,6 +126,7 @@ bindsym $mod+Control+Shift+Up move workspace to output up
 
     bindsym $mod+Mod1+Left move container to workspace prev
     bindsym $mod+Mod1+Right move container to workspace next
+    bindsym Mod1+Tab workspace back_and_forth 
 #
 # INFO: Layout stuff:
 #
@@ -148,7 +147,7 @@ bindsym $mod+Control+Shift+Up move workspace to output up
 #
 # INFO: Scratchpad:
     bindsym $mod+Mod1+s move scratchpad
-    bindsym Mod1+Tab scratchpad show
+    bindsym $mod+s scratchpad show
 
 
 
@@ -205,7 +204,6 @@ gaps inner 10
 smart_gaps on
 
 
-# bindsym $mod+Ctrl+l exec 'if [ $SWAYLOCK -lt $SWAYLOCK_STATUS ]; then SWAYLOCK=1; swaylock; SWAYLOCK=0; fi'
 bindsym $mod+Ctrl+l exec 'sudo systemctl stop waydroid-container.service;sudo systemctl suspend'
 
 bar {

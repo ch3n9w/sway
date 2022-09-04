@@ -48,7 +48,7 @@ font:
 
   italic:
     family: JetBrainsMono Nerd Font
-    style: Bold
+    style: Bold Italic
 
   size: 20.0
 
@@ -121,7 +121,7 @@ shell:
   program: /bin/zsh
 
 key_bindings:
-  - { key: Y,              mods: Control, action: Paste                      }
+  - { key: V,              mods: Control, action: Paste                      }
   - { key: W,              mods: Control, action: Copy                       }
   - { key: Insert,         mods: Shift,   action: PasteSelection             }
   - { key: Key0,           mods: Control, action: ResetFontSize              }

@@ -1,11 +1,12 @@
 {
     "position": "top", 
-        "modules-left": ["battery","custom/gpu-usage","memory","temperature","network",],
+        "modules-left": ["battery","custom/gpu-usage","memory","temperature","pulseaudio","network",],
         "modules-center": ["sway/workspaces"],
-        "modules-right": ["custom/forest","custom/notes","custom/books", "pulseaudio","clock"],
+        "modules-right": ["custom/forest","custom/notes","custom/books", "clock"],
         "sway/workspaces": {
-            "disable-scroll": true,
+            "disable-scroll": false,
             "all-outputs": true,
+            "enable-bar-scroll": true,
             "format": "{index} {icon}",
             "persistent_workspaces": {
                 /* "7": [], 
@@ -18,7 +19,7 @@
                 "4": " ",
                 "5": " ",
                 "6": " ",
-                "7": " ",
+                "7": " ",
                 "8": " ",
                 "9": " ",
                 "10": " ",
@@ -36,11 +37,11 @@
             },
             "tooltip": false,
             "format": "{icon} {capacity}%",
-            "format-charging": " {capacity}%",
+            "format-charging": "{capacity}%",
             "format-plugged": " {capacity}%",
-            "format-alt": "{time} {icon}",
-            "format-full": "  {capacity}%",
-            "format-icons": [" ", " ", " "]
+            "format-full": " {capacity}%",
+            "format-icons": [" ", " ", " "],
+            "max-length": 8,
         },
         "network": {
             "format-wifi": " {essid} ",
@@ -55,7 +56,7 @@
         "pulseaudio": {
             "format": "{icon} {volume}%",
             "tooltip": false,
-            "format-muted": "ﱝ Muted",
+            "format-muted": "婢 Muted" ,
             "format-bluetooth": " {volume}%",
             "format-icons": {
                 "headphone": "",
@@ -72,20 +73,18 @@
         "cpu": {
             "interval": 5,
             "format": " {}%",
-            "max-length": 10
         },
         "custom/gpu-usage": {
             "exec": "cat /sys/class/hwmon/hwmon8/device/gpu_busy_percent",
             "format": " {}%",
             "return-type": "",
-            "interval": 1,
-            "max-length": 5,
-            "min-length":5,
+            "interval": 5,
+            "max-length": 7,
         },
         "memory": {
             "interval": 10,
             "format": " {}%",
-            "max-length": 10
+            "max-length": 8,
         },
             "bluetooth": {
                 "format": "{icon}",
@@ -109,7 +108,7 @@
             },
             "custom/notes": {
                 "format": " NOTE",
-                "on-click": "typora",
+                "on-click": "nvim-qt ~/Documents/NOTES",
                 "tooltip": false,
             },
             "custom/forest": {

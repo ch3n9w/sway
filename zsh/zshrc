@@ -5,17 +5,15 @@ fi
 
 export WORKSPACE=$HOME/.local/workspace
 #
-export PATH=$HOME/bin:/usr/local/bin:/opt:/usr/bin:$PATH:$GOPATH/bin:$GOROOT/bin:/usr/lib
 export GOPATH=$HOME/Projects/go
 export GOPROXY=https://goproxy.cn
 export GO111MODULE=on
 export XDG_CONFIG_HOME=$HOME/.config
 # export https_proxy=http://127.0.0.1:7890
 # export http_proxy=http://127.0.0.1:7890
-export ALL_PROXY="socks5://127.0.0.1:7891"
-# export ALL_PROXY="socks5://82.156.6.87:10708"
-export no_proxy='*.tuna.*'
-
+# export ALL_PROXY="socks5://127.0.0.1:7891"
+# export no_proxy='*.tuna.*'
+export PATH=$HOME/bin:/usr/local/bin:/opt:/usr/bin:$PATH:$GOPATH/bin:$GOROOT/bin:/usr/lib:$GOPATH/bin
 # export LD_PRELOAD=/usr/lib/libproxychains.so.4
 
 # For jetbrains
@@ -35,6 +33,7 @@ vim_fzf() {
         nvim  $fzf_result
     fi
 }
+
 
 export LC_ALL="en_US.UTF-8"
 export NVM_NODEJS_ORG_MIRROR=http://npm.taobao.org/mirrors/node
@@ -74,6 +73,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=9,bold,white'
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-extract/extract.plugin.zsh
+source /usr/share/zsh/plugins/zsh-autoswitch-virtualenv/zsh-autoswitch-virtualenv.plugin.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 
@@ -94,6 +94,7 @@ alias javac7="/usr/lib/jvm/java-7-openjdk/bin/javac"
 alias java8="/usr/lib/jvm/java-8-openjdk/bin/java"
 alias javac8="/usr/lib/jvm/java-8-openjdk/bin/javac"
 alias oracle8="/home/ch4ser/Tools/Environment/JDK/jdk1.8.0_112/bin/java"
+alias php="php7"
 alias py="python"
 alias py2="python2"
 alias ipy="ipython"

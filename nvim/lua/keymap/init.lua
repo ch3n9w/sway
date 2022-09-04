@@ -48,30 +48,20 @@ key_mapper('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true}
 
 key_mapper('i', '<C-l>', '<ESC>$a')
 key_mapper('i', '<C-h>', '<ESC>^i')
+key_mapper('n', '<C-l>', '<ESC>$')
+key_mapper('n', '<C-h>', '<ESC>^')
+key_mapper('v', '<C-l>', '$')
+key_mapper('v', '<C-h>', '^')
 key_mapper('i', '<C-j>', '<ESC>o')
 key_mapper('i', '<C-k>', '<ESC>O')
 
 
-key_mapper('n', 'H', ':Lspsaga hover_doc<CR>')
-key_mapper('n', 'gs', ':Lspsaga signature_help<CR>')
-key_mapper('n', 'gr', ':Lspsaga rename<CR>')
-key_mapper('n', 'gd', ':Lspsaga preview_definition<CR>')
-
--- floating terminal open and close
-key_mapper('n', 'ss', ':Lspsaga open_floaterm<CR>')
-key_mapper('t', 'ss', '<C-\\><C-n>:Lspsaga close_floaterm<CR>:wincmd l<CR>')
-key_mapper('t', '<ESC>', '<C-\\><C-n>:Lspsaga close_floaterm<CR>:wincmd l<CR>')
-
 key_mapper('n', '<C-s>', ':SymbolsOutline<CR>')
 
 -- telescope file fuzzy finder
--- keymapper settings
--- sw: search word under cursor
--- sf: search file
 -- if i want to search word by my typing, just move the cursor to a empty place and type sw
 key_mapper('n','sw', ':Telescope grep_string<CR>')
 key_mapper('n','sf', ':Telescope find_files<CR>')
-
 
 -- nvim-tree settings
 key_mapper('n', '<leader>t', ':NvimTreeToggle<CR>')
@@ -101,4 +91,21 @@ key_mapper('n', 'm', ':HopWord<CR>')
 -- key_mapper('n', 'gh', ':Lspsaga lsp_finder<CR>')
 -- key_mapper('n', '<leader>ca', ':Lspsaga code_action<CR>')
 -- key_mapper('v', '<leader>ca', ':<C-U>Lspsaga range_code_action<CR>')
--- key_mapper('n', '<leader>cd', ':Lspsaga show_line_diagnostics<CR>')
+key_mapper('n', 'ge', ':Lspsaga show_line_diagnostics<CR>')
+key_mapper('n', 'H', ':Lspsaga hover_doc<CR>')
+key_mapper('n', 'gs', ':Lspsaga signature_help<CR>')
+key_mapper('n', 'gr', ':Lspsaga rename<CR>')
+key_mapper('n', 'gd', ':Lspsaga preview_definition<CR>')
+
+-- floating terminal open and close
+key_mapper('n', 'ss', ':Lspsaga open_floaterm<CR>')
+key_mapper('t', 'ss', '<C-\\><C-n>:Lspsaga close_floaterm<CR>:wincmd l<CR>')
+key_mapper('t', '<ESC>', '<C-\\><C-n>:Lspsaga close_floaterm<CR>:wincmd l<CR>')
+
+-- dap debug
+key_mapper('n', '<F5>', ':lua require"dap".toggle_breakpoint()<CR>')
+key_mapper('n', '<F6>', ':lua require"dap".continue()<CR>')
+key_mapper('n', '<F7>', ':lua require"dap".step_into()<CR>')
+key_mapper('n', '<F8>', ':lua require"dap".step_over()<CR>')
+key_mapper('n', '<leader>d', ':lua require"dapui".toggle()<CR>')
+-- key_mapper('n', '<F5>', 'lua require"dap".toggle_breakpoint()<CR>')

@@ -11,8 +11,8 @@ sideview_plugins.plugins = {
 
 function sideview_plugins.load()
     require'nvim-tree.events'.on_nvim_tree_ready(function ()
-  vim.cmd("NvimTreeRefresh")
-end)
+        vim.cmd("NvimTreeRefresh")
+    end)
     -- require'nvim-tree'.on_enter()
     require'nvim-tree'.setup {
         disable_netrw        = true,
@@ -22,7 +22,7 @@ end)
         ignore_ft_on_setup   = {},
         auto_reload_on_write = true,
         open_on_tab          = true,
-        hijack_cursor        = false,
+        hijack_cursor        = true,
         update_cwd           = true,
         hijack_unnamed_buffer_when_opening = false,
         hijack_directories   = {
@@ -57,20 +57,20 @@ end)
     -- vim.cmd("autocmd BufEnter * if winwidth(0) > 100  | execute 'NvimTreeOpen' | execute 'NvimTreeFocus'| wincmd p | endif")
 
     --[[ if vim.fn.winwidth(0)>100 then
-        require'nvim-tree'.toggle(false,true)
-    end ]]
-    function tree_toggle_on_setup()
-        require'nvim-tree'.toggle(false,true)
-    end
+    require'nvim-tree'.toggle(false,true)
+end ]]
+function tree_toggle_on_setup()
+    require'nvim-tree'.toggle(false,true)
+end
 
-    vim.cmd("autocmd VimResized * if winwidth(0) > 100 | execute 'NvimTreeOpen' | execute 'NvimTreeFocus' | wincmd p | else | execute 'NvimTreeClose' | endif")
+vim.cmd("autocmd VimResized * if winwidth(0) > 100 | execute 'NvimTreeOpen' | execute 'NvimTreeFocus' | wincmd p | else | execute 'NvimTreeClose' | endif")
 
-    vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
-    if vim.fn.winwidth(0)>100 then
-        vim.fn.timer_start(0, tree_toggle_on_setup)
-    end
-    -- tree_toggle_on_setup()
-    
+vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
+if vim.fn.winwidth(0)>100 then
+    vim.fn.timer_start(0, tree_toggle_on_setup)
+end
+-- tree_toggle_on_setup()
+
 end
 
 return sideview_plugins

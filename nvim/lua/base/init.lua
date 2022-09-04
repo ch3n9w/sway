@@ -9,7 +9,7 @@ vim.o.modifiable = true
 -- case setting
 vim.o.smartcase = true
 vim.o.ignorecase = true
--- vim.o.cursorline = true
+vim.o.cursorline = true
 
 -- clipboard
 vim.o.clipboard = 'unnamedplus'
@@ -20,7 +20,7 @@ vim.o.foldmethod='indent'
 vim.o.foldlevel=99
 
 
-vim.o.scrolloff=0
+vim.o.scrolloff=4
 
 -- indent setting
 vim.o.autoindent = true
@@ -47,15 +47,25 @@ vim.o.wrap = true
 -- key mappings
 vim.g.mapleader = ' '
 
+vim.api.nvim_create_autocmd({"BufLeave", "BufWinLeave"}, {
+    command = "silent! mkview"
+})
+
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+    command = "silent! loadview"
+})
 -- load preview view
 vim.o.viewoptions='folds,cursor,curdir'
-vim.cmd('autocmd BufLeave * silent! mkview')
+-- vim.cmd('autocmd BufLeave * silent! mkview')
 -- vim.cmd('autocmd BufWinEnter * silent! loadview')
 -- vim.cmd('autocmd WinEnter * silent! loadview')
-vim.cmd('autocmd BufEnter * silent! loadview')
+-- vim.cmd('autocmd BufEnter * silent! loadview')
 
 -- fcitx5
 vim.cmd('autocmd InsertLeave * :silent !fcitx5-remote -c')
 vim.cmd('autocmd BufCreate *  :silent !fcitx5-remote -c')
 vim.cmd('autocmd BufEnter *  :silent !fcitx5-remote -c ')
 vim.cmd('autocmd BufLeave *  :silent !fcitx5-remote -c ')
+--[[ vim.api.nvim_create_autocmd({"InsertLeave", "BufCreate", "BufEnter", "BufLeave"}, {
+    command = "silent! fcitx5-remote -c"
+}) ]]

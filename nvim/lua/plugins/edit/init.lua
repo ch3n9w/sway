@@ -12,6 +12,7 @@ edit_plugins.plugins = {
     'nvim-telescope/telescope.nvim',
     -- paste image from clipboard
     'ekickx/clipboard-image.nvim',
+    -- 'askfiy/nvim-picgo',
     -- dependencies
     'nvim-lua/plenary.nvim',
     'abecodes/tabout.nvim',
@@ -38,7 +39,9 @@ function edit_plugins.load()
             affix = "![](~/Documents/NOTES/.images/%s)"
         }
     }
-
+    --[[ require("nvim-picgo").setup{
+        notice = "echo",
+    } ]]
     require('tabout').setup {
         tabkey = '<Tab>', -- key to trigger tabout, set to an empty string to disable
         backwards_tabkey = '<S-Tab>', -- key to trigger backwards tabout, set to an empty string to disable

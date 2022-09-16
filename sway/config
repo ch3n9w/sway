@@ -1,38 +1,38 @@
 xwayland enabled
 # let title bar friendly with chinese
 for_window [title=".*"] title_format ゜%title゜
-for_window [title="^(File|Folder)\s*Already Exists\s*—\s*" app_id="dolphin|org.kde.ark"] floating enable
-for_window [title="^(Copying|Moving|Deleting)\s*—\s*Dolphin" app_id="dolphin"] inhibit_idle open; floating enable
-for_window [title="^Extracting\s" app_id="(dolphin|org.kde.ark)"] inhibit_idle open; floating enable
-for_window [title="^Information\s*—\s*Dolphin" app_id="dolphin"] floating enable
-for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable, resize set width 1030 height 710
+# for_window [title="^(File|Folder)\s*Already Exists\s*—\s*" app_id="dolphin|org.kde.ark"] floating enable
+# for_window [title="^(Copying|Moving|Deleting)\s*—\s*Dolphin" app_id="dolphin"] inhibit_idle open; floating enable
+# for_window [title="^Extracting\s" app_id="(dolphin|org.kde.ark)"] inhibit_idle open; floating enable
+# for_window [title="^Information\s*—\s*Dolphin" app_id="dolphin"] floating enable
+# for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable, resize set width 1030 height 710
 
 assign [app_id="firefox"] 1
 assign [app_id="terminal"] 2
-assign [class="jetbrains"] 3
 assign [title="Visual Studio Code"] 3
-assign [class="burp"] 4
-assign [app_id="wireshark"] 4
-assign [title="Godzilla"] 5
-assign [class="behinder"] 5
-assign [class="Typora"] 6
-assign [app_id="nvim-qt"] 6
-assign [title="Freeplane"] 6
-assign [class="wps"] 8
-assign [title="Spreadsheets"] 8
-assign [app_id="libreoffice"] 8
-assign [app_id="zathura"] 7
-assign [app_id="okular"] 7
-assign [app_id="dolphin"] 9
-assign [app_id="waydroid"] 10
-assign [app_id="Waydroid"] 10
-assign [class="VirtualBox"] 10
-assign [class="Steam"] 10
-assign [class="hmcl"] 10
-assign [class="Minecraft"] 10
-assign [app_id="mpv"] 10
-assign [class="music"] 10
-assign [title="Wine System Tray"] 10
+assign [class="jetbrains"] 3
+assign [class="Typora"] 4
+assign [app_id="nvim-qt"] 4
+assign [title="Freeplane"] 4
+assign [class="burp"] 5
+assign [app_id="wireshark"] 5
+assign [title="Godzilla"] 6
+assign [class="behinder"] 6
+assign [class="wps"] 9
+assign [title="Spreadsheets"] 9
+assign [app_id="libreoffice"] 9
+assign [app_id="zathura"] 8
+assign [app_id="okular"] 8
+assign [app_id="dolphin"] 10
+assign [app_id="waydroid"] 7 
+assign [app_id="Waydroid"] 7
+assign [class="VirtualBox"] 7
+assign [class="Steam"] 7
+assign [class="hmcl"] 7
+assign [class="Minecraft"] 7
+assign [app_id="mpv"] 7
+assign [class="music"] 7
+assign [title="Wine System Tray"] 7
 
 
 # titlebar_border_thickness 2
@@ -97,6 +97,7 @@ bindsym $mod+Control+Shift+Up move workspace to output up
 #
 # Switch to workspace
 #
+    workspace_auto_back_and_forth yes
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
     bindsym $mod+3 workspace number 3
@@ -193,14 +194,14 @@ output 'Unknown Mi Monitor 2479800115814' {
 #         pos 0 0
 #     }
 
-default_border pixel 2
+default_border pixel 4
 default_floating_border pixel 2
 hide_edge_borders smart
 # client.focused           #9aa5ce #16161d #c0caf5 #9aa5ce   #9aa5ce
 # client.focused_inactive  #16161d #16161d #c0caf5 #16161d   #16161d
 # client.unfocused         #16161d #16161d #c0caf5 #16161d   #16161d
 
-gaps inner 10
+gaps inner 5
 # gaps outer 10
 smart_gaps on
 

@@ -20,7 +20,7 @@ vim.o.foldmethod='indent'
 vim.o.foldlevel=99
 
 
-vim.o.scrolloff=4
+vim.o.scrolloff=0
 
 -- indent setting
 vim.o.autoindent = true
@@ -68,4 +68,21 @@ vim.cmd('autocmd BufEnter *  :silent !fcitx5-remote -c ')
 vim.cmd('autocmd BufLeave *  :silent !fcitx5-remote -c ')
 --[[ vim.api.nvim_create_autocmd({"InsertLeave", "BufCreate", "BufEnter", "BufLeave"}, {
     command = "silent! fcitx5-remote -c"
+}) ]]
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  nested = true,
+  callback = function()
+    if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
+      vim.cmd "quit"
+    end
+  end
+})
+--[[ vim.api.nvim_create_autocmd("BufEnter", {
+  nested = false,
+  callback = function()
+    if vim.api.nvim_buf_get_name(0) == "" then
+      vim.cmd "qa!"
+    end
+  end
 }) ]]

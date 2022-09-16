@@ -56,3 +56,6 @@ set recolor-darkcolor           "#f8f8f2" # Foreground
 #
 set adjust-open width
 set recolor true
+
+map [normal] <Space> scroll half-down
+map [normal] <S-Space> scroll half-up

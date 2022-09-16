@@ -25,10 +25,14 @@ key_mapper('n', ')', '$')
 key_mapper('v', ')', '$')
 key_mapper('n', '(', '^')
 key_mapper('v', '(', '^')
-key_mapper('n', 'Q', 'q')
--- key_mapper('v', 'Q', 'q')
-key_mapper('n', 'q', '<ESC>:wq<CR>')
-key_mapper('v', 'q', '<ESC>:wq<CR>')
+key_mapper('n', 'q', '<ESC>:w<CR>:Bdelete<CR>')
+key_mapper('v', 'q', '<ESC>:w<CR>:Bdelete<CR>')
+--[[ key_mapper('n', 'q', '<ESC>:wq<CR>')
+key_mapper('v', 'q', '<ESC>:wq<CR>') ]]
+--[[ key_mapper('n', 'Q', '<ESC>:NvimTreeClose<CR>:bd<CR>:NvimTreeToggle<CR>:wincmd p<CR>')
+key_mapper('v', 'Q', '<ESC>:NvimTreeClose<CR>:bd<CR>:NvimTreeToggle<CR>:wincmd p<CR>') ]]
+--[[ key_mapper('n', 'q', '<ESC>:w<CR>:NvimTreeClose<CR>:bdelete<CR>')
+key_mapper('v', 'q', '<ESC>:w<CR>:NvimTreeClose<CR>:bdelete<CR>') ]]
 key_mapper('n', 'w', ':w<CR>w')
 key_mapper('n', '<leader>h', '<C-w>h')
 key_mapper('n', '<leader>j', '<C-w>j')
@@ -93,15 +97,19 @@ key_mapper('n', 'm', ':HopWord<CR>')
 -- key_mapper('v', '<leader>ca', ':<C-U>Lspsaga range_code_action<CR>')
 key_mapper('n', 'ge', ':Lspsaga show_line_diagnostics<CR>')
 key_mapper('n', 'H', ':Lspsaga hover_doc<CR>')
-key_mapper('n', 'gs', ':Lspsaga signature_help<CR>')
+-- key_mapper('n', 'gs', ':Lspsaga signature_help<CR>')
 key_mapper('n', 'gr', ':Lspsaga rename<CR>')
 key_mapper('n', 'gd', ':Lspsaga preview_definition<CR>')
 
 -- floating terminal open and close
-key_mapper('n', 'ss', ':Lspsaga open_floaterm<CR>')
-key_mapper('t', 'ss', '<C-\\><C-n>:Lspsaga close_floaterm<CR>:wincmd l<CR>')
-key_mapper('t', '<ESC>', '<C-\\><C-n>:Lspsaga close_floaterm<CR>:wincmd l<CR>')
+-- key_mapper('n', 'ss', ':Lspsaga open_floaterm<CR>')
+-- key_mapper('t', 'ss', '<C-\\><C-n>:Lspsaga close_floaterm<CR>:wincmd l<CR>')
+-- key_mapper('t', '<ESC>', '<C-\\><C-n>:Lspsaga close_floaterm<CR>:wincmd l<CR>')
 
+-- bottom terminal
+key_mapper('n', 'ss', ':ToggleTerm size=8 direction=horizontal<CR>')
+key_mapper('t', 'ss', '<C-\\><C-n>:ToggleTerm size=8 direction=horizontal<CR>')
+key_mapper('t', '<esc>', '<C-\\><C-n>')
 -- dap debug
 key_mapper('n', '<F5>', ':lua require"dap".toggle_breakpoint()<CR>')
 key_mapper('n', '<F6>', ':lua require"dap".continue()<CR>')
@@ -109,3 +117,4 @@ key_mapper('n', '<F7>', ':lua require"dap".step_into()<CR>')
 key_mapper('n', '<F8>', ':lua require"dap".step_over()<CR>')
 key_mapper('n', '<leader>d', ':lua require"dapui".toggle()<CR>')
 -- key_mapper('n', '<F5>', 'lua require"dap".toggle_breakpoint()<CR>')
+--

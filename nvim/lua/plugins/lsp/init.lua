@@ -12,6 +12,9 @@ Lsp_plugins.plugins = {
     'hrsh7th/cmp-vsnip',
     'hrsh7th/vim-vsnip',
 
+    -- orgmode !!!
+    {'nvim-neorg/neorg', tag="0.0.12"},
+
     'williamboman/nvim-lsp-installer',
     -- debug for golang, need pacman -S delve
     'mfussenegger/nvim-dap',
@@ -86,6 +89,7 @@ function Lsp_plugins.load()
             { name = 'vsnip' },
         }, {
             { name = 'buffer' },
+            { name = 'neorg' },
         })
     })
     lspsaga.init_lsp_saga()
@@ -94,11 +98,24 @@ function Lsp_plugins.load()
         hint_prefix = " "
     })
 
-
+    require('neorg').setup {
+        load = {
+            ["core.defaults"] = {},
+            ["core.norg.concealer"] = {}, -- icon support
+            ["core.norg.manoeuvre"] = {}, -- move between different elements
+            ["core.norg.completion"] = {
+                config = {
+                    engine = "nvim-cmp",
+                },
+            },
+            ["core.norg.qol.toc"] = {}, -- TOC generate
+            ["core.export"] = {},
+        }
+    }
     -- vim.api.nvim_command('autocmd CursorHold * Lspsaga show_line_diagnostics')
 
     nvim_treesitter.setup {
-        ensure_installed = "all",
+        ensure_installed = {"norg","rust","go","c","python","php","html","json","css","lua","bash","markdown"},
         highlight = {
             enable = true,
             additional_vim_regex_highlighting = false,

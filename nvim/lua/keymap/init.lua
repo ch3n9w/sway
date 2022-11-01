@@ -44,8 +44,9 @@ key_mapper('n', '<leader>L', '<C-w>L')
 key_mapper('n', 'J', ':bprevious!<CR>')
 key_mapper('n', 'K', ':bnext!<CR>')
 key_mapper('n', '<C-b>', '<C-u>')
-key_mapper('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
-key_mapper('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
+--[[ key_mapper('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
+key_mapper('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true}) ]]
+
 
 key_mapper('i', '<C-j>', '<ESC>o')
 key_mapper('i', '<C-k>', '<ESC>O')
@@ -61,6 +62,7 @@ key_mapper('n', '<C-h>', '<ESC>^')
 key_mapper('n', '<C-l>', '<ESC>$')
 key_mapper('v', '<C-l>', '$')
 key_mapper('v', '<C-h>', '^')
+
 
 
 -- telescope file fuzzy finder
@@ -102,11 +104,11 @@ key_mapper('n', 'ge', ':Lspsaga show_line_diagnostics<CR>')
 key_mapper('n', 'H', ':Lspsaga hover_doc<CR>')
 -- key_mapper('n', 'gs', ':Lspsaga signature_help<CR>')
 key_mapper('n', 'gr', ':Lspsaga rename<CR>')
--- key_mapper('n', 'gd', ':Lspsaga preview_definition<CR>')
+-- key_mapper('n', 'gd', ':Lspsaga peek_definition<CR>')
 
 -- floating terminal open and close
--- key_mapper('n', 'ss', ':Lspsaga open_floaterm<CR>')
--- key_mapper('t', 'ss', '<C-\\><C-n>:Lspsaga close_floaterm<CR>:wincmd l<CR>')
+--[[ key_mapper('n', 'ss', ':Lspsaga open_floaterm<CR>', {silent=true})
+key_mapper('t', 'ss', '<C-\\><C-n>:Lspsaga close_floaterm<CR>:wincmd p<CR>') ]]
 -- key_mapper('t', '<ESC>', '<C-\\><C-n>:Lspsaga close_floaterm<CR>:wincmd l<CR>')
 
 -- bottom terminal

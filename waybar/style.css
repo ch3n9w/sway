@@ -8,6 +8,7 @@
 window#waybar {
     background: #3b4252;
     background: #212124;
+    /* background: transparent; */
     /* background: #002b36; */
     color: white;
     opacity: 1;
@@ -55,10 +56,12 @@ window#waybar {
 
 #clock {
     color: #b48ead;
+	border-radius: 0px 10px 10px 0px;
 }
 
 #battery {
     color: #a3be8c;
+	border-radius: 10px 0px 0px 10px;
 }
 
 #custom-gpu-usage {
@@ -88,7 +91,7 @@ window#waybar {
 
 #network {
 	color: #2aa198;
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 10px 10px 0px;
 }
 
 #memory {
@@ -113,10 +116,10 @@ window#waybar {
 
 #custom-notes {
     color: #00FFFF;
-	border-radius: 5px 0px 0px 5px;
 }
 
 #custom-forest {
     color: #00FA9A;
+	border-radius: 10px 0px 0px 10px;
 }
 

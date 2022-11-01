@@ -1,6 +1,12 @@
+# zmodload zsh/zprof
+# wayland variables
+# source $XDG_CONFIG_HOME/zsh/wayland
+
 
 export WORKSPACE=$HOME/.local/workspace
 #
+export gw="http://120.53.236.211:8081"
+export CGO_ENABLED=1
 export GOPATH=$HOME/Projects/go
 export GOPROXY=https://goproxy.cn
 export GO111MODULE=on
@@ -39,7 +45,8 @@ export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 
 
-plugins=(git minikube)
+plugins=(git)
+# ZSH_THEME="funky"
 source /usr/share/oh-my-zsh/oh-my-zsh.sh
 
 bindkey -e
@@ -70,7 +77,7 @@ export TODO_FILE=/home/ch4ser/.local/share/todo/todo.txt
 
 # source /usr/share/nvm/init-nvm.sh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=9,bold,white'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=9,bold,white,underline'
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-extract/extract.plugin.zsh
@@ -78,16 +85,18 @@ source /usr/share/zsh/plugins/zsh-autoswitch-virtualenv/zsh-autoswitch-virtualen
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 
+alias vcam="~/Tools/Other/virtualcam.sh"
 alias suspend="sudo systemctl suspend"
-alias android-studio="QT_QPA_PLATFORM=xcb _JAVA_AWT_WM_NONREPARENTING=1 android-studio"
-alias save_mode="sudo ryzenadj --stapm-limit=20000 --fast-limit=45000 --slow-limit=20000 --tctl-temp=60"
-alias burst_mode="sudo ryzenadj --stapm-limit=45000 --fast-limit=45000 --slow-limit=45000 --tctl-temp=70"
+alias save_mode="cpupower-gui profile earth"
+alias normal_mode="cpupower-gui config"
+alias burst_mode="cpupower-gui profile Performance"
 alias msf="msfconsole"
 alias clear_cache="yay -Scc;yay -Rns $(yay -Qtdq)"
 alias clear_packages="yay -Qtdq | yay -Rs -"
 alias idea="nohup /opt/intellij-idea-ultimate-edition/bin/idea.sh .  >/dev/null 2>&1 &"
 alias check_log="journalctl -p5"
 alias vim="nvim"
+alias neo="neovide"
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias nvmstart="source /usr/share/nvm/init-nvm.sh"
 alias java7="/usr/lib/jvm/java-7-openjdk/bin/java"
@@ -97,17 +106,16 @@ alias javac8="/usr/lib/jvm/java-8-openjdk/bin/javac"
 alias oracle8="/home/ch4ser/Tools/Environment/JDK/jdk1.8.0_112/bin/java"
 alias php="php7"
 alias py="python"
-alias py2="python2"
 alias ipy="ipython"
-alias ipy2="ipython2"
-alias pipi="pipenv shell"
 alias server="ssh root@39.105.176.37"
 alias tencent="ssh root@120.53.236.211"
 alias ubuntu="ssh root@192.168.59.106"
+alias ubuntu18="ssh root@192.168.59.110"
 alias kali="ssh root@192.168.59.107"
 alias centos="ssh root@192.168.59.108"
 alias honeypot="ssh root@180.97.215.74"
 alias k="kubectl"
+alias faas="faas-cli"
 alias cat="bat --style=plain --paging=never"
 alias top="btm"
 alias ls="exa --icons"
@@ -117,6 +125,8 @@ alias start_clash="sudo systemctl start clash@root.service"
 alias stop_clash="sudo systemctl stop clash@root.service"
 eval "$(zoxide init zsh --cmd cd)"
 alias docker_rm_all="docker ps -aq | xargs docker stop | xargs docker rm"
+alias rslsync="rslsync --config ~/.config/rslsync/rslsync.conf"
+alias mach_on='swaymsg input "1:1:AT_Translated_Set_2_keyboard" events toggle'
 
 todo.sh list
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -125,3 +135,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+zstyle ':completion:*:default' list-colors '=(#b)(-*)(-- *)===34' '=(#b)(-- *)=34'
+
+# zprof

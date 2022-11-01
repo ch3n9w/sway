@@ -21,18 +21,17 @@ local key_mapper = function(mode, key, result, config)
     )
 end
 
-key_mapper('n', ')', '$')
+function typora()
+    local filename = vim.api.nvim_buf_get_name(0)
+    vim.fn.system("typora "..filename)
+end
+
+--[[ key_mapper('n', ')', '$')
 key_mapper('v', ')', '$')
 key_mapper('n', '(', '^')
-key_mapper('v', '(', '^')
+key_mapper('v', '(', '^') ]]
 key_mapper('n', 'q', '<ESC>:w<CR>:Bdelete<CR>')
 key_mapper('v', 'q', '<ESC>:w<CR>:Bdelete<CR>')
---[[ key_mapper('n', 'q', '<ESC>:wq<CR>')
-key_mapper('v', 'q', '<ESC>:wq<CR>') ]]
---[[ key_mapper('n', 'Q', '<ESC>:NvimTreeClose<CR>:bd<CR>:NvimTreeToggle<CR>:wincmd p<CR>')
-key_mapper('v', 'Q', '<ESC>:NvimTreeClose<CR>:bd<CR>:NvimTreeToggle<CR>:wincmd p<CR>') ]]
---[[ key_mapper('n', 'q', '<ESC>:w<CR>:NvimTreeClose<CR>:bdelete<CR>')
-key_mapper('v', 'q', '<ESC>:w<CR>:NvimTreeClose<CR>:bdelete<CR>') ]]
 key_mapper('n', 'w', ':w<CR>w')
 key_mapper('n', '<leader>h', '<C-w>h')
 key_mapper('n', '<leader>j', '<C-w>j')
@@ -44,23 +43,25 @@ key_mapper('n', '<leader>K', '<C-w>K')
 key_mapper('n', '<leader>L', '<C-w>L')
 key_mapper('n', 'J', ':bprevious!<CR>')
 key_mapper('n', 'K', ':bnext!<CR>')
-key_mapper('n', '<C-j>', '<C-d>')
-key_mapper('n', '<C-k>', '<C-u>')
+key_mapper('n', '<C-b>', '<C-u>')
 key_mapper('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 key_mapper('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
 
-
-key_mapper('i', '<C-l>', '<ESC>$a')
-key_mapper('i', '<C-h>', '<ESC>^i')
-key_mapper('n', '<C-l>', '<ESC>$')
-key_mapper('n', '<C-h>', '<ESC>^')
-key_mapper('v', '<C-l>', '$')
-key_mapper('v', '<C-h>', '^')
 key_mapper('i', '<C-j>', '<ESC>o')
 key_mapper('i', '<C-k>', '<ESC>O')
+key_mapper('n', '<C-j>', '<C-d>')
+key_mapper('n', '<C-k>', '<C-u>')
 
+-- some bug here
+--[[ key_mapper('i', '<C-h>', '<ESC>lF(i')
+key_mapper('i', '<C-l>', '<ESC>f)a') ]]
+key_mapper('i', '<C-h>', '<ESC>I')
+key_mapper('i', '<C-l>', '<ESC>A')
+key_mapper('n', '<C-h>', '<ESC>^')
+key_mapper('n', '<C-l>', '<ESC>$')
+key_mapper('v', '<C-l>', '$')
+key_mapper('v', '<C-h>', '^')
 
-key_mapper('n', '<C-s>', ':SymbolsOutline<CR>')
 
 -- telescope file fuzzy finder
 -- if i want to search word by my typing, just move the cursor to a empty place and type sw
@@ -69,6 +70,7 @@ key_mapper('n','sf', ':Telescope find_files<CR>')
 
 -- nvim-tree settings
 key_mapper('n', '<leader>t', ':NvimTreeToggle<CR>')
+key_mapper('n', '<leader>c', ':cd %:h<CR>')
 
 -- <C-_> is <C-/>
 key_mapper('n', '<C-_>', '<Plug>kommentary_line_default', {})
@@ -76,6 +78,7 @@ key_mapper('v', '<C-_>', '<Plug>kommentary_visual_default<ESC>', {})
 
 -- easymotion settings
 key_mapper('n', 'm', ':HopWord<CR>')
+
 
 -- file tree keymap
 -- nvim-keymap setting
@@ -99,7 +102,7 @@ key_mapper('n', 'ge', ':Lspsaga show_line_diagnostics<CR>')
 key_mapper('n', 'H', ':Lspsaga hover_doc<CR>')
 -- key_mapper('n', 'gs', ':Lspsaga signature_help<CR>')
 key_mapper('n', 'gr', ':Lspsaga rename<CR>')
-key_mapper('n', 'gd', ':Lspsaga preview_definition<CR>')
+-- key_mapper('n', 'gd', ':Lspsaga preview_definition<CR>')
 
 -- floating terminal open and close
 -- key_mapper('n', 'ss', ':Lspsaga open_floaterm<CR>')
@@ -107,6 +110,7 @@ key_mapper('n', 'gd', ':Lspsaga preview_definition<CR>')
 -- key_mapper('t', '<ESC>', '<C-\\><C-n>:Lspsaga close_floaterm<CR>:wincmd l<CR>')
 
 -- bottom terminal
+-- key_mapper('n', 'ss', ':NvimTreeToggle<CR>:ToggleTerm size=8 direction=horizontal<CR><C-\\><C-n>:NvimTreeToggle<CR>:wincmd p<CR>')
 key_mapper('n', 'ss', ':ToggleTerm size=8 direction=horizontal<CR>')
 key_mapper('t', 'ss', '<C-\\><C-n>:ToggleTerm size=8 direction=horizontal<CR>')
 key_mapper('t', '<esc>', '<C-\\><C-n>')
@@ -117,4 +121,14 @@ key_mapper('n', '<F7>', ':lua require"dap".step_into()<CR>')
 key_mapper('n', '<F8>', ':lua require"dap".step_over()<CR>')
 key_mapper('n', '<leader>d', ':lua require"dapui".toggle()<CR>')
 -- key_mapper('n', '<F5>', 'lua require"dap".toggle_breakpoint()<CR>')
+
+key_mapper('i', '<C-Down>', '<C-O><C-E>')
+key_mapper('i', '<C-Up>', '<C-O><C-Y>')
+key_mapper('i', '<C-BS>', '<C-W>')
+-- key_mapper('i', '<C-H>', '<C-W>')
 --
+vim.api.nvim_create_user_command(
+    "Typora",
+    typora,
+    { desc = "start typora" }
+)

@@ -31,7 +31,7 @@ vim.o.swapfile = false
 vim.o.backup = false -- insert mode compeleting menu setting
 vim.o.completeopt='menuone,noinsert,noselect'
 
--- set tab to 4 spaces
+-- set tab to 4 spaces, could be override by ftplugin
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
@@ -56,16 +56,7 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
 })
 -- load preview view
 vim.o.viewoptions='folds,cursor,curdir'
--- vim.cmd('autocmd BufLeave * silent! mkview')
--- vim.cmd('autocmd BufWinEnter * silent! loadview')
--- vim.cmd('autocmd WinEnter * silent! loadview')
--- vim.cmd('autocmd BufEnter * silent! loadview')
 
--- fcitx5
-vim.cmd('autocmd InsertLeave * :silent !fcitx5-remote -c')
-vim.cmd('autocmd BufCreate *  :silent !fcitx5-remote -c')
-vim.cmd('autocmd BufEnter *  :silent !fcitx5-remote -c ')
-vim.cmd('autocmd BufLeave *  :silent !fcitx5-remote -c ')
 --[[ vim.api.nvim_create_autocmd({"InsertLeave", "BufCreate", "BufEnter", "BufLeave"}, {
     command = "silent! fcitx5-remote -c"
 }) ]]
@@ -86,3 +77,12 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end
   end
 }) ]]
+
+-- neovide setting
+vim.o.guifont = 'Hack Nerd Font:h20'
+vim.g.neovide_transparency = 0.8
+vim.g.neovide_cursor_vfx_mode = "wireframe"
+vim.g.neovide_cursor_trail_size = 0
+-- adjust this to disable animation
+vim.g.neovide_cursor_animation_length = 0
+vim.g.neovide_cursor_trail_size = 0

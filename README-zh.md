@@ -77,31 +77,6 @@
 ### 编辑器/IDE (Neovim + nvim-qt + jetbrains)
 #### Neovim
 
-```
-.
-├── gnvim.vim               // nvim-qt使用的配置文件入口
-├── init.lua                // nvim 配置文件入口
-├── lua
-│   ├── base
-│   │   └── init.lua        // 基础配置
-│   ├── keymap
-│   │   └── init.lua        // 键位设置
-│   └── plugins
-│       ├── edit
-│       │   └── init.lua    // 编辑相关的插件(kommentary, todo-comment.nvim, nvim-autopairs, hop.nvim, telescope.nvim, clipboard-image.nvim, plenary.nvim, tabout.nvim)
-│       ├── init.lua        // 插件配置文件入口
-│       ├── interface
-│       │   └── init.lua    // 界面相关的插件(bufferline.nvim, indent-blankline.nvim, lualine.nvim)
-│       ├── lsp
-│       │   └── init.lua    // 语言相关插件(cmp-nvim系列插件, nvim-treesitter, nvim-lsp-installer, nvim-dap, nvim-dap-ui, nvim-dap-go, lspsage.nvim)
-│       ├── sideview
-│       │   └── init.lua    // 侧边栏相关插件(nvim-tree.lua)
-│       └── theme
-│           └── init.lua    // 主题相关插件(tokyonight.nvim)
-└── plugin
-    └── packer_compiled.lua // 自动生成文件，不用管
-```
-
 
 如果有人想不开想要使用我的配置文件的话，安装步骤如下
 - 安装packer.nvim 
@@ -134,12 +109,8 @@ lsp_plugins.load()
 #### nvim-qt
 alacritty在wayland环境下无法输入中文，为了方便做笔记，我选用了nvim-qt来作为自己的笔记软件。
 
-nvim-qt使用`gnvim.vim`作为配置文件，要让其加载nvim的lua配置文件
+nvim-qt使用`ginit.lua`作为配置文件，要让其加载nvim的lua配置文件
 
-`gnvim.vim`
-```vim
-au UIAttach * ++once lua require('init')
-```
 可以运行命令`:GuiFont *`来设置nvim-qt的字体
 
 #### jetbrains

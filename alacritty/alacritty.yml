@@ -14,7 +14,7 @@ env:
 
 # Window configurations
 window:
-  opacity: 0.9
+  opacity: 0.95
   dimensions:
     columns: 0
     lines: 0
@@ -36,18 +36,18 @@ font:
   #   family: FiraCode Nerd Font
   #   style: Bold
   normal:
-    family: JetBrainsMono Nerd Font
-    style: Bold
+    family: Hack Nerd Font
+    style: Regular
 
   bold:
-    family: JetBrainsMono Nerd Font
+    family: Hack Nerd Font
     style: Bold
   # bold:
   #   family: JetBrainsMono Nerd Font
   #   style: Bold
 
   italic:
-    family: JetBrainsMono Nerd Font
+    family: Hack Nerd Font
     style: Bold Italic
 
   size: 20.0
@@ -61,42 +61,10 @@ font:
     y: 0
 
   scale_with_dpi: true
+  AppleFontSmoothing: true
 
-  use_thin_strokes: false
-
-draw_bold_text_with_bright_colors: true
-
-# ...
-# Colors (Solarized Dark)
-schemes:
-  solarized_dark: &solarized_dark
-    primary:
-      # background: '#002b36' #002b36
-      foreground: '#839496'
-    normal:
-      # black:   '#073642'
-      black:   '#212124'
-      red:     '#dc322f' 
-      green:   '#859900' 
-      yellow:  '#DAA520'
-      blue:    '#268bd2'
-      magenta: '#d33682'
-      cyan:    '#2aa198'
-      white:   '#eee8d5'
-    bright:
-      # black:   '#002b36'
-      black:   '#073642'
-      red:     '#cb4b16'
-      green:   '#20B2AA'
-      yellow:  '#B8860B'
-      blue:    '#839496'
-      magenta: '#FF69B4'
-      cyan:    '#00FFFF'
-      white:   '#fdf6e3'
-
-colors: *solarized_dark
-# colors: *cyber-punk-neon
-
+import:
+  - ~/.config/alacritty/solarized_dark.yaml
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -138,3 +106,4 @@ key_bindings:
   - { key: PageDown,       mods: Shift,   action: ScrollPageDown, mode: ~Alt }
   - { key: Home,           mods: Shift,   action: ScrollToTop,    mode: ~Alt }
   - { key: End,            mods: Shift,   action: ScrollToBottom, mode: ~Alt }
+  - { key: Back,            mods: Control,   chars: "\x1b\x7f"}

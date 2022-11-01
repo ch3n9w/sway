@@ -1,6 +1,7 @@
 xwayland enabled
 # let title bar friendly with chinese
-for_window [title=".*"] title_format ゜%title゜
+for_window [title=".*"] title_ormat ゜%title゜
+for_window [app_id="telegramdesktop"] floating enable
 # for_window [title="^(File|Folder)\s*Already Exists\s*—\s*" app_id="dolphin|org.kde.ark"] floating enable
 # for_window [title="^(Copying|Moving|Deleting)\s*—\s*Dolphin" app_id="dolphin"] inhibit_idle open; floating enable
 # for_window [title="^Extracting\s" app_id="(dolphin|org.kde.ark)"] inhibit_idle open; floating enable
@@ -11,28 +12,30 @@ assign [app_id="firefox"] 1
 assign [app_id="terminal"] 2
 assign [title="Visual Studio Code"] 3
 assign [class="jetbrains"] 3
+assign [app_id="neovide"] 3
 assign [class="Typora"] 4
 assign [app_id="nvim-qt"] 4
 assign [title="Freeplane"] 4
-assign [class="burp"] 5
-assign [app_id="wireshark"] 5
+assign [class="burp"] 8
+assign [app_id="wireshark"] 8
+assign [app_id="mpv"] 6
+assign [class="music"] 6
+assign [title="Wine System Tray"] 6
 assign [title="Godzilla"] 6
 assign [class="behinder"] 6
-assign [class="wps"] 9
-assign [title="Spreadsheets"] 9
-assign [app_id="libreoffice"] 9
-assign [app_id="zathura"] 8
-assign [app_id="okular"] 8
-assign [app_id="dolphin"] 10
+assign [app_id="dolphin"] 6
+assign [class="wps"] 10
+assign [title="Spreadsheets"] 10
+assign [app_id="libreoffice"] 10
+assign [app_id="zathura"] 5
+assign [app_id="okular"] 5
+assign [class="Zotero"] 5
 assign [app_id="waydroid"] 7 
 assign [app_id="Waydroid"] 7
-assign [class="VirtualBox"] 7
+assign [class="VirtualBox"] 9
 assign [class="Steam"] 7
 assign [class="hmcl"] 7
 assign [class="Minecraft"] 7
-assign [app_id="mpv"] 7
-assign [class="music"] 7
-assign [title="Wine System Tray"] 7
 
 
 # titlebar_border_thickness 2
@@ -47,11 +50,12 @@ set $right l
 
 # unable to use fcitx5
 set $term alacritty 
-set $menu rofi -show  drun -m -1 -theme ~/.config/rofi/nord.rasi | xargs swaymsg exec --
+set $menu rofi -show drun -m -1 -theme ~/.config/rofi/nord.rasi | xargs swaymsg exec --
 
 # output * bg ~/Media/Pictures/1080/wallpaper_switch/5-54902_high-resolution-macbook-wallpaper-hd.jpg fill
-# output * bg ~/Media/Pictures/1080/OS/thinkpad_wallpaper.png fill
-output * bg ~/Media/Pictures/landscape/lake_mountains_forest.png fill
+# output * bg ~/Media/Pictures/landscape/lake_mountains_forest.png fill
+# output * bg ~/Media/Pictures/landscape/rain_city.png fill
+output * bg ~/Media/Pictures/jarvis.jpg fill
 # output * bg ~/Media/Pictures/1080/spaceship.png fill
 # output * bg ~/Media/Pictures/1080/others/Minecraft/daemon_sword.jpg fill
 
@@ -83,10 +87,11 @@ floating_modifier $mod normal
     # bindsym $mod+Tab focus next
 
 # Move the focused window with the same, but add Mod1
-    bindsym $mod+Mod1+$left move left
-    bindsym $mod+Mod1+$down move down
-    bindsym $mod+Mod1+$up move up
-    bindsym $mod+Mod1+$right move right
+    bindsym $mod+Left move left
+    bindsym $mod+Down move down
+    bindsym $mod+Up move up
+    bindsym $mod+Right move right
+    bindsym $mod+a focus parent
 
 bindsym $mod+Control+Shift+Right move workspace to output right
 bindsym $mod+Control+Shift+Left move workspace to output left
@@ -151,10 +156,11 @@ bindsym $mod+Control+Shift+Up move workspace to output up
     bindsym $mod+Mod1+s move scratchpad
     bindsym $mod+s scratchpad show
 
-
-
 # INFO: Hardware setting:
-input "type:keyboard" {           
+input "9741:19:DAREU_EK871_BT_keyboard" {
+    xkb_layout custom-pc
+}
+input "1:1:AT_Translated_Set_2_keyboard" {
     xkb_options caps:swapescape
 }
 seat seat0 xcursor_theme breeze_cursors 20
@@ -168,6 +174,7 @@ input "type:touchpad" {
     accel_profile "adaptive"
     pointer_accel 0.6
 }
+
 bindswitch lid:on output eDP-1 disable
 bindswitch lid:off output eDP-1 enable
 
@@ -184,7 +191,7 @@ output 'Unknown 0xA195 0x00000000' {
     pos 0 0
 } 
 output 'Unknown Mi Monitor 2479800115814' {
-    scale 0.9
+    scale 1
     resolution 1920x1080
     pos 2240 0
 } 
@@ -194,14 +201,14 @@ output 'Unknown Mi Monitor 2479800115814' {
 #         pos 0 0
 #     }
 
-default_border pixel 4
+default_border pixel 3
 default_floating_border pixel 2
 hide_edge_borders smart
 # client.focused           #9aa5ce #16161d #c0caf5 #9aa5ce   #9aa5ce
 # client.focused_inactive  #16161d #16161d #c0caf5 #16161d   #16161d
 # client.unfocused         #16161d #16161d #c0caf5 #16161d   #16161d
 
-gaps inner 5
+gaps inner 10
 # gaps outer 10
 smart_gaps on
 
@@ -223,7 +230,9 @@ exec fcitx5
 
 
 exec swayidle -w \
-     timeout 1800 'sudo systemctl stop waydroid-container.service;sudo systemctl suspend;swaylock' 
+     timeout 1800 'sudo systemctl stop waydroid-container.service;sudo systemctl suspend;' 
+
+# bindsym Ctrl+Shift+v exec "wl-paste>/tmp/paste;/usr/bin/sed ':a;N;$!ba;s/[\r\n]//g' /tmp/paste>/tmp/after-sed;wl-copy</tmp/after-sed"
 
 # make waybar start immediately
 exec hash dbus-update-activation-environment 2>/dev/null && \

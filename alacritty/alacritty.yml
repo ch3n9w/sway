@@ -14,7 +14,7 @@ env:
 
 # Window configurations
 window:
-  opacity: 0.95
+  opacity: 0.90
   dimensions:
     columns: 0
     lines: 0
@@ -64,7 +64,7 @@ font:
   AppleFontSmoothing: true
 
 import:
-  - ~/.config/alacritty/solarized_dark.yaml
+  - ~/.config/alacritty/tokyonight.yaml
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"

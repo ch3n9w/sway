@@ -19,7 +19,6 @@ vim.o.clipboard = 'unnamedplus'
 vim.o.foldmethod='indent'
 vim.o.foldlevel=99
 
-
 vim.o.scrolloff=0
 
 -- indent setting
@@ -47,13 +46,22 @@ vim.o.wrap = true
 -- key mappings
 vim.g.mapleader = ' '
 
-vim.api.nvim_create_autocmd({"BufLeave", "BufWinLeave"}, {
+--[[ vim.api.nvim_create_autocmd({"BufLeave", "BufWinLeave"}, {
     command = "silent! mkview"
 })
 
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
     command = "silent! loadview"
+}) ]]
+
+vim.api.nvim_create_autocmd({"BufWinLeave"}, {
+    command = "silent! mkview"
 })
+
+vim.api.nvim_create_autocmd({"BufWinEnter"}, {
+    command = "silent! loadview"
+})
+
 -- load preview view
 vim.o.viewoptions='folds,cursor,curdir'
 
@@ -62,20 +70,20 @@ vim.o.viewoptions='folds,cursor,curdir'
 }) ]]
 
 vim.api.nvim_create_autocmd("BufEnter", {
-  nested = true,
-  callback = function()
-    if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
-      vim.cmd "quit"
+    nested = true,
+    callback = function()
+        if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
+            vim.cmd "quit"
+        end
     end
-  end
 })
 --[[ vim.api.nvim_create_autocmd("BufEnter", {
-  nested = false,
-  callback = function()
-    if vim.api.nvim_buf_get_name(0) == "" then
-      vim.cmd "qa!"
+    nested = false,
+    callback = function()
+        if vim.api.nvim_buf_get_name(0) == "" then
+            vim.cmd "qa!"
+        end
     end
-  end
 }) ]]
 
 -- neovide setting

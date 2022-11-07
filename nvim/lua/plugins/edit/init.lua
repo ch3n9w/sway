@@ -1,7 +1,7 @@
 local hop = require('plugins.edit.hop')
 local kommentary = require('plugins.edit.kommentary')
 local nvim_autopairs = require('plugins.edit.nvim-autopairs')
-local tabout = require('plugins.edit.tabout')
+-- local tabout = require('plugins.edit.tabout')
 local telescope = require('plugins.edit.telescope')
 local todo_comment = require('plugins.edit.todo-comments')
 

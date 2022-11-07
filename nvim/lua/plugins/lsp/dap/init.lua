@@ -10,6 +10,9 @@ M.load = function ()
                 size = 7,
                 position = "bottom",
             },
+        },
+        controls = {
+            enabled = false
         }
     })
     require("dap-go").setup()

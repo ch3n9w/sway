@@ -43,6 +43,8 @@ key_mapper('n', '<leader>K', '<C-w>K')
 key_mapper('n', '<leader>L', '<C-w>L')
 key_mapper('n', 'J', ':bprevious!<CR>')
 key_mapper('n', 'K', ':bnext!<CR>')
+key_mapper('n', 'H', ':bprevious!<CR>')
+key_mapper('n', 'L', ':bnext!<CR>')
 key_mapper('n', '<C-b>', '<C-u>')
 --[[ key_mapper('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 key_mapper('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true}) ]]
@@ -63,10 +65,13 @@ key_mapper('n', '<C-l>', '<ESC>$')
 key_mapper('v', '<C-l>', '$')
 key_mapper('v', '<C-h>', '^')
 
+-- use mouse to manupulate folders
+key_mapper('n', '<2-LeftMouse>', 'za')
 
+-- format shortcut
+key_mapper('n', 'g=', 'gg=G<C-o>')
 
 -- telescope file fuzzy finder
--- if i want to search word by my typing, just move the cursor to a empty place and type sw
 key_mapper('n','sw', ':Telescope grep_string<CR>')
 key_mapper('n','sf', ':Telescope find_files<CR>')
 
@@ -74,9 +79,14 @@ key_mapper('n','sf', ':Telescope find_files<CR>')
 key_mapper('n', '<leader>t', ':NvimTreeToggle<CR>')
 key_mapper('n', '<leader>c', ':cd %:h<CR>')
 
+-- symbol outline
+key_mapper('n', '<leader>s', ':SymbolsOutline<CR>')
+
 -- <C-_> is <C-/>
 key_mapper('n', '<C-_>', '<Plug>kommentary_line_default', {})
 key_mapper('v', '<C-_>', '<Plug>kommentary_visual_default<ESC>', {})
+key_mapper('n', '<C-/>', '<Plug>kommentary_line_default', {})
+key_mapper('v', '<C-/>', '<Plug>kommentary_visual_default<ESC>', {})
 
 -- easymotion settings
 key_mapper('n', 'm', ':HopWord<CR>')
@@ -100,8 +110,9 @@ key_mapper('n', 'm', ':HopWord<CR>')
 -- key_mapper('n', 'gh', ':Lspsaga lsp_finder<CR>')
 -- key_mapper('n', '<leader>ca', ':Lspsaga code_action<CR>')
 -- key_mapper('v', '<leader>ca', ':<C-U>Lspsaga range_code_action<CR>')
+key_mapper('n', 'ga', ':Lspsaga code_action<CR>')
 key_mapper('n', 'ge', ':Lspsaga show_line_diagnostics<CR>')
-key_mapper('n', 'H', ':Lspsaga hover_doc<CR>')
+key_mapper('n', 'gh', ':Lspsaga hover_doc<CR>')
 -- key_mapper('n', 'gs', ':Lspsaga signature_help<CR>')
 key_mapper('n', 'gr', ':Lspsaga rename<CR>')
 -- key_mapper('n', 'gd', ':Lspsaga peek_definition<CR>')
@@ -117,10 +128,10 @@ key_mapper('n', 'ss', ':ToggleTerm size=8 direction=horizontal<CR>')
 key_mapper('t', 'ss', '<C-\\><C-n>:ToggleTerm size=8 direction=horizontal<CR>')
 key_mapper('t', '<esc>', '<C-\\><C-n>')
 -- dap debug
-key_mapper('n', '<F5>', ':lua require"dap".toggle_breakpoint()<CR>')
-key_mapper('n', '<F6>', ':lua require"dap".continue()<CR>')
-key_mapper('n', '<F7>', ':lua require"dap".step_into()<CR>')
-key_mapper('n', '<F8>', ':lua require"dap".step_over()<CR>')
+key_mapper('n', '<F1>', ':lua require"dap".toggle_breakpoint()<CR>')
+key_mapper('n', '<F2>', ':lua require"dap".continue()<CR>')
+key_mapper('n', '<F3>', ':lua require"dap".step_into()<CR>')
+key_mapper('n', '<F4>', ':lua require"dap".step_over()<CR>')
 key_mapper('n', '<leader>d', ':lua require"dapui".toggle()<CR>')
 -- key_mapper('n', '<F5>', 'lua require"dap".toggle_breakpoint()<CR>')
 

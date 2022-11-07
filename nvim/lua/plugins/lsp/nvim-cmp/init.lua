@@ -1,4 +1,14 @@
 M = {}
+
+--[[ local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
+end ]]
+local check_back_space = function()
+    local col = vim.fn.col "." - 1
+    return col == 0 or vim.fn.getline("."):sub(col, col):match "%s" ~= nil
+end
+
 M.load = function ()
     local cmp = require('cmp')
     local lspkind = require('lspkind')
@@ -16,9 +26,9 @@ M.load = function ()
             }),
         },
         mapping = {
-            -- ['<Esc>'] = cmp.mapping.close(),
-            ['<C-y>'] = cmp.config.disable,
-            ['<CR>'] = cmp.mapping.confirm({ select = false }),
+            ['<C-q>'] = cmp.mapping.close(),
+            -- ['<C-y>'] = cmp.config.disable,
+            ['<CR>'] = cmp.mapping.confirm({ select = true }),
             -- ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
             -- ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's'})
             ['<Tab>'] = cmp.mapping(function(fallback)
@@ -28,6 +38,8 @@ M.load = function ()
                     luasnip.expand_or_jump()
                 --[[ elseif has_words_before() then
                     cmp.complete() ]]
+                elseif check_back_space() then
+                    fallback()
                 else
                     fallback()
                 end
@@ -53,7 +65,3 @@ M.load = function ()
 end
 return M
 
---[[ local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
-end ]]

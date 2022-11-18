@@ -1,10 +1,13 @@
+-- dependency: bufdelete
 M = {}
 M.load = function ()
     require('bufferline').setup {
         options = {
-            numbers = "buffer_id",
-            close_command = "bdelete! %d",
-            right_mouse_command = "bdelete! %d",
+            -- numbers = "buffer_id",
+            -- instead, use bufdelete plugin
+            -- close_command = "bdelete! %d",
+            close_command = "Bdelete %d",
+            -- right_mouse_command = "Bdelete %d",
             left_mouse_command = "buffer %d",
             middle_mouse_command = nil,
             buffer_close_icon = '',

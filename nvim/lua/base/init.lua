@@ -37,6 +37,8 @@ vim.o.expandtab = true
 
 -- show numbers
 vim.o.number = true
+-- for lspsaga's floating window
+vim.wo.number = true
 -- always show signcolumn
 vim.o.signcolumn = 'yes'
 
@@ -46,14 +48,7 @@ vim.o.wrap = true
 -- key mappings
 vim.g.mapleader = ' '
 
---[[ vim.api.nvim_create_autocmd({"BufLeave", "BufWinLeave"}, {
-    command = "silent! mkview"
-})
-
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-    command = "silent! loadview"
-}) ]]
-
+-- dont use BufWinLeave & BufWinEnter, some plugin will misbehavior
 vim.api.nvim_create_autocmd({"BufWinLeave"}, {
     command = "silent! mkview"
 })
@@ -69,22 +64,33 @@ vim.o.viewoptions='folds,cursor,curdir'
     command = "silent! fcitx5-remote -c"
 }) ]]
 
-vim.api.nvim_create_autocmd("BufEnter", {
-    nested = true,
-    callback = function()
-        if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
-            vim.cmd "quit"
-        end
-    end
-})
+-- disable nvim-tree auto-close, as I always close whole window
+-- if the last buffer is nvim-tree, then quit it
 --[[ vim.api.nvim_create_autocmd("BufEnter", {
     nested = false,
+
     callback = function()
-        if vim.api.nvim_buf_get_name(0) == "" then
-            vim.cmd "qa!"
+        -- get buffer number
+        local bufnums = 0
+        for buffer = 1, #vim.api.nvim_list_bufs() do
+            if vim.fn.buflisted(buffer) == 1 then
+                bufnums = bufnums + 1
+            end
+        end
+
+        -- skip errors
+        local _, _ = pcall(
+        vim.cmd,
+        "wa"
+        )
+
+        if #vim.api.nvim_list_wins() == 1 and bufnums == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
+            vim.cmd "quit"
+
         end
     end
 }) ]]
+
 
 -- neovide setting
 vim.o.guifont = 'Hack Nerd Font:h20'
@@ -93,4 +99,4 @@ vim.g.neovide_cursor_vfx_mode = "wireframe"
 vim.g.neovide_cursor_trail_size = 0
 -- adjust this to disable animation
 vim.g.neovide_cursor_animation_length = 0
-vim.g.neovide_cursor_trail_size = 0
+vim.g.neovide_cursor_trail_size = 0.1

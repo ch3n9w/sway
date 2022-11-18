@@ -4,7 +4,6 @@ M.load = function ()
         vim.cmd("NvimTreeRefresh")
     end)
     -- require'nvim-tree'.on_enter()
-    vim.g.nvim_tree_highlight_opened_files = 1
     require'nvim-tree'.setup {
         disable_netrw        = true,
         hijack_netrw         = true,
@@ -48,7 +47,11 @@ M.load = function ()
             enable      = true,
             update_cwd  = false,
             ignore_list = {}
+        },
+        renderer = {
+            highlight_opened_files = "all"
         }
+
     }
 
     -- vim.cmd("autocmd BufEnter * if winwidth(0) > 100  | execute 'NvimTreeOpen' | execute 'NvimTreeFocus'| wincmd p | endif")

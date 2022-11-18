@@ -2,7 +2,7 @@ local dap = require('plugins.lsp.dap')
 local lsp_signature = require('plugins.lsp.lsp_signature')
 local lspsaga = require('plugins.lsp.lspsaga')
 local neodev = require('plugins.lsp.neodev')
-local neorg = require('plugins.lsp.neorg')
+-- local neorg = require('plugins.lsp.neorg')
 local nvim_cmp = require('plugins.lsp.nvim-cmp')
 local nvim_lsp = require('plugins.lsp.nvim-lsp')
 local nvim_treesitter = require('plugins.lsp.nvim-treesitter')
@@ -24,7 +24,7 @@ Lsp_plugins.plugins = {
     -- lua for nvim plugin dev
     'folke/lua-dev.nvim',
     -- orgmode !!!
-    {'nvim-neorg/neorg'},
+    -- {'nvim-neorg/neorg'},
 
     'williamboman/nvim-lsp-installer',
     -- debug for golang, need pacman -S delve
@@ -43,7 +43,7 @@ function Lsp_plugins.load()
     lsp_signature.load()
     lspsaga.load()
     neodev.load()
-    neorg.load()
+    -- neorg.load()
     nvim_cmp.load()
     nvim_lsp.load()
     nvim_treesitter.load()

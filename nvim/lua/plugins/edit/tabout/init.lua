@@ -18,7 +18,7 @@ M.load = function ()
             {open = '[', close = ']'},
             {open = '{', close = '}'}
         },
-        ignore_beginning = false, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
+        ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
         exclude = {} -- tabout will ignore these filetypes
     }
 

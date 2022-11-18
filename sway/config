@@ -1,7 +1,8 @@
 xwayland enabled
 # let title bar friendly with chinese
-for_window [title=".*"] title_ormat ゜%title゜
-for_window [app_id="telegramdesktop"] floating enable
+for_window [title=".*"] title_format ゜%title゜
+title_align center
+# for_window [app_id="telegramdesktop"] floating enable
 # for_window [title="^(File|Folder)\s*Already Exists\s*—\s*" app_id="dolphin|org.kde.ark"] floating enable
 # for_window [title="^(Copying|Moving|Deleting)\s*—\s*Dolphin" app_id="dolphin"] inhibit_idle open; floating enable
 # for_window [title="^Extracting\s" app_id="(dolphin|org.kde.ark)"] inhibit_idle open; floating enable
@@ -43,6 +44,7 @@ assign [class="Minecraft"] 7
 set $mod Mod4
 font JetBrainsMono Nerd Font Bold 9
 
+
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -53,8 +55,9 @@ set $right l
 set $term alacritty 
 set $menu rofi -show drun -m -1 -theme ~/.config/rofi/nord.rasi | xargs swaymsg exec --
 
-output * bg ~/Media/Pictures/1080/wallpaper_switch/5-54902_high-resolution-macbook-wallpaper-hd.jpg fill
-# output * bg ~/Media/Pictures/landscape/lake_mountains_forest.png fill
+
+# output * bg ~/Media/Pictures/1080/wallpaper_switch/5-54902_high-resolution-macbook-wallpaper-hd.jpg fill
+output * bg ~/Media/Pictures/landscape/city_from_sky.jpg fill
 # output * bg ~/Media/Pictures/landscape/rain_city.png fill
 # output * bg ~/Media/Pictures/jarvis.jpg fill
 # output * bg ~/Media/Pictures/1080/spaceship.png fill
@@ -168,12 +171,12 @@ seat seat0 xcursor_theme breeze_cursors 20
 
 input "type:touchpad" {
     tap enabled
-    drag enabled
-    natural_scroll enabled
-    scroll_factor 0.5
-    dwt enable
-    accel_profile "adaptive"
-    pointer_accel 0.6
+        drag enabled
+        natural_scroll enabled
+        scroll_factor 0.5
+        dwt enable
+        accel_profile "adaptive"
+        pointer_accel 0.6
 }
 
 bindswitch lid:on output eDP-1 disable
@@ -186,28 +189,26 @@ bindsym --locked XF86MonBrightnessDown exec "sudo light -U 5"
 bindsym --locked XF86MonBrightnessUp exec "sudo light -A 5"
 
 # display setting
-# output 'Unknown 0xA195 0x00000000' {
-#     scale 1
-#     resolution 2240x1400
-#     pos 0 0
-# } 
-# output 'Unknown Mi Monitor 2479800115814' {
-#     scale 1
-#     resolution 1920x1080
-#     pos 2240 0
-# } 
+output 'Unknown 0xA195 0x00000000' {
+    scale 1
+    resolution 2240x1400
+    pos 0 0
+} 
+output 'Unknown Mi Monitor 2479800115814' {
+    scale 1
+    resolution 1920x1080
+    pos 2240 0
+} 
 # output 'Unknown MSI G273Q CA8A521900577' {
 #         scale 1
 #         resolution 2560x1440
 #         pos 0 0
 #     }
 
-default_border pixel 3
+default_border pixel 5
 default_floating_border pixel 2
 hide_edge_borders smart
-# client.focused           #9aa5ce #16161d #c0caf5 #9aa5ce   #9aa5ce
-# client.focused_inactive  #16161d #16161d #c0caf5 #16161d   #16161d
-# client.unfocused         #16161d #16161d #c0caf5 #16161d   #16161d
+client.focused           #2e9ef4 #0bf0d4 #FFFFFF #0bf0d4
 
 gaps inner 10
 # gaps outer 10
@@ -228,13 +229,15 @@ exec fcitx5
 #          resume 'swaymsg "output * dpms on"' 
 # exec mpvpaper -o "no-audio --loop-playlist --hwdec=auto" eDP-1 ~/Media/Pictures/videos/mylivewallpapers-com-Boreal-Valley-Dark-Souls-3.mp4
 
+bindsym $mod+c exec swaymsg [title="scratch_console"] scratchpad show || $(exec $term -t 'scratch_console' & sleep 0.2 && swaymsg [title="scratch_console"] scratchpad show && swaymsg layout tabbed)
+bindsym $mod+v exec 'swaymsg workspace 11;swaymsg exec $term; swaymsg focus;swaymsg sleep 0.2; swaymsg layout tabbed; swaymsg exec $term; swaymsg sleep 0.2; swaymsg focus parent ;swaymsg move scratchpad ;'
 
 exec swayidle -w \
-    timeout 1800 'sudo systemctl stop waydroid-container.service;sudo systemctl suspend;' 
+         timeout 1800 'sudo systemctl stop waydroid-container.service;sudo systemctl suspend;' 
 
 # bindsym Ctrl+Shift+v exec "wl-paste>/tmp/paste;/usr/bin/sed ':a;N;$!ba;s/[\r\n]//g' /tmp/paste>/tmp/after-sed;wl-copy</tmp/after-sed"
 
 # make waybar start immediately
-exec hash dbus-update-activation-environment 2>/dev/null && \
-    dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+         exec hash dbus-update-activation-environment 2>/dev/null && \
+             dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 

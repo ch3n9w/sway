@@ -1,7 +1,8 @@
 local hop = require('plugins.edit.hop')
 local kommentary = require('plugins.edit.kommentary')
 local nvim_autopairs = require('plugins.edit.nvim-autopairs')
--- local tabout = require('plugins.edit.tabout')
+local marks = require('plugins.edit.marks')
+local tabout = require('plugins.edit.tabout')
 local telescope = require('plugins.edit.telescope')
 local todo_comment = require('plugins.edit.todo-comments')
 
@@ -21,6 +22,10 @@ edit_plugins.plugins = {
     -- 'askfiy/nvim-picgo',
     -- dependencies
     'nvim-lua/plenary.nvim',
+    -- tabout
+    'abecodes/tabout.nvim',
+    'chentoast/marks.nvim'
+
 }
 
 function edit_plugins.load()
@@ -29,6 +34,8 @@ function edit_plugins.load()
     nvim_autopairs.load()
     telescope.load()
     todo_comment.load()
+    tabout.load()
+    marks.load()
 
     --[[ require('clipboard-image').setup{
         markdown = {

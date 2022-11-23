@@ -1,9 +1,29 @@
-[TOC]
-
 # ch4ser 的私人配置
 本仓库用于备份个人配置文件, *警告:每个人的使用习惯千差万别,我的配置仅供参考*
 
 ![](image/first.png)
+
+* [ch4ser 的私人配置](#ch4ser-的私人配置)
+   * [常用软件配置](#常用软件配置)
+      * [桌面环境(sway + waybar + swaylock)](#桌面环境sway--waybar--swaylock)
+         * [sway](#sway)
+         * [waybar](#waybar)
+         * [swaylock(由于软件有一些bug,因此没有使用)](#swaylock由于软件有一些bug因此没有使用)
+      * [终端环境(zsh + alacritty)](#终端环境zsh--alacritty)
+         * [zsh](#zsh)
+         * [Alacritty](#alacritty)
+      * [浏览器(firefox)](#浏览器firefox)
+         * [firefox](#firefox)
+      * [文件管理(ranger + dolphin)](#文件管理ranger--dolphin)
+         * [ranger](#ranger)
+      * [编辑器/IDE (Neovim + nvim-qt + jetbrains)](#编辑器ide-neovim--nvim-qt--jetbrains)
+         * [Neovim](#neovim)
+         * [nvim-qt](#nvim-qt)
+         * [jetbrains](#jetbrains)
+      * [阅读器(zathura)](#阅读器zathura)
+         * [zathura](#zathura)
+         * [zotero](#zotero)
+   * [Others](#others)
 
 ## 常用软件配置
 ### 桌面环境(sway + waybar + swaylock)

@@ -1,13 +1,32 @@
 [中文介绍](README-zh.md)
 
-[TOC]
-
 # ch4xer's personal configuration
 
 This repo aimed to backup my configuration, including configuration of sway, waybar, neovim, alacritty, zsh and ranger. Introductions are as follows. *Warning: Everyone has his/her own habit,this repo is for reference only*
 
 ![](image/first.png)
 
+* [ch4xer's personal configuration](#ch4xers-personal-configuration)
+   * [Configuration](#configuration)
+      * [DE/WM(sway + waybar + swaylock)](#dewmsway--waybar--swaylock)
+         * [sway](#sway)
+         * [waybar](#waybar)
+         * [swaylock(I dont use it because of some bugs)](#swaylocki-dont-use-it-because-of-some-bugs)
+      * [terminal environment(zsh + alacritty)](#terminal-environmentzsh--alacritty)
+         * [zsh](#zsh)
+         * [Alacritty](#alacritty)
+      * [browser(firefox)](#browserfirefox)
+         * [firefox](#firefox)
+      * [filemanager(ranger + dolphin)](#filemanagerranger--dolphin)
+         * [ranger](#ranger)
+      * [Editor/IDE (Neovim + nvim-qt + jetbrains)](#editoride-neovim--nvim-qt--jetbrains)
+         * [Neovim](#neovim)
+         * [nvim-qt](#nvim-qt)
+         * [jetbrains](#jetbrains)
+      * [reader(zathura+zotero)](#readerzathurazotero)
+         * [zathura](#zathura)
+         * [zotero](#zotero)
+   * [Others](#others)
 
 ## Configuration
 ### DE/WM(sway + waybar + swaylock)

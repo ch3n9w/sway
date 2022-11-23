@@ -36,7 +36,8 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 
 -- show numbers
-vim.o.number = true
+-- vim.o.number = true
+vim.o.relativenumber = true
 -- for lspsaga's floating window
 vim.wo.number = true
 -- always show signcolumn

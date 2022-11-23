@@ -8,9 +8,12 @@ local Movement = {
     { 'n', 'K', ':bnext!<CR>' },
     { 'n', 'H', ':bprevious!<CR>' },
     { 'n', 'L', ':bnext!<CR>' },
-    { 'n', '<C-b>', '<C-u>' },
-    { 'n', '<C-j>', '<C-d>' },
-    { 'n', '<C-k>', '<C-u>' },
+    -- only scroll 1/3 size of page
+    { 'n', '<C-b>', math.floor(vim.fn.winheight(0)/3)..'<C-u>' },
+    { 'n', '<C-j>', math.floor(vim.fn.winheight(0)/3)..'<C-d>' },
+    { 'n', '<C-k>', math.floor(vim.fn.winheight(0)/3)..'<C-u>' },
+    { 'v', '<C-j>', math.floor(vim.fn.winheight(0)/3)..'<C-d>' },
+    { 'v', '<C-k>', math.floor(vim.fn.winheight(0)/3)..'<C-u>' },
     { 'n', '<PageUp>', '<C-u>' },
     { 'n', '<PageDown>', '<C-d>' },
 
@@ -29,6 +32,9 @@ local Movement = {
 
 local Edit = {
     { 'i', '<C-BS>', '<C-W>' },
+    -- remember to configure alacritty with:
+    -- - { key: Back, mods: Control, chars: "\x17"}
+    {'i', '\x17', '<C-W>'},
 
     { 'i', '<C-j>', '<ESC>o' },
     { 'i', '<C-k>', '<ESC>O' },
@@ -36,12 +42,19 @@ local Edit = {
 
 local Cmd = {
     { 'n', 'Q', 'q' },
-    { 'n', 'q', ':write<CR>:Bdelete<CR>' },
-    { 'v', 'q', ':write<CR>:Bdelete<CR>' },
+    -- format code using lsp
     { 'n', 'g=', ':lua vim.lsp.buf.format()<CR>' },
+    -- keep virtual mode after indent
+    { 'v', '>', '>gv' },
+    { 'v', '<', '<gv' },
 }
 
+-- keymaps that need plugin context are not include, like nvim-cmp
 local Plugins = {
+    bufdelete = {
+        { 'n', 'q', ':write<CR>:Bdelete<CR>' },
+        { 'v', 'q', ':write<CR>:Bdelete<CR>' },
+    },
     telescope = {
         { 'n', 'sw', ':Telescope grep_string<CR>' },
         { 'n', 'sf', ':Telescope find_files<CR>' },
@@ -62,6 +75,7 @@ local Plugins = {
     },
     hop = {
         { 'n', 'm', ':HopWord<CR>' },
+        { 'v', 'm', '<CMD>HopWord<CR>' },
     },
     lspsaga = {
         { 'n', 'ga', ':Lspsaga code_action<CR>', { silent = true } },
@@ -86,6 +100,11 @@ local Plugins = {
         { 'n', '<F3>', ':lua require"dap".step_into()<CR>' },
         { 'n', '<F4>', ':lua require"dap".step_over()<CR>' },
         { 'n', '<leader>d', ':lua require"dapui".toggle()<CR>' },
+    },
+    marks_nvim = {
+        { 'n', 'MM', ':lua require"marks".toggle()<CR>' },
+        { 'n', 'MJ', ':lua require"marks".next()<CR>' },
+        { 'n', 'MK', ':lua require"marks".prev()<CR>' },
     },
 }
 local Other = {

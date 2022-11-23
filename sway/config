@@ -107,6 +107,10 @@ bindsym $mod+Control+Shift+Up move workspace to output up
 # Switch to workspace
 #
 workspace_auto_back_and_forth yes
+
+# bind workspace 0 to eDP-1 and others to outer monitors
+workspace 0 output eDP-1
+
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace number 3
@@ -121,8 +125,12 @@ bindsym $mod+0 workspace number 10
 
 bindsym --whole-window --border $mod+button5 workspace next
 bindsym --whole-window --border $mod+button4 workspace prev
-bindsym Mod1+1 workspace prev
-bindsym Mod1+2 workspace next
+
+# switch workspace while skip workspace 0
+set $switch_workspace exec --no-startup-id  ~/.config/sway/bin/workspaceloop.sh
+bindsym Mod1+1 $switch_workspace Left
+bindsym Mod1+2 $switch_workspace Right 
+
 ## Move focused container to workspace
 bindsym $mod+Mod1+1 move container to workspace number 1
 bindsym $mod+Mod1+2 move container to workspace number 2
@@ -167,6 +175,10 @@ input "9741:19:DAREU_EK871_BT_keyboard" {
 input "1:1:AT_Translated_Set_2_keyboard" {
     xkb_options caps:swapescape
 }
+input "1241:41543:HOLTEK_USB-HID_AP" {
+    xkb_options caps:swapescape
+}
+
 seat seat0 xcursor_theme breeze_cursors 20
 
 input "type:touchpad" {
@@ -199,6 +211,9 @@ output 'Unknown Mi Monitor 2479800115814' {
     resolution 1920x1080
     pos 2240 0
 } 
+output 'Dell Inc. DELL U2720QM 8P55193' {
+    scale 1
+}
 # output 'Unknown MSI G273Q CA8A521900577' {
 #         scale 1
 #         resolution 2560x1440

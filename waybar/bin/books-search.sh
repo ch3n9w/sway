@@ -18,8 +18,8 @@
 # Script:
 
 # Books directory
-BOOKS_DIR=~/Documents/Books
-mkdir -p ~/Documents/Books
+BOOKS_DIR=~/Documents/Books/beyondtech
+mkdir -p ~/Documents/Books/beyondtech
 
 # Save find result to F_ARRAY
 readarray -t F_ARRAY <<< "$(find "$BOOKS_DIR" -type f -name '*.pdf' -o -name '*.epub')"
@@ -60,7 +60,7 @@ gen_list(){
 
 main() {
   get_books
-  book=$( (gen_list) | rofi -dmenu -theme ~/.config/rofi/nord.rasi -i -matching fuzzy -no-custom -location 0 -p "Book > " )
+  book=$( (gen_list) | rofi -dmenu -theme ~/.config/rofi/nord.rasi -i -matching fuzzy -no-custom -location 0 -p " > " )
 
   if [ -n "$book" ]; then
     # xdg-open "${BOOKS[$book]}"

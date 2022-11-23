@@ -13,6 +13,7 @@
                 "10": " ",*/
             },
             "format-icons": {
+                "0": " ",
                 "1": " ",
                 "2": " ",
                 "3": " ",
@@ -97,8 +98,8 @@
                 "max-length": 8,
             },
             "custom/books": {
-                "on-click": "~/.config/waybar/bin/paper-search.sh",
-                "format": " Papers",
+                "on-click": "~/.config/waybar/bin/books-search.sh",
+                "format": " Book",
                 "tooltip": false,
             },
             "custom/ML": {

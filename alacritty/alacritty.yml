@@ -106,4 +106,5 @@ key_bindings:
   - { key: PageDown,       mods: Shift,   action: ScrollPageDown, mode: ~Alt }
   - { key: Home,           mods: Shift,   action: ScrollToTop,    mode: ~Alt }
   - { key: End,            mods: Shift,   action: ScrollToBottom, mode: ~Alt }
-  - { key: Back,            mods: Control,   chars: "\x1b\x7f"}
+  - { key: Back,            mods: Control,   chars: "\x17"}
+  - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }

@@ -17,9 +17,6 @@ M.load = function ()
             annotate = false,
         },
         mappings = {
-            toggle = "<leader>m",
-            next = "<leader>j",
-            prev = "<leader>k",
         }
     }
 

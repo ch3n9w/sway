@@ -156,7 +156,7 @@ nvim-qt使用`ginit.lua`作为配置文件，要让其加载nvim的lua配置文�
 _JAVA_AWT_WM_NONREPARENTING=1
 ```
 
-### 阅读器(zathura)
+### 阅读器(zathura+zotero)
 
 #### zathura
 - 为zathura设置了暗色和反色，效果更加柔和

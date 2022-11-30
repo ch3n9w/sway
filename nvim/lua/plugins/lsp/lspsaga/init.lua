@@ -12,6 +12,7 @@ M.load = function ()
             quit = '<ESC>',
         },
         rename_action_quit = '<ESC>',
+        code_action_icon = " ",
     })
 end
 return M

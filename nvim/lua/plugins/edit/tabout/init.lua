@@ -9,7 +9,7 @@ M.load = function ()
         -- default_tab = '<C-t>',
         -- default_shift_tab = '<C-d>',
         enable_backwards = true,
-        completion = true,
+        completion = false,
         tabouts = {
             {open = "'", close = "'"},
             {open = '"', close = '"'},

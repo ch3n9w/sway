@@ -64,7 +64,7 @@ main() {
 
   if [ -n "$book" ]; then
     # xdg-open "${BOOKS[$book]}"
-    zathura "${BOOKS[$book]}"
+    okular "${BOOKS[$book]}"
   fi
 }
 

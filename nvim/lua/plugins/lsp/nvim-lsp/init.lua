@@ -26,19 +26,17 @@ M.load = function ()
             },
         },
     }
-    lspconfig.sumneko_lua.setup {
-        settings = {
-            Lua = {
-                completion = {
-                    callSnippet = "Replace"
-                },
-                diagnostics = {
-                    globals = { "vim" }
-                },
-            }
-        }
-    }
-    local other_servers = {"bashls", "rome", "gopls", "marksman"}
+    -- lspconfig.sumneko_lua.setup {
+    --     capabilities = capabilities,
+    --     settings = {
+    --         Lua = {
+    --             diagnostics = {
+    --                 globals = { "vim" }
+    --             },
+    --         }
+    --     }
+    -- }
+    local other_servers = {"bashls", "rome", "gopls", "sumneko_lua"}
     for _, server in ipairs(other_servers) do
         lspconfig[server].setup {
             capabilities = capabilities,

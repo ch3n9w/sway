@@ -90,7 +90,7 @@ local Plugins = {
     toggleterm = {
         { 'n', 'ss', ':ToggleTerm size=8 direction=horizontal<CR>' },
         { 't', 'ss', '<C-\\><C-n>:ToggleTerm size=8 direction=horizontal<CR>' },
-        { 't', '<esc>', '<C-\\><C-n>' },
+        { 't', '<esc>', '<C-\\><C-n>:wincmd p<CR>' },
 
     },
     -- dap debug

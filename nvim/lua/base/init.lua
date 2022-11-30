@@ -30,14 +30,17 @@ vim.o.swapfile = false
 vim.o.backup = false -- insert mode compeleting menu setting
 vim.o.completeopt='menuone,noinsert,noselect'
 
+-- visual selection mode
+vim.o.sel='inclusive'
+
 -- set tab to 4 spaces, could be override by ftplugin
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 
 -- show numbers
--- vim.o.number = true
-vim.o.relativenumber = true
+vim.o.number = true
+-- vim.o.relativenumber = true
 -- for lspsaga's floating window
 vim.wo.number = true
 -- always show signcolumn

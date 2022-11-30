@@ -52,6 +52,7 @@ set $up k
 set $right l
 
 # unable to use fcitx5
+# set $term alacritty 
 set $term alacritty 
 set $menu rofi -show drun -m -1 -theme ~/.config/rofi/nord.rasi | xargs swaymsg exec --
 
@@ -238,7 +239,7 @@ output 'Dell Inc. DELL U2718QM MYPFK98N094L' {
 default_border pixel 5
 default_floating_border pixel 2
 hide_edge_borders smart
-client.focused           #2e9ef4 #0bf0d4 #FFFFFF #0bf0d4
+# client.focused           #2e9ef4 #0bf0d4 #FFFFFF #0bf0d4
 
 gaps inner 10
 # gaps outer 10

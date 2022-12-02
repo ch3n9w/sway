@@ -64,6 +64,15 @@ vim.api.nvim_create_autocmd({"BufWinEnter"}, {
 -- load preview view
 vim.o.viewoptions='folds,cursor,curdir'
 
+-- ignore warning from null-ls 
+local notify = vim.notify
+vim.notify = function(msg, ...)
+    if msg:match("warning: multiple different client offset_encodings") then
+        return
+    end
+
+    notify(msg, ...)
+end
 --[[ vim.api.nvim_create_autocmd({"InsertLeave", "BufCreate", "BufEnter", "BufLeave"}, {
     command = "silent! fcitx5-remote -c"
 }) ]]
@@ -104,3 +113,4 @@ vim.g.neovide_cursor_trail_size = 0
 -- adjust this to disable animation
 vim.g.neovide_cursor_animation_length = 0
 vim.g.neovide_cursor_trail_size = 0.1
+

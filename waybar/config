@@ -23,7 +23,7 @@
                 "8": " ",
                 "9": " ",
                 "10": " ",
-                "11": " ",
+                "11": " ",
             },
         },
         "clock": {
@@ -83,6 +83,9 @@
             "max-length": 7,
         },
         "memory": {
+            "states": {
+                "critical": 80,
+            },
             "interval": 10,
             "format": " {}%",
             "max-length": 8,

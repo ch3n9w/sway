@@ -99,6 +99,16 @@ window#waybar {
   color: #2aa000;
 }
 
+#memory.critical {
+  background-color: #f53c3c;
+  color: #ffffff;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
 #temperature {
   color: #d08770;
 }

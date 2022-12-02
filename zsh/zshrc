@@ -97,7 +97,7 @@ alias idea="nohup /opt/intellij-idea-ultimate-edition/bin/idea.sh .  >/dev/null 
 alias check_log="journalctl -p5"
 alias vim="nvim"
 alias neo="neovide"
-alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR";zoxide add "$LASTDIR"'
 alias nvmstart="source /usr/share/nvm/init-nvm.sh"
 alias java7="/usr/lib/jvm/java-7-openjdk/bin/java"
 alias javac7="/usr/lib/jvm/java-7-openjdk/bin/javac"
@@ -111,8 +111,11 @@ alias server="ssh root@39.105.176.37"
 alias tencent="ssh root@120.53.236.211"
 alias rasp="ssh root@192.168.31.135"
 alias ubuntu="ssh root@192.168.59.106"
-alias master="ssh root@192.168.59.112"
-alias worker="ssh root@192.168.59.111"
+alias master="ssh root@192.168.31.137"
+alias worker="ssh root@192.168.31.109"
+# whatsupbro
+# alias master="ssh root@192.168.31.205"
+# alias worker="ssh root@192.168.31.88"
 # alias master="ssh root@18.183.253.212"
 # alias worker="ssh root@13.113.120.210"
 alias sshk="ssh -i .ssh/ssh.pem"

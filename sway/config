@@ -38,7 +38,7 @@ assign [class="VirtualBox"] 9
 assign [class="Steam"] 7
 assign [class="hmcl"] 7
 assign [class="Minecraft"] 7
-
+assign [app_id="FeelUOwn"] 11
 
 # titlebar_border_thickness 2
 set $mod Mod4

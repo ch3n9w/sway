@@ -9,11 +9,11 @@ local Movement = {
     { 'n', 'H', ':bprevious!<CR>' },
     { 'n', 'L', ':bnext!<CR>' },
     -- only scroll 1/3 size of page
-    { 'n', '<C-b>', math.floor(vim.fn.winheight(0)/3)..'<C-u>' },
-    { 'n', '<C-j>', math.floor(vim.fn.winheight(0)/3)..'<C-d>' },
-    { 'n', '<C-k>', math.floor(vim.fn.winheight(0)/3)..'<C-u>' },
-    { 'v', '<C-j>', math.floor(vim.fn.winheight(0)/3)..'<C-d>' },
-    { 'v', '<C-k>', math.floor(vim.fn.winheight(0)/3)..'<C-u>' },
+    { 'n', '<C-b>', math.floor(vim.fn.winheight(0) / 3) .. '<C-u>' },
+    { 'n', '<C-j>', math.floor(vim.fn.winheight(0) / 3) .. '<C-d>' },
+    { 'n', '<C-k>', math.floor(vim.fn.winheight(0) / 3) .. '<C-u>' },
+    { 'v', '<C-j>', math.floor(vim.fn.winheight(0) / 3) .. '<C-d>' },
+    { 'v', '<C-k>', math.floor(vim.fn.winheight(0) / 3) .. '<C-u>' },
     { 'n', '<PageUp>', '<C-u>' },
     { 'n', '<PageDown>', '<C-d>' },
 
@@ -34,7 +34,7 @@ local Edit = {
     { 'i', '<C-BS>', '<C-W>' },
     -- remember to configure alacritty with:
     -- - { key: Back, mods: Control, chars: "\x17"}
-    {'i', '\x17', '<C-W>'},
+    { 'i', '\x17', '<C-W>' },
 
     { 'i', '<C-j>', '<ESC>o' },
     { 'i', '<C-k>', '<ESC>O' },
@@ -43,7 +43,8 @@ local Edit = {
 local Cmd = {
     { 'n', 'Q', 'q' },
     -- format code using lsp
-    { 'n', 'g=', ':lua vim.lsp.buf.format()<CR>' },
+    -- { 'n', 'g=', ':lua vim.lsp.buf.format()<CR>' },
+    { 'n', 'g=', ':lua format_code()<CR>' },
     -- keep virtual mode after indent
     { 'v', '>', '>gv' },
     { 'v', '<', '<gv' },
@@ -132,6 +133,15 @@ function typora()
     vim.fn.system("typora " .. filename)
 end
 
+-- as clangd do not support formatting
+function format_code()
+    if vim.bo.filetype == "c" or vim.bo.filetype == "cpp" then
+        vim.cmd('execute \"normal gg=G\\<C-o>\"')
+    else
+        vim.lsp.buf.format()
+    end
+end
+
 for _, keymap_class in ipairs({ Movement, Edit, Cmd, Other }) do
     for _, keymap in ipairs(keymap_class) do
         if keymap[4] ~= nil then
@@ -194,3 +204,4 @@ vim.api.nvim_create_user_command(
     typora,
     { desc = "start typora" }
 )
+

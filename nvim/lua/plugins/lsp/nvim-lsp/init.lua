@@ -36,11 +36,11 @@ M.load = function ()
     --         }
     --     }
     -- }
-    local other_servers = {"bashls", "rome", "gopls", "sumneko_lua"}
+    local other_servers = {"bashls", "rome", "gopls", "sumneko_lua", "clangd"}
     for _, server in ipairs(other_servers) do
         lspconfig[server].setup {
             capabilities = capabilities,
-            single_file_mode = true
+            single_file_mode = true,
         }
     end
 end

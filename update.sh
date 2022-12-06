@@ -9,5 +9,6 @@ cp -r ~/.config/xkb ./
 rm ./nvim/intelephense_license_key
 rm ./waybar/bin/forest
 cp -r ~/.zshrc ./zsh/zshrc
+cp -r ~/.p10k.zsh ./zsh/p10k.zsh
 
 

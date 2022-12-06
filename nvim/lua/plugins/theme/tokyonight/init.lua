@@ -36,7 +36,7 @@ M.load = function()
         },
         sidebars = { "qf", "help" },
         day_brightness = 0.1,
-        hide_inactive_statusline = true,
+        hide_inactive_statusline = false,
         dim_inactive = dims,
         lualine_bold = true,
 

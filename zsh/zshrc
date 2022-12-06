@@ -15,7 +15,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 # export http_proxy=http://127.0.0.1:7890
 # export ALL_PROXY="socks5://127.0.0.1:7891"
 # export no_proxy='*.tuna.*'
-export PATH=$HOME/bin:/usr/local/bin:/opt:/usr/bin:$PATH:$GOPATH/bin:$GOROOT/bin:/usr/lib:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:/usr/lib:$GOPATH/bin
 # export LD_PRELOAD=/usr/lib/libproxychains.so.4
 
 # For jetbrains

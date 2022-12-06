@@ -1,15 +1,29 @@
 M = {}
 M.load = function()
     local trans
-    -- if start nvim-qt with NVIM_GUI=1, then the background will not be transparent
+    local dims
+    local theme
+    local tree_theme
+    -- if start nvim-qt with NVIM_GUI, then the background will not be transparent
     if os.getenv("NVIM_GUI") == "1" then
         trans = false
+        dims = false
+        tree_theme = "dark"
+        theme = 'night'
+    elseif os.getenv("NVIM_GUI") == "2" then
+        trans = false
+        dims = false
+        tree_theme = "dark"
+        theme = 'storm'
     else
         trans = true
+        dims = true
+        tree_theme = "transparent"
+        theme = 'storm'
     end
 
     require("tokyonight").setup({
-        style = "storm",
+        style = theme,
         transparent = trans,
         terminal_colors = true,
         styles = {
@@ -17,20 +31,19 @@ M.load = function()
             keywords = { italic = true },
             functions = {},
             variables = {},
-            sidebars = "transparent",
-            floats = "transparent",
+            sidebars = tree_theme,
+            floats = "dark",
         },
         sidebars = { "qf", "help" },
         day_brightness = 0.1,
-        hide_inactive_statusline = false,
-        dim_inactive = true,
+        hide_inactive_statusline = true,
+        dim_inactive = dims,
         lualine_bold = true,
 
         on_colors = function(colors) end,
         on_highlights = function(highlights, colors) end,
     })
 
-    vim.cmd [[colorscheme tokyonight]]
 
     require('lualine').setup {
         options = {
@@ -38,5 +51,7 @@ M.load = function()
         }
     }
 
+    vim.cmd("colorscheme tokyonight")
+    -- vim.cmd("colorscheme tokyonight-night")
 end
 return M

@@ -14,8 +14,9 @@ require('packer').startup(
 )
 
 
-interface_plugins.load()
+-- theme must load first, otherwise bufferline will have problem
 theme_plugins.load()
+interface_plugins.load()
 lsp_plugins.load()
 -- editor's plugin must load after lsp plugins
 edit_plugins.load()

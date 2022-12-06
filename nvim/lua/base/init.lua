@@ -1,5 +1,6 @@
 local vim = vim
 vim.o.termguicolors = true
+vim.o.background = "dark"
 vim.o.syntax = 'on'
 vim.o.errorbells = false
 vim.o.mouse = 'a'
@@ -107,7 +108,8 @@ end
 
 -- neovide setting
 vim.o.guifont = 'Hack Nerd Font:h20'
-vim.g.neovide_transparency = 0.8
+-- vim.o.guifont = 'Hack:h20'
+vim.g.neovide_transparency = 1
 vim.g.neovide_cursor_vfx_mode = "wireframe"
 vim.g.neovide_cursor_trail_size = 0
 -- adjust this to disable animation

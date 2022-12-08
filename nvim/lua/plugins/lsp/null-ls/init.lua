@@ -7,9 +7,11 @@ M.load = function()
             null_ls.builtins.formatting.clang_format.with({
                 extra_args = {
                     -- "-style=file:" .. vim.fn.expand("$XDG_CONFIG_HOME/nvim/misc/clang_format"),
-                    "-style=".. vim.fn.expand("{IndentWidth: 4}"),
+                    "-style=" .. vim.fn.expand("{IndentWidth: 4}"),
                 }
             }),
+            null_ls.builtins.formatting.black,
+            null_ls.builtins.formatting.markdown_toc,
         }
     })
 end

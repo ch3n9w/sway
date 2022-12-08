@@ -1,12 +1,31 @@
 M = {}
 
-M.load = function ()
+M.load = function()
     local cmp = require('cmp')
     local lspkind = require('lspkind')
     local luasnip = require 'luasnip'
+    local border = {
+        { "┌", "FloatBorder" },
+        { "─", "FloatBorder" },
+        { "┐", "FloatBorder" },
+        { "│", "FloatBorder" },
+        { "┘", "FloatBorder" },
+        { "─", "FloatBorder" },
+        { "└", "FloatBorder" },
+        { "│", "FloatBorder" },
+    }
     cmp.setup({
         completion = {
-            completeopt = 'menu,menuone,noinsert'
+            completeopt = 'menu,menuone,noinsert',
+        },
+        window = {
+            completion = {
+                border = border,
+                scrollbar = '║',
+            },
+            documentation = {
+                border = 'rounded'
+            }
         },
         snippet = {
             expand = function(args)
@@ -55,4 +74,3 @@ M.load = function ()
     })
 end
 return M
-

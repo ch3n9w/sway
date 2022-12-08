@@ -6,7 +6,7 @@ local neorg = require('plugins.lsp.neorg')
 local nvim_cmp = require('plugins.lsp.nvim-cmp')
 local nvim_lsp = require('plugins.lsp.nvim-lsp')
 local nvim_treesitter = require('plugins.lsp.nvim-treesitter')
--- local null_ls = require('plugins.lsp.null-ls')
+local null_ls = require('plugins.lsp.null-ls')
 Lsp_plugins = {}
 
 Lsp_plugins.plugins = {
@@ -21,7 +21,7 @@ Lsp_plugins.plugins = {
     'hrsh7th/vim-vsnip', ]]
     'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
-    -- 'jose-elias-alvarez/null-ls.nvim',
+    'jose-elias-alvarez/null-ls.nvim',
     -- lua for nvim plugin dev
     'folke/lua-dev.nvim',
     -- orgmode !!!
@@ -48,7 +48,7 @@ function Lsp_plugins.load()
     nvim_cmp.load()
     nvim_lsp.load()
     nvim_treesitter.load()
-    -- null_ls.load()
+    null_ls.load()
     vim.o.completeopt='menu,menuone,noselect'
 end
 

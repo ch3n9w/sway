@@ -135,7 +135,7 @@ end
 
 -- as clangd do not support formatting
 function format_code()
-    if vim.bo.filetype == "c" or vim.bo.filetype == "cpp" then
+    if vim.bo.filetype == "norg" then
         vim.cmd('execute \"normal gg=G\\<C-o>\"')
     else
         vim.lsp.buf.format()
@@ -204,4 +204,3 @@ vim.api.nvim_create_user_command(
     typora,
     { desc = "start typora" }
 )
-

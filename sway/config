@@ -171,7 +171,7 @@ bindsym $mod+space floating toggle
 
 #
 # INFO: Scratchpad:
-bindsym $mod+Mod1+s move scratchpad
+bindsym $mod+Control+s move scratchpad
 bindsym $mod+s scratchpad show
 
 # INFO: Hardware setting:

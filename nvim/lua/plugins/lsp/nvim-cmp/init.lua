@@ -16,6 +16,7 @@ M.load = function()
     }
     cmp.setup({
         completion = {
+            -- highlight the first candidate
             completeopt = 'menu,menuone,noinsert',
         },
         window = {

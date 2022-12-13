@@ -1,9 +1,7 @@
-local hop = require('plugins.edit.hop')
 local kommentary = require('plugins.edit.kommentary')
 local nvim_autopairs = require('plugins.edit.nvim-autopairs')
 local marks = require('plugins.edit.marks')
 local tabout = require('plugins.edit.tabout')
-local telescope = require('plugins.edit.telescope')
 local todo_comment = require('plugins.edit.todo-comments')
 
 local edit_plugins = {}
@@ -14,14 +12,9 @@ edit_plugins.plugins = {
     'folke/todo-comments.nvim',
     -- autopair
     'windwp/nvim-autopairs',
-    -- easymotion
-    'phaazon/hop.nvim',
-    'nvim-telescope/telescope.nvim',
     -- paste image from clipboard
     -- 'ekickx/clipboard-image.nvim',
     -- 'askfiy/nvim-picgo',
-    -- dependencies
-    'nvim-lua/plenary.nvim',
     -- tabout
     'abecodes/tabout.nvim',
     'chentoast/marks.nvim'
@@ -29,10 +22,8 @@ edit_plugins.plugins = {
 }
 
 function edit_plugins.load()
-    hop.load()
     kommentary.load()
     nvim_autopairs.load()
-    telescope.load()
     todo_comment.load()
     tabout.load()
     marks.load()

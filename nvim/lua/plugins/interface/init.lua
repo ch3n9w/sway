@@ -21,7 +21,6 @@ interface_plugins.plugins = {
     -- bottom terminal
     'akinsho/toggleterm.nvim',
     'famiu/bufdelete.nvim',
-    'kyazdani42/nvim-web-devicons',
     'kyazdani42/nvim-tree.lua',
     'simrat39/symbols-outline.nvim',
 }

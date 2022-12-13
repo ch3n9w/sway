@@ -81,7 +81,6 @@ M.load = function()
     end
 
     vim.cmd("autocmd VimResized * if winwidth(0) > 100 | execute 'NvimTreeOpen' | execute 'NvimTreeFocus' | wincmd p | else | execute 'NvimTreeClose' | endif")
-
 end
 
 

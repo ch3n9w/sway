@@ -36,7 +36,7 @@ M.load = function ()
     --         }
     --     }
     -- }
-    local other_servers = {"bashls", "rome", "gopls", "sumneko_lua", "clangd"}
+    local other_servers = {"bashls", "rome", "gopls", "sumneko_lua", "clangd", "rust_analyzer"}
     for _, server in ipairs(other_servers) do
         lspconfig[server].setup {
             capabilities = capabilities,

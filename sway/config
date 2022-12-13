@@ -24,9 +24,10 @@ assign [class="music"] 6
 assign [title="Wine System Tray"] 6
 assign [title="Godzilla"] 6
 assign [class="behinder"] 6
-assign [app_id="dolphin"] 6
+# assign [app_id="dolphin"] 6
+for_window [app_id="dolphin"] floating enable
 assign [app_id="Nautilus"] 6
-assign [class="wps"] 10
+assign [title="WPS"] 10
 assign [title="Spreadsheets"] 10
 assign [app_id="libreoffice"] 10
 assign [app_id="zathura"] 5
@@ -200,8 +201,8 @@ input "type:touchpad" {
 bindswitch lid:on output eDP-1 disable
 bindswitch lid:off output eDP-1 enable
 
-bindsym --locked XF86AudioRaiseVolume exec sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume @DEFAULT_SINK@ +5%"
-bindsym --locked XF86AudioLowerVolume exec sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume @DEFAULT_SINK@ -5%"
+bindsym --locked XF86AudioRaiseVolume exec sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume @DEFAULT_SINK@ +2%"
+bindsym --locked XF86AudioLowerVolume exec sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume @DEFAULT_SINK@ -2%"
 bindsym --locked XF86AudioMute exec sh -c "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 bindsym --locked XF86MonBrightnessDown exec "sudo light -U 5"
 bindsym --locked XF86MonBrightnessUp exec "sudo light -A 5"

@@ -2,6 +2,7 @@ M = {}
 
 M.load = function()
     local cmp = require('cmp')
+    local compare = require('cmp.config.compare')
     local lspkind = require('lspkind')
     local luasnip = require 'luasnip'
     local border = {
@@ -71,7 +72,23 @@ M.load = function()
             { name = 'buffer' },
             { name = 'luasnip' },
             { name = 'neorg' },
-        })
+        }),
+        -- completion items sorting
+        sorting = {
+            priority_weight = 1.0,
+            comparators = {
+                compare.offset,
+                compare.exact,
+                -- compare.scopes,
+                compare.recently_used,
+                compare.score,
+                compare.locality,
+                compare.kind,
+                compare.sort_text,
+                compare.length,
+                compare.order,
+            },
+        }
     })
 end
 return M

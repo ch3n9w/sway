@@ -55,6 +55,8 @@ local Plugins = {
     bufdelete = {
         { 'n', 'q', ':write<CR>:Bdelete<CR>' },
         { 'v', 'q', ':write<CR>:Bdelete<CR>' },
+        -- { 'n', 'q', ':lua quit_behavior()<CR>' },
+        -- { 'v', 'q', ':lua quit_behavior()<CR>' },
     },
     telescope = {
         { 'n', 'sw', ':Telescope grep_string<CR>' },
@@ -142,6 +144,16 @@ function format_code()
     end
 end
 
+function quit_behavior()
+    if #vim.api.nvim_list_wins() > 1 then
+        vim.cmd('write')
+        vim.cmd('q')
+    else
+        vim.cmd('write')
+        vim.cmd('Bdelete')
+    end
+end
+
 for _, keymap_class in ipairs({ Movement, Edit, Cmd, Other }) do
     for _, keymap in ipairs(keymap_class) do
         if keymap[4] ~= nil then
@@ -161,8 +173,8 @@ for _, plugin_keymap in pairs(Plugins) do
             key_mapper(keymap[1], keymap[2], keymap[3])
         end
     end
-
 end
+
 
 --[[ key_mapper('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 key_mapper('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true}) ]]

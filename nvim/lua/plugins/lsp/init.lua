@@ -17,10 +17,10 @@ Lsp_plugins.plugins = {
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/nvim-cmp',
-    --[[ 'hrsh7th/cmp-vsnip',
-    'hrsh7th/vim-vsnip', ]]
     'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
+
+    -- format
     'jose-elias-alvarez/null-ls.nvim',
     -- lua for nvim plugin dev
     'folke/lua-dev.nvim',
@@ -28,10 +28,14 @@ Lsp_plugins.plugins = {
     {'nvim-neorg/neorg'},
 
     'williamboman/nvim-lsp-installer',
-    -- debug for golang, need pacman -S delve
+    -- debugger
     'mfussenegger/nvim-dap',
     'rcarriga/nvim-dap-ui',
-    'leoluz/nvim-dap-go',
+    -- debug for golang, need pacman -S delve
+    -- 'leoluz/nvim-dap-go',
+    -- debug for rust
+    -- 'simrat39/rust-tools.nvim',
+
     -- code action
     'glepnir/lspsaga.nvim',
     -- completion icon set

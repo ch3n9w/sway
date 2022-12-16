@@ -4,7 +4,7 @@ M.load = function()
     local cmp = require('cmp')
     local compare = require('cmp.config.compare')
     local lspkind = require('lspkind')
-    local luasnip = require 'luasnip'
+    -- local luasnip = require 'luasnip'
     local border = {
         { "┌", "FloatBorder" },
         { "─", "FloatBorder" },
@@ -45,13 +45,13 @@ M.load = function()
             -- ['<C-y>'] = cmp.config.disable,
             -- press enter will select the first candidate
             ['<CR>'] = cmp.mapping.confirm({ select = true }),
-            ['<Tab>'] = cmp.mapping(function(fallback)
-                if luasnip.expand_or_jumpable() then
-                    luasnip.expand_or_jump()
-                else
-                    fallback()
-                end
-            end, { 'i', 's' }),
+            -- ['<Tab>'] = cmp.mapping(function(fallback)
+            --     if luasnip.expand_or_jumpable() then
+            --         luasnip.expand_or_jump()
+            --     else
+            --         fallback()
+            --     end
+            -- end, { 'i', 's' }),
             ['<Down>'] = cmp.mapping(function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()

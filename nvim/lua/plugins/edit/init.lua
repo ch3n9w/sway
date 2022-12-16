@@ -3,6 +3,7 @@ local nvim_autopairs = require('plugins.edit.nvim-autopairs')
 local marks = require('plugins.edit.marks')
 local tabout = require('plugins.edit.tabout')
 local todo_comment = require('plugins.edit.todo-comments')
+local surround = require('plugins.edit.surround')
 
 local edit_plugins = {}
 
@@ -17,7 +18,8 @@ edit_plugins.plugins = {
     -- 'askfiy/nvim-picgo',
     -- tabout
     'abecodes/tabout.nvim',
-    'chentoast/marks.nvim'
+    'chentoast/marks.nvim',
+    'kylechui/nvim-surround',
 
 }
 
@@ -27,6 +29,7 @@ function edit_plugins.load()
     todo_comment.load()
     tabout.load()
     marks.load()
+    surround.load()
 
     --[[ require('clipboard-image').setup{
         markdown = {

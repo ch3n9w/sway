@@ -2,7 +2,7 @@
     "position": "bottom", 
         "modules-left": ["battery","custom/gpu-usage","memory","temperature","pulseaudio","network",],
         "modules-center": ["sway/workspaces"],
-        "modules-right": ["custom/forest","custom/notes","custom/books", "clock"],
+        "modules-right": ["custom/forest","custom/books", "clock"],
         "sway/workspaces": {
             "disable-scroll": false,
             "all-outputs": true,
@@ -13,8 +13,8 @@
                 "10": " ",*/
             },
             "format-icons": {
-                "1": " ",
-                "2": " ",
+                "1": " ",
+                "2": " ",
                 "3": " ",
                 "4": " ",
                 "5": " ",

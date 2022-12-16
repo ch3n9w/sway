@@ -28,6 +28,7 @@ local Movement = {
 
     { 'i', '<C-Down>', '<C-O><C-E>' },
     { 'i', '<C-Up>', '<C-O><C-Y>' },
+
 }
 
 local Edit = {
@@ -38,6 +39,11 @@ local Edit = {
 
     { 'i', '<C-j>', '<ESC>o' },
     { 'i', '<C-k>', '<ESC>O' },
+    -- { 'n', '<LeftRelease>', '<LeftRelease><cmd>startinsert<CR>'},
+    { 'i', '<C-z>', '<cmd>undo<CR>'},
+    { 'i', '<C-r>', '<cmd>redo<CR>'},
+    { 'i', '<C-v>', '<cmd>put<CR>'},
+    { 'n', '<C-v>', '<cmd>put<CR>'},
 }
 
 local Cmd = {

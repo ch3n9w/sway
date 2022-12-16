@@ -4,6 +4,10 @@ vim.o.background = "dark"
 vim.o.syntax = 'on'
 vim.o.errorbells = false
 vim.o.mouse = 'a'
+-- have problem in neovim-qt&neovide
+-- vim.o.guicursor='n:block1,v-i:ver1,a:blinkon1'
+
+-- vim.o.mouseshape='a:beam'
 vim.o.modifiable = true
 -- the refresh time will affect lspsaga's reaction time
 -- vim.o.updatetime = 300
@@ -43,7 +47,7 @@ vim.o.expandtab = true
 vim.o.number = true
 -- vim.o.relativenumber = true
 -- for lspsaga's floating window
-vim.wo.number = true
+-- vim.wo.number = true
 -- always show signcolumn
 vim.o.signcolumn = 'yes'
 

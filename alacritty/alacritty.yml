@@ -90,7 +90,8 @@ shell:
 
 key_bindings:
   - { key: V,              mods: Control, action: Paste                      }
-  - { key: W,              mods: Control, action: Copy                       }
+  - { key: C,              mods: Control|Shift, action: Copy                       }
+  - { key: C,mods: Control , chars: "\x03"}
   - { key: Insert,         mods: Shift,   action: PasteSelection             }
   - { key: Key0,           mods: Control, action: ResetFontSize              }
   - { key: Equals,         mods: Control, action: IncreaseFontSize           }

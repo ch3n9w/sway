@@ -11,13 +11,14 @@ Lsp_plugins = {}
 
 Lsp_plugins.plugins = {
     -- concrete syntax tree for source file
-    {'nvim-treesitter/nvim-treesitter', run=':TSUpdate'},
+    { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
+    'nvim-treesitter/nvim-treesitter-textobjects',
     -- LSP support
     'neovim/nvim-lspconfig',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/nvim-cmp',
-    'L3MON4D3/LuaSnip',
+    -- 'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
 
     -- format
@@ -25,7 +26,7 @@ Lsp_plugins.plugins = {
     -- lua for nvim plugin dev
     'folke/lua-dev.nvim',
     -- orgmode !!!
-    {'nvim-neorg/neorg'},
+    { 'nvim-neorg/neorg' },
 
     'williamboman/nvim-lsp-installer',
     -- debugger
@@ -53,10 +54,7 @@ function Lsp_plugins.load()
     nvim_lsp.load()
     nvim_treesitter.load()
     null_ls.load()
-    vim.o.completeopt='menu,menuone,noselect'
+    vim.o.completeopt = 'menu,menuone,noselect'
 end
-
-
-
 
 return Lsp_plugins

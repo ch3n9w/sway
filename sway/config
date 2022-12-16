@@ -9,8 +9,8 @@ title_align center
 # for_window [title="^Information\s*—\s*Dolphin" app_id="dolphin"] floating enable
 # for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable, resize set width 1030 height 710
 
-assign [app_id="firefox"] 1
-assign [app_id="terminal"] 2
+assign [app_id="firefox"] 2
+assign [app_id="terminal"] 1
 assign [title="Visual Studio Code"] 3
 assign [class="jetbrains"] 3
 assign [app_id="neovide"] 3
@@ -214,7 +214,7 @@ output 'Unknown 0xA195 0x00000000' {
     pos 0 0
 } 
 output 'Unknown Mi Monitor 2479800115814' {
-    scale 1
+    scale 0.8
     resolution 1920x1080
     pos 2240 0
 } 

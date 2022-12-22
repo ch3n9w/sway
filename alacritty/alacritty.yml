@@ -14,7 +14,7 @@ env:
 
 # Window configurations
 window:
-  opacity: 0.95
+  opacity: 0.85
   dimensions:
     columns: 0
     lines: 0

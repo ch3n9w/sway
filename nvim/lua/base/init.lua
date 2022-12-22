@@ -1,4 +1,7 @@
 local vim = vim
+
+-- for neovide cursor
+vim.o.noshowmode = true
 vim.o.termguicolors = true
 vim.o.background = "dark"
 vim.o.syntax = 'on'
@@ -10,7 +13,7 @@ vim.o.mouse = 'a'
 -- vim.o.mouseshape='a:beam'
 vim.o.modifiable = true
 -- the refresh time will affect lspsaga's reaction time
--- vim.o.updatetime = 300
+vim.o.updatetime = 300
 -- case setting
 vim.o.smartcase = true
 vim.o.ignorecase = true
@@ -18,7 +21,6 @@ vim.o.cursorline = true
 
 -- clipboard
 vim.o.clipboard = 'unnamedplus'
-
 
 -- folder view setting
 vim.o.foldmethod='indent'
@@ -115,8 +117,8 @@ vim.o.guifont = 'Hack Nerd Font:h20'
 -- vim.o.guifont = 'Hack:h20'
 vim.g.neovide_transparency = 1
 vim.g.neovide_cursor_vfx_mode = "wireframe"
-vim.g.neovide_cursor_trail_size = 0
+vim.g.neovide_cursor_trail_size = 0.1
 -- adjust this to disable animation
-vim.g.neovide_cursor_animation_length = 0
+vim.g.neovide_cursor_animation_length = 0.1
 vim.g.neovide_cursor_trail_size = 0.1
 

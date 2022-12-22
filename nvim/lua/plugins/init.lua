@@ -1,31 +1,80 @@
-local edit_plugins = require('plugins.edit')
-local interface_plugins = require('plugins.interface')
-local theme_plugins = require('plugins.theme')
-local lsp_plugins = require('plugins.lsp')
-local motion_plugins = require('plugins.motion')
-local finder_plugins = require('plugins.finder')
-local dependency_plugins = require('plugins.dependency')
+local vim = vim
+-- Install packer
+local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+local is_bootstrap = false
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+    is_bootstrap = true
+    vim.fn.system { 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path }
+    vim.cmd [[packadd packer.nvim]]
+end
+
+local config = require('plugins.config.init')
+
+local plugins = {
+    'wbthomason/packer.nvim',
+
+    'kyazdani42/nvim-web-devicons',
+    { 'b3nj5m1n/kommentary', config = config.kommentary },
+    { 'folke/todo-comments.nvim', config = config.todo },
+    { 'windwp/nvim-autopairs', config = config.autopair },
+    { 'abecodes/tabout.nvim', config = config.tabout },
+    { 'chentoast/marks.nvim', config = config.marks },
+    { 'kylechui/nvim-surround', config = config.surround },
+    { 'folke/tokyonight.nvim', config = config.theme },
+
+    { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' },
+        after = 'telescope-fzf-native.nvim', config = config.telescope },
+    { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 },
+    { 'akinsho/bufferline.nvim', after = 'tokyonight.nvim', config = config.bufferline },
+    { 'lukas-reineke/indent-blankline.nvim', config = config.indent },
+    { 'hoob3rt/lualine.nvim', config = config.lualine },
+    { 'akinsho/toggleterm.nvim', config = config.toggleterm },
+    'famiu/bufdelete.nvim',
+    { 'kyazdani42/nvim-tree.lua', config = config.filetree },
+    { 'simrat39/symbols-outline.nvim', config = config.outline },
+    -- concrete syntax tree for source file
+    { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = config.treesitter },
+    { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
+    { -- LSP Configuration & Plugins
+        'neovim/nvim-lspconfig',
+        requires = {
+            'williamboman/mason.nvim',
+            'williamboman/mason-lspconfig.nvim',
+            'hrsh7th/cmp-nvim-lsp',
+            -- Useful status updates for LSP
+            'j-hui/fidget.nvim',
+        },
+        config = config.lsp
+    },
+    { -- Autocompletion
+        'hrsh7th/nvim-cmp',
+        requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'hrsh7th/cmp-buffer' },
+        config = config.cmp,
+    },
+    -- format
+    { 'jose-elias-alvarez/null-ls.nvim', config = config.nullls },
+    -- lua for nvim plugin dev
+    { 'folke/lua-dev.nvim', config = config.neodev },
+    -- orgmode !!!
+    { 'nvim-neorg/neorg', config = config.neorg },
+
+    -- debugger
+    { 'mfussenegger/nvim-dap', requires = { 'rcarriga/nvim-dap-ui' }, config = config.dap },
+    -- debug for golang, need pacman -S delve
+    -- 'leoluz/nvim-dap-go',
+    -- debug for rust
+    -- 'simrat39/rust-tools.nvim',
+
+    { 'glepnir/lspsaga.nvim', config = config.lspsaga },
+    'onsails/lspkind-nvim',
+    { 'ray-x/lsp_signature.nvim', config = config.signature },
+    { 'phaazon/hop.nvim', config = config.hop },
+}
 
 
-
-require('packer').startup(
-    function(use)
-        for _, plugin in pairs(dependency_plugins.plugins) do use(plugin) end
-        for _, plugin in pairs(interface_plugins.plugins) do use(plugin) end
-        for _, plugin in pairs(theme_plugins.plugins) do use(plugin) end
-        for _, plugin in pairs(lsp_plugins.plugins) do use(plugin) end
-        for _, plugin in pairs(edit_plugins.plugins) do use(plugin) end
-        for _, plugin in pairs(motion_plugins.plugins) do use(plugin) end
-        for _, plugin in pairs(finder_plugins.plugins) do use(plugin) end
+require('packer').startup(function(use)
+    if is_bootstrap then
+        require('packer').sync()
     end
-)
-
-
--- theme must load first, otherwise bufferline will have problem
-theme_plugins.load()
-motion_plugins.load()
-interface_plugins.load()
-finder_plugins.load()
-lsp_plugins.load()
--- editor's plugin must load after lsp plugins
-edit_plugins.load()
+    for _, plugin in pairs(plugins) do use(plugin) end
+end)

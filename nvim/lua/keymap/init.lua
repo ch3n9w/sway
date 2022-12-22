@@ -4,6 +4,8 @@ local Movement = {
     { 'n', '<leader>j', '<C-w>j' },
     { 'n', '<leader>k', '<C-w>k' },
     { 'n', '<leader>l', '<C-w>l' },
+    { 'n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true }},
+    { 'n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true }},
     { 'n', 'J', ':bprevious!<CR>' },
     { 'n', 'K', ':bnext!<CR>' },
     { 'n', 'H', ':bprevious!<CR>' },
@@ -80,7 +82,6 @@ local Plugins = {
         { 'v', '<C-_>', '<Plug>kommentary_visual_default<ESC>', {} },
         { 'n', '<C-/>', '<Plug>kommentary_line_default', {} },
         { 'v', '<C-/>', '<Plug>kommentary_visual_default<ESC>', {} },
-
     },
     hop = {
         { 'n', 'm', ':HopWord<CR>' },
@@ -128,7 +129,8 @@ local key_mapper = function(mode, key, result, config)
     if nil == config then
         config = { noremap = true, silent = true }
     end
-    vim.api.nvim_set_keymap(
+    -- vim.api.nvim_set_keymap(
+    vim.keymap.set(
         mode,
         key,
         result,

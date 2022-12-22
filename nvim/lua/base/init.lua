@@ -1,7 +1,5 @@
 local vim = vim
 
--- for neovide cursor
-vim.o.noshowmode = true
 vim.o.termguicolors = true
 vim.o.background = "dark"
 vim.o.syntax = 'on'

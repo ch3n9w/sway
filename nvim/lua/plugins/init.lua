@@ -14,7 +14,7 @@ local plugins = {
     'wbthomason/packer.nvim',
 
     'kyazdani42/nvim-web-devicons',
-    { 'b3nj5m1n/kommentary', config = config.kommentary },
+    { 'numToStr/Comment.nvim', config = config.comment },
     { 'folke/todo-comments.nvim', config = config.todo },
     { 'windwp/nvim-autopairs', config = config.autopair },
     { 'abecodes/tabout.nvim', config = config.tabout },

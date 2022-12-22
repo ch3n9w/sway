@@ -4,8 +4,8 @@ local Movement = {
     { 'n', '<leader>j', '<C-w>j' },
     { 'n', '<leader>k', '<C-w>k' },
     { 'n', '<leader>l', '<C-w>l' },
-    { 'n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true }},
-    { 'n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true }},
+    { 'n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true } },
+    { 'n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true } },
     { 'n', 'J', ':bprevious!<CR>' },
     { 'n', 'K', ':bnext!<CR>' },
     { 'n', 'H', ':bprevious!<CR>' },
@@ -34,6 +34,8 @@ local Movement = {
 }
 
 local Edit = {
+    -- dont move cursor when back to normal mode
+    { 'i', '<ESC>', '<C-O>:stopinsert<CR>' },
     { 'i', '<C-BS>', '<C-W>' },
     -- remember to configure alacritty with:
     -- - { key: Back, mods: Control, chars: "\x17"}
@@ -42,10 +44,10 @@ local Edit = {
     { 'i', '<C-j>', '<ESC>o' },
     { 'i', '<C-k>', '<ESC>O' },
     -- { 'n', '<LeftRelease>', '<LeftRelease><cmd>startinsert<CR>'},
-    { 'i', '<C-z>', '<cmd>undo<CR>'},
-    { 'i', '<C-r>', '<cmd>redo<CR>'},
-    { 'i', '<C-v>', '<cmd>put<CR>'},
-    { 'n', '<C-v>', '<cmd>put<CR>'},
+    { 'i', '<C-z>', '<cmd>undo<CR>' },
+    { 'i', '<C-r>', '<cmd>redo<CR>' },
+    { 'i', '<C-v>', '<cmd>put<CR>' },
+    { 'n', '<C-v>', '<cmd>put<CR>' },
 }
 
 local Cmd = {
@@ -77,11 +79,11 @@ local Plugins = {
     symbols_outline = {
         { 'n', '<leader>s', ':SymbolsOutline<CR>' },
     },
-    kcommentary = {
-        { 'n', '<C-_>', '<Plug>kommentary_line_default', {} },
-        { 'v', '<C-_>', '<Plug>kommentary_visual_default<ESC>', {} },
-        { 'n', '<C-/>', '<Plug>kommentary_line_default', {} },
-        { 'v', '<C-/>', '<Plug>kommentary_visual_default<ESC>', {} },
+    comment = {
+        { 'n', '<C-_>', require('Comment.api').toggle.linewise.current, {} },
+        { 'v', '<C-_>', require('Comment.api').toggle.linewise.current, {} },
+        { 'n', '<C-/>', require('Comment.api').toggle.linewise.current, {} },
+        { 'v', '<C-/>', require('Comment.api').toggle.linewise.current, {} },
     },
     hop = {
         { 'n', 'm', ':HopWord<CR>' },

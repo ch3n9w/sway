@@ -69,6 +69,7 @@
     - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) 用于命令提示
     - [zsh-extract](https://github.com/le0me55i/zsh-extract) 用于使用``x``命令来快速解压所有类型的压缩文件
     - [zsh-autoswitch-virtualenv](https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv)用于在进入存在python虚拟环境的项目时自动激活虚拟环境，在离开时自动结束虚拟环境
+    - [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete)用于命令行中的补全
     - powerlevel10k 主题
 4. 设置了一些alias，并替代了一些工具
     - [exa](https://github.com/ogham/exa) 替代 ls
@@ -103,30 +104,9 @@ ps: 如果sway改变显示器scale之后发现firefox的字和组件都变得很
 ### 编辑器/IDE (Neovim + nvim-qt + jetbrains)
 #### Neovim
 
-如果有人想不开想要使用我的配置文件的话，安装步骤如下
-- 安装packer.nvim 
-- 进入lua/plugins/init.lua,将以下代码注释
-```lua
-edit_plugins.load()
-interface_plugins.load()
-sideview_plugins.load()
-theme_plugins.load()
-lsp_plugins.load()
-```
+如果有人想不开要用我的配置文件,只需要将配置文件复制到`~/.config/nvim`路径下,然后打开nvim,等待`packer.nvim`完成自动安装,最后执行`PackerUpdate`和`PackerCompile`就可以了.
 
-注释
-
-```lua
--- edit_plugins.load()
--- interface_plugins.load()
--- sideview_plugins.load()
--- theme_plugins.load()
--- lsp_plugins.load()
-```
-- 保存后,将项目内的文件移到配置文件目录下，比如在我的archlinux上面是~/.config/nvim/
-- 打开neovim运行PackerInstall
-- 将刚刚注释的代码解除注释
-- 保存，重新打开就行了
+一些截图:
 
 在neovim中呼出终端
 ![](image/toggleterm.png)

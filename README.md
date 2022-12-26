@@ -72,6 +72,7 @@ just some color settings and wallpaper setting
      - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) for command prompt
      - [zsh-extract](https://github.com/le0me55i/zsh-extract) for fast decompression of all types of archives using the ``x`` command
      - [zsh-autoswitch-virtualenv](https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv) is used to automatically activate the virtual environment when entering a project with a python virtual environment, and automatically end the virtual environment when leaving
+    - [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete) for command completion
      - powerlevel10k theme
 4. Set up some aliases and replace some tools
      - [exa](https://github.com/ogham/exa) replaces ls
@@ -107,22 +108,7 @@ ps: if firefox's font looks extremely small after change scale in sway, try to d
 ### Editor/IDE (Neovim + nvim-qt + jetbrains)
 #### Neovim
 
-install:
-- install packer.nvim
-- open lua/plugins/init.lua, comment following lines:
-```
-edit_plugins.load()
-interface_plugins.load()
-sideview_plugins.load()
-theme_plugins.load()
-lsp_plugins.load()
-```
-and save
-- move configuration folder to you $XDG_CONFIG_HOME
-- open neovim and run PackerInstall
-- uncomment the lines above
-- save and reopen
-- finish
+Just copy the config file to `~/.config/nvim` and open nvim, wait downloading `packer.nvim` finish, and finally execute `PackerUpdate` and `PackerCompile`
 
 some screenshot:
 

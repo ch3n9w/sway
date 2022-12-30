@@ -1,6 +1,6 @@
 {
     "position": "bottom", 
-        "modules-left": ["battery","custom/gpu-usage","memory","temperature","pulseaudio","network",],
+        "modules-left": ["battery","custom/gpu-usage","memory","temperature","pulseaudio","bluetooth","network"],
         "modules-center": ["sway/workspaces"],
         "modules-right": ["custom/forest","custom/books", "clock"],
         "sway/workspaces": {
@@ -19,7 +19,7 @@
                 "4": " ",
                 "5": " ",
                 "6": " ",
-                "7": " ",
+                "7": " ",
                 "8": " ",
                 "9": " ",
                 "10": " ",
@@ -97,7 +97,7 @@
                 "tooltip-format": "{status}",
                 "format-on": "",
                 "format-off": "",
-                "on-click": "rofi-bluetooth &",
+                "on-click": "~/.config/waybar/bin/rofi-bluetooth.sh &",
                 "max-length": 8,
             },
             "custom/books": {

@@ -26,17 +26,7 @@ M = function ()
             },
         },
     }
-    -- lspconfig.sumneko_lua.setup {
-    --     capabilities = capabilities,
-    --     settings = {
-    --         Lua = {
-    --             diagnostics = {
-    --                 globals = { "vim" }
-    --             },
-    --         }
-    --     }
-    -- }
-    local other_servers = {"bashls", "rome", "gopls", "sumneko_lua", "clangd", "rust_analyzer"}
+    local other_servers = {"rome", "gopls", "sumneko_lua", "clangd", "rust_analyzer", "marksman"}
     for _, server in ipairs(other_servers) do
         lspconfig[server].setup {
             capabilities = capabilities,

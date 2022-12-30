@@ -1,4 +1,3 @@
-# zmodload zsh/zprof
 # wayland variables
 # source $XDG_CONFIG_HOME/zsh/wayland
 
@@ -14,9 +13,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 # export https_proxy=http://127.0.0.1:7890
 # export http_proxy=http://127.0.0.1:7890
 # export ALL_PROXY="socks5://127.0.0.1:7891"
-# export no_proxy='*.tuna.*'
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:/usr/lib:$GOPATH/bin
-# export LD_PRELOAD=/usr/lib/libproxychains.so.4
 
 # For jetbrains
 # export IDEA_JDK=/usr/lib/jvm/jre-jetbrains
@@ -35,19 +32,17 @@ xdg_fzf() {
         xdg-open $fzf_result &
     fi
 }
-
+man() {
+    local width=$(tput cols)
+    [ $width -gt $MANWIDTH ] && width=$MANWIDTH
+    env MANWIDTH=$width \
+    man "$@"
+}
 
 export LC_ALL="en_US.UTF-8"
-export NVM_NODEJS_ORG_MIRROR=http://npm.taobao.org/mirrors/node
-# export _JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
-
-
-plugins=(git)
-# ZSH_THEME="funky"
-source /usr/share/oh-my-zsh/oh-my-zsh.sh
 
 bindkey -e
 bindkey -s '\er' 'ranger\n'
@@ -61,12 +56,12 @@ bindkey -s '\ew' 'windows\n'
 # export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 # export CATALINA_HOME=/usr/share/tomcat8530/apache-tomcat-8.5.30
 export CLASSPATH=$HOME:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$CATALINA_HOME/lib
+
 export TODO_DIR=~/.local/share/todo
 export TODO_ACTIONS_DIR=$XDG_CONFIG_HOME/todo/actions
 export TODOTXT_DEFAULT_ACTION=ls
 export TODOTXT_CFG_FILE=$XDG_CONFIG_HOME/todo/todo.cfg
 export TODO_FILE=/home/ch4ser/.local/share/todo/todo.txt
-# export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin:$CATALINA_HOME/bin
 
 # for weblogic 
 # export JAVA_HOME=/home/ch4ser/Tools/Environment/JDK/jdk1.8.0_112
@@ -75,28 +70,27 @@ export TODO_FILE=/home/ch4ser/.local/share/todo/todo.txt
 # export CLASSPATH=$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$CATALINA_HOME/lib
 # export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin:$CATALINA_HOME/bin
 
-# source /usr/share/nvm/init-nvm.sh
+source /usr/share/oh-my-zsh/oh-my-zsh.sh
+# plugins=(git)
+# ZSH_THEME="funky"
+
+
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=9,bold,white,underline'
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-extract/extract.plugin.zsh
-source /usr/share/zsh/plugins/zsh-autoswitch-virtualenv/zsh-autoswitch-virtualenv.plugin.zsh
+source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
-alias term="swaymsg exec alacritty; sleep 0.2; swaymsg layout tabbed; swaymsg exec alacritty; sleep 0.2; swaymsg focus parent ;swaymsg move scratchpad ;"
-alias suspend="sudo systemctl suspend"
-alias save_mode="cpupower-gui profile earth"
-alias normal_mode="cpupower-gui config"
-alias burst_mode="cpupower-gui profile Performance"
+alias ssh="kitty +kitten ssh"
+alias term="swaymsg exec kitty; sleep 0.2; swaymsg layout tabbed; swaymsg exec kitty; sleep 0.2; swaymsg focus parent ;swaymsg move scratchpad ;"
 alias msf="msfconsole"
 alias clear_cache="yay -Scc;yay -Rns $(yay -Qtdq)"
 alias clear_packages="yay -Qtdq | yay -Rs -"
 alias idea="nohup /opt/intellij-idea-ultimate-edition/bin/idea.sh .  >/dev/null 2>&1 &"
 alias check_log="journalctl -p5"
 alias vim="nvim"
-alias neo="neovide"
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR";zoxide add "$LASTDIR"'
 alias nvmstart="source /usr/share/nvm/init-nvm.sh"
 alias java7="/usr/lib/jvm/java-7-openjdk/bin/java"
@@ -117,21 +111,20 @@ alias ubuntu="ssh root@192.168.59.106"
 # whatsupbro
 alias master="ssh root@192.168.31.208"
 alias worker="ssh root@192.168.31.212"
-# alias master="ssh root@18.183.253.212"
-# alias worker="ssh root@13.113.120.210"
+
+alias master_shuita="ssh root@192.168.10.29"
+alias worker_shuita="ssh root@192.168.10.123"
+
 alias sshk="ssh -i .ssh/ssh.pem"
 alias kali="ssh root@192.168.59.107"
 alias centos="ssh root@192.168.59.108"
-alias honeypot="ssh root@180.97.215.74"
 alias k="kubectl"
 alias faas="faas-cli"
 alias cat="bat --style=plain --paging=never"
-alias top="btm"
+alias top="htop"
 alias ls="exa --icons"
 alias t="todo.sh"
 alias cp="rsync -a"
-alias start_clash="sudo systemctl start clash@root.service"
-alias stop_clash="sudo systemctl stop clash@root.service"
 eval "$(zoxide init zsh --cmd cd)"
 alias d="docker"
 alias dc="docker-compose"
@@ -141,11 +134,11 @@ alias mach_on='swaymsg input "1:1:AT_Translated_Set_2_keyboard" events toggle'
 
 todo.sh list
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 zstyle ':completion:*:default' list-colors '=(#b)(-*)(-- *)===34' '=(#b)(-- *)=34'
-
+zstyle ':autocomplete:tab:*' insert-unambiguous yes
+zstyle ':autocomplete:tab:*' widget-style menu-select
 # zprof

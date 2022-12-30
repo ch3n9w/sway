@@ -2,31 +2,34 @@
 
 # ch4xer's personal configuration
 
-This repo aimed to backup my configuration, including configuration of sway, waybar, neovim, alacritty, zsh and ranger. Introductions are as follows. *Warning: Everyone has his/her own habit,this repo is for reference only*
+This repo aimed to backup my configuration, including configuration of sway, waybar, neovim, alacritty, kitty,zsh and ranger. Introductions are as follows. *Warning: Everyone has his/her own habit,this repo is for reference only*
 
 ![](image/first.png)
 
-* [ch4xer's personal configuration](#ch4xers-personal-configuration)
-   * [Configuration](#configuration)
-      * [DE/WM(sway + waybar + swaylock)](#dewmsway--waybar--swaylock)
-         * [sway](#sway)
-         * [waybar](#waybar)
-         * [swaylock(I dont use it because of some bugs)](#swaylocki-dont-use-it-because-of-some-bugs)
-      * [terminal environment(zsh + alacritty)](#terminal-environmentzsh--alacritty)
-         * [zsh](#zsh)
-         * [Alacritty](#alacritty)
-      * [browser(firefox)](#browserfirefox)
-         * [firefox](#firefox)
-      * [filemanager(ranger + dolphin)](#filemanagerranger--dolphin)
-         * [ranger](#ranger)
-      * [Editor/IDE (Neovim + nvim-qt + jetbrains)](#editoride-neovim--nvim-qt--jetbrains)
-         * [Neovim](#neovim)
-         * [nvim-qt](#nvim-qt)
-         * [jetbrains](#jetbrains)
-      * [reader(zathura+zotero)](#readerzathurazotero)
-         * [zathura](#zathura)
-         * [zotero](#zotero)
-   * [Others](#others)
+<!-- toc -->
+
+- [Configuration](#configuration)
+  * [DE/WM(sway + waybar + swaylock)](#dewmsway--waybar--swaylock)
+    + [sway](#sway)
+    + [waybar](#waybar)
+    + [swaylock(I dont use it because of some bugs)](#swaylocki-dont-use-it-because-of-some-bugs)
+  * [terminal environment(zsh + kitty)](#terminal-environmentzsh--kitty)
+    + [zsh](#zsh)
+    + [Kitty](#kitty)
+  * [browser(firefox)](#browserfirefox)
+    + [firefox](#firefox)
+  * [filemanager(ranger + dolphin)](#filemanagerranger--dolphin)
+    + [ranger](#ranger)
+  * [Editor/IDE (Neovim + nvim-qt + jetbrains)](#editoride-neovim--nvim-qt--jetbrains)
+    + [Neovim](#neovim)
+    + [nvim-qt](#nvim-qt)
+    + [jetbrains](#jetbrains)
+  * [reader(zathura+zotero)](#readerzathurazotero)
+    + [zathura](#zathura)
+    + [zotero](#zotero)
+- [Others](#others)
+
+<!-- tocstop -->
 
 ## Configuration
 ### DE/WM(sway + waybar + swaylock)
@@ -63,7 +66,7 @@ The complete collection of symbols is in [yrwq/nerdy](https://github.com/yrwq/ne
 #### swaylock(I dont use it because of some bugs)
 just some color settings and wallpaper setting
 
-### terminal environment(zsh + alacritty)
+### terminal environment(zsh + kitty)
 #### zsh
 1. Add todo.sh command, every time you open the terminal, it will list the to-do items of the day
 2. fzf option setting, cooperate with bat to realize fuzzy file preview, and define vim_fzf function to fuzzy query and open the query result file with nvim
@@ -76,14 +79,16 @@ just some color settings and wallpaper setting
      - powerlevel10k theme
 4. Set up some aliases and replace some tools
      - [exa](https://github.com/ogham/exa) replaces ls
-     - [bottom](https://github.com/ClementTsang/bottom) instead of top
+     - [htop](https://htop.dev/) instead of top
      - [bat](https://github.com/sharkdp/bat) replaces cat
      - [zoxide](https://github.com/ajeetdsouza/zoxide) replaces cd and autojump
      - [rsync](https://github.com/WayneD/rsync) replaces cp
 
-#### Alacritty
-Using the Tokyonight theme and Hack Nerd Font, the profile file has been given
+#### Kitty
 
+Do not use alacritty any more, kitty is just more advanced.
+
+Using the Tokyonight theme and Hack Nerd Font, the profile file has been given
 
 ### browser(firefox)
 
@@ -125,7 +130,7 @@ debug(golang)
 ![](image/dap.png)
 
 #### nvim-qt
-fcitx5 cannot input chinese under wayland alacritty, so I use nvim-qt for chinse note-taking.
+fcitx5 cannot input chinese under wayland kitty, so I use nvim-qt for chinse note-taking.
 
 nvim-qt use `ginit.vim`for configuration，
 

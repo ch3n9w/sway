@@ -6,6 +6,7 @@ cp -r ~/.config/zathura ./
 cp -r ~/.config/nvim ./
 cp -r ~/.config/rofi ./
 cp -r ~/.config/xkb ./
+cp -r ~/.config/kitty ./
 rm ./nvim/intelephense_license_key
 rm ./waybar/bin/forest
 cp -r ~/.zshrc ./zsh/zshrc

@@ -3,27 +3,30 @@
 
 ![](image/first.png)
 
-* [ch4ser 的私人配置](#ch4ser-的私人配置)
-   * [常用软件配置](#常用软件配置)
-      * [桌面环境(sway + waybar + swaylock)](#桌面环境sway--waybar--swaylock)
-         * [sway](#sway)
-         * [waybar](#waybar)
-         * [swaylock(由于软件有一些bug,因此没有使用)](#swaylock由于软件有一些bug因此没有使用)
-      * [终端环境(zsh + alacritty)](#终端环境zsh--alacritty)
-         * [zsh](#zsh)
-         * [Alacritty](#alacritty)
-      * [浏览器(firefox)](#浏览器firefox)
-         * [firefox](#firefox)
-      * [文件管理(ranger + dolphin)](#文件管理ranger--dolphin)
-         * [ranger](#ranger)
-      * [编辑器/IDE (Neovim + nvim-qt + jetbrains)](#编辑器ide-neovim--nvim-qt--jetbrains)
-         * [Neovim](#neovim)
-         * [nvim-qt](#nvim-qt)
-         * [jetbrains](#jetbrains)
-      * [阅读器(zathura)](#阅读器zathura)
-         * [zathura](#zathura)
-         * [zotero](#zotero)
-   * [Others](#others)
+<!-- toc -->
+
+- [常用软件配置](#%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE)
+  * [桌面环境(sway + waybar + swaylock)](#%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83sway--waybar--swaylock)
+    + [sway](#sway)
+    + [waybar](#waybar)
+    + [swaylock(由于软件有一些bug,因此没有使用)](#swaylock%E7%94%B1%E4%BA%8E%E8%BD%AF%E4%BB%B6%E6%9C%89%E4%B8%80%E4%BA%9Bbug%E5%9B%A0%E6%AD%A4%E6%B2%A1%E6%9C%89%E4%BD%BF%E7%94%A8)
+  * [终端环境(zsh + kitty)](#%E7%BB%88%E7%AB%AF%E7%8E%AF%E5%A2%83zsh--kitty)
+    + [zsh](#zsh)
+    + [Kitty](#kitty)
+  * [浏览器(firefox)](#%E6%B5%8F%E8%A7%88%E5%99%A8firefox)
+    + [firefox](#firefox)
+  * [文件管理(ranger + dolphin)](#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86ranger--dolphin)
+    + [ranger](#ranger)
+  * [编辑器/IDE (Neovim + nvim-qt + jetbrains)](#%E7%BC%96%E8%BE%91%E5%99%A8ide-neovim--nvim-qt--jetbrains)
+    + [Neovim](#neovim)
+    + [nvim-qt](#nvim-qt)
+    + [jetbrains](#jetbrains)
+  * [阅读器(zathura+zotero)](#%E9%98%85%E8%AF%BB%E5%99%A8zathurazotero)
+    + [zathura](#zathura)
+    + [zotero](#zotero)
+- [Others](#others)
+
+<!-- tocstop -->
 
 ## 常用软件配置
 ### 桌面环境(sway + waybar + swaylock)
@@ -60,7 +63,7 @@
 #### swaylock(由于软件有一些bug,因此没有使用)
 里面主要是一些颜色配置和壁纸设置，壁纸的路径请自行修改
 
-### 终端环境(zsh + alacritty)
+### 终端环境(zsh + kitty)
 #### zsh
 1. 添加todo.sh命令，每次打开终端都会罗列一天中的待办事项
 2. fzf option设置，配合bat实现模糊文件预览，定义vim_fzf函数来模糊查询并用nvim打开查询结果文件
@@ -73,12 +76,15 @@
     - powerlevel10k 主题
 4. 设置了一些alias，并替代了一些工具
     - [exa](https://github.com/ogham/exa) 替代 ls
-    - [bottom](https://github.com/ClementTsang/bottom) 替代 top
+    - [htop](https://htop.dev/) 替代 top
     - [bat](https://github.com/sharkdp/bat) 替代 cat
     - [zoxide](https://github.com/ajeetdsouza/zoxide) 替代 cd and autojump
     - [rsync](https://github.com/WayneD/rsync) 替代 cp
 
-#### Alacritty
+#### Kitty
+
+不再使用alacritty, kitty的开发相比较alacritty更加积极, 比其他的传统terminal也更具备现代性.
+
 使用Tokyonight主题和Hack Nerd Font字体,profile文件已经给出
 
 ### 浏览器(firefox)
@@ -122,7 +128,7 @@ ps: 如果sway改变显示器scale之后发现firefox的字和组件都变得很
 ![](image/dap.png)
 
 #### nvim-qt
-alacritty在wayland环境下无法输入中文，为了方便做笔记，我选用了nvim-qt来作为自己的笔记软件。
+kitty在wayland环境下无法输入中文，为了方便做笔记，我选用了nvim-qt来作为自己的笔记软件。
 
 nvim-qt使用`ginit.lua`作为配置文件，要让其加载nvim的lua配置文件
 

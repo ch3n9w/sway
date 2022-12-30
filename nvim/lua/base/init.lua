@@ -2,7 +2,7 @@ local vim = vim
 
 vim.o.termguicolors = true
 vim.o.background = "dark"
-vim.o.syntax = 'on'
+-- vim.o.syntax = 'on'
 vim.o.errorbells = false
 vim.o.mouse = 'a'
 -- have problem in neovim-qt&neovide

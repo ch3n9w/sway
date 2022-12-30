@@ -40,11 +40,15 @@ assign [class="Steam"] 7
 assign [class="hmcl"] 7
 assign [class="Minecraft"] 7
 assign [app_id="FeelUOwn"] 11
+for_window [title="ranger_kitty"] {
+    # move scratchpad
+    # floating enable
+}
+
 
 # titlebar_border_thickness 2
 set $mod Mod4
 font Hack Nerd Font Bold 9
-
 
 # Home row direction keys, like vim
 set $left h
@@ -53,14 +57,16 @@ set $up k
 set $right l
 
 # unable to use fcitx5
-# set $term alacritty 
-set $term alacritty 
+# set $term kitty
+set $term kitty
 set $menu rofi -show drun -m -1 -theme ~/.config/rofi/nord.rasi | xargs swaymsg exec --
 
 
 # output * bg ~/Media/Pictures/1080/wallpaper_switch/5-54902_high-resolution-macbook-wallpaper-hd.jpg fill
 output * bg ~/Media/Pictures/landscape/city_from_sky.jpg fill
 # output * bg ~/Media/Pictures/landscape/rain_city.png fill
+# output * bg ~/Media/Pictures/GameorCarton/arknight/FfgdNAbakAQ_WeB.jpg fill
+# output * bg ~/Media/Pictures/1080/OS/thinkpad_wallpaper.png fill
 # output * bg ~/Media/Pictures/jarvis.jpg fill
 # output * bg ~/Media/Pictures/1080/spaceship.png fill
 # output * bg ~/Media/Pictures/1080/others/Minecraft/daemon_sword.jpg fill
@@ -121,6 +127,9 @@ bindsym $mod+0 workspace number 10
 
 bindsym --whole-window --border $mod+button5 workspace next
 bindsym --whole-window --border $mod+button4 workspace prev
+
+# bindgesture swipe:right workspace prev 
+# bindgesture swipe:left workspace next
 bindsym $mod+Left  workspace prev
 bindsym $mod+Right workspace next
 bindsym Mod1+1 workspace prev
@@ -169,14 +178,16 @@ bindsym $mod+f fullscreen
 
 bindsym $mod+space floating toggle
 
-
-#
 # INFO: Scratchpad:
 bindsym $mod+Control+s move scratchpad
+# bindsym $mod+s exec swaymsg [title="ranger_kitty"] scratchpad show || $(exec $term --title 'ranger_kitty' & sleep 0.2 && swaymsg [title="ranger_kitty"] scratchpad show)
 bindsym $mod+s scratchpad show
 
 # INFO: Hardware setting:
 input "9741:19:DAREU_EK871_BT_keyboard" {
+    xkb_layout custom-pc
+}
+input "9741:19:EK871_BT_keyboard_Keyboard" {
     xkb_layout custom-pc
 }
 input "1:1:AT_Translated_Set_2_keyboard" {
@@ -263,4 +274,5 @@ exec swayidle -w \
 # make waybar start immediately
 exec hash dbus-update-activation-environment 2>/dev/null && \
     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
 

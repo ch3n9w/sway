@@ -80,10 +80,10 @@ local Plugins = {
         { 'n', '<leader>s', ':SymbolsOutline<CR>' },
     },
     comment = {
-        { 'n', '<C-_>', require('Comment.api').toggle.linewise.current, {} },
-        { 'v', '<C-_>', require('Comment.api').toggle.linewise.current, {} },
-        { 'n', '<C-/>', require('Comment.api').toggle.linewise.current, {} },
-        { 'v', '<C-/>', require('Comment.api').toggle.linewise.current, {} },
+        {'v', '<C-_>', '<Plug>(comment_toggle_linewise_visual)'},
+        {'v', '<C-/>', '<Plug>(comment_toggle_linewise_visual)'},
+        { 'n', '<C-_>', '<Plug>(comment_toggle_linewise_current)' },
+        { 'n', '<C-/>', '<Plug>(comment_toggle_linewise_current)' },
     },
     hop = {
         { 'n', 'm', ':HopWord<CR>' },

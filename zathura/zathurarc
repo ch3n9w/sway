@@ -59,3 +59,5 @@ set recolor true
 
 map [normal] <Space> scroll half-down
 map [normal] <S-Space> scroll half-up
+
+include catppuccin-mocha

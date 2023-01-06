@@ -58,6 +58,8 @@ local plugins = {
     -- orgmode !!!
     { 'nvim-neorg/neorg', config = config.neorg },
 
+    -- { 'edluffy/hologram.nvim', config = config.hologram },
+
     -- debugger
     { 'mfussenegger/nvim-dap', requires = { 'rcarriga/nvim-dap-ui' }, config = config.dap },
     -- debug for golang, need pacman -S delve

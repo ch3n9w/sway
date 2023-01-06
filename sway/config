@@ -19,8 +19,6 @@ assign [app_id="nvim-qt"] 4
 assign [title="Freeplane"] 4
 assign [class="burp"] 8
 assign [app_id="wireshark"] 8
-assign [app_id="mpv"] 6
-assign [class="music"] 6
 assign [title="Wine System Tray"] 6
 assign [title="Godzilla"] 6
 assign [class="behinder"] 6
@@ -36,10 +34,11 @@ assign [class="Zotero"] 5
 assign [app_id="waydroid"] 7 
 assign [app_id="Waydroid"] 7
 assign [class="VirtualBox"] 9
-assign [class="Steam"] 7
-assign [class="hmcl"] 7
-assign [class="Minecraft"] 7
-assign [app_id="FeelUOwn"] 11
+# assign [class="Steam"] 6
+# assign [class="hmcl"] 7
+# assign [class="Minecraft"] 7
+assign [app_id="mpv"] 7
+assign [app_id="FeelUOwn"] 7
 for_window [title="ranger_kitty"] {
     # move scratchpad
     # floating enable
@@ -48,7 +47,7 @@ for_window [title="ranger_kitty"] {
 
 # titlebar_border_thickness 2
 set $mod Mod4
-font Hack Nerd Font Bold 9
+font Hack Nerd Font Bold 10
 
 # Home row direction keys, like vim
 set $left h
@@ -59,7 +58,7 @@ set $right l
 # unable to use fcitx5
 # set $term kitty
 set $term kitty
-set $menu rofi -show drun -m -1 -theme ~/.config/rofi/nord.rasi | xargs swaymsg exec --
+set $menu rofi -show drun -m -1 -theme ~/.config/rofi/tokyonight.rasi | xargs swaymsg exec --
 
 
 # output * bg ~/Media/Pictures/1080/wallpaper_switch/5-54902_high-resolution-macbook-wallpaper-hd.jpg fill
@@ -209,8 +208,8 @@ input "type:touchpad" {
         pointer_accel 0.6
 }
 
-bindswitch lid:on output eDP-1 disable
-bindswitch lid:off output eDP-1 enable
+bindswitch --reload --locked lid:on output eDP-1 disable
+bindswitch --reload --locked lid:off output eDP-1 enable
 
 bindsym --locked XF86AudioRaiseVolume exec sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume @DEFAULT_SINK@ +2%"
 bindsym --locked XF86AudioLowerVolume exec sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume @DEFAULT_SINK@ -2%"
@@ -258,6 +257,7 @@ bar {
     swaybar_command waybar
 }
 
+exec swaync
 exec_always autotiling
 exec fcitx5 
 

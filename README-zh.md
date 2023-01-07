@@ -32,7 +32,7 @@
 ### 桌面环境(sway + waybar + swaylock)
 #### sway
 1. 为不同应用分配了不同的workspace
-2. 设置字体为Hack Nerd Font
+2. 设置字体为Firacode Nerd Font
 3. *sway/config 中的壁纸路径请自行修改*
 4. 使用rofi作为应用启动的菜单
 5. 使用slurp配合wl-copy来实现方便快速的截图复制功能
@@ -85,7 +85,7 @@
 
 不再使用alacritty, kitty的开发相比较alacritty更加积极, 比其他的传统terminal也更具备现代性.
 
-使用Tokyonight主题和Hack Nerd Font字体,profile文件已经给出
+使用Tokyonight主题和Firacode Nerd Font字体,profile文件已经给出
 
 ### 浏览器(firefox)
 

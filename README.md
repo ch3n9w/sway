@@ -35,7 +35,7 @@ This repo aimed to backup my configuration, including configuration of sway, way
 ### DE/WM(sway + waybar + swaylock)
 #### sway
 1. Assign different workspaces to different applications
-2. Set the font to Hack Nerd Font 
+2. Set the font to Firacode Nerd Font 
 3. *Please modify the wallpaper path in sway/config by yourself*
 4. Use rofi as the menu for application launch
 5. Use slurp with wl-copy to achieve convenient and fast screenshot copy function
@@ -88,7 +88,7 @@ just some color settings and wallpaper setting
 
 Do not use alacritty any more, kitty is just more advanced.
 
-Using the Tokyonight theme and Hack Nerd Font, the profile file has been given
+Using the Tokyonight theme and Firacode Nerd Font, the profile file has been given
 
 ### browser(firefox)
 

@@ -14,6 +14,7 @@ assign [app_id="terminal"] 1
 assign [title="Visual Studio Code"] 3
 assign [class="jetbrains"] 3
 assign [app_id="neovide"] 3
+assign [app_id="qtcreator"] 3
 assign [class="Typora"] 4
 assign [app_id="nvim-qt"] 4
 assign [title="Freeplane"] 4
@@ -44,10 +45,14 @@ for_window [title="ranger_kitty"] {
     # floating enable
 }
 
+for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The Key"] {
+  floating enable
+  sticky enable
+}
 
 # titlebar_border_thickness 2
 set $mod Mod4
-font Hack Nerd Font Bold 10
+font Firacode Nerd Font Bold 10
 
 # Home row direction keys, like vim
 set $left h
@@ -59,6 +64,7 @@ set $right l
 # set $term kitty
 set $term kitty
 set $menu rofi -show drun -m -1 -theme ~/.config/rofi/tokyonight.rasi | xargs swaymsg exec --
+set $run rofi -show run -m -1 -theme ~/.config/rofi/tokyonight.rasi | xargs swaymsg exec --
 
 
 # output * bg ~/Media/Pictures/1080/wallpaper_switch/5-54902_high-resolution-macbook-wallpaper-hd.jpg fill
@@ -82,6 +88,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+p reload
 bindsym $mod+q kill
 bindsym $mod+d exec $menu
+bindsym $mod+r exec $run
 bindsym Mod1+Ctrl+a exec grim -g "$(slurp)" - | swappy -f - -o - | wl-copy
 # bindsym $mod+b exec --no-startup-id rofi-bluetooth
 
@@ -257,7 +264,7 @@ bar {
     swaybar_command waybar
 }
 
-exec swaync
+exec dunst
 exec_always autotiling
 exec fcitx5 
 
@@ -270,6 +277,7 @@ exec swayidle -w \
          timeout 1800 'sudo systemctl stop waydroid-container.service;sudo systemctl suspend;' 
 
 # bindsym Ctrl+Shift+v exec "wl-paste>/tmp/paste;/usr/bin/sed ':a;N;$!ba;s/[\r\n]//g' /tmp/paste>/tmp/after-sed;wl-copy</tmp/after-sed"
+bindsym Ctrl+Mod1+z exec ~/.config/sway/bin/translate.sh
 
 # make waybar start immediately
 exec hash dbus-update-activation-environment 2>/dev/null && \

@@ -97,7 +97,7 @@
                 "format-on": "",
                 "format-off": "",
                 "on-click": "~/.config/waybar/bin/rofi-bluetooth.sh &",
-                "max-length": 8,
+                "max-length": 5,
             },
             "custom/books": {
                 "on-click": "~/.config/waybar/bin/books-search.sh",

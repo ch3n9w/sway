@@ -1,5 +1,6 @@
 # wayland variables
 # source $XDG_CONFIG_HOME/zsh/wayland
+# zmodload zsh/zprof
 
 export WORKSPACE=$HOME/.local/workspace
 export gw="http://120.53.236.211:8081"
@@ -46,31 +47,36 @@ bindkey -e
 bindkey -s '\er' 'ranger\n'
 bindkey -s '\ef' 'xdg_fzf\n'
 bindkey -s '\ed' 'dolphin .\n'
-bindkey -s '\ew' 'windows\n'
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+bindkey '^H' backward-kill-word
 
 # for tomcat debug
 # export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 # export JRE_HOME=$JAVA_HOME/jre
 # export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 # export CATALINA_HOME=/usr/share/tomcat8530/apache-tomcat-8.5.30
-export CLASSPATH=$HOME:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$CATALINA_HOME/lib
-
-export TODO_DIR=~/.local/share/todo
-export TODO_ACTIONS_DIR=$XDG_CONFIG_HOME/todo/actions
-export TODOTXT_DEFAULT_ACTION=ls
-export TODOTXT_CFG_FILE=$XDG_CONFIG_HOME/todo/todo.cfg
-export TODO_FILE=/home/ch4ser/.local/share/todo/todo.txt
-
+#
 # for weblogic 
 # export JAVA_HOME=/home/ch4ser/Tools/Environment/JDK/jdk1.8.0_112
 # export JRE_HOME=$JAVA_HOME/jre
 # export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 # export CLASSPATH=$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$CATALINA_HOME/lib
 # export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin:$CATALINA_HOME/bin
+export CLASSPATH=$HOME:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$CATALINA_HOME/lib
 
-source /usr/share/oh-my-zsh/oh-my-zsh.sh
-# plugins=(git)
-# ZSH_THEME="funky"
+export TODO_DIR=~/.local/share/todo
+export TODO_ACTIONS_DIR=$XDG_CONFIG_HOME/todo/actions
+export TODOTXT_DEFAULT_ACTION=ls
+export TODOTXT_CFG_FILE=$XDG_CONFIG_HOME/todo/todo.cfg
+export TODO_FILE=~/.local/share/todo/todo.txt
+
+# let zsh-autosuggestions to work
+export SAVEHIST=1000
+export HISTFILE=~/.zsh_history
+# This will make only alphanumeric characters count as words.
+# better experience for ctrl+left/right
+export WORDCHARS=''
 
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -80,6 +86,11 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-autoswitch-virtualenv/zsh-autoswitch-virtualenv.plugin.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+zstyle ':completion:*' list-colors '=*=34'
+zstyle ':completion:*:default' list-colors '=(#b)(-*)(-- *)===34' '=(#b)(-- *)=34'
+zstyle ':autocomplete:tab:*' insert-unambiguous yes
+zstyle ':autocomplete:tab:*' widget-style menu-select
 
 
 alias ssh="kitty +kitten ssh"
@@ -96,11 +107,9 @@ alias java7="/usr/lib/jvm/java-7-openjdk/bin/java"
 alias javac7="/usr/lib/jvm/java-7-openjdk/bin/javac"
 alias java8="/usr/lib/jvm/java-8-openjdk/bin/java"
 alias javac8="/usr/lib/jvm/java-8-openjdk/bin/javac"
-alias oracle8="/home/ch4ser/Tools/Environment/JDK/jdk1.8.0_112/bin/java"
 alias php="php7"
 alias py="python"
 alias ipy="ipython"
-alias server="ssh root@39.105.176.37"
 alias tencent="ssh root@120.53.236.211"
 alias rasp="ssh root@192.168.31.135"
 alias ubuntu="ssh root@192.168.59.106"
@@ -110,9 +119,6 @@ alias ubuntu="ssh root@192.168.59.106"
 # whatsupbro
 alias master="ssh root@192.168.31.208"
 alias worker="ssh root@192.168.31.212"
-
-alias master_shuita="ssh root@192.168.10.29"
-alias worker_shuita="ssh root@192.168.10.123"
 
 alias sshk="ssh -i .ssh/ssh.pem"
 alias kali="ssh root@192.168.59.107"
@@ -133,7 +139,4 @@ alias mach_on='swaymsg input "1:1:AT_Translated_Set_2_keyboard" events toggle'
 
 todo.sh list
 
-zstyle ':completion:*:default' list-colors '=(#b)(-*)(-- *)===34' '=(#b)(-- *)=34'
-zstyle ':autocomplete:tab:*' insert-unambiguous yes
-zstyle ':autocomplete:tab:*' widget-style menu-select
 # zprof

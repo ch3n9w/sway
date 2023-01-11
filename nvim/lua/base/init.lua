@@ -115,7 +115,6 @@ vim.o.guifont = 'Hack Nerd Font:h20'
 -- vim.o.guifont = 'Hack:h20'
 vim.g.neovide_transparency = 1
 vim.g.neovide_cursor_vfx_mode = "wireframe"
-vim.g.neovide_cursor_trail_size = 0
 -- adjust this to disable animation
 vim.g.neovide_cursor_animation_length = 0
 vim.g.neovide_cursor_trail_size = 0

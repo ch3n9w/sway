@@ -71,6 +71,8 @@ local plugins = {
     'onsails/lspkind-nvim',
     { 'ray-x/lsp_signature.nvim', config = config.signature },
     { 'phaazon/hop.nvim', config = config.hop },
+    -- {'vim-pandoc/vim-pandoc-syntax'},
+    -- {'vim-pandoc/vim-pandoc'},
 }
 
 

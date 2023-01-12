@@ -72,12 +72,12 @@ export TODOTXT_CFG_FILE=$XDG_CONFIG_HOME/todo/todo.cfg
 export TODO_FILE=~/.local/share/todo/todo.txt
 
 # let zsh-autosuggestions to work
-export SAVEHIST=1000
+export SAVEHIST=10000
 export HISTFILE=~/.zsh_history
 # This will make only alphanumeric characters count as words.
 # better experience for ctrl+left/right
 export WORDCHARS=''
-
+export LS_COLORS='no=00;37:fi=00:di=00;34:ln=04;36:pi=40;33:so=01;35:bd=40;33;01:'
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-extract/extract.plugin.zsh
@@ -87,8 +87,10 @@ source /usr/share/zsh/plugins/zsh-autoswitch-virtualenv/zsh-autoswitch-virtualen
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-zstyle ':completion:*' list-colors '=*=34'
 zstyle ':completion:*:default' list-colors '=(#b)(-*)(-- *)===34' '=(#b)(-- *)=34'
+# zstyle ':completion:*' list-colors '=*=34'
+zstyle ':completiom:*' list-colors 'di=1:fi=96:*.m=31:*.py=32:*.txt=36:*.out=35'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}  
 zstyle ':autocomplete:tab:*' insert-unambiguous yes
 zstyle ':autocomplete:tab:*' widget-style menu-select
 

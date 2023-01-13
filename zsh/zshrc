@@ -95,7 +95,6 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':autocomplete:tab:*' insert-unambiguous yes
 zstyle ':autocomplete:tab:*' widget-style menu-select
 zstyle ':autocomplete:*' list-lines 50
-zstyle ':autocomplete:*' insert-unambiguous yes
 
 
 alias ssh="kitty +kitten ssh"

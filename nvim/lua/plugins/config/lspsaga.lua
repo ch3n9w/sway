@@ -1,15 +1,26 @@
-M = function ()
-    require('lspsaga').init_lsp_saga({
-        code_action_keys = {
-            quit = '<ESC>',
-            exec = '<CR>',
+M = function()
+    require('lspsaga').setup({
+        ui = {
+            border = 'solid',
+            colors = {
+                -- normal_bg = '',
+            }
+        },
+        code_action = {
+            keys = {
+                quit = '<ESC>',
+                exec = '<CR>',
+            }
         },
         definition_action_keys = {
             edit = '<CR>',
             vsplit = 'v',
             quit = '<ESC>',
         },
-        rename_action_quit = '<ESC>',
+        rename = {
+            quit = '<ESC>',
+            exec = '<CR>',
+        },
         code_action_icon = "",
     })
 end

@@ -26,6 +26,7 @@ assign [class="behinder"] 6
 # assign [app_id="dolphin"] 6
 for_window [app_id="dolphin"] floating enable
 assign [app_id="Nautilus"] 6
+assign [class="wemeetapp"] 7
 assign [title="WPS"] 10
 assign [title="Spreadsheets"] 10
 assign [app_id="libreoffice"] 10
@@ -248,7 +249,7 @@ output 'Dell Inc. DELL U2718QM MYPFK98N094L' {
 #         pos 0 0
 #     }
 
-default_border pixel 5
+default_border pixel 2
 default_floating_border pixel 2
 hide_edge_borders smart
 # client.focused           #2e9ef4 #0bf0d4 #FFFFFF #0bf0d4

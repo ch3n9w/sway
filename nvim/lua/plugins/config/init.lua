@@ -25,6 +25,8 @@ config.todo = require('plugins.config.todo')
 config.toggleterm = require('plugins.config.toggleterm')
 config.filetree = require('plugins.config.filetree')
 config.treesitter = require('plugins.config.treesitter')
+config.notify = require('plugins.config.notify')
+config.imguploader = require('plugins.config.imguploader')
 
 
 return config

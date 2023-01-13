@@ -1,4 +1,4 @@
-M = function ()
+M = function()
     require('mason').setup()
     require('mason-lspconfig').setup()
     local lspconfig = require('lspconfig')
@@ -8,25 +8,24 @@ M = function ()
         capabilities = capabilities,
         init_options = {
             -- for intelephense
-            licenceKey='/home/ch4ser/.config/nvim/intelephense_license_key',
-            globalStoragePath='/home/ch4ser/.config',
+            licenceKey = '/home/ch4ser/.config/nvim/intelephense_license_key',
+            globalStoragePath = '/home/ch4ser/.config',
         },
-        single_file_mode=true
+        single_file_mode = true
     }
     lspconfig.pyright.setup {
-        capabilities = capabilities,
+        -- capabilities = capabilities,
         settings = {
             python = {
                 analysis = {
                     autoSearchPaths = true,
                     useLibraryCodeForTypes = true,
                     diagnosticMode = 'workspace',
-                    typeCheckingMode = 'off'
                 },
             },
         },
     }
-    local other_servers = {"rome", "gopls", "sumneko_lua", "clangd", "rust_analyzer", "marksman", }
+    local other_servers = { "rome", "gopls", "sumneko_lua", "clangd", "rust_analyzer"}
     for _, server in ipairs(other_servers) do
         lspconfig[server].setup {
             capabilities = capabilities,

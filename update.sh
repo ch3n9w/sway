@@ -7,6 +7,7 @@ cp -r ~/.config/nvim ./
 cp -r ~/.config/rofi ./
 cp -r ~/.config/xkb ./
 cp -r ~/.config/kitty ./
+cp -r ~/.config/dunst ./
 rm ./nvim/intelephense_license_key
 rm ./waybar/bin/forest
 cp -r ~/.zshrc ./zsh/zshrc

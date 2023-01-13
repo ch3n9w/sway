@@ -41,8 +41,6 @@ local plugins = {
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
             'hrsh7th/cmp-nvim-lsp',
-            -- Useful status updates for LSP
-            'j-hui/fidget.nvim',
         },
         config = config.lsp
     },
@@ -71,8 +69,8 @@ local plugins = {
     'onsails/lspkind-nvim',
     { 'ray-x/lsp_signature.nvim', config = config.signature },
     { 'phaazon/hop.nvim', config = config.hop },
-    -- {'vim-pandoc/vim-pandoc-syntax'},
-    -- {'vim-pandoc/vim-pandoc'},
+    {'rcarriga/nvim-notify', config = config.notify},
+    {'ch3n9w/nvim-github-uploader', config = config.imguploader},
 }
 
 

@@ -72,7 +72,8 @@ export TODOTXT_CFG_FILE=$XDG_CONFIG_HOME/todo/todo.cfg
 export TODO_FILE=~/.local/share/todo/todo.txt
 
 # let zsh-autosuggestions to work
-export SAVEHIST=10000
+export SAVEHIST=1000
+export HISTSIZE=SAVEHIST
 export HISTFILE=~/.zsh_history
 # This will make only alphanumeric characters count as words.
 # better experience for ctrl+left/right
@@ -93,6 +94,8 @@ zstyle ':completiom:*' list-colors 'di=1:fi=96:*.m=31:*.py=32:*.txt=36:*.out=35'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}  
 zstyle ':autocomplete:tab:*' insert-unambiguous yes
 zstyle ':autocomplete:tab:*' widget-style menu-select
+zstyle ':autocomplete:*' list-lines 50
+zstyle ':autocomplete:*' insert-unambiguous yes
 
 
 alias ssh="kitty +kitten ssh"

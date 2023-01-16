@@ -277,6 +277,9 @@ exec fcitx5
 exec swayidle -w \
          timeout 1800 'sudo systemctl stop waydroid-container.service;sudo systemctl suspend;' 
 
+# for GUI apps that needs root access, like timeshift
+# exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 
+
 # bindsym Ctrl+Shift+v exec "wl-paste>/tmp/paste;/usr/bin/sed ':a;N;$!ba;s/[\r\n]//g' /tmp/paste>/tmp/after-sed;wl-copy</tmp/after-sed"
 bindsym Ctrl+Mod1+z exec ~/.config/sway/bin/translate.sh
 

@@ -69,7 +69,7 @@ local plugins = {
     'onsails/lspkind-nvim',
     { 'ray-x/lsp_signature.nvim', config = config.signature },
     { 'phaazon/hop.nvim', config = config.hop },
-    {'rcarriga/nvim-notify', config = config.notify},
+    -- {'rcarriga/nvim-notify', config = config.notify},
     {'ch3n9w/nvim-github-uploader', config = config.imguploader},
 }
 

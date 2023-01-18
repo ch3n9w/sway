@@ -39,7 +39,6 @@ man() {
 }
 
 export LC_ALL="en_US.UTF-8"
-
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 
@@ -82,7 +81,6 @@ setopt sharehistory
 export WORDCHARS=''
 export LS_COLORS='no=00;37:fi=00:di=00;34:ln=04;36:pi=40;33:so=01;35:bd=40;33;01:'
 
-
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-extract/extract.plugin.zsh
 source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
@@ -115,9 +113,7 @@ alias java7="/usr/lib/jvm/java-7-openjdk/bin/java"
 alias javac7="/usr/lib/jvm/java-7-openjdk/bin/javac"
 alias java8="/usr/lib/jvm/java-8-openjdk/bin/java"
 alias javac8="/usr/lib/jvm/java-8-openjdk/bin/javac"
-alias php="php7"
-alias py="python"
-alias ipy="ipython"
+alias py="ipython"
 alias server="ssh root@103.149.91.46 -p 65522"
 alias tencent="ssh root@120.53.236.211"
 alias rasp="ssh root@192.168.31.135"

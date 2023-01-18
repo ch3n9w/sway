@@ -1,21 +1,20 @@
 [Appearance]
-AntiAliasFonts=true
-BoldIntense=false
-ColorScheme=Solarized
-Font=JetBrainsMono Nerd Font,20,-1,5,75,0,0,0,0,0,Bold
-UseFontLineChararacters=true
+ColorScheme=tokyonight
+EmojiFont=Noto Color Emoji,12,-1,5,50,0,0,0,0,0
+Font=FiraCode Nerd Font,18,-1,5,50,0,0,0,0,0
 
 [Cursor Options]
-CustomCursorColor=165,165,165
-CustomCursorTextColor=172,181,169
-UseCustomCursorColor=true
+CursorShape=1
 
 [General]
-Command=/bin/zsh
-Environment=TERM=xterm-256color,COLORTERM=truecolor
 Name=Profile 1
 Parent=FALLBACK/
-ShowTerminalSizeHint=false
+
+[Keyboard]
+KeyBindings=default
 
 [Scrolling]
 ScrollBarPosition=2
+
+[Terminal Features]
+BlinkingCursorEnabled=true

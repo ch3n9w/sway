@@ -2,7 +2,6 @@ xwayland enabled
 # let title bar friendly with chinese
 for_window [title=".*"] title_format ゜%title゜
 title_align center
-# for_window [app_id="telegramdesktop"] floating enable
 # for_window [title="^(File|Folder)\s*Already Exists\s*—\s*" app_id="dolphin|org.kde.ark"] floating enable
 # for_window [title="^(Copying|Moving|Deleting)\s*—\s*Dolphin" app_id="dolphin"] inhibit_idle open; floating enable
 # for_window [title="^Extracting\s" app_id="(dolphin|org.kde.ark)"] inhibit_idle open; floating enable
@@ -18,34 +17,32 @@ assign [app_id="qtcreator"] 3
 assign [class="Typora"] 4
 assign [app_id="nvim-qt"] 4
 assign [title="Freeplane"] 4
-assign [class="burp"] 8
-assign [app_id="wireshark"] 8
-assign [title="Wine System Tray"] 6
-assign [title="Godzilla"] 6
-assign [class="behinder"] 6
+assign [class="burp"] 6
+assign [app_id="wireshark"] 6
+assign [title="Godzilla"] 7
+assign [class="behinder"] 7
 # assign [app_id="dolphin"] 6
 for_window [app_id="dolphin"] floating enable
-assign [app_id="Nautilus"] 6
 assign [class="wemeetapp"] 7
-assign [title="WPS"] 10
-assign [title="Spreadsheets"] 10
-assign [app_id="libreoffice"] 10
+assign [title="WPS"] 9
+assign [title="Spreadsheets"] 9
+assign [app_id="libreoffice"] 9
 assign [app_id="zathura"] 5
 assign [app_id="okular"] 5
 assign [class="Zotero"] 5
 assign [app_id="waydroid"] 7 
 assign [app_id="Waydroid"] 7
-assign [class="VirtualBox"] 9
+assign [class="VirtualBox"] 8
 # assign [class="Steam"] 6
 # assign [class="hmcl"] 7
 # assign [class="Minecraft"] 7
-assign [app_id="mpv"] 7
-assign [app_id="FeelUOwn"] 7
-for_window [title="ranger_kitty"] {
-    # move scratchpad
-    # floating enable
+assign [app_id="mpv"] 10
+assign [app_id="FeelUOwn"] 10
+assign [app_id="telegram"] 10
+for_window [app_id="konsole"] {
+    move scratchpad
+    floating enable
 }
-
 for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The Key"] {
   floating enable
   sticky enable
@@ -187,7 +184,8 @@ bindsym $mod+space floating toggle
 
 # INFO: Scratchpad:
 bindsym $mod+Control+s move scratchpad
-# bindsym $mod+s exec swaymsg [title="ranger_kitty"] scratchpad show || $(exec $term --title 'ranger_kitty' & sleep 0.2 && swaymsg [title="ranger_kitty"] scratchpad show)
+# bindsym $mod+s exec swaymsg [title="konsole"] scratchpad show || $(exec konsole --title 'konsole' & sleep 0.2 && swaymsg [title="konsole"] scratchpad show)
+# bindsym $mod+s exec swaymsg scratchpad show || $(exec konsole & sleep 0.5 && swaymsg scratchpad show)
 bindsym $mod+s scratchpad show
 
 # INFO: Hardware setting:

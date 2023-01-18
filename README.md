@@ -4,9 +4,10 @@
 
 This repo aimed to backup my configuration, including configuration of sway, waybar, neovim, alacritty, kitty,zsh and ranger. Introductions are as follows. 
 ![](image/first.png)
+
 ![](image/second.png)
-![](image/neovim1.png)
-![](image/neovim2.png)
+
+![](image/neovim.png)
 
 
 <!-- toc -->

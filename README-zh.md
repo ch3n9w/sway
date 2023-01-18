@@ -1,9 +1,10 @@
 # ch4ser 的私人配置
 本仓库用于备份个人配置文件
 ![](image/first.png)
+
 ![](image/second.png)
-![](image/neovim1.png)
-![](image/neovim2.png)
+
+![](image/neovim.png)
 <!-- toc -->
 
 - [常用软件配置](#%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE)

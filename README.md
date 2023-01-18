@@ -9,14 +9,12 @@ This repo aimed to backup my configuration, including configuration of sway, way
 
 ![](image/neovim.png)
 
-
 <!-- toc -->
 
 - [Configuration](#configuration)
-  * [DE/WM(sway + waybar)](#dewmsway--waybar)
+  * [WM(sway + waybar)](#wmsway--waybar)
     + [sway](#sway)
     + [waybar](#waybar)
-    + [swaylock(I dont use it because of some bugs)](#swaylocki-dont-use-it-because-of-some-bugs)
   * [terminal environment(zsh + kitty)](#terminal-environmentzsh--kitty)
     + [zsh](#zsh)
     + [Kitty](#kitty)
@@ -24,19 +22,18 @@ This repo aimed to backup my configuration, including configuration of sway, way
     + [firefox](#firefox)
   * [filemanager(ranger + dolphin)](#filemanagerranger--dolphin)
     + [ranger](#ranger)
-  * [Editor/IDE (Neovim + nvim-qt + jetbrains)](#editoride-neovim--nvim-qt--jetbrains)
+  * [Editor (Neovim + nvim-qt)](#editor-neovim--nvim-qt)
     + [Neovim](#neovim)
     + [nvim-qt](#nvim-qt)
-    + [jetbrains](#jetbrains)
-  * [reader(zathura+zotero)](#readerzathurazotero)
-    + [zathura](#zathura)
+  * [reader(okular+zotero)](#readerokularzotero)
+    + [okular](#okular)
     + [zotero](#zotero)
 - [Others](#others)
 
 <!-- tocstop -->
 
 ## Configuration
-### DE/WM(sway + waybar)
+### WM(sway + waybar)
 #### sway
 1. Assign different workspaces to different applications
 2. Set the font to Firacode Nerd Font 
@@ -113,7 +110,7 @@ ps: if firefox's font looks extremely small after change scale in sway, try to d
 - customize copy paste and cut command to let ranger paste file in different instances
 
 
-### Editor/IDE (Neovim + nvim-qt + jetbrains)
+### Editor (Neovim + nvim-qt)
 #### Neovim
 
 Just copy the config file to `~/.config/nvim` and open nvim, wait downloading `packer.nvim` finish, and finally execute `PackerUpdate` and `PackerCompile`
@@ -124,13 +121,6 @@ fcitx5 cannot input chinese under wayland kitty, so I use nvim-qt for chinse not
 nvim-qt use `ginit.vim`for configuration，
 
 run `:GuiFont *` to set font for nvim-qt
-
-#### jetbrains
-
-environment variables should be added to ensure java application to run normally.
-```
-_JAVA_AWT_WM_NONREPARENTING=1
-```
 
 ### reader(okular+zotero)
 

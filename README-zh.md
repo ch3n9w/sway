@@ -5,13 +5,13 @@
 ![](image/second.png)
 
 ![](image/neovim.png)
+
 <!-- toc -->
 
 - [常用软件配置](#%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE)
-  * [桌面环境(sway + waybar + swaylock)](#%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83sway--waybar--swaylock)
+  * [桌面环境(sway + waybar)](#%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83sway--waybar)
     + [sway](#sway)
     + [waybar](#waybar)
-    + [swaylock(由于软件有一些bug,因此没有使用)](#swaylock%E7%94%B1%E4%BA%8E%E8%BD%AF%E4%BB%B6%E6%9C%89%E4%B8%80%E4%BA%9Bbug%E5%9B%A0%E6%AD%A4%E6%B2%A1%E6%9C%89%E4%BD%BF%E7%94%A8)
   * [终端环境(zsh + kitty)](#%E7%BB%88%E7%AB%AF%E7%8E%AF%E5%A2%83zsh--kitty)
     + [zsh](#zsh)
     + [Kitty](#kitty)
@@ -19,12 +19,11 @@
     + [firefox](#firefox)
   * [文件管理(ranger + dolphin)](#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86ranger--dolphin)
     + [ranger](#ranger)
-  * [编辑器/IDE (Neovim + nvim-qt + jetbrains)](#%E7%BC%96%E8%BE%91%E5%99%A8ide-neovim--nvim-qt--jetbrains)
+  * [编辑器 (Neovim + nvim-qt)](#%E7%BC%96%E8%BE%91%E5%99%A8-neovim--nvim-qt)
     + [Neovim](#neovim)
     + [nvim-qt](#nvim-qt)
-    + [jetbrains](#jetbrains)
-  * [阅读器(zathura+zotero)](#%E9%98%85%E8%AF%BB%E5%99%A8zathurazotero)
-    + [zathura](#zathura)
+  * [阅读器(okular+zotero)](#%E9%98%85%E8%AF%BB%E5%99%A8okularzotero)
+    + [okular](#okular)
     + [zotero](#zotero)
 - [Others](#others)
 
@@ -108,7 +107,7 @@ ps: 如果sway改变显示器scale之后发现firefox的字和组件都变得很
 - 修改了copy paste 和 cut 命令，让ranger可以跨实例张贴文件
 
 
-### 编辑器/IDE (Neovim + nvim-qt + jetbrains)
+### 编辑器 (Neovim + nvim-qt)
 #### Neovim
 
 如果有人想不开要用我的配置文件,只需要将配置文件复制到`~/.config/nvim`路径下,然后打开nvim,等待`packer.nvim`完成自动安装,最后执行`PackerUpdate`和`PackerCompile`就可以了.
@@ -119,14 +118,6 @@ kitty在wayland环境下无法输入中文，为了方便做笔记，我选用�
 nvim-qt使用`ginit.lua`作为配置文件，要让其加载nvim的lua配置文件
 
 可以运行命令`:GuiFont *`来设置nvim-qt的字体
-
-#### jetbrains
-
-不仅仅是jetbrains，所有的java应用在sway下使用的时候记得在环境变量中加上
-
-```
-_JAVA_AWT_WM_NONREPARENTING=1
-```
 
 ### 阅读器(okular+zotero)
 

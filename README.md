@@ -2,14 +2,17 @@
 
 # ch4xer's personal configuration
 
-This repo aimed to backup my configuration, including configuration of sway, waybar, neovim, alacritty, kitty,zsh and ranger. Introductions are as follows. *Warning: Everyone has his/her own habit,this repo is for reference only*
-
+This repo aimed to backup my configuration, including configuration of sway, waybar, neovim, alacritty, kitty,zsh and ranger. Introductions are as follows. 
 ![](image/first.png)
+![](image/second.png)
+![](image/neovim1.png)
+![](image/neovim2.png)
+
 
 <!-- toc -->
 
 - [Configuration](#configuration)
-  * [DE/WM(sway + waybar + swaylock)](#dewmsway--waybar--swaylock)
+  * [DE/WM(sway + waybar)](#dewmsway--waybar)
     + [sway](#sway)
     + [waybar](#waybar)
     + [swaylock(I dont use it because of some bugs)](#swaylocki-dont-use-it-because-of-some-bugs)
@@ -32,17 +35,17 @@ This repo aimed to backup my configuration, including configuration of sway, way
 <!-- tocstop -->
 
 ## Configuration
-### DE/WM(sway + waybar + swaylock)
+### DE/WM(sway + waybar)
 #### sway
 1. Assign different workspaces to different applications
 2. Set the font to Firacode Nerd Font 
 3. *Please modify the wallpaper path in sway/config by yourself*
 4. Use rofi as the menu for application launch
-5. Use slurp with wl-copy to achieve convenient and fast screenshot copy function
-6. A bunch of keys are set. In addition, there are some small tips :
+5. Use slurp with wl-copy to achieve convenient and fast screenshot copy function (Ctrl+Alt+a)
+6. Utilize `|` to make a simple translation tool (Ctrl+Alt+z)
+7. A bunch of keys are set. In addition, there are some small tips :
      - alt+tab allows users to quickly switch to the previous workspace
      - alt+1/2 focus on the left/right workspace, using mod+num to switch workspace is also supported
-     - swap caplocks and esc positions for laptop keyboard
      - use `custom-pc` keyboard layout for my personal usb keyboard, you can delete or customize it by yourself
      - Set `smart_gaps` to fill a little gap between windows and not waste space when there is only one window
      - `autotiling` automatically determine started window direction according to the aspect ratio of the previous window
@@ -50,10 +53,10 @@ This repo aimed to backup my configuration, including configuration of sway, way
 #### waybar
 Including:
 - battery
-- gpu usage
 - ram
 - temprature
 - pulseaudio
+- bluetooth
 - network
 - workspaces
 - mini-forest : My personal application
@@ -63,14 +66,12 @@ Including:
 
 The complete collection of symbols is in [yrwq/nerdy](https://github.com/yrwq/nerdy/blob/main/chars.csv)
 
-#### swaylock(I dont use it because of some bugs)
-just some color settings and wallpaper setting
 
 ### terminal environment(zsh + kitty)
 #### zsh
 1. Add todo.sh command, every time you open the terminal, it will list the to-do items of the day
-2. fzf option setting, cooperate with bat to realize fuzzy file preview, and define vim_fzf function to fuzzy query and open the query result file with nvim
-3. use oh-my-zsh and install the plugin as follows
+2. fzf option setting, cooperate with bat to realize fuzzy file preview, and define xdg_fzf function to fuzzy query and open the query result file with xdg-open
+3. The installed plugins are as follows
      - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) for command line parameter highlighting
      - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) for command prompt
      - [zsh-extract](https://github.com/le0me55i/zsh-extract) for fast decompression of all types of archives using the ``x`` command
@@ -86,7 +87,7 @@ just some color settings and wallpaper setting
 
 #### Kitty
 
-Do not use alacritty any more, kitty is just more advanced.
+I switch from alacritty to kitty, since kitty is just more advanced, 
 
 Using the Tokyonight theme and Firacode Nerd Font, the profile file has been given
 
@@ -95,6 +96,7 @@ Using the Tokyonight theme and Firacode Nerd Font, the profile file has been giv
 #### firefox
 1. custom toolbar --> title bar --> density
 2. `about:config` --> set `browser.compactmode.show` to true --> go toolbar adjust, select `density` to `compact`
+3. `about:config` --> clear `extensions.webextensions.restrictedDomains` and set `privacy.resistFingerprinting.block_mozAddonManager` to true , thus Vimium can be used in almost all pages.
 
 ps: if firefox's font looks extremely small after change scale in sway, try to delete `~/.mozilla` and restart firefox, then all things will become normal.
 
@@ -115,20 +117,6 @@ ps: if firefox's font looks extremely small after change scale in sway, try to d
 
 Just copy the config file to `~/.config/nvim` and open nvim, wait downloading `packer.nvim` finish, and finally execute `PackerUpdate` and `PackerCompile`
 
-some screenshot:
-
-call terminal in neovim
-![](image/toggleterm.png)
-
-fuzzy file search
-![](image/telescope.png)
-
-code completion
-![](image/nvim-cmp.png)
-
-debug(golang)
-![](image/dap.png)
-
 #### nvim-qt
 fcitx5 cannot input chinese under wayland kitty, so I use nvim-qt for chinse note-taking.
 
@@ -143,18 +131,15 @@ environment variables should be added to ensure java application to run normally
 _JAVA_AWT_WM_NONREPARENTING=1
 ```
 
-### reader(zathura+zotero)
+### reader(okular+zotero)
 
-#### zathura
-- set dark color
+#### okular
 
-![](image/zathura.png)
+set dark theme
 
 #### zotero
 
 use dark theme  [zotero-night](https://github.com/tefkah/zotero-night)
-
-![](image/zotero.png)
 
 ## Others
 

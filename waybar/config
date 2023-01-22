@@ -119,7 +119,7 @@
                 "format": " {}",
                 "interval": 1,
                 "return-type": "string",
-                "on-click": "~/.config/waybar/bin/forest start --email 'ch4xer@gmail.com' --password roottoor --time 30",
+                "on-click": "~/.config/waybar/bin/forest start --email 'your@gmail.com' --password 'password' --time 30",
                 "tooltip": false,
             }
 }

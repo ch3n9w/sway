@@ -4,13 +4,13 @@
         "modules-center": ["sway/workspaces"],
         "modules-right": ["custom/forest","custom/books", "clock"],
         "sway/workspaces": {
-            "disable-scroll": false,
+            "disable-scroll": true,
             "all-outputs": true,
-            "enable-bar-scroll": true,
+            "enable-bar-scroll": false,
             "format": "{index} {icon}",
             "persistent_workspaces": {
                 /* "7": [], 
-                "10": " ",*/
+                "10": " ",󱍢 󰯈 󱓈 󱙝 󰹻 󰮠  󰈺 󰣘 󰻝 󰭟 󰄛 󰛓 󱃽 󱅻 󰘩 󰨞 󰒶 󰯉 󱇪 󱎷  󰈹      */
             },
             "format-icons": {
                 "1": " ",
@@ -19,11 +19,23 @@
                 "4": " ",
                 "5": " ",
                 "6": " ",
-                "7": "卵",
+                "7": " ",
                 "8": " ",
                 "9": " ",
-                "10": " ",
+                "10": " ",
             },
+            /* "format-icons": { */
+            /*     "1": "󰞷 ", */
+            /*     "2": "󰈹 ", */
+            /*     "3": "󰨞 ", */
+            /*     "4": "󰺿 ", */
+            /*     "5": "󱀃 ", */
+            /*     "6": "󱓈 ", */
+            /*     "7": "󱎷 ", */
+            /*     "8": "󰡨 ", */
+            /*     "9": "󰏆 ", */
+            /*     "10": "󱋊 ", */
+            /* }, */
         },
         "clock": {
             "format": " {:%a %m-%d %H:%M}",
@@ -48,10 +60,10 @@
             "tooltip": false,
             "format-ethernet": " {ipaddr}/{cidr}",
             "format-linked": "{ifname} (No IP) ",
-            "format-disconnected": "Disconnected",
+            "format-disconnected": " ",
             "format-disabled": "Disabled",
             "on-click": "~/.config/waybar/bin/rofi-wifi-menu.sh",
-            "max-length": 8,
+            "max-length": 5,
         },
         "pulseaudio": {
             "format": "{icon} {volume}%",
@@ -102,6 +114,7 @@
             "custom/books": {
                 "on-click": "~/.config/waybar/bin/books-search.sh",
                 "format": " Book",
+                /* "format": "󱉟 Book", */
                 "tooltip": false,
             },
             "custom/ML": {
@@ -117,9 +130,10 @@
             "custom/forest": {
                 "exec":  "~/.config/waybar/bin/forest status",
                 "format": " {}",
+                /* "format": "󰐅 {}", */
                 "interval": 1,
                 "return-type": "string",
-                "on-click": "~/.config/waybar/bin/forest start --email 'your@gmail.com' --password 'password' --time 30",
+                "on-click": "~/.config/waybar/bin/forest start --email 'ch4xer@gmail.com' --password roottoor --time 30",
                 "tooltip": false,
             }
 }

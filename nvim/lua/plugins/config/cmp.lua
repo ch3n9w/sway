@@ -95,6 +95,37 @@ M = function()
             },
         }
     })
+
+    local lspconfig = require('lspconfig')
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    lspconfig.intelephense.setup {
+        capabilities = capabilities,
+        init_options = {
+            -- for intelephense
+            licenceKey = '/home/ch4ser/.config/nvim/intelephense_license_key',
+            globalStoragePath = '/home/ch4ser/.config',
+        },
+        single_file_mode = true
+    }
+    lspconfig.pyright.setup {
+        -- capabilities = capabilities,
+        settings = {
+            python = {
+                analysis = {
+                    autoSearchPaths = true,
+                    useLibraryCodeForTypes = true,
+                    diagnosticMode = 'workspace',
+                },
+            },
+        },
+    }
+    local other_servers = { "rome", "gopls", "sumneko_lua", "clangd", "rust_analyzer"}
+    for _, server in ipairs(other_servers) do
+        lspconfig[server].setup {
+            capabilities = capabilities,
+            single_file_mode = true,
+        }
+    end
 end
 
 return M

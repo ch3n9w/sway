@@ -1,12 +1,18 @@
 local vim = vim
 -- Install packer
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
-local is_bootstrap = false
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    is_bootstrap = true
-    vim.fn.system { 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path }
-    vim.cmd [[packadd packer.nvim]]
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
+
 
 local config = require('plugins.config.init')
 
@@ -14,69 +20,68 @@ local plugins = {
     'wbthomason/packer.nvim',
 
     'kyazdani42/nvim-web-devicons',
+    { "dstein64/vim-startuptime", cmd = "StartupTime" },
     { 'numToStr/Comment.nvim', config = config.comment },
-    { 'folke/todo-comments.nvim', config = config.todo },
-    { 'windwp/nvim-autopairs', config = config.autopair },
-    { 'abecodes/tabout.nvim', config = config.tabout },
+    { 'windwp/nvim-autopairs', config = true, event = { 'InsertEnter' } },
+    { 'abecodes/tabout.nvim', config = config.tabout, event = { 'InsertEnter' } },
     { 'chentoast/marks.nvim', config = config.marks },
-    { 'kylechui/nvim-surround', config = config.surround },
-    { 'folke/tokyonight.nvim', config = config.theme },
-
-    { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' },
-        after = 'telescope-fzf-native.nvim', config = config.telescope },
-    { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 },
-    { 'akinsho/bufferline.nvim', after = 'tokyonight.nvim', config = config.bufferline },
-    { 'lukas-reineke/indent-blankline.nvim', config = config.indent },
+    { 'kylechui/nvim-surround', config = true },
+    { 'folke/tokyonight.nvim', lazy = false, priority = 1000,config = config.theme },
+    {
+        'nvim-telescope/telescope.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        cmd = { 'Telescope' },
+        config = config.telescope,
+    },
+    { 'akinsho/bufferline.nvim', event = 'BufReadPre', config = config.bufferline },
+    { 'lukas-reineke/indent-blankline.nvim', event = 'BufRead', config = config.indent },
     { 'hoob3rt/lualine.nvim', config = config.lualine },
-    { 'akinsho/toggleterm.nvim', config = config.toggleterm },
-    'famiu/bufdelete.nvim',
-    { 'kyazdani42/nvim-tree.lua', config = config.filetree },
-    { 'simrat39/symbols-outline.nvim', config = config.outline },
+    { 'akinsho/toggleterm.nvim', config = config.toggleterm, cmd = { 'ToggleTerm' } },
+    { 'famiu/bufdelete.nvim', event = 'BufRead' },
+    { 'kyazdani42/nvim-tree.lua', config = config.filetree, cmd = { 'NvimTreeToggle' } },
+    { 'simrat39/symbols-outline.nvim', config = config.outline, cmd = { 'SymbolsOutline' } },
     -- concrete syntax tree for source file
-    { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = config.treesitter },
-    { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
-    { -- LSP Configuration & Plugins
-        'neovim/nvim-lspconfig',
-        requires = {
+    { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate', event = 'BufRead', config = config.treesitter },
+    {
+        'williamboman/mason.nvim',
+        dependencies = { 'williamboman/mason-lspconfig.nvim', },
+        cmd = {'Mason', 'MasonInstall'},
+        config = config.mason
+    },
+{
+    'neovim/nvim-lspconfig',
+    event = 'BufReadPre',
+        dependencies = {
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
-            'hrsh7th/cmp-nvim-lsp',
-        },
-        config = config.lsp
+        }
     },
     { -- Autocompletion
         'hrsh7th/nvim-cmp',
-        requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'hrsh7th/cmp-buffer' },
+        dependencies = {
+            'neovim/nvim-lspconfig',
+            'hrsh7th/cmp-nvim-lsp',
+            'L3MON4D3/LuaSnip',
+            'saadparwaiz1/cmp_luasnip',
+            'hrsh7th/cmp-buffer'
+        },
         config = config.cmp,
     },
     -- format
-    { 'jose-elias-alvarez/null-ls.nvim', config = config.nullls },
+    { 'jose-elias-alvarez/null-ls.nvim', event = 'BufReadPre', dependencies = { 'williamboman/mason.nvim' }, config = config.nullls },
     -- lua for nvim plugin dev
-    { 'folke/lua-dev.nvim', config = config.neodev },
+    { 'folke/neodev.nvim', config = true, ft = 'lua' },
     -- orgmode !!!
-    { 'nvim-neorg/neorg', config = config.neorg },
-
-    -- { 'edluffy/hologram.nvim', config = config.hologram },
+    { 'nvim-neorg/neorg', config = config.neorg, ft = 'norg' },
 
     -- debugger
-    { 'mfussenegger/nvim-dap', requires = { 'rcarriga/nvim-dap-ui' }, config = config.dap },
-    -- debug for golang, need pacman -S delve
-    -- 'leoluz/nvim-dap-go',
-    -- debug for rust
-    -- 'simrat39/rust-tools.nvim',
+    { 'mfussenegger/nvim-dap', dependencies = { 'rcarriga/nvim-dap-ui' }, config = config.dap, ft = 'go' },
 
-    { 'glepnir/lspsaga.nvim', config = config.lspsaga },
+    { 'glepnir/lspsaga.nvim', config = config.lspsaga, cmd = { 'Lspsaga' } },
     'onsails/lspkind-nvim',
-    { 'ray-x/lsp_signature.nvim', config = config.signature },
-    { 'phaazon/hop.nvim', config = config.hop },
-    -- {'rcarriga/nvim-notify', config = config.notify},
-    {'ch3n9w/nvim-github-uploader', config = config.imguploader},
+    { 'ray-x/lsp_signature.nvim', config = true},
+    { 'phaazon/hop.nvim', config = config.hop, cmd = { 'HopWord' } },
+    { 'ch3n9w/nvim-github-uploader', config = config.imguploader, ft = 'markdown' },
 }
 
-
-require('packer').startup(function(use)
-    if is_bootstrap then
-        require('packer').sync()
-    end
-    for _, plugin in pairs(plugins) do use(plugin) end
-end)
+require("lazy").setup(plugins)

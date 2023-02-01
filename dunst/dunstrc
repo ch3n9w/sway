@@ -40,7 +40,7 @@
     scale = 0
 
     # Maximum number of notification (0 means no limit)
-    notification_limit = 0
+    notification_limit = 3
 
     ### Progress bar ###
 
@@ -199,7 +199,7 @@
     # min_icon_size = 16
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 25
+    max_icon_size = 50
 
     # Paths to default icons.
     icon_path = /usr/share/icons/Mkos-Big-Sur/16x16/status/:/usr/share/icons/Mkos-Big-Sur/16x16/devices/:/usr/share/icons/Mkos-Big-Sur/16x16/apps/:/usr/share/icons/Mkos-Big-Sur/16x16/places/:/usr/share/icons/Mkos-Big-Sur/16x16/panel/

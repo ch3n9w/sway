@@ -18,17 +18,19 @@ export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:/usr/lib:$GOPATH/bin
 # export IDEA_JDK=/usr/lib/jvm/jre-jetbrains
 # export STUDIO_JDK=/usr/lib/jvm/jre-jetbrains
 
-export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+# export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --history=$HOME/.local/share/fzf/fzfhistory --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --history=$HOME/.local/share/fzf/fzfhistory --preview '$HOME/Tools/Other/fzf-scope.sh {}'"
 export FZF_DEFAULT_COMMAND="fd --exclude={.wine,.git,.idea,.vscode,.sass-cache,node_modules,build,.local,.steam,.m2,.rangerdir,.ssh,.ghidra,.mozilla} --type f --hidden --follow"
 
 xdg_fzf() {
     local fzf_result=$(fzf)
-    echo $fzf_result
+    local directory=$(dirname $fzf_result)
     if [ -z "$fzf_result" ]
     then
         echo "No file specific"
     else
-        xdg-open $fzf_result &
+        # xdg-open $fzf_result &
+        cd $directory
     fi
 }
 man() {
@@ -41,14 +43,6 @@ man() {
 export LC_ALL="en_US.UTF-8"
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
-
-bindkey -e
-bindkey -s '\er' 'ranger\n'
-bindkey -s '\ef' 'xdg_fzf\n'
-bindkey -s '\ed' 'dolphin .\n'
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
-bindkey '^H' backward-kill-word
 
 # for tomcat debug
 # export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
@@ -72,10 +66,14 @@ export TODO_FILE=~/.local/share/todo/todo.txt
 
 # let zsh-autosuggestions to work
 export SAVEHIST=1000
-export HISTSIZE=SAVEHIST
-export HISTFILE=~/.zsh_history
+export HISTSIZE=100
+export HISTFILESIZE=1000
+export HISTFILE=$HOME/.zsh_history
 # share history in different terminal
-setopt sharehistory
+setopt SHARE_HISTORY
+setopt EXTENDED_HISTORY
+# unsetopt HIST_FIND_NO_DUPS
+# unsetopt HIST_IGNORE_ALL_DUPS
 # This will make only alphanumeric characters count as words.
 # better experience for ctrl+left/right
 export WORDCHARS=''
@@ -93,10 +91,21 @@ zstyle ':completion:*:default' list-colors '=(#b)(-*)(-- *)===34' '=(#b)(-- *)=3
 # zstyle ':completion:*' list-colors '=*=34'
 zstyle ':completiom:*' list-colors 'di=1:fi=96:*.m=31:*.py=32:*.txt=36:*.out=35'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}  
+zstyle ':autocomplete:*' min-delay 0.1
+zstyle ':autocomplete:*' min-input 0
 zstyle ':autocomplete:tab:*' insert-unambiguous yes
 zstyle ':autocomplete:tab:*' widget-style menu-select
-zstyle ':autocomplete:*' list-lines 20
+zstyle ':autocomplete:*' list-lines 16
 
+# keybindings must be provided after plugin source
+bindkey -e
+bindkey -s '\er' 'ranger\n'
+bindkey -s '\ef' 'xdg_fzf\n'
+bindkey -s '\ed' 'dolphin .\n'
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
+bindkey '^H' backward-kill-word
 
 alias ssh="kitty +kitten ssh"
 alias term="swaymsg exec kitty; sleep 0.2; swaymsg layout tabbed; swaymsg exec kitty; sleep 0.2; swaymsg focus parent ;swaymsg move scratchpad ;"
@@ -113,20 +122,17 @@ alias java7="/usr/lib/jvm/java-7-openjdk/bin/java"
 alias javac7="/usr/lib/jvm/java-7-openjdk/bin/javac"
 alias java8="/usr/lib/jvm/java-8-openjdk/bin/java"
 alias javac8="/usr/lib/jvm/java-8-openjdk/bin/javac"
-alias py="ipython"
+alias py="python"
+alias ipy="ipython"
 alias server="ssh root@103.149.91.46 -p 65522"
 alias tencent="ssh root@120.53.236.211"
 alias rasp="ssh root@192.168.31.135"
-alias ubuntu="ssh root@192.168.59.106"
-# aliyun
-# alias master="ssh root@47.94.199.242"
-# alias worker="ssh root@47.93.245.241"
-# whatsupbro
+alias ubuntu="ssh root@192.168.59.113"
 alias master="ssh root@192.168.31.208"
 alias worker="ssh root@192.168.31.212"
 
 alias sshk="ssh -i .ssh/ssh.pem"
-alias kali="ssh root@192.168.59.107"
+alias kali="ssh root@192.168.59.114"
 alias centos="ssh root@192.168.59.108"
 alias k="kubectl"
 alias faas="faas-cli"

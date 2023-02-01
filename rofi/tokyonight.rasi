@@ -37,6 +37,7 @@ window {
     height:     700;
 
     background-color:   @bg0;
+    /*background-image:   url("/home/ch4ser/Media/Pictures/jarvis.jpg", width);*/
 
     border:         2px;
     border-color: @bg3;

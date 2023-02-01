@@ -1,11 +1,5 @@
 M = function()
     require('lspsaga').setup({
-        ui = {
-            border = 'solid',
-            colors = {
-                -- normal_bg = '',
-            }
-        },
         code_action = {
             keys = {
                 quit = '<ESC>',

@@ -12,7 +12,7 @@ assign [app_id="firefox"] 2
 assign [app_id="terminal"] 1
 assign [title="Visual Studio Code"] 3
 assign [class="jetbrains"] 3
-assign [app_id="neovide"] 3
+assign [class="neovide"] 3
 assign [app_id="qtcreator"] 3
 assign [class="Typora"] 4
 assign [app_id="nvim-qt"] 4
@@ -27,8 +27,8 @@ assign [class="wemeetapp"] 7
 assign [title="WPS"] 9
 assign [title="Spreadsheets"] 9
 assign [app_id="libreoffice"] 9
-assign [app_id="zathura"] 5
-assign [app_id="okular"] 5
+assign [app_id="zathura"] 7
+assign [app_id="okular"] 7
 assign [class="Zotero"] 5
 assign [app_id="waydroid"] 7 
 assign [app_id="Waydroid"] 7
@@ -88,6 +88,8 @@ bindsym $mod+q kill
 bindsym $mod+d exec $menu
 bindsym $mod+r exec $run
 bindsym Mod1+Ctrl+a exec grim -g "$(slurp)" - | swappy -f - -o - | wl-copy
+bindsym Ctrl+Mod1+z exec ~/.config/sway/bin/translate.sh
+bindsym $mod+Ctrl+Mod1+l exec 'sudo systemctl stop waydroid-container.service;sudo systemctl suspend'
 # bindsym $mod+b exec --no-startup-id rofi-bluetooth
 
 floating_modifier $mod normal
@@ -256,9 +258,6 @@ gaps inner 10
 # gaps outer 10
 smart_gaps on
 
-
-bindsym $mod+Ctrl+Mod1+l exec 'sudo systemctl stop waydroid-container.service;sudo systemctl suspend'
-
 bar {
     swaybar_command waybar
 }
@@ -278,11 +277,7 @@ exec swayidle -w \
 # for GUI apps that needs root access, like timeshift
 # exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 
 
-# bindsym Ctrl+Shift+v exec "wl-paste>/tmp/paste;/usr/bin/sed ':a;N;$!ba;s/[\r\n]//g' /tmp/paste>/tmp/after-sed;wl-copy</tmp/after-sed"
-bindsym Ctrl+Mod1+z exec ~/.config/sway/bin/translate.sh
-
 # make waybar start immediately
 exec hash dbus-update-activation-environment 2>/dev/null && \
     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-
 

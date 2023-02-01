@@ -1,7 +1,7 @@
 // The keys that are common to all standard layouts.
 default partial alphanumeric_keys modifier_keys
-xkb_symbols "pc105" {
-
+xkb_symbols "basic" {
+    include "us(basic)"
     key  <ESC> {[  grave,	 asciitilde]};
     key  <TAB> {[  Tab,  ISO_Left_Tab  ]};
     key <CAPS> {[  Escape  ]};
@@ -52,7 +52,6 @@ xkb_symbols "pc105" {
     key <HYPR> {[  NoSymbol, Hyper_L  ]};
     modifier_map Mod4  { <HYPR> };
 
-    include "srvr_ctrl(fkey2vt)"
 
     // key <PRSC> {[  Print,  Sys_Req  ], type="PC_ALT_LEVEL2" };
     key <PRSC> {[ Insert ]};
@@ -74,7 +73,6 @@ xkb_symbols "pc105" {
     key <RGHT> {[  Right   ]};
 
     key <NMLK> {[  Num_Lock  ]};
-    include "keypad(x11)"
 
     key <OUTP> {[  XF86Display  ]};
     key <KITG> {[  XF86KbdLightOnOff  ]};

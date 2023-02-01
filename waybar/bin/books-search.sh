@@ -60,11 +60,11 @@ gen_list(){
 
 main() {
   get_books
-  book=$( (gen_list) | rofi -dmenu -theme ~/.config/rofi/nord.rasi -i -matching fuzzy -no-custom -location 0 -p " > " )
+  book=$( (gen_list) | rofi -dmenu -theme ~/.config/rofi/tokyonight.rasi -i -matching fuzzy -no-custom -location 0 -p " > " )
 
   if [ -n "$book" ]; then
     # xdg-open "${BOOKS[$book]}"
-    okular "${BOOKS[$book]}"
+    xdg-open "${BOOKS[$book]}"
   fi
 }
 

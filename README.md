@@ -113,7 +113,7 @@ ps: if firefox's font looks extremely small after change scale in sway, try to d
 ### Editor (Neovim + nvim-qt)
 #### Neovim
 
-Just copy the config file to `~/.config/nvim` and open nvim, wait downloading `packer.nvim` finish, and finally execute `PackerUpdate` and `PackerCompile`
+Just copy the config file to `~/.config/nvim` and open nvim, waiting plugins download finish, and then enjoy it!
 
 #### nvim-qt
 fcitx5 cannot input chinese under wayland kitty, so I use nvim-qt for chinse note-taking.

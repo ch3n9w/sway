@@ -110,7 +110,7 @@ ps: 如果sway改变显示器scale之后发现firefox的字和组件都变得很
 ### 编辑器 (Neovim + nvim-qt)
 #### Neovim
 
-如果有人想不开要用我的配置文件,只需要将配置文件复制到`~/.config/nvim`路径下,然后打开nvim,等待`packer.nvim`完成自动安装,最后执行`PackerUpdate`和`PackerCompile`就可以了.
+只需要将配置文件复制到`~/.config/nvim`路径下,然后打开nvim,等待完成自动安装就可以了.
 
 #### nvim-qt
 kitty在wayland环境下无法输入中文，为了方便做笔记，我选用了nvim-qt来作为自己的笔记软件。

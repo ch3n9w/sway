@@ -4,6 +4,7 @@
 
 ![](image/second.png)
 
+![](image/neovim-dashboard.png)
 ![](image/neovim.png)
 
 <!-- toc -->

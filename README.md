@@ -7,6 +7,7 @@ This repo aimed to backup my configuration, including configuration of sway, way
 
 ![](image/second.png)
 
+![](image/neovim-dashboard.png)
 ![](image/neovim.png)
 
 <!-- toc -->

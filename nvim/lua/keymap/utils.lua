@@ -32,6 +32,7 @@ M.DeleteWinOrBuf = function ()
 end
 
 M.ReferenceToggle = function ()
+    -- local pre_win = vim.api.nvim_get_current_win()
     local wins = vim.fn.getwininfo()
     local quickfix
     -- if there is quickfix window, close it
@@ -44,7 +45,7 @@ M.ReferenceToggle = function ()
     end
     -- if there is no quickfix, open it
     vim.lsp.buf.references()
-    vim.cmd('wincmd p')
+    -- vim.api.nvim_set_current_win(pre_win)
 end
 
 -- as clangd do not support formatting

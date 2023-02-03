@@ -26,8 +26,8 @@ This repo aimed to backup my configuration, including configuration of sway, way
   * [Editor (Neovim + nvim-qt)](#editor-neovim--nvim-qt)
     + [Neovim](#neovim)
     + [nvim-qt](#nvim-qt)
-  * [reader(okular+zotero)](#readerokularzotero)
-    + [okular](#okular)
+  * [reader(zathura+zotero)](#readerzathurazotero)
+    + [zathura](#zathura)
     + [zotero](#zotero)
 - [Others](#others)
 
@@ -123,11 +123,11 @@ nvim-qt use `ginit.vim`for configuration，
 
 run `:GuiFont *` to set font for nvim-qt
 
-### reader(okular+zotero)
+### reader(zathura+zotero)
 
-#### okular
+#### zathura
 
-set dark theme
+as okular will occupy more and more memory after open for a while, and developer team didn't solve this problem since 2018, I finally decided to swith to zathura.
 
 #### zotero
 

@@ -23,8 +23,8 @@
   * [编辑器 (Neovim + nvim-qt)](#%E7%BC%96%E8%BE%91%E5%99%A8-neovim--nvim-qt)
     + [Neovim](#neovim)
     + [nvim-qt](#nvim-qt)
-  * [阅读器(okular+zotero)](#%E9%98%85%E8%AF%BB%E5%99%A8okularzotero)
-    + [okular](#okular)
+  * [阅读器(zathura+zotero)](#%E9%98%85%E8%AF%BB%E5%99%A8zathurazotero)
+    + [zathura](#zathura)
     + [zotero](#zotero)
 - [Others](#others)
 
@@ -120,11 +120,11 @@ nvim-qt使用`ginit.lua`作为配置文件，要让其加载nvim的lua配置文�
 
 可以运行命令`:GuiFont *`来设置nvim-qt的字体
 
-### 阅读器(okular+zotero)
+### 阅读器(zathura+zotero)
 
-#### okular
+#### zathura
 
-设置了暗色模式
+由于okular在打开一段时间后占用内存会越来越大, 且官方从2018年至今未对该问题进行修复, 我最终决定使用zathura.
 
 #### zotero
 

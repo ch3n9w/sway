@@ -10,12 +10,11 @@
 env:
   TERM: xterm-256color
   COLORTERM: truecolor
-  NVIM_GUI: "1"
 
 
 # Window configurations
 window:
-  opacity: 1
+  opacity: 0.85
   dimensions:
     columns: 0
     lines: 0
@@ -28,8 +27,8 @@ window:
 
   dynamic_title: true
 
-# scrolling:
-#   multiplier: 1
+scrolling:
+  multiplier: 1
 
 # Font configurations
 font:
@@ -37,18 +36,18 @@ font:
   #   family: FiraCode Nerd Font
   #   style: Bold
   normal:
-    family: FiraCode Nerd Font
+    family: Hack Nerd Font
     style: Regular
 
   bold:
-    family: FiraCode Nerd Font
+    family: Hack Nerd Font
     style: Bold
   # bold:
   #   family: JetBrainsMono Nerd Font
   #   style: Bold
 
   italic:
-    family: FiraCode Nerd Font
+    family: Hack Nerd Font
     style: Bold Italic
 
   size: 20.0
@@ -86,11 +85,27 @@ cursor:
 
 live_config_reload: true
 
-# shell:
-#   program: /bin/zsh
+shell:
+  program: /bin/zsh
 
 key_bindings:
   - { key: V,              mods: Control, action: Paste                      }
   - { key: C,              mods: Control|Shift, action: Copy                       }
   - { key: C,mods: Control , chars: "\x03"}
+  - { key: Insert,         mods: Shift,   action: PasteSelection             }
+  - { key: Key0,           mods: Control, action: ResetFontSize              }
+  - { key: Equals,         mods: Control, action: IncreaseFontSize           }
+  - { key: NumpadAdd,      mods: Control, action: IncreaseFontSize           }
+  - { key: NumpadSubtract, mods: Control, action: DecreaseFontSize           }
+  - { key: Minus,          mods: Control, action: DecreaseFontSize           }
+  #- { key: Return,         mods: Control,     action: ToggleFullscreen           }
+  - { key: Paste,                         action: Paste                      }
+  - { key: Copy,                          action: Copy                       }
+  - { key: L,              mods: Control, action: ClearLogNotice             }
+  - { key: L,              mods: Control, chars: "\x0c"                      }
+  - { key: PageUp,         mods: Shift,   action: ScrollPageUp,   mode: ~Alt }
+  - { key: PageDown,       mods: Shift,   action: ScrollPageDown, mode: ~Alt }
+  - { key: Home,           mods: Shift,   action: ScrollToTop,    mode: ~Alt }
+  - { key: End,            mods: Shift,   action: ScrollToBottom, mode: ~Alt }
   - { key: Back,            mods: Control,   chars: "\x17"}
+  - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }

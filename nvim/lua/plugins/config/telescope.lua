@@ -13,7 +13,16 @@ M = function()
                 }
             }
         },
+        extensions = {
+            project = {
+                base_dirs = {
+                    '~/Projects',
+                    '~/Projects/go/src',
+                }
+            }
+        }
     }
+    require 'telescope'.load_extension('project')
 end
 
 return M

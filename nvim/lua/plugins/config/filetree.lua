@@ -15,6 +15,13 @@ M = function()
         end
     end
 
+    -- vsplit and close filetree
+    local function custom_vsplit()
+        local node = require('nvim-tree.lib').get_node_at_cursor()
+        nt_api.node.open.vertical(node)
+        nt_api.tree.toggle()
+    end
+
     -- require'nvim-tree'.on_enter()
     require 'nvim-tree'.setup {
         disable_netrw                      = true,
@@ -49,6 +56,7 @@ M = function()
             mappings = {
                 list = {
                     { key = { "<CR>", "o", "<2-LeftMouse>" }, action = "nvimtreexdgopen", action_cb = NvimTreeXdgOpen, },
+                    { key = { "v" }, action = "custom_vsplit", action_cb = custom_vsplit },
                 }
             },
             number = false,

@@ -81,6 +81,9 @@ M = function()
             program = "./${relativeFileDirname}"
         }
     }
+    require("nvim-dap-virtual-text").setup({
+        show_stop_reason = false,
+    })
 end
 
 return M

@@ -1,3 +1,4 @@
+local vim = vim
 local Movement = {
     { 'n', 'w', ':w<CR>w' },
     { 'n', '<leader>h', '<C-w>h' },
@@ -19,6 +20,7 @@ local Movement = {
     { 'n', '<PageUp>', '<C-u>' },
     { 'n', '<PageDown>', '<C-d>' },
 
+    -- jump to home or end
     { 'i', '<C-h>', '<ESC>I' },
     { 'i', '<C-l>', '<ESC>A' },
     { 'n', '<C-h>', '<ESC>^' },
@@ -54,19 +56,21 @@ local Cmd = {
     { 'n', 'Q', 'q' },
     -- format code using lsp
     -- { 'n', 'g=', ':lua vim.lsp.buf.format()<CR>' },
-    { 'n', 'g=', ':lua format_code()<CR>' },
+    { 'n', 'g=', ':lua require("keymap.utils").FormatCode()<CR>' },
     -- keep virtual mode after indent
     { 'v', '>', '>gv' },
     { 'v', '<', '<gv' },
+    -- show variable reference
+    { 'n', '<leader>r', ':lua require("keymap.utils").ReferenceToggle()<CR>' }
 }
 
 -- keymaps that need plugin context are not include, like nvim-cmp
 local Plugins = {
     bufdelete = {
-        { 'n', 'q', ':write<CR>:Bdelete<CR>' },
-        { 'v', 'q', ':write<CR>:Bdelete<CR>' },
-        -- { 'n', 'q', ':lua quit_behavior()<CR>' },
-        -- { 'v', 'q', ':lua quit_behavior()<CR>' },
+        -- { 'n', 'q', ':write<CR>:Bdelete<CR>' },
+        -- { 'v', 'q', ':write<CR>:Bdelete<CR>' },
+        { 'n', 'q', ':lua require("keymap.utils").DeleteWinOrBuf()<CR>' },
+        { 'v', 'q', ':lua require("keymap.utils").DeleteWinOrBuf()<CR>' },
     },
     telescope = {
         { 'n', 'sw', ':Telescope grep_string<CR>' },
@@ -80,8 +84,8 @@ local Plugins = {
         { 'n', '<leader>s', ':SymbolsOutline<CR>' },
     },
     comment = {
-        {'v', '<C-_>', '<Plug>(comment_toggle_linewise_visual)'},
-        {'v', '<C-/>', '<Plug>(comment_toggle_linewise_visual)'},
+        { 'v', '<C-_>', '<Plug>(comment_toggle_linewise_visual)' },
+        { 'v', '<C-/>', '<Plug>(comment_toggle_linewise_visual)' },
         { 'n', '<C-_>', '<Plug>(comment_toggle_linewise_current)' },
         { 'n', '<C-/>', '<Plug>(comment_toggle_linewise_current)' },
     },
@@ -140,30 +144,6 @@ local key_mapper = function(mode, key, result, config)
     )
 end
 
-function typora()
-    local filename = vim.api.nvim_buf_get_name(0)
-    vim.fn.system("typora " .. filename)
-end
-
--- as clangd do not support formatting
-function format_code()
-    if vim.bo.filetype == "norg" then
-        vim.cmd('execute \"normal gg=G\\<C-o>\"')
-    else
-        vim.lsp.buf.format()
-    end
-end
-
-function quit_behavior()
-    if #vim.api.nvim_list_wins() > 1 then
-        vim.cmd('write')
-        vim.cmd('q')
-    else
-        vim.cmd('write')
-        vim.cmd('Bdelete')
-    end
-end
-
 for _, keymap_class in ipairs({ Movement, Edit, Cmd, Other }) do
     for _, keymap in ipairs(keymap_class) do
         if keymap[4] ~= nil then
@@ -185,7 +165,6 @@ for _, plugin_keymap in pairs(Plugins) do
     end
 end
 
-
 --[[ key_mapper('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 key_mapper('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true}) ]]
 
@@ -194,36 +173,15 @@ key_mapper('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true}
 --
 -- a: add file
 -- r: rename file folder
--- y: copy file or folder name
 -- x: delete file or folder and add to clipboard
 -- d: just delete
 -- c: copy file or folder
 -- p: paste file or folder
--- s: open file with default editor
--- <C-v>: will open the file in a vertical split, <C-q> can quit
--- <C-x>: will open the file in a horizontal split, <C-q> can quit
-
-
-
-
-
--- lspsaga keymap
--- key_mapper('n', 'gh', ':Lspsaga lsp_finder<CR>')
--- key_mapper('n', '<leader>ca', ':Lspsaga code_action<CR>')
--- key_mapper('v', '<leader>ca', ':<C-U>Lspsaga range_code_action<CR>')
-
--- key_mapper('n', 'gs', ':Lspsaga signature_help<CR>')
-
-
--- key_mapper('n', '<F5>', 'lua require"dap".toggle_breakpoint()<CR>')
-
--- nvim-cmp
--- <Tab>: jump to next
+-- v: will open the file in a vertical split, <C-q> can quit
 
 
 vim.api.nvim_create_user_command(
     "Typora",
-    typora,
+    require('keymap.utils').Typora,
     { desc = "start typora" }
 )
-

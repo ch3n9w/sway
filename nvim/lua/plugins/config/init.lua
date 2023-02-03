@@ -20,6 +20,8 @@ config.toggleterm = require('plugins.config.toggleterm')
 config.filetree = require('plugins.config.filetree')
 config.treesitter = require('plugins.config.treesitter')
 config.imguploader = require('plugins.config.imguploader')
+config.dashboard = require('plugins.config.dashboard')
+config.lspsignature = require('plugins.config.lspsignature')
 
 
 return config

@@ -9,6 +9,9 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
 })
 
 vim.g.after_dashboard = 0
+vim.g.width_open_tree = 100
+vim.g.width_close_tree = 70
+
 vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
     callback = function()
         -- only launch after dashboard.nvim once
@@ -20,17 +23,20 @@ vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
         if package.loaded['nvim-tree'] == nil then
             return
         end
-        local nvim_tree = require('nvim-tree')
-        -- local nvim_tree_view = require('nvim-tree.view')
-        -- nvim_tree_view.is_visible()
+        local open_tree_without_focus = function()
+            require('nvim-tree.api').tree.toggle(false, true)
+        end
         -- decide whether to open nvim-tree according to the window size
-        if vim.fn.winwidth(0) > 100 then
-            nvim_tree.toggle(false, true)
+        if vim.fn.winwidth(0) > vim.g.width_open_tree then
+            -- call open_tree_without_focus directly
+            -- will cause `vim xxx` unable to keep focus on buffer
+            vim.fn.timer_start(1, open_tree_without_focus)
         else
             return
         end
     end
 })
+
 vim.api.nvim_create_autocmd({ 'VimResized' }, {
     callback = function()
         -- will not take effect before dashboard end
@@ -41,18 +47,20 @@ vim.api.nvim_create_autocmd({ 'VimResized' }, {
         if package.loaded['nvim-tree'] == nil then
             return
         end
-        local nvim_tree = require('nvim-tree')
         local nvim_tree_view = require('nvim-tree.view')
         -- decide whether to open nvim-tree according to the window size
-        if vim.fn.winwidth(0) > 100 then
+        vim.pretty_print(vim.fn.winwidth(0))
+        if vim.fn.winwidth(0) > vim.g.width_open_tree then
             if nvim_tree_view.is_visible() then
                 return
             else
-                nvim_tree.toggle(false, true)
+                require('nvim-tree.api').tree.toggle(false, true)
+                -- vim.fn.timer_start(1, change_tree_state_without_focus)
             end
-        else
-            if nvim_tree_view.is_visible() then
-                nvim_tree.toggle(false, true)
+        else if vim.fn.winwidth(0) < vim.g.width_close_tree then
+                if nvim_tree_view.is_visible() then
+                    require('nvim-tree.api').tree.close()
+                end
             end
         end
     end

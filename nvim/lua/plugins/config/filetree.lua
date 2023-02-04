@@ -22,6 +22,12 @@ M = function()
         nt_api.tree.toggle()
     end
 
+    -- split
+    local function custom_split()
+        local node = require('nvim-tree.lib').get_node_at_cursor()
+        nt_api.node.open.horizontal(node)
+    end
+
     -- require'nvim-tree'.on_enter()
     require 'nvim-tree'.setup {
         disable_netrw                      = true,
@@ -57,6 +63,7 @@ M = function()
                 list = {
                     { key = { "<CR>", "o", "<2-LeftMouse>" }, action = "nvimtreexdgopen", action_cb = NvimTreeXdgOpen, },
                     { key = { "v" }, action = "custom_vsplit", action_cb = custom_vsplit },
+                    { key = { "s" }, action = "custom_split", action_cb = custom_split },
                 }
             },
             number = false,
@@ -76,15 +83,14 @@ M = function()
     }
 
 
-    -- function tree_toggle_on_setup()
+    -- local tree_toggle_on_setup = function ()
     --     require 'nvim-tree'.toggle(false, true)
     -- end
-
+    --
     -- if vim.fn.winwidth(0) > 100 then
     --     vim.fn.timer_start(100, tree_toggle_on_setup)
     -- end
 
-    -- vim.cmd("autocmd VimResized * if winwidth(0) > 100 | execute 'NvimTreeOpen' | execute 'NvimTreeFocus' | wincmd p | else | execute 'NvimTreeClose' | endif")
 
 end
 

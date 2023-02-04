@@ -38,9 +38,10 @@ local Movement = {
 local Edit = {
     -- dont move cursor when back to normal mode
     { 'i', '<ESC>', '<C-O>:stopinsert<CR>' },
+    -- delete word forward
     { 'i', '<C-BS>', '<C-W>' },
     -- remember to configure alacritty with:
-    -- - { key: Back, mods: Control, chars: "\x17"}
+    -- { key: Back, mods: Control, chars: "\x17"}
     { 'i', '\x17', '<C-W>' },
 
     { 'i', '<C-j>', '<ESC>o' },
@@ -48,20 +49,21 @@ local Edit = {
     -- { 'n', '<LeftRelease>', '<LeftRelease><cmd>startinsert<CR>'},
     { 'i', '<C-z>', '<cmd>undo<CR>' },
     { 'i', '<C-r>', '<cmd>redo<CR>' },
-    { 'i', '<C-v>', '<cmd>put<CR>' },
-    { 'n', '<C-v>', '<cmd>put<CR>' },
+    -- paste behavior
+    { 'i', '<C-v>', '<C-O>gP' },
+    { 'n', '<C-v>', 'p' },
 }
 
 local Cmd = {
     { 'n', 'Q', 'q' },
     -- format code using lsp
     -- { 'n', 'g=', ':lua vim.lsp.buf.format()<CR>' },
-    { 'n', 'g=', ':lua require("keymap.utils").FormatCode()<CR>' },
+    { 'n', 'g=', ':lua require("keymap.custom").FormatCode()<CR>' },
     -- keep virtual mode after indent
     { 'v', '>', '>gv' },
     { 'v', '<', '<gv' },
     -- show variable reference
-    { 'n', '<leader>r', ':lua require("keymap.utils").ReferenceToggle()<CR>' }
+    { 'n', '<leader>r', ':lua require("keymap.custom").ReferenceToggle()<CR>' }
 }
 
 -- keymaps that need plugin context are not include, like nvim-cmp
@@ -69,8 +71,8 @@ local Plugins = {
     bufdelete = {
         -- { 'n', 'q', ':write<CR>:Bdelete<CR>' },
         -- { 'v', 'q', ':write<CR>:Bdelete<CR>' },
-        { 'n', 'q', ':lua require("keymap.utils").DeleteWinOrBuf()<CR>' },
-        { 'v', 'q', ':lua require("keymap.utils").DeleteWinOrBuf()<CR>' },
+        { 'n', 'q', ':lua require("keymap.custom").DeleteWinOrBuf()<CR>' },
+        { 'v', 'q', ':lua require("keymap.custom").DeleteWinOrBuf()<CR>' },
     },
     telescope = {
         { 'n', 'sw', ':Telescope grep_string<CR>' },
@@ -182,6 +184,6 @@ key_mapper('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true}
 
 vim.api.nvim_create_user_command(
     "Typora",
-    require('keymap.utils').Typora,
+    require('keymap.custom').Typora,
     { desc = "start typora" }
 )

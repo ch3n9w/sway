@@ -2,13 +2,9 @@ local vim = vim
 
 vim.o.termguicolors = true
 vim.o.background = "dark"
--- vim.o.syntax = 'on'
 vim.o.errorbells = false
 vim.o.mouse = 'a'
--- have problem in neovim-qt&neovide
--- vim.o.guicursor='n:block1,v-i:ver1,a:blinkon1'
 
--- vim.o.mouseshape='a:beam'
 vim.o.modifiable = true
 -- the refresh time will affect lspsaga's reaction time
 vim.o.updatetime = 300
@@ -46,9 +42,6 @@ vim.o.expandtab = true
 -- show numbers
 vim.o.number = true
 -- vim.o.relativenumber = true
--- for lspsaga's floating window
--- vim.wo.number = true
--- always show signcolumn
 vim.o.signcolumn = 'yes'
 
 -- wrap line when too long to display
@@ -58,56 +51,17 @@ vim.o.wrap = true
 vim.g.mapleader = ' '
 
 -- dont use BufWinLeave & BufWinEnter, some plugin will misbehavior
-vim.api.nvim_create_autocmd({"BufWinLeave"}, {
-    command = "silent! mkview"
-})
-
-vim.api.nvim_create_autocmd({"BufWinEnter"}, {
-    command = "silent! loadview"
-})
 
 -- load preview view
 vim.o.viewoptions='folds,cursor,curdir'
 
--- ignore warning from null-ls 
-local notify = vim.notify
-vim.notify = function(msg, ...)
-    if msg:match("warning: multiple different client offset_encodings") then
-        return
-    end
-
-    notify(msg, ...)
-end
 --[[ vim.api.nvim_create_autocmd({"InsertLeave", "BufCreate", "BufEnter", "BufLeave"}, {
     command = "silent! fcitx5-remote -c"
 }) ]]
 
--- disable nvim-tree auto-close, as I always close whole window
--- if the last buffer is nvim-tree, then quit it
---[[ vim.api.nvim_create_autocmd("BufEnter", {
-    nested = false,
-
-    callback = function()
-        -- get buffer number
-        local bufnums = 0
-        for buffer = 1, #vim.api.nvim_list_bufs() do
-            if vim.fn.buflisted(buffer) == 1 then
-                bufnums = bufnums + 1
-            end
-        end
-
-        -- skip errors
-        local _, _ = pcall(
-        vim.cmd,
-        "wa"
-        )
-
-        if #vim.api.nvim_list_wins() == 1 and bufnums == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
-            vim.cmd "quit"
-
-        end
-    end
-}) ]]
+-- setting for nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 
 -- neovide setting

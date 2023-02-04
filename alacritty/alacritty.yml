@@ -86,8 +86,8 @@ cursor:
 
 live_config_reload: true
 
-# shell:
-#   program: /bin/zsh
+shell:
+  program: /bin/bash
 
 key_bindings:
   - { key: V,              mods: Control, action: Paste                      }

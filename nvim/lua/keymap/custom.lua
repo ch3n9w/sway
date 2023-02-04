@@ -2,19 +2,38 @@ local vim = vim
 
 M = {}
 
-M.DeleteWinOrBuf = function ()
+M.DeleteWinOrBuf = function()
     local cmd1 = 'write'
     local cmd2 = 'Bdelete'
+    local current_buffer_name = vim.api.nvim_buf_get_name(0)
     -- if current buf is NvimTree
-    if vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
+    if current_buffer_name:match("NvimTree_") ~= nil then
+        cmd1 = ''
+        cmd2 = 'quit'
+    elseif current_buffer_name:match("nvim/runtime/doc") ~= nil then
         cmd1 = ''
         cmd2 = 'quit'
     elseif vim.fn.win_gettype(0):match("quickfix") ~= nil then
         cmd1 = ''
         cmd2 = 'quit'
-    elseif vim.api.nvim_buf_get_name(0) == "" then
-        cmd1 = ''
-        cmd2 = 'Bdelete'
+    -- if the buffer is [No Name]
+    elseif current_buffer_name == "" then
+        -- get valid buffer number
+        local is_valid = function(buf_num)
+            if not buf_num or buf_num < 1 then return false end
+            local exists = vim.api.nvim_buf_is_valid(buf_num)
+            return vim.bo[buf_num].buflisted and exists
+        end
+        local valid_buffer_number = #vim.tbl_filter(is_valid, vim.api.nvim_list_bufs())
+        if valid_buffer_number > 1 then
+            -- if the [No Name] is not the last buffer, Bdelete it
+            cmd1 = ''
+            cmd2 = 'Bdelete'
+        else
+            -- if the [No Name] is the last buffer, quit
+            cmd1 = ''
+            cmd2 = 'quitall'
+        end
     elseif #vim.api.nvim_list_wins() == 2 then
         -- check if there is NvimTree open
         cmd2 = 'quit'
@@ -31,7 +50,7 @@ M.DeleteWinOrBuf = function ()
     vim.cmd(cmd2)
 end
 
-M.ReferenceToggle = function ()
+M.ReferenceToggle = function()
     -- local pre_win = vim.api.nvim_get_current_win()
     local wins = vim.fn.getwininfo()
     local quickfix
@@ -49,7 +68,7 @@ M.ReferenceToggle = function ()
 end
 
 -- as clangd do not support formatting
-M.FormatCode = function ()
+M.FormatCode = function()
     if vim.bo.filetype == "norg" then
         vim.cmd('execute \"normal gg=G\\<C-o>\"')
     else
@@ -57,7 +76,7 @@ M.FormatCode = function ()
     end
 end
 
-M.Typora = function ()
+M.Typora = function()
     local filename = vim.api.nvim_buf_get_name(0)
     vim.fn.system("Typora " .. filename)
 end

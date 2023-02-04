@@ -28,6 +28,7 @@ local plugins = {
     { 'windwp/nvim-autopairs', config = true, event = { 'InsertEnter' } },
     {
         'abecodes/tabout.nvim',
+        dependencies = { 'nvim-cmp' },
         config = config.tabout,
         event = { 'InsertEnter' }
     },
@@ -57,7 +58,13 @@ local plugins = {
     { 'hoob3rt/lualine.nvim', event = 'BufRead', config = config.lualine },
     { 'akinsho/toggleterm.nvim', config = config.toggleterm, cmd = { 'ToggleTerm' } },
     { 'famiu/bufdelete.nvim' },
-    { 'kyazdani42/nvim-tree.lua', config = config.filetree },
+    {
+        'kyazdani42/nvim-tree.lua',
+        dependencies = {
+            'nvim-tree/nvim-web-devicons'
+        },
+        config = config.filetree,
+    },
     {
         'simrat39/symbols-outline.nvim',
         config = config.outline,
@@ -103,7 +110,7 @@ local plugins = {
         lazy = true,
         dependencies = { 'rcarriga/nvim-dap-ui', 'theHamsta/nvim-dap-virtual-text' },
         config = config.dap,
-        ft = {'go'}
+        ft = { 'go', 'c' }
     },
     {
         'glepnir/lspsaga.nvim',

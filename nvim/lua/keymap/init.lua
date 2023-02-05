@@ -49,12 +49,8 @@ local Edit = {
     { 'i', '<C-k>', '<ESC>O' },
     -- { 'n', '<LeftRelease>', '<LeftRelease><cmd>startinsert<CR>'},
     { 'i', '<C-z>', '<cmd>undo<CR>' },
-    { 'i', '<C-r>', '<cmd>redo<CR>' },
-    -- paste behavior, not goodthere
-    -- there is noway to distinguash the last two position in insert mode
-    -- this behavior should be accomplished by terminal emulator like kitty
-    -- { 'i', '<C-v>', '<C-O>gp' },
-    -- { 'n', '<C-v>', 'p' },
+    { 'n', '<C-v>', '<C-R>+' },
+    { 'i', '<C-v>', '<C-R>+' },
 }
 
 local Cmd = {

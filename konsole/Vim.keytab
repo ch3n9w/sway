@@ -1,0 +1,4 @@
+keyboard "Vim"
+key Backspace-Ctrl : "\x17"
+key Backspace : "\b"
+key Backspace+Ctrl : "\x17"

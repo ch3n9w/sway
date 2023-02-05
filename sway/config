@@ -39,10 +39,12 @@ assign [class="VirtualBox"] 8
 assign [app_id="mpv"] 10
 assign [app_id="FeelUOwn"] 10
 assign [app_id="telegram"] 10
-for_window [app_id="konsole"] {
-    move scratchpad
-    floating enable
-}
+assign [app_id="konsole"] 4
+# for_window [app_id="konsole"] {
+#     move scratchpad
+#     floating enable
+# }
+
 for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The Key"] {
   floating enable
   sticky enable

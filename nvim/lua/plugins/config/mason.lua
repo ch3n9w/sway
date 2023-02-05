@@ -9,6 +9,7 @@ M = function()
             "rust_analyzer",
             "pyright",
             "intelephense",
+            "marksman",
         },
     })
 end

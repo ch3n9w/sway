@@ -8,9 +8,12 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
     command = 'silent! loadview'
 })
 
+vim.api.nvim_create_autocmd({ 'InsertLeave', 'BufCreate', 'BufEnter', 'BufLeave' }, {
+    command = 'silent !fcitx5-remote -c'
+})
+
 vim.g.after_dashboard = 0
 vim.g.width_open_tree = 100
-vim.g.width_close_tree = 70
 
 vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
     callback = function()
@@ -27,7 +30,7 @@ vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
             require('nvim-tree.api').tree.toggle(false, true)
         end
         -- decide whether to open nvim-tree according to the window size
-        if vim.fn.winwidth(0) > vim.g.width_open_tree then
+        if vim.api.nvim_list_uis()[1].width > vim.g.width_open_tree then
             -- call open_tree_without_focus directly
             -- will cause `vim xxx` unable to keep focus on buffer
             vim.fn.timer_start(1, open_tree_without_focus)
@@ -50,17 +53,16 @@ vim.api.nvim_create_autocmd({ 'VimResized' }, {
         local nvim_tree_view = require('nvim-tree.view')
         -- decide whether to open nvim-tree according to the window size
         vim.pretty_print(vim.fn.winwidth(0))
-        if vim.fn.winwidth(0) > vim.g.width_open_tree then
+        if vim.api.nvim_list_uis()[1].width > vim.g.width_open_tree then
+            -- if vim.fn.winwidth(0) > vim.g.width_open_tree then
             if nvim_tree_view.is_visible() then
                 return
             else
                 require('nvim-tree.api').tree.toggle(false, true)
-                -- vim.fn.timer_start(1, change_tree_state_without_focus)
             end
-        else if vim.fn.winwidth(0) < vim.g.width_close_tree then
-                if nvim_tree_view.is_visible() then
-                    require('nvim-tree.api').tree.close()
-                end
+        else
+            if nvim_tree_view.is_visible() then
+                require('nvim-tree.api').tree.close()
             end
         end
     end

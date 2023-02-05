@@ -42,6 +42,7 @@ local Edit = {
     { 'i', '<C-BS>', '<C-W>' },
     -- remember to configure alacritty with:
     -- { key: Back, mods: Control, chars: "\x17"}
+    -- and configure Ctrl+/-Backspace's output as \x17
     { 'i', '\x17', '<C-W>' },
 
     { 'i', '<C-j>', '<ESC>o' },
@@ -49,21 +50,23 @@ local Edit = {
     -- { 'n', '<LeftRelease>', '<LeftRelease><cmd>startinsert<CR>'},
     { 'i', '<C-z>', '<cmd>undo<CR>' },
     { 'i', '<C-r>', '<cmd>redo<CR>' },
-    -- paste behavior
-    { 'i', '<C-v>', '<C-O>gP' },
-    { 'n', '<C-v>', 'p' },
+    -- paste behavior, not goodthere
+    -- there is noway to distinguash the last two position in insert mode
+    -- this behavior should be accomplished by terminal emulator like kitty
+    -- { 'i', '<C-v>', '<C-O>gp' },
+    -- { 'n', '<C-v>', 'p' },
 }
 
 local Cmd = {
     { 'n', 'Q', 'q' },
     -- format code using lsp
     -- { 'n', 'g=', ':lua vim.lsp.buf.format()<CR>' },
-    { 'n', 'g=', ':lua require("keymap.custom").FormatCode()<CR>' },
+    { 'n', 'g=', require("keymap.custom").FormatCode },
     -- keep virtual mode after indent
     { 'v', '>', '>gv' },
     { 'v', '<', '<gv' },
     -- show variable reference
-    { 'n', '<leader>r', ':lua require("keymap.custom").ReferenceToggle()<CR>' }
+    { 'n', '<leader>r', require("keymap.custom").ReferenceToggle }
 }
 
 -- keymaps that need plugin context are not include, like nvim-cmp
@@ -71,8 +74,8 @@ local Plugins = {
     bufdelete = {
         -- { 'n', 'q', ':write<CR>:Bdelete<CR>' },
         -- { 'v', 'q', ':write<CR>:Bdelete<CR>' },
-        { 'n', 'q', ':lua require("keymap.custom").DeleteWinOrBuf()<CR>' },
-        { 'v', 'q', ':lua require("keymap.custom").DeleteWinOrBuf()<CR>' },
+        { 'n', 'q', require("keymap.custom").DeleteWinOrBuf },
+        { 'v', 'q', require("keymap.custom").DeleteWinOrBuf },
     },
     telescope = {
         { 'n', 'sw', ':Telescope grep_string<CR>' },

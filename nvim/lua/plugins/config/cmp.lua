@@ -119,7 +119,7 @@ M = function()
             },
         },
     }
-    local other_servers = { "rome", "gopls", "sumneko_lua", "clangd", "rust_analyzer"}
+    local other_servers = { "rome", "gopls", "sumneko_lua", "clangd", "rust_analyzer", "marksman"}
     for _, server in ipairs(other_servers) do
         lspconfig[server].setup {
             capabilities = capabilities,

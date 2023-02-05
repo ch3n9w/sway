@@ -6,6 +6,7 @@ rm ./waybar/bin/forest
 cp -r ~/.config/zathura ./
 cp -r ~/.config/nvim ./
 rm ./nvim/intelephense_license_key
+rm ./nvim/lazy-lock.json
 cp -r ~/.config/rofi ./
 cp -r ~/.config/xkb ./
 cp -r ~/.config/kitty ./

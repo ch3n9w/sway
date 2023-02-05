@@ -18,8 +18,8 @@
 # Script:
 
 # Books directory
-BOOKS_DIR=~/Documents/Books/beyondtech
-mkdir -p ~/Documents/Books/beyondtech
+BOOKS_DIR=~/Documents/Books/Recent
+mkdir -p ~/Documents/Books/Recent
 
 # Save find result to F_ARRAY
 readarray -t F_ARRAY <<< "$(find "$BOOKS_DIR" -type f -name '*.pdf' -o -name '*.epub')"

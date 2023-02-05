@@ -9,6 +9,7 @@ M = function()
                 }
             }),
             null_ls.builtins.formatting.markdown_toc,
+            null_ls.builtins.formatting.prettier,
         }
     })
 end

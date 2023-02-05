@@ -50,8 +50,12 @@ M = function()
         },
         filters             = { custom = { "^\\." } },
         update_focused_file = { enable = true, },
-        renderer            = { highlight_opened_files = "all" }
-
+        renderer            = { highlight_opened_files = "all" },
+        diagnostics         = {
+            enable = true,
+            show_on_dirs = true,
+            show_on_open_dirs = true,
+        },
     }
 
 end

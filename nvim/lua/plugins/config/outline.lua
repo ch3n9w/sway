@@ -1,9 +1,10 @@
-M = function ()
+M = function()
     require("symbols-outline").setup({
         highlight_hovered_item = true,
         auto_close = false,
+        width = 15,
         keymaps = {
-            close = {"<Esc>", "q"},
+            close = { "<Esc>", "q" },
             goto_location = "<Cr>",
             focus_location = "o",
             hover_symbol = "<C-space>",

@@ -42,7 +42,9 @@ vim.o.expandtab = true
 -- show numbers
 vim.o.number = true
 -- vim.o.relativenumber = true
-vim.o.signcolumn = 'yes'
+
+-- save space for window
+vim.o.signcolumn = 'no'
 
 -- wrap line when too long to display
 vim.o.wrap = true
@@ -50,14 +52,8 @@ vim.o.wrap = true
 -- key mappings
 vim.g.mapleader = ' '
 
--- dont use BufWinLeave & BufWinEnter, some plugin will misbehavior
-
 -- load preview view
 vim.o.viewoptions='folds,cursor,curdir'
-
---[[ vim.api.nvim_create_autocmd({"InsertLeave", "BufCreate", "BufEnter", "BufLeave"}, {
-    command = "silent! fcitx5-remote -c"
-}) ]]
 
 -- setting for nvim-tree
 vim.g.loaded_netrw = 1

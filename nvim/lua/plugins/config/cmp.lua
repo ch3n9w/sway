@@ -119,7 +119,24 @@ M = function()
             },
         },
     }
-    local other_servers = { "rome", "gopls", "sumneko_lua", "clangd", "rust_analyzer", "marksman"}
+    lspconfig.gopls.setup {
+        capabilities = capabilities,
+        single_file_mode = true,
+        settings = {
+            gopls = {
+                experimentalPostfixCompletions = true,
+                analyses = {
+                    unusedparams = true,
+                    shadow = true,
+                },
+                staticcheck = true,
+            },
+        },
+        init_options = {
+            usePlaceholders = true,
+        }
+    }
+    local other_servers = { "rome", "sumneko_lua", "clangd", "rust_analyzer", "marksman" }
     for _, server in ipairs(other_servers) do
         lspconfig[server].setup {
             capabilities = capabilities,

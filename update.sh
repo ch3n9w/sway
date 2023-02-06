@@ -1,5 +1,4 @@
-rm -r alacritty sway waybar zathura nvim rofi xkb kitty dunst zsh konsole
-cp -r ~/.config/alacritty ./
+rm -r sway waybar zathura nvim rofi xkb kitty dunst zsh 
 cp -r ~/.config/sway ./
 cp -r ~/.config/waybar ./
 rm ./waybar/bin/forest
@@ -11,7 +10,6 @@ cp -r ~/.config/rofi ./
 cp -r ~/.config/xkb ./
 cp -r ~/.config/kitty ./
 cp -r ~/.config/dunst ./
-cp -r ~/.local/share/konsole ./
 rm -r ./fcitx5
 mkdir ./fcitx5
 cp -r ~/.local/share/fcitx5/themes ./fcitx5/

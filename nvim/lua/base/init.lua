@@ -44,7 +44,7 @@ vim.o.number = true
 -- vim.o.relativenumber = true
 
 -- save space for window
-vim.o.signcolumn = 'no'
+vim.o.signcolumn = 'yes'
 
 -- wrap line when too long to display
 vim.o.wrap = true

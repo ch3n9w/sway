@@ -66,10 +66,15 @@ local plugins = {
         config = config.filetree,
     },
     {
-        'simrat39/symbols-outline.nvim',
+        'stevearc/aerial.nvim',
         config = config.outline,
-        cmd = { 'SymbolsOutline' }
+        cmd = { 'AerialToggle' }
     },
+    -- {
+    --     'simrat39/symbols-outline.nvim',
+    --     config = config.outline,
+    --     cmd = { 'SymbolsOutline' }
+    -- },
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',

@@ -20,6 +20,15 @@ M = function()
             quit = '<ESC>',
             exec = '<CR>',
         },
+        outline = {
+            win_width = 20,
+            auto_preview = false,
+            keys = {
+                jump = "<CR>",
+                quit = "q",
+                expand_collapse = 'l',
+            }
+        }
     })
 end
 

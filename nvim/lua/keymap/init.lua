@@ -81,8 +81,8 @@ local Plugins = {
         { 'n', '<leader>t', ':NvimTreeToggle<CR>' },
         { 'n', '<leader>c', ':cd %:h<CR>' },
     },
-    symbols_outline = {
-        { 'n', '<leader>s', ':SymbolsOutline<CR>' },
+    aerial = {
+        { 'n', '<leader>s', ':AerialToggle<CR>' },
     },
     comment = {
         { 'v', '<C-_>', '<Plug>(comment_toggle_linewise_visual)' },
@@ -101,7 +101,6 @@ local Plugins = {
         { 'n', 'gs', ':Lspsaga signature_help<CR>' },
         { 'n', 'gr', ':Lspsaga rename<CR>' },
         { 'n', 'gd', ':Lspsaga peek_definition<CR>' },
-
     },
     -- bottom terminal
     toggleterm = {

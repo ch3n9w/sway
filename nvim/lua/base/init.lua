@@ -59,6 +59,11 @@ vim.o.viewoptions='folds,cursor,curdir'
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- environment setup
+vim.env.GOPATH = "/home/ch4ser/Projects/go"
+vim.env.GOPROXY = "https://goproxy.cn"
+vim.env.GO111MODULE = "on"
+vim.env.CGO_ENABLED = "1"
 
 -- neovide setting
 vim.o.guifont = 'Hack Nerd Font:h20'

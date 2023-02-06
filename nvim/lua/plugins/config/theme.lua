@@ -39,7 +39,9 @@ M = function()
         dim_inactive = dims,
         lualine_bold = true,
 
-        on_colors = function(colors) end,
+        on_colors = function(colors)
+            colors.border = "#565f89"
+        end,
         on_highlights = function(highlights, colors) end,
     })
 
@@ -55,3 +57,4 @@ M = function()
 end
 
 return M
+

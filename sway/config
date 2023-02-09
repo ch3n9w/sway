@@ -192,6 +192,12 @@ bindsym $mod+Control+s move scratchpad
 # bindsym $mod+s exec swaymsg scratchpad show || $(exec konsole & sleep 0.5 && swaymsg scratchpad show)
 bindsym $mod+s scratchpad show
 
+bindsym $mod+y [con_mark="_swapy"] unmark "_swapy"; \
+                    mark --add "_swapy"
+bindsym $mod+m swap container with mark "_swapy"; \
+                    [con_mark="_swapy"] focus; \
+                    unmark "_swapy"
+
 # INFO: Hardware setting:
 input "9741:19:DAREU_EK871_BT_keyboard" {
     xkb_layout custom-pc
@@ -265,7 +271,8 @@ bar {
 }
 
 exec dunst
-exec_always autotiling
+exec_always autotiling --limit 2
+
 exec fcitx5 
 
 # exec swayidle -w \
@@ -273,8 +280,7 @@ exec fcitx5
 #          resume 'swaymsg "output * dpms on"' 
 # exec mpvpaper -o "no-audio --loop-playlist --hwdec=auto" eDP-1 ~/Media/Pictures/videos/mylivewallpapers-com-Boreal-Valley-Dark-Souls-3.mp4
 
-exec swayidle -w \
-         timeout 1800 'sudo systemctl suspend' 
+exec swayidle -w timeout 1800 'sudo systemctl suspend' 
 
 # for GUI apps that needs root access, like timeshift
 # exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 

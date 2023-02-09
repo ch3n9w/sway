@@ -50,12 +50,6 @@ export VISUAL=/usr/bin/nvim
 # export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 # export CATALINA_HOME=/usr/share/tomcat8530/apache-tomcat-8.5.30
 #
-# for weblogic 
-# export JAVA_HOME=/home/ch4ser/Tools/Environment/JDK/jdk1.8.0_112
-# export JRE_HOME=$JAVA_HOME/jre
-# export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
-# export CLASSPATH=$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$CATALINA_HOME/lib
-# export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin:$CATALINA_HOME/bin
 export CLASSPATH=$HOME:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$CATALINA_HOME/lib
 
 export TODO_DIR=~/.local/share/todo
@@ -66,14 +60,12 @@ export TODO_FILE=~/.local/share/todo/todo.txt
 
 # let zsh-autosuggestions to work
 export SAVEHIST=1000
-export HISTSIZE=100
+export HISTSIZE=1000
 export HISTFILESIZE=1000
 export HISTFILE=$HOME/.zsh_history
 # share history in different terminal
 setopt SHARE_HISTORY
 setopt EXTENDED_HISTORY
-# unsetopt HIST_FIND_NO_DUPS
-# unsetopt HIST_IGNORE_ALL_DUPS
 # This will make only alphanumeric characters count as words.
 # better experience for ctrl+left/right
 export WORDCHARS=''
@@ -81,21 +73,18 @@ export LS_COLORS='no=00;37:fi=00:di=00;34:ln=04;36:pi=40;33:so=01;35:bd=40;33;01
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-extract/extract.plugin.zsh
-source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-autoswitch-virtualenv/zsh-autoswitch-virtualenv.plugin.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+autoload -U compinit; compinit
+
 zstyle ':completion:*:default' list-colors '=(#b)(-*)(-- *)===34' '=(#b)(-- *)=34'
 # zstyle ':completion:*' list-colors '=*=34'
 zstyle ':completiom:*' list-colors 'di=1:fi=96:*.m=31:*.py=32:*.txt=36:*.out=35'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}  
-zstyle ':autocomplete:*' min-delay 0.1
-zstyle ':autocomplete:*' min-input 0
-zstyle ':autocomplete:tab:*' insert-unambiguous yes
-zstyle ':autocomplete:tab:*' widget-style menu-select
-zstyle ':autocomplete:*' list-lines 16
 
 # keybindings must be provided after plugin source
 bindkey -e
@@ -104,6 +93,8 @@ bindkey -s '\ef' 'xdg_fzf\n'
 bindkey -s '\ed' 'dolphin .\n'
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 bindkey '^H' backward-kill-word
 
@@ -115,7 +106,7 @@ alias clear_cache="yay -Scc;yay -Rns $(yay -Qtdq)"
 alias clear_packages="yay -Qtdq | yay -Rs -"
 alias idea="nohup /opt/intellij-idea-ultimate-edition/bin/idea.sh .  >/dev/null 2>&1 &"
 alias check_log="journalctl -p5"
-alias vim="nvim"
+alias vi="nvim"
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR";zoxide add "$LASTDIR"'
 alias nvmstart="source /usr/share/nvm/init-nvm.sh"
 alias java7="/usr/lib/jvm/java-7-openjdk/bin/java"

@@ -4,6 +4,7 @@ vim.o.termguicolors = true
 vim.o.background = "dark"
 vim.o.errorbells = false
 vim.o.mouse = 'a'
+vim.o.shell = '/bin/zsh'
 
 vim.o.modifiable = true
 -- the refresh time will affect lspsaga's reaction time

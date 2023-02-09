@@ -136,7 +136,7 @@ M = function()
             usePlaceholders = true,
         }
     }
-    local other_servers = { "rome", "sumneko_lua", "clangd", "rust_analyzer", "marksman" }
+    local other_servers = { "rome", "sumneko_lua", "clangd", "rust_analyzer", "marksman", "dockerls" }
     for _, server in ipairs(other_servers) do
         lspconfig[server].setup {
             capabilities = capabilities,

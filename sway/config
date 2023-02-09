@@ -142,14 +142,15 @@ bindsym $mod+Left  workspace prev
 bindsym $mod+Right workspace next
 bindsym Mod1+1 workspace prev
 bindsym Mod1+2 workspace next
-bindsym Mod1+Tab workspace back_and_forth 
+# bindsym Mod1+Tab workspace back_and_forth 
 
 # switch workspace while skip workspace 0
 # set $switch_workspace exec --no-startup-id  ~/.config/sway/bin/workspaceloop.sh
 # bindsym Mod1+1 $switch_workspace Left 11
 # bindsym Mod1+2 $switch_workspace Right 11
 
-# NOTE: It's better to use right control without finger press
+# swap master window with slave window
+bindsym Mod1+Tab mark --add "_swap", focus left, swap container with mark "_swap", focus left, unmark "_swap"
 bindsym $mod+Control+1 move container to workspace number 1
 bindsym $mod+Control+2 move container to workspace number 2
 bindsym $mod+Control+3 move container to workspace number 3
@@ -192,11 +193,7 @@ bindsym $mod+Control+s move scratchpad
 # bindsym $mod+s exec swaymsg scratchpad show || $(exec konsole & sleep 0.5 && swaymsg scratchpad show)
 bindsym $mod+s scratchpad show
 
-bindsym $mod+y [con_mark="_swapy"] unmark "_swapy"; \
-                    mark --add "_swapy"
-bindsym $mod+m swap container with mark "_swapy"; \
-                    [con_mark="_swapy"] focus; \
-                    unmark "_swapy"
+
 
 # INFO: Hardware setting:
 input "9741:19:DAREU_EK871_BT_keyboard" {
@@ -260,7 +257,7 @@ output 'Dell Inc. DELL U2718QM MYPFK98N094L' {
 default_border pixel 2
 default_floating_border pixel 2
 hide_edge_borders smart
-# client.focused           #2e9ef4 #0bf0d4 #FFFFFF #0bf0d4
+client.focused           #2e9ef4 #7AA2F7 #FFFFFF #7AA2F7
 
 gaps inner 10
 # gaps outer 10
@@ -271,6 +268,7 @@ bar {
 }
 
 exec dunst
+# master-slave layout
 exec_always autotiling --limit 2
 
 exec fcitx5 

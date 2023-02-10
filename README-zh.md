@@ -1,4 +1,5 @@
-# ch4ser 的私人配置
+# Sway DE configuration
+
 本仓库用于备份个人配置文件
 ![](image/first.png)
 
@@ -7,28 +8,27 @@
 ![](image/neovim-dashboard.png)
 ![](image/neovim.png)
 
-<!-- toc -->
-
-- [常用软件配置](#%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE)
-  * [桌面环境(sway + waybar)](#%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83sway--waybar)
-    + [sway](#sway)
-    + [waybar](#waybar)
-  * [终端环境(zsh + kitty)](#%E7%BB%88%E7%AB%AF%E7%8E%AF%E5%A2%83zsh--kitty)
-    + [zsh](#zsh)
-    + [Kitty](#kitty)
-  * [浏览器(firefox)](#%E6%B5%8F%E8%A7%88%E5%99%A8firefox)
-    + [firefox](#firefox)
-  * [文件管理(ranger + dolphin)](#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86ranger--dolphin)
-    + [ranger](#ranger)
-  * [编辑器 (Neovim + nvim-qt)](#%E7%BC%96%E8%BE%91%E5%99%A8-neovim--nvim-qt)
-    + [Neovim](#neovim)
-    + [nvim-qt](#nvim-qt)
-  * [阅读器(zathura+zotero)](#%E9%98%85%E8%AF%BB%E5%99%A8zathurazotero)
-    + [zathura](#zathura)
-    + [zotero](#zotero)
-- [Others](#others)
-
-<!-- tocstop -->
+<!--toc:start-->
+- [Sway DE configuration](#sway-de-configuration)
+  - [常用软件配置](#常用软件配置)
+    - [桌面环境(sway + waybar)](#桌面环境sway-waybar)
+      - [sway](#sway)
+      - [waybar](#waybar)
+    - [终端环境(zsh + kitty)](#终端环境zsh-kitty)
+      - [zsh](#zsh)
+      - [Kitty](#kitty)
+    - [浏览器(firefox)](#浏览器firefox)
+      - [firefox](#firefox)
+    - [文件管理(ranger + dolphin)](#文件管理ranger-dolphin)
+      - [ranger](#ranger)
+    - [编辑器 (Neovim + nvim-qt)](#编辑器-neovim-nvim-qt)
+      - [Neovim](#neovim)
+      - [nvim-qt](#nvim-qt)
+    - [阅读器(zathura+zotero)](#阅读器zathurazotero)
+      - [zathura](#zathura)
+      - [zotero](#zotero)
+  - [Others](#others)
+<!--toc:end-->
 
 ## 常用软件配置
 ### 桌面环境(sway + waybar)

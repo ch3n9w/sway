@@ -1,6 +1,6 @@
 [中文介绍](README-zh.md)
 
-# ch4xer's personal configuration
+# Sway DE configuration
 
 This repo aimed to backup my configuration, including configuration of sway, waybar, neovim, alacritty, kitty,zsh and ranger. Introductions are as follows. 
 ![](image/first.png)
@@ -10,28 +10,29 @@ This repo aimed to backup my configuration, including configuration of sway, way
 ![](image/neovim-dashboard.png)
 ![](image/neovim.png)
 
-<!-- toc -->
+<!--toc:start-->
+- [Sway DE configuration](#sway-de-configuration)
+  - [Configuration](#configuration)
+    - [WM(sway + waybar)](#wmsway-waybar)
+      - [sway](#sway)
+      - [waybar](#waybar)
+    - [terminal environment(zsh + kitty)](#terminal-environmentzsh-kitty)
+      - [zsh](#zsh)
+      - [Kitty](#kitty)
+    - [browser(firefox)](#browserfirefox)
+      - [firefox](#firefox)
+    - [filemanager(ranger + dolphin)](#filemanagerranger-dolphin)
+      - [ranger](#ranger)
+    - [Editor (Neovim + nvim-qt)](#editor-neovim-nvim-qt)
+      - [Neovim](#neovim)
+      - [nvim-qt](#nvim-qt)
+    - [reader(zathura+zotero)](#readerzathurazotero)
+      - [zathura](#zathura)
+      - [zotero](#zotero)
+  - [Others](#others)
+<!--toc:end-->
 
-- [Configuration](#configuration)
-  * [WM(sway + waybar)](#wmsway--waybar)
-    + [sway](#sway)
-    + [waybar](#waybar)
-  * [terminal environment(zsh + kitty)](#terminal-environmentzsh--kitty)
-    + [zsh](#zsh)
-    + [Kitty](#kitty)
-  * [browser(firefox)](#browserfirefox)
-    + [firefox](#firefox)
-  * [filemanager(ranger + dolphin)](#filemanagerranger--dolphin)
-    + [ranger](#ranger)
-  * [Editor (Neovim + nvim-qt)](#editor-neovim--nvim-qt)
-    + [Neovim](#neovim)
-    + [nvim-qt](#nvim-qt)
-  * [reader(zathura+zotero)](#readerzathurazotero)
-    + [zathura](#zathura)
-    + [zotero](#zotero)
-- [Others](#others)
 
-<!-- tocstop -->
 
 ## Configuration
 ### WM(sway + waybar)

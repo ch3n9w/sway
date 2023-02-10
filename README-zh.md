@@ -60,7 +60,7 @@
 - book search 搜索特定目录下的书本
 - date & clock
 
-完整的图标可以在这个文件中找到 [yrwq/nerdy](https://github.com/yrwq/nerdy/blob/main/chars.csv)
+完整的图标可以在这个文件中找到 [Nerd Font](https://www.nerdfonts.com/cheat-sheet)
 
 
 ### 终端环境(zsh + kitty)

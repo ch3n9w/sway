@@ -64,7 +64,7 @@ Including:
 - book search : search books in specific directory
 - date & clock
 
-The complete collection of symbols is in [yrwq/nerdy](https://github.com/yrwq/nerdy/blob/main/chars.csv)
+The complete collection of symbols is in [Nerd Font](https://www.nerdfonts.com/cheat-sheet)
 
 
 ### terminal environment(zsh + kitty)

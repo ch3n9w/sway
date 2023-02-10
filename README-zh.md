@@ -69,10 +69,10 @@
 2. fzf option设置，配合bat实现模糊文件预览，定义xdg_fzf函数来模糊查询并用xdg-open打开查询结果文件
 3. 安装插件如下
     - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) 用于命令行参数高亮
+    - [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search) 用于历史命令搜索
     - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) 用于命令提示
-    - [zsh-extract](https://github.com/le0me55i/zsh-extract) 用于使用``x``命令来快速解压所有类型的压缩文件
+    - [zsh-extract](https://github.com/le0me55i/zsh-extract) 用于使用`x`命令来快速解压所有类型的压缩文件
     - [zsh-autoswitch-virtualenv](https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv)用于在进入存在python虚拟环境的项目时自动激活虚拟环境，在离开时自动结束虚拟环境
-    - [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete)用于命令行中的补全
     - powerlevel10k 主题
 4. 设置了一些alias，并替代了一些工具
     - [exa](https://github.com/ogham/exa) 替代 ls
@@ -93,6 +93,7 @@
 1. custom toolbar --> 勾选 title bar --> 右边选density , 在sway下titlebar会被隐藏, 同时因为勾选了titlebar, tabs右侧的空间会被充分利用起来
 2. `about:config` --> set `browser.compactmode.show` to true --> go toolbar adjust, select `density` to `compact`，让布局更加紧凑美观
 3. `about:config` --> 清空 `extensions.webextensions.restrictedDomains` 然后设置 `privacy.resistFingerprinting.block_mozAddonManager` to true , 这样Vimium可以在大部分页面使用
+4. `about:config` --> set `browser.display.background_color` and `browser.display.background_color.dark` 来改变 `default:blank` 的颜色, 我用的 `#212124` or `#1A1B26`
 
 ps: 如果sway改变显示器scale之后发现firefox的字和组件都变得很小,请删除`~/.mozilla`,重新打开firefox就正常了,然后重新登陆账号恢复同步原来的插件和密码
 
@@ -125,6 +126,8 @@ nvim-qt使用`ginit.lua`作为配置文件，要让其加载nvim的lua配置文�
 #### zathura
 
 由于okular在打开一段时间后占用内存会越来越大, 且官方从2018年至今未对该问题进行修复, 我最终决定使用zathura.
+
+theme: https://github.com/catppuccin/zathura
 
 #### zotero
 

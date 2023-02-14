@@ -133,24 +133,37 @@ bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
 
 
-bindsym --whole-window --border $mod+button5 workspace next
-bindsym --whole-window --border $mod+button4 workspace prev
 
 # bindgesture swipe:right workspace prev 
 # bindgesture swipe:left workspace next
-bindsym $mod+Left  workspace prev
-bindsym $mod+Right workspace next
-bindsym Mod1+1 workspace prev
-bindsym Mod1+2 workspace next
+# bindsym $mod+Left  workspace prev
+# bindsym $mod+Right workspace next
+# bindsym Mod1+1 workspace prev
+# bindsym Mod1+2 workspace next
 # bindsym Mod1+Tab workspace back_and_forth 
 
-# switch workspace while skip workspace 0
-# set $switch_workspace exec --no-startup-id  ~/.config/sway/bin/workspaceloop.sh
-# bindsym Mod1+1 $switch_workspace Left 11
-# bindsym Mod1+2 $switch_workspace Right 11
+# switch workspace while skip workspace 10
+workspace 1 output HDMI-A-1
+workspace 2 output HDMI-A-1
+workspace 3 output HDMI-A-1
+workspace 4 output HDMI-A-1
+workspace 5 output HDMI-A-1
+workspace 6 output HDMI-A-1
+workspace 7 output HDMI-A-1
+workspace 8 output HDMI-A-1
+workspace 9 output HDMI-A-1
+workspace 10 output eDP-1
+set $switch_workspace exec --no-startup-id  ~/.config/sway/bin/workspaceloop.sh
+bindsym Mod1+1 $switch_workspace Left 10
+bindsym Mod1+2 $switch_workspace Right 10
+bindsym $mod+Left  $switch_workspace Left 10
+bindsym $mod+Right $switch_workspace Right 10
+bindsym --whole-window --border $mod+button5 $switch_workspace Right 10
+bindsym --whole-window --border $mod+button4 $switch_workspace Left 10
 
 # swap master window with slave window
-bindsym Mod1+Tab mark --add "_swap", focus left, swap container with mark "_swap", focus left, unmark "_swap"
+# bindsym Mod1+Tab mark --add "_swap", focus left, swap container with mark "_swap", focus left, unmark "_swap"
+bindsym Mod1+Tab exec ~/.config/sway/bin/tab-behavior.py
 bindsym $mod+Control+1 move container to workspace number 1
 bindsym $mod+Control+2 move container to workspace number 2
 bindsym $mod+Control+3 move container to workspace number 3
@@ -172,13 +185,10 @@ bindsym $mod+Control+Shift+Down move workspace to output down
 bindsym $mod+Control+Shift+Up move workspace to output up
 
 
-# INFO: Layout stuff:
-#
 # bindsym $mod+x splith
 # bindsym $mod+z splitv
 
 # Switch the current container between different layout styles
-# bindsym $mod+s layout stacking
 bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -191,7 +201,8 @@ bindsym $mod+space floating toggle
 bindsym $mod+Control+s move scratchpad
 # bindsym $mod+s exec swaymsg [title="konsole"] scratchpad show || $(exec konsole --title 'konsole' & sleep 0.2 && swaymsg [title="konsole"] scratchpad show)
 # bindsym $mod+s exec swaymsg scratchpad show || $(exec konsole & sleep 0.5 && swaymsg scratchpad show)
-bindsym $mod+s scratchpad show
+# bindsym $mod+s swaymsg scratchpad show || exec ~/.config/sway/bin/scratchpad.sh
+bindsym $mod+s exec swaymsg scratchpad show || exec ~/.config/sway/bin/scratchpad.sh
 
 
 
@@ -245,8 +256,9 @@ output 'Dell Inc. DELL U2720QM 8P55193' {
     scale 1
 }
 output 'Dell Inc. DELL U2718QM MYPFK98N094L' {
-    resolution 2560x1440
     pos 2240 0
+    # resolution 2560x1440
+    scale 1.5
 }
 # output 'Unknown MSI G273Q CA8A521900577' {
 #         scale 1
@@ -279,9 +291,6 @@ exec fcitx5
 # exec mpvpaper -o "no-audio --loop-playlist --hwdec=auto" eDP-1 ~/Media/Pictures/videos/mylivewallpapers-com-Boreal-Valley-Dark-Souls-3.mp4
 
 exec swayidle -w timeout 1800 'sudo systemctl suspend' 
-
-# for GUI apps that needs root access, like timeshift
-# exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 
 
 # make waybar start immediately
 exec hash dbus-update-activation-environment 2>/dev/null && \

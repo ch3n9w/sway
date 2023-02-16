@@ -37,7 +37,8 @@ window#waybar {
 
 #workspaces button:hover {
   color: white;
-  background-color: #5e81ac;
+  /* background: #5e81ac; */
+  background: #373737;
   border-radius: 10px;
 }
 

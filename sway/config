@@ -87,12 +87,12 @@ bindsym Ctrl+Return exec $term --class=terminal
 bindsym $mod+Return exec $term
 bindsym $mod+p reload
 bindsym $mod+q kill
+# bindsym $mod+q exec ~/.config/sway/bin/kill-behavior.py
 bindsym $mod+d exec $menu
 bindsym $mod+r exec $run
 bindsym Mod1+Ctrl+a exec grim -g "$(slurp)" - | swappy -f - -o - | wl-copy
 bindsym Ctrl+Mod1+z exec ~/.config/sway/bin/translate.sh
 bindsym $mod+Ctrl+Mod1+l exec 'sudo systemctl stop waydroid-container.service;sudo systemctl suspend'
-# bindsym $mod+b exec --no-startup-id rofi-bluetooth
 
 floating_modifier $mod normal
 
@@ -242,6 +242,10 @@ bindsym --locked XF86MonBrightnessDown exec "sudo light -U 5"
 bindsym --locked XF86MonBrightnessUp exec "sudo light -A 5"
 
 # display setting
+output eDP-1 {
+    pos 0 0
+}
+
 output 'Unknown 0xA195 0x00000000' {
     scale 1
     resolution 2240x1400
@@ -260,6 +264,7 @@ output 'Dell Inc. DELL U2718QM MYPFK98N094L' {
     # resolution 2560x1440
     scale 1.5
 }
+
 # output 'Unknown MSI G273Q CA8A521900577' {
 #         scale 1
 #         resolution 2560x1440

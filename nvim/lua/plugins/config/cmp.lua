@@ -136,13 +136,18 @@ M = function()
             usePlaceholders = true,
         }
     }
-    local other_servers = { "rome", "sumneko_lua", "clangd", "rust_analyzer", "marksman", "dockerls", "bashls" }
+    local other_servers = { "rome", "lua_ls", "rust_analyzer", "marksman", "dockerls", "bashls" }
     for _, server in ipairs(other_servers) do
         lspconfig[server].setup {
             capabilities = capabilities,
             single_file_mode = true,
         }
     end
+    -- for clangd
+    capabilities.offsetEncoding = {"utf-16"}
+    lspconfig.clangd.setup {
+        capabilities = capabilities
+    }
 end
 
 return M

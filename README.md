@@ -2,7 +2,7 @@
 
 # Sway DE configuration
 
-This repo aimed to backup my configuration, including configuration of sway, waybar, neovim, alacritty, kitty,zsh and ranger. Introductions are as follows.
+This repo aimed to backup my configuration, including configuration of sway, waybar, neovim, alacritty, zsh and ranger. Introductions are as follows.
 ![](image/first.png)
 
 ![](image/second.png)
@@ -11,15 +11,14 @@ This repo aimed to backup my configuration, including configuration of sway, way
 ![](image/neovim.png)
 
 <!--toc:start-->
-
 - [Sway DE configuration](#sway-de-configuration)
   - [Configuration](#configuration)
     - [WM(sway + waybar)](#wmsway-waybar)
       - [sway](#sway)
       - [waybar](#waybar)
-    - [terminal environment(zsh + kitty)](#terminal-environmentzsh-kitty)
+    - [terminal environment(zsh + alacritty)](#terminal-environmentzsh-alacritty)
       - [zsh](#zsh)
-      - [Kitty](#kitty)
+      - [Alacritty](#alacritty)
     - [browser(firefox)](#browserfirefox)
       - [firefox](#firefox)
     - [filemanager(ranger + dolphin)](#filemanagerranger-dolphin)
@@ -31,7 +30,7 @@ This repo aimed to backup my configuration, including configuration of sway, way
       - [zathura](#zathura)
       - [zotero](#zotero)
   - [Others](#others)
-  <!--toc:end-->
+<!--toc:end-->
 
 ## Configuration
 
@@ -70,7 +69,7 @@ Including:
 
 The complete collection of symbols is in [Nerd Font](https://www.nerdfonts.com/cheat-sheet)
 
-### terminal environment(zsh + kitty)
+### terminal environment(zsh + alacritty)
 
 #### zsh
 
@@ -90,9 +89,7 @@ The complete collection of symbols is in [Nerd Font](https://www.nerdfonts.com/c
    - [zoxide](https://github.com/ajeetdsouza/zoxide) replaces cd and autojump
    - [rsync](https://github.com/WayneD/rsync) replaces cp
 
-#### Kitty
-
-I switch from alacritty to kitty, since kitty is just more advanced,
+#### Alacritty
 
 Using the Tokyonight theme and Firacode Nerd Font, the profile file has been given
 
@@ -104,7 +101,6 @@ Using the Tokyonight theme and Firacode Nerd Font, the profile file has been giv
 2. `about:config` --> set `browser.compactmode.show` to true --> go toolbar adjust, select `density` to `compact`
 3. `about:config` --> clear `extensions.webextensions.restrictedDomains` and set `privacy.resistFingerprinting.block_mozAddonManager` to true , thus Vimium can be used in almost all pages.
 4. `about:config` --> set `browser.display.background_color` and `browser.display.background_color.dark` to change the color of `default:blank`, I use `#212124` or `#1A1B26`
-
 
 ps: if firefox's font looks extremely small after change scale in sway, try to delete `~/.mozilla` and restart firefox, then all things will become normal.
 
@@ -128,7 +124,7 @@ Just copy the config file to `~/.config/nvim` and open nvim, waiting plugins dow
 
 #### nvim-qt
 
-fcitx5 cannot input chinese under wayland kitty, so I use nvim-qt for chinse note-taking.
+fcitx5 cannot input chinese under wayland alacritty, so I use nvim-qt for chinse note-taking.
 
 nvim-qt use `ginit.vim`for configuration，
 

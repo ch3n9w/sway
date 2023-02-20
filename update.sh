@@ -1,4 +1,4 @@
-rm -r sway waybar zathura nvim rofi xkb kitty dunst zsh 
+rm -r sway waybar zathura nvim rofi xkb alacritty dunst zsh 
 cp -r ~/.config/sway ./
 cp -r ~/.config/waybar ./
 rm ./waybar/bin/forest
@@ -8,7 +8,7 @@ rm ./nvim/intelephense_license_key
 rm ./nvim/lazy-lock.json
 cp -r ~/.config/rofi ./
 cp -r ~/.config/xkb ./
-cp -r ~/.config/kitty ./
+cp -r ~/.config/alacritty ./
 cp -r ~/.config/dunst ./
 rm -r ./fcitx5
 mkdir ./fcitx5

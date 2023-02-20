@@ -14,9 +14,9 @@
     - [桌面环境(sway + waybar)](#桌面环境sway-waybar)
       - [sway](#sway)
       - [waybar](#waybar)
-    - [终端环境(zsh + kitty)](#终端环境zsh-kitty)
+    - [终端环境(zsh + alacritty)](#终端环境zsh-alacritty)
       - [zsh](#zsh)
-      - [Kitty](#kitty)
+      - [alacritty](#alacritty)
     - [浏览器(firefox)](#浏览器firefox)
       - [firefox](#firefox)
     - [文件管理(ranger + dolphin)](#文件管理ranger-dolphin)
@@ -63,7 +63,7 @@
 完整的图标可以在这个文件中找到 [Nerd Font](https://www.nerdfonts.com/cheat-sheet)
 
 
-### 终端环境(zsh + kitty)
+### 终端环境(zsh + alacritty)
 #### zsh
 1. 添加todo.sh命令，每次打开终端都会罗列一天中的待办事项
 2. fzf option设置，配合bat实现模糊文件预览，定义xdg_fzf函数来模糊查询并用xdg-open打开查询结果文件
@@ -81,9 +81,7 @@
     - [zoxide](https://github.com/ajeetdsouza/zoxide) 替代 cd and autojump
     - [rsync](https://github.com/WayneD/rsync) 替代 cp
 
-#### Kitty
-
-从alacritty切换到了kitty, 后者更加现代化.
+#### alacritty
 
 使用Tokyonight主题和Firacode Nerd Font字体,profile文件已经给出
 
@@ -115,7 +113,7 @@ ps: 如果sway改变显示器scale之后发现firefox的字和组件都变得很
 只需要将配置文件复制到`~/.config/nvim`路径下,然后打开nvim,等待完成自动安装就可以了.
 
 #### nvim-qt
-kitty在wayland环境下无法输入中文，为了方便做笔记，我选用了nvim-qt来作为自己的笔记软件。
+alacritty在wayland环境下无法输入中文，为了方便做笔记，我选用了nvim-qt来作为自己的笔记软件。
 
 nvim-qt使用`ginit.lua`作为配置文件，要让其加载nvim的lua配置文件
 

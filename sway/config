@@ -40,10 +40,9 @@ assign [app_id="mpv"] 10
 assign [app_id="FeelUOwn"] 10
 assign [app_id="telegram"] 10
 assign [app_id="konsole"] 4
-# for_window [app_id="konsole"] {
-#     move scratchpad
-#     floating enable
-# }
+for_window [app_id="scratchpad"] {
+    floating enable
+}
 
 for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The Key"] {
   floating enable
@@ -62,7 +61,7 @@ set $right l
 
 # unable to use fcitx5
 # set $term kitty
-set $term kitty
+set $term alacritty
 set $menu rofi -show drun -m -1 -theme ~/.config/rofi/tokyonight.rasi | xargs swaymsg exec --
 set $run rofi -show run -m -1 -theme ~/.config/rofi/tokyonight.rasi | xargs swaymsg exec --
 
@@ -86,8 +85,8 @@ output * bg ~/Media/Pictures/landscape/city_from_sky.jpg fill
 bindsym Ctrl+Return exec $term --class=terminal
 bindsym $mod+Return exec $term
 bindsym $mod+p reload
-bindsym $mod+q kill
-# bindsym $mod+q exec ~/.config/sway/bin/kill-behavior.py
+# bindsym $mod+q kill
+bindsym $mod+q exec ~/.config/sway/bin/kill-behavior.py
 bindsym $mod+d exec $menu
 bindsym $mod+r exec $run
 bindsym Mod1+Ctrl+a exec grim -g "$(slurp)" - | swappy -f - -o - | wl-copy
@@ -272,13 +271,14 @@ output 'Dell Inc. DELL U2718QM MYPFK98N094L' {
 #     }
 
 default_border pixel 2
-default_floating_border pixel 2
+default_floating_border pixel 1
 hide_edge_borders smart
 client.focused           #2e9ef4 #7AA2F7 #FFFFFF #7AA2F7
 
 gaps inner 10
 # gaps outer 10
 smart_gaps on
+
 
 bar {
     swaybar_command waybar

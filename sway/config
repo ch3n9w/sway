@@ -153,12 +153,12 @@ workspace 8 output HDMI-A-1
 workspace 9 output HDMI-A-1
 workspace 10 output eDP-1
 set $switch_workspace exec --no-startup-id  ~/.config/sway/bin/workspaceloop.sh
-bindsym Mod1+1 $switch_workspace Left 10
-bindsym Mod1+2 $switch_workspace Right 10
-bindsym $mod+Left  $switch_workspace Left 10
-bindsym $mod+Right $switch_workspace Right 10
-bindsym --whole-window --border $mod+button5 $switch_workspace Right 10
-bindsym --whole-window --border $mod+button4 $switch_workspace Left 10
+bindsym Mod1+1 $switch_workspace Left
+bindsym Mod1+2 $switch_workspace Right
+bindsym $mod+Left  $switch_workspace Left
+bindsym $mod+Right $switch_workspace Right
+bindsym --whole-window --border $mod+button5 $switch_workspace Right
+bindsym --whole-window --border $mod+button4 $switch_workspace Left
 
 # swap master window with slave window
 # bindsym Mod1+Tab mark --add "_swap", focus left, swap container with mark "_swap", focus left, unmark "_swap"
@@ -270,8 +270,8 @@ output 'Dell Inc. DELL U2718QM MYPFK98N094L' {
 #         pos 0 0
 #     }
 
-default_border pixel 2
-default_floating_border pixel 1
+default_border pixel 3
+default_floating_border pixel 3
 hide_edge_borders smart
 client.focused           #2e9ef4 #7AA2F7 #FFFFFF #7AA2F7
 

@@ -5,7 +5,7 @@
         "modules-right": ["custom/forest","custom/books", "clock"],
         "sway/workspaces": {
             "disable-scroll": true,
-            "all-outputs": true,
+            "all-outputs": false,
             "enable-bar-scroll": false,
             "format": "{index} {icon}",
             "persistent_workspaces": {

@@ -53,9 +53,22 @@ const rl = readline.createInterface({
 
 rl.question("", function (text) {
   var strip_text = text.replace(/\n/g, '')
+  var zh_flag = 0;
+  for (let i=0; i<strip_text.length; i++) {
+    if (strip_text.charCodeAt(i) > 150) {
+      zh_flag = 1;
+      break;
+    }
+  }
+  var target_language;
+  if (zh_flag === 1) {
+    target_language = 'en';
+  } else {
+    target_language = 'zh-CN';
+  }
   const options = {
     hostname: "translate.google.com",
-    path: `/translate_a/single?client=webapp&sl=auto&tl=zh-CN&hl=zh-CN&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&source=bh&ssel=0&tsel=0&kc=1&tk=${TL(strip_text)}&q=${encodeURIComponent(strip_text)}`,
+    path: `/translate_a/single?client=webapp&sl=auto&tl=${target_language}&hl=${target_language}&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&source=bh&ssel=0&tsel=0&kc=1&tk=${TL(strip_text)}&q=${encodeURIComponent(strip_text)}`,
     method: "GET",
     headers: { responseType: "json" },
   };

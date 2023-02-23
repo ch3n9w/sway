@@ -55,8 +55,10 @@ local Edit = {
 
 local Cmd = {
     { 'n', ';',         ':',                                     { nowait = true } },
+    { 'v', ';',         ':',                                     { nowait = true } },
     { 'n', '<C-s>',     '<CMD>w<CR>' },
     { 'i', '<C-s>',     '<CMD>w<CR>' },
+    { 'v', '<C-s>',     '<CMD>w<CR>' },
     { 'n', 'Q',         'q' },
     -- format code using lsp
     -- { 'n', 'g=', ':lua vim.lsp.buf.format()<CR>' },
@@ -127,10 +129,10 @@ local Plugins = {
     },
 }
 local Other = {
-    mouse = {
-        -- use mouse to manupulate folders
-        { 'n', '<2-LeftMouse>', 'za' },
-    }
+    -- use mouse to manupulate folders
+    { 'n', '<2-LeftMouse>', 'za' },
+    { 'v', 'y',             '"*ygvy' },
+    { 'v', '<LeftRelease>', '"*ygv' },
 }
 
 -- key map function

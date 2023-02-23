@@ -1,5 +1,6 @@
-rm -r sway waybar zathura nvim rofi xkb alacritty dunst zsh 
+rm -r sway waybar zathura nvim rofi xkb alacritty dunst zsh swaylock
 cp -r ~/.config/sway ./
+cp -r ~/.config/swaylock ./
 cp -r ~/.config/waybar ./
 rm ./waybar/bin/forest
 cp -r ~/.config/zathura ./

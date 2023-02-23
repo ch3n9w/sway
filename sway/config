@@ -72,16 +72,10 @@ output * bg ~/Media/Pictures/landscape/city_from_sky.jpg fill
 # output * bg ~/Media/Pictures/GameorCarton/arknight/FfgdNAbakAQ_WeB.jpg fill
 # output * bg ~/Media/Pictures/1080/OS/thinkpad_wallpaper.png fill
 # output * bg ~/Media/Pictures/jarvis.jpg fill
-# output * bg ~/Media/Pictures/1080/spaceship.png fill
-# output * bg ~/Media/Pictures/1080/others/Minecraft/daemon_sword.jpg fill
 
 
-# launcher settings
-# for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
-# set $menu exec $term --class=launcher -e ~/.config/sway/sway-launcher-desktop.sh
 # bindgesture swipe:right workspace prev
 # bindgesture swipe:left workspace next
-# bindsym $mod+w exec "VBoxManage startvm 'windows_the_one'"
 bindsym Ctrl+Return exec $term --class=terminal
 bindsym $mod+Return exec $term
 bindsym $mod+p reload
@@ -92,7 +86,8 @@ bindsym $mod+r exec $run
 bindsym Mod1+Ctrl+a exec grim -g "$(slurp)" - | swappy -f - -o - | wl-copy
 bindsym Mod1+Ctrl+s exec ~/.config/sway/bin/recorder.sh
 bindsym Ctrl+Mod1+z exec ~/.config/sway/bin/translate.sh
-bindsym $mod+Ctrl+Mod1+l exec 'sudo systemctl stop waydroid-container.service;sudo systemctl suspend'
+# bindsym $mod+Ctrl+Mod1+l exec 'sudo systemctl stop waydroid-container.service;sudo systemctl suspend'
+bindsym $mod+Ctrl+Mod1+l exec swaylock
 
 floating_modifier $mod normal
 

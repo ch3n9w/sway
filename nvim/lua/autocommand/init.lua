@@ -54,6 +54,9 @@ vim.api.nvim_create_autocmd({ 'VimResized' }, {
         -- decide whether to open nvim-tree according to the window size
         vim.pretty_print(vim.fn.winwidth(0))
         if vim.api.nvim_list_uis()[1].width > vim.g.width_open_tree then
+            if #vim.api.nvim_list_wins() > 1 then
+                return
+            end
             -- if vim.fn.winwidth(0) > vim.g.width_open_tree then
             if nvim_tree_view.is_visible() then
                 return

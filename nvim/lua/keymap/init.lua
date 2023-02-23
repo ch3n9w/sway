@@ -1,66 +1,69 @@
 local vim = vim
 local Movement = {
-    { 'n', 'w', ':w<CR>w' },
-    { 'n', '<leader>h', '<C-w>h' },
-    { 'n', '<leader>j', '<C-w>j' },
-    { 'n', '<leader>k', '<C-w>k' },
-    { 'n', '<leader>l', '<C-w>l' },
-    { 'n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true } },
-    { 'n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true } },
-    { 'n', 'J', ':bprevious!<CR>' },
-    { 'n', 'K', ':bnext!<CR>' },
-    { 'n', 'H', ':bprevious!<CR>' },
-    { 'n', 'L', ':bnext!<CR>' },
+    -- { 'n', 'w', ':w<CR>w' },
+    { 'n', '<leader>h',  '<C-w>h' },
+    { 'n', '<leader>j',  '<C-w>j' },
+    { 'n', '<leader>k',  '<C-w>k' },
+    { 'n', '<leader>l',  '<C-w>l' },
+    { 'n', 'j',          "v:count == 0 ? 'gj' : 'j'",                   { expr = true, silent = true } },
+    { 'n', 'k',          "v:count == 0 ? 'gk' : 'k'",                   { expr = true, silent = true } },
+    { 'n', 'J',          ':bprevious!<CR>' },
+    { 'n', 'K',          ':bnext!<CR>' },
+    { 'n', 'H',          ':bprevious!<CR>' },
+    { 'n', 'L',          ':bnext!<CR>' },
     -- only scroll 1/3 size of page
-    { 'n', '<C-b>', math.floor(vim.fn.winheight(0) / 3) .. '<C-u>' },
-    { 'n', '<C-j>', math.floor(vim.fn.winheight(0) / 3) .. '<C-d>' },
-    { 'n', '<C-k>', math.floor(vim.fn.winheight(0) / 3) .. '<C-u>' },
-    { 'v', '<C-j>', math.floor(vim.fn.winheight(0) / 3) .. '<C-d>' },
-    { 'v', '<C-k>', math.floor(vim.fn.winheight(0) / 3) .. '<C-u>' },
-    { 'n', '<PageUp>', '<C-u>' },
+    { 'n', '<C-b>',      math.floor(vim.fn.winheight(0) / 3) .. '<C-u>' },
+    { 'n', '<C-j>',      math.floor(vim.fn.winheight(0) / 3) .. '<C-d>' },
+    { 'n', '<C-k>',      math.floor(vim.fn.winheight(0) / 3) .. '<C-u>' },
+    { 'v', '<C-j>',      math.floor(vim.fn.winheight(0) / 3) .. '<C-d>' },
+    { 'v', '<C-k>',      math.floor(vim.fn.winheight(0) / 3) .. '<C-u>' },
+    { 'n', '<PageUp>',   '<C-u>' },
     { 'n', '<PageDown>', '<C-d>' },
 
     -- jump to home or end
-    { 'i', '<C-h>', '<ESC>I' },
-    { 'i', '<C-l>', '<ESC>A' },
-    { 'n', '<C-h>', '<ESC>^' },
-    { 'n', '<C-l>', '<ESC>$' },
-    { 'n', '(', '<ESC>^' },
-    { 'n', ')', '<ESC>$' },
-    { 'v', '<C-l>', '$' },
-    { 'v', '<C-h>', '^' },
+    { 'i', '<C-h>',      '<ESC>I' },
+    { 'i', '<C-l>',      '<ESC>A' },
+    { 'n', '<C-h>',      '<ESC>^' },
+    { 'n', '<C-l>',      '<ESC>$' },
+    { 'n', '(',          '<ESC>^' },
+    { 'n', ')',          '<ESC>$' },
+    { 'v', '<C-l>',      '$' },
+    { 'v', '<C-h>',      '^' },
 
-    { 'i', '<C-Down>', '<C-O><C-E>' },
-    { 'i', '<C-Up>', '<C-O><C-Y>' },
+    { 'i', '<C-Down>',   '<C-O><C-E>' },
+    { 'i', '<C-Up>',     '<C-O><C-Y>' },
 
 }
 
 local Edit = {
     -- dont move cursor when back to normal mode
-    { 'i', '<ESC>', '<C-O>:stopinsert<CR>' },
+    { 'i', '<ESC>',  '<C-O>:stopinsert<CR>' },
     -- delete word forward
     { 'i', '<C-BS>', '<C-W>' },
     -- remember to configure alacritty with:
     -- { key: Back, mods: Control, chars: "\x17"}
     -- and configure Ctrl+/-Backspace's output as \x17
-    { 'i', '\x17', '<C-W>' },
+    { 'i', '\x17',   '<C-W>' },
 
-    { 'i', '<C-j>', '<ESC>o' },
-    { 'i', '<C-k>', '<ESC>O' },
+    { 'i', '<C-j>',  '<ESC>o' },
+    { 'i', '<C-k>',  '<ESC>O' },
     -- { 'n', '<LeftRelease>', '<LeftRelease><cmd>startinsert<CR>'},
-    { 'i', '<C-z>', '<cmd>undo<CR>' },
-    { 'n', '<C-v>', '<C-R>+' },
-    { 'i', '<C-v>', '<C-R>+' },
+    { 'i', '<C-z>',  '<cmd>undo<CR>' },
+    { 'n', '<C-v>',  '<C-R>+' },
+    { 'i', '<C-v>',  '<C-R>+' },
 }
 
 local Cmd = {
-    { 'n', 'Q', 'q' },
+    { 'n', ';',         ':',                                     { nowait = true } },
+    { 'n', '<C-s>',     '<CMD>w<CR>' },
+    { 'i', '<C-s>',     '<CMD>w<CR>' },
+    { 'n', 'Q',         'q' },
     -- format code using lsp
     -- { 'n', 'g=', ':lua vim.lsp.buf.format()<CR>' },
-    { 'n', 'g=', require("keymap.custom").FormatCode },
+    { 'n', 'g=',        require("keymap.custom").FormatCode },
     -- keep virtual mode after indent
-    { 'v', '>', '>gv' },
-    { 'v', '<', '<gv' },
+    { 'v', '>',         '>gv' },
+    { 'v', '<',         '<gv' },
     -- show variable reference
     { 'n', '<leader>r', require("keymap.custom").ReferenceToggle }
 }
@@ -95,7 +98,7 @@ local Plugins = {
         { 'v', 'm', '<CMD>HopWord<CR>' },
     },
     lspsaga = {
-        { 'n', 'ga', ':Lspsaga code_action<CR>', { silent = true } },
+        { 'n', 'ga', ':Lspsaga code_action<CR>',          { silent = true } },
         { 'n', 'ge', ':Lspsaga show_line_diagnostics<CR>' },
         { 'n', 'gh', ':Lspsaga hover_doc<CR>' },
         { 'n', 'gs', ':Lspsaga signature_help<CR>' },
@@ -104,17 +107,17 @@ local Plugins = {
     },
     -- bottom terminal
     toggleterm = {
-        { 'n', 'ss', ':ToggleTerm size=8 direction=horizontal<CR>' },
-        { 't', 'ss', '<C-\\><C-n>:ToggleTerm size=8 direction=horizontal<CR>' },
+        { 'n', 'ss',    ':ToggleTerm size=8 direction=horizontal<CR>' },
+        { 't', 'ss',    '<C-\\><C-n>:ToggleTerm size=8 direction=horizontal<CR>' },
         { 't', '<esc>', '<C-\\><C-n>:wincmd p<CR>' },
 
     },
     -- dap debug
     dap = {
-        { 'n', '<F1>', ':lua require"dap".toggle_breakpoint()<CR>' },
-        { 'n', '<F2>', ':lua require"dap".continue()<CR>' },
-        { 'n', '<F3>', ':lua require"dap".step_into()<CR>' },
-        { 'n', '<F4>', ':lua require"dap".step_over()<CR>' },
+        { 'n', '<F1>',      ':lua require"dap".toggle_breakpoint()<CR>' },
+        { 'n', '<F2>',      ':lua require"dap".continue()<CR>' },
+        { 'n', '<F3>',      ':lua require"dap".step_into()<CR>' },
+        { 'n', '<F4>',      ':lua require"dap".step_over()<CR>' },
         { 'n', '<leader>d', ':lua require"dapui".toggle()<CR>' },
     },
     marks_nvim = {
@@ -167,8 +170,6 @@ end
 
 --[[ key_mapper('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 key_mapper('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true}) ]]
-
-
 -- nvim-tree settings
 --
 -- a: add file

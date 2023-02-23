@@ -4,7 +4,7 @@ M = function()
         ensure_installed = {
             "rome",
             "gopls",
-            "sumneko_lua",
+            "lua_ls",
             "clangd",
             "rust_analyzer",
             "pyright",

@@ -90,6 +90,7 @@ bindsym $mod+q exec ~/.config/sway/bin/kill-behavior.py
 bindsym $mod+d exec $menu
 bindsym $mod+r exec $run
 bindsym Mod1+Ctrl+a exec grim -g "$(slurp)" - | swappy -f - -o - | wl-copy
+bindsym Mod1+Ctrl+s exec ~/.config/sway/bin/recorder.sh
 bindsym Ctrl+Mod1+z exec ~/.config/sway/bin/translate.sh
 bindsym $mod+Ctrl+Mod1+l exec 'sudo systemctl stop waydroid-container.service;sudo systemctl suspend'
 

@@ -123,7 +123,8 @@ local plugins = {
         config = config.lspsaga,
     },
     { 'onsails/lspkind-nvim' },
-    { 'ray-x/lsp_signature.nvim', config = config.lspsignature },
+    {'lewis6991/gitsigns.nvim', config = true},
+    -- { 'ray-x/lsp_signature.nvim', config = config.lspsignature },
     { 'phaazon/hop.nvim', config = config.hop, cmd = { 'HopWord' } },
     { 'ch3n9w/nvim-github-uploader', config = config.imguploader, ft = 'markdown' },
 }

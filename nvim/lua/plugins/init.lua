@@ -24,19 +24,28 @@ local plugins = {
         config = config.theme
     },
     { "dstein64/vim-startuptime", cmd = "StartupTime" },
-    { 'numToStr/Comment.nvim', config = config.comment },
-    { 'windwp/nvim-autopairs', config = true, event = { 'InsertEnter' } },
+    { 'numToStr/Comment.nvim',    config = config.comment },
+    {
+        'windwp/nvim-autopairs',
+        config = true,
+        event = { 'InsertEnter' }
+    },
     {
         'abecodes/tabout.nvim',
         dependencies = { 'nvim-cmp' },
         config = config.tabout,
         event = { 'InsertEnter' }
     },
-    { 'chentoast/marks.nvim', config = config.marks },
-    { 'kylechui/nvim-surround', config = true },
+    -- { 'chentoast/marks.nvim', config = config.marks },
+    {
+        'folke/todo-comments.nvim',
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = true
+    },
     {
         'glepnir/dashboard-nvim',
-        event = 'VimEnter',
+        -- event = 'VimEnter',
+        lazy = true,
         config = config.dashboard,
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
@@ -55,8 +64,25 @@ local plugins = {
         event = 'BufRead',
         config = config.indent
     },
-    { 'hoob3rt/lualine.nvim', event = 'BufRead', config = config.lualine },
-    { 'akinsho/toggleterm.nvim', config = config.toggleterm, cmd = { 'ToggleTerm' } },
+    -- highlight current word
+    {
+        'RRethy/vim-illuminate',
+    },
+    -- useless but interesting animation
+    {
+        'Eandrju/cellular-automaton.nvim',
+        cmd = {'CellularAutomaton'}
+    },
+    {
+        'hoob3rt/lualine.nvim',
+        event = 'BufRead',
+        config = config.lualine
+    },
+    {
+        'akinsho/toggleterm.nvim',
+        config = config.toggleterm,
+        cmd = { 'ToggleTerm' }
+    },
     { 'famiu/bufdelete.nvim' },
     {
         'kyazdani42/nvim-tree.lua',
@@ -70,11 +96,6 @@ local plugins = {
         config = config.outline,
         cmd = { 'AerialToggle' }
     },
-    -- {
-    --     'simrat39/symbols-outline.nvim',
-    --     config = config.outline,
-    --     cmd = { 'SymbolsOutline' }
-    -- },
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
@@ -106,14 +127,15 @@ local plugins = {
         config = config.nullls
     },
     -- lua for nvim plugin dev
-    { 'folke/neodev.nvim', config = true, ft = 'lua' },
+    { 'folke/neodev.nvim', config = true,         ft = 'lua' },
     -- orgmode !!!
-    { 'nvim-neorg/neorg', config = config.neorg, ft = 'norg' },
-
+    { 'nvim-neorg/neorg',  config = config.neorg, ft = 'norg' },
     {
         'mfussenegger/nvim-dap',
         lazy = true,
-        dependencies = { 'rcarriga/nvim-dap-ui', 'theHamsta/nvim-dap-virtual-text' },
+        dependencies = {
+            'rcarriga/nvim-dap-ui',
+            'theHamsta/nvim-dap-virtual-text' },
         config = config.dap,
         ft = { 'go', 'c' }
     },
@@ -123,9 +145,8 @@ local plugins = {
         config = config.lspsaga,
     },
     { 'onsails/lspkind-nvim' },
-    {'lewis6991/gitsigns.nvim', config = true},
-    -- { 'ray-x/lsp_signature.nvim', config = config.lspsignature },
-    { 'phaazon/hop.nvim', config = config.hop, cmd = { 'HopWord' } },
+    { 'lewis6991/gitsigns.nvim',     config = true },
+    { 'phaazon/hop.nvim',            config = config.hop,         cmd = { 'HopWord' } },
     { 'ch3n9w/nvim-github-uploader', config = config.imguploader, ft = 'markdown' },
 }
 

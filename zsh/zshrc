@@ -118,7 +118,7 @@ alias java8="/usr/lib/jvm/java-8-openjdk/bin/java"
 alias javac8="/usr/lib/jvm/java-8-openjdk/bin/javac"
 alias py="python"
 alias ipy="ipython"
-alias desktop="ssh ch4ser@192.168.31.247"
+alias desktop="ssh root@192.168.31.248"
 alias server="ssh root@103.149.91.46 -p 65522"
 alias tencent="ssh root@120.53.236.211"
 alias rasp="ssh root@192.168.31.135"
@@ -145,6 +145,8 @@ alias rslsync="rslsync --config ~/.config/rslsync/rslsync.conf"
 alias mach_on='swaymsg input "1:1:AT_Translated_Set_2_keyboard" events toggle'
 
 eval "$(zoxide init zsh --cmd cd)"
-todo.sh list
+
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+# todo.sh list
 
 # zprof

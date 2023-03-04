@@ -1,37 +1,38 @@
 local vim = vim
 local Movement = {
     -- { 'n', 'w', ':w<CR>w' },
-    { 'n', '<leader>h',  '<C-w>h' },
-    { 'n', '<leader>j',  '<C-w>j' },
-    { 'n', '<leader>k',  '<C-w>k' },
-    { 'n', '<leader>l',  '<C-w>l' },
-    { 'n', 'j',          "v:count == 0 ? 'gj' : 'j'",                   { expr = true, silent = true } },
-    { 'n', 'k',          "v:count == 0 ? 'gk' : 'k'",                   { expr = true, silent = true } },
-    { 'n', 'J',          ':bprevious!<CR>' },
-    { 'n', 'K',          ':bnext!<CR>' },
-    { 'n', 'H',          ':bprevious!<CR>' },
-    { 'n', 'L',          ':bnext!<CR>' },
+    { 'n', '<leader>h', '<C-w>h' },
+    { 'n', '<leader>j', '<C-w>j' },
+    { 'n', '<leader>k', '<C-w>k' },
+    { 'n', '<leader>l', '<C-w>l' },
+    { 'n', 'j',         "v:count == 0 ? 'gj' : 'j'",                   { expr = true, silent = true } },
+    { 'n', 'k',         "v:count == 0 ? 'gk' : 'k'",                   { expr = true, silent = true } },
+    { 'n', 'J',         ':bprevious!<CR>' },
+    { 'n', 'K',         ':bnext!<CR>' },
+    { 'n', 'H',         ':bprevious!<CR>' },
+    { 'n', 'L',         ':bnext!<CR>' },
     -- only scroll 1/3 size of page
-    { 'n', '<C-b>',      math.floor(vim.fn.winheight(0) / 3) .. '<C-u>' },
-    { 'n', '<C-j>',      math.floor(vim.fn.winheight(0) / 3) .. '<C-d>' },
-    { 'n', '<C-k>',      math.floor(vim.fn.winheight(0) / 3) .. '<C-u>' },
-    { 'v', '<C-j>',      math.floor(vim.fn.winheight(0) / 3) .. '<C-d>' },
-    { 'v', '<C-k>',      math.floor(vim.fn.winheight(0) / 3) .. '<C-u>' },
-    { 'n', '<PageUp>',   '<C-u>' },
-    { 'n', '<PageDown>', '<C-d>' },
+    { 'n', '<C-b>',     math.floor(vim.fn.winheight(0) / 3) .. '<C-u>' },
+    { 'n', '<C-j>',     math.floor(vim.fn.winheight(0) / 3) .. '<C-d>' },
+    { 'n', '<C-k>',     math.floor(vim.fn.winheight(0) / 3) .. '<C-u>' },
+    { 'v', '<C-j>',     math.floor(vim.fn.winheight(0) / 3) .. '<C-d>' },
+    { 'v', '<C-k>',     math.floor(vim.fn.winheight(0) / 3) .. '<C-u>' },
+    { 'n', '<PageUp>',  '<C-u>' },
+    -- { 'n', '<C-Left>',     '<CMD>po<CR>' },
+    -- { 'n', '<C-Right>',     '<CMD>ta<CR>' },
 
     -- jump to home or end
-    { 'i', '<C-h>',      '<ESC>I' },
-    { 'i', '<C-l>',      '<ESC>A' },
-    { 'n', '<C-h>',      '<ESC>^' },
-    { 'n', '<C-l>',      '<ESC>$' },
-    { 'n', '(',          '<ESC>^' },
-    { 'n', ')',          '<ESC>$' },
-    { 'v', '<C-l>',      '$' },
-    { 'v', '<C-h>',      '^' },
+    { 'i', '<C-h>',     '<ESC>I' },
+    { 'i', '<C-l>',     '<ESC>A' },
+    { 'n', '<C-h>',     '<ESC>^' },
+    { 'n', '<C-l>',     '<ESC>$' },
+    { 'n', '(',         '<ESC>^' },
+    { 'n', ')',         '<ESC>$' },
+    { 'v', '<C-l>',     '$' },
+    { 'v', '<C-h>',     '^' },
 
-    { 'i', '<C-Down>',   '<C-O><C-E>' },
-    { 'i', '<C-Up>',     '<C-O><C-Y>' },
+    { 'i', '<C-Down>',  '<C-O><C-E>' },
+    { 'i', '<C-Up>',    '<C-O><C-Y>' },
 
 }
 
@@ -51,6 +52,7 @@ local Edit = {
     { 'i', '<C-z>',  '<cmd>undo<CR>' },
     { 'n', '<C-v>',  '<C-R>+' },
     { 'i', '<C-v>',  '<C-R>+' },
+    { 'v', 'y',      '"*ygvy' },
 }
 
 local Cmd = {
@@ -67,7 +69,7 @@ local Cmd = {
     { 'v', '>',         '>gv' },
     { 'v', '<',         '<gv' },
     -- show variable reference
-    { 'n', '<leader>r', require("keymap.custom").ReferenceToggle }
+    { 'n', 'gr', vim.lsp.buf.references }
 }
 
 -- keymaps that need plugin context are not include, like nvim-cmp
@@ -104,8 +106,11 @@ local Plugins = {
         { 'n', 'ge', ':Lspsaga show_line_diagnostics<CR>' },
         { 'n', 'gh', ':Lspsaga hover_doc<CR>' },
         { 'n', 'gs', ':Lspsaga signature_help<CR>' },
-        { 'n', 'gr', ':Lspsaga rename<CR>' },
-        { 'n', 'gd', ':Lspsaga peek_definition<CR>' },
+        -- gr was assigned to referencetoogle
+        { 'n', 'gn', ':Lspsaga rename<CR>' },
+        -- just use left/right mouse click to goto definition
+        -- or original gd for <C-o>
+        -- { 'n', 'gd', ':Lspsaga peek_definition<CR>' },
     },
     -- bottom terminal
     toggleterm = {
@@ -122,17 +127,15 @@ local Plugins = {
         { 'n', '<F4>',      ':lua require"dap".step_over()<CR>' },
         { 'n', '<leader>d', ':lua require"dapui".toggle()<CR>' },
     },
-    marks_nvim = {
-        { 'n', 'MM', ':lua require"marks".toggle()<CR>' },
-        { 'n', 'MJ', ':lua require"marks".next()<CR>' },
-        { 'n', 'MK', ':lua require"marks".prev()<CR>' },
-    },
+    -- marks_nvim = {
+    --     { 'n', 'MM', ':lua require"marks".toggle()<CR>' },
+    --     { 'n', 'MJ', ':lua require"marks".next()<CR>' },
+    --     { 'n', 'MK', ':lua require"marks".prev()<CR>' },
+    -- },
 }
 local Other = {
     -- use mouse to manupulate folders
-    { 'n', '<2-LeftMouse>', 'za' },
-    { 'v', 'y',             '"*ygvy' },
-    { 'v', '<LeftRelease>', '"*ygv' },
+    -- { 'n', '<2-LeftMouse>', 'za' },
 }
 
 -- key map function
@@ -147,6 +150,7 @@ local key_mapper = function(mode, key, result, config)
         result,
         config
     )
+    -- vim.keymap.set('n', '<C-o>', '<cmd>po<CR>')
 end
 
 for _, keymap_class in ipairs({ Movement, Edit, Cmd, Other }) do

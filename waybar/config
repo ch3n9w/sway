@@ -1,8 +1,8 @@
 {
     "position": "bottom", 
-        "modules-left": ["battery","custom/gpu-usage","memory","temperature","pulseaudio","bluetooth","network"],
+        "modules-left": ["battery","memory","temperature","pulseaudio","bluetooth","network"],
         "modules-center": ["sway/workspaces"],
-        "modules-right": ["custom/forest","custom/books", "clock"],
+        "modules-right": ["custom/todo","custom/books", "clock"],
         "sway/workspaces": {
             "disable-scroll": true,
             "all-outputs": false,
@@ -77,7 +77,7 @@
             "on-click": "pavucontrol"
         },
         "temperature": {
-            "hwmon-path": "/sys/class/hwmon/hwmon8/temp1_input",
+            "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
             "critical-threshold": 70,
             "format-critical": " !{temperatureC}°C",
             "format": " {temperatureC}°C"
@@ -127,7 +127,13 @@
                 "on-click": "nvim-qt ~/Documents/NOTES",
                 "tooltip": false,
             },
-            "custom/forest": {
+            "custom/todo": {
+                "format": " TODO",
+                "on-click": "rofi -modi TODO:~/.config/waybar/bin/todo.sh -show TODO -theme ~/.config/rofi/tokyonight.rasi",
+                /* "on-click": "~/.config/waybar/bin/todofi.sh", */
+                "tooltip": false,
+            },
+            /*"custom/forest": {
                 "exec":  "~/.config/waybar/bin/forest status",
                 "format": " {}",
                 /* "format": "󰐅 {}", */
@@ -135,5 +141,5 @@
                 "return-type": "string",
                 "on-click": "~/.config/waybar/bin/forest start --email 'ch4xer@gmail.com' --password roottoor --time 30",
                 "tooltip": false,
-            }
+            }*/
 }

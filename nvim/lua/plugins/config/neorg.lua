@@ -9,8 +9,9 @@ M = function ()
                     engine = "nvim-cmp",
                 },
             },
-            ["core.norg.qol.toc"] = {},
             ["core.export"] = {},
+            ["core.integrations.treesitter"] = {},
+            ["core.autocommands"] = {},
         }
     }
 end

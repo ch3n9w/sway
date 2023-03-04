@@ -53,18 +53,12 @@ const rl = readline.createInterface({
 
 rl.question("", function (text) {
   var strip_text = text.replace(/\n/g, '')
-  var zh_flag = 0;
+  var target_language = 'zh-CN';
   for (let i=0; i<strip_text.length; i++) {
-    if (strip_text.charCodeAt(i) > 150) {
-      zh_flag = 1;
+    if (strip_text.charCodeAt(i) > 10000) {
+      target_language = 'en';
       break;
     }
-  }
-  var target_language;
-  if (zh_flag === 1) {
-    target_language = 'en';
-  } else {
-    target_language = 'zh-CN';
   }
   const options = {
     hostname: "translate.google.com",

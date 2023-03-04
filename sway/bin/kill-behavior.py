@@ -44,7 +44,7 @@ def extract_nodes_iterative(workspace):
 
 windows = get_windows_of_current_workspace()
 first_flag = 0
-start = 0
+startx = 0
 command = 'swaymsg kill'
 
 if len(windows) < 3:
@@ -55,13 +55,18 @@ for window in windows:
     # print(window)
     # get the start rect from the first window
     if first_flag == 0:
-        start = window.get('rect').get('x')
+        startx = window.get('rect').get('x')
+        starty = window.get('rect').get('y')
         first_flag = 1
 
     if window.get('focused'):
-        pos = window.get('rect').get('x')
-        index = pos - start
-        if index < 100:
+        pos_x = window.get('rect').get('x')
+        pos_y = window.get('rect').get('y')
+        index_x = pos_x - startx
+        index_y = pos_y - starty
+        if index_y > 100:
+            command = 'swaymsg kill'
+        elif index_x < 100:
             command = '''swaymsg 'mark --add "_swap", focus right, swap container with mark "_swap", focus right, kill, focus left' '''
         else:
             command = 'swaymsg kill'

@@ -12,7 +12,6 @@ config.mason = require('plugins.config.mason')
 config.marks = require('plugins.config.marks')
 config.neorg = require('plugins.config.neorg')
 config.nullls = require('plugins.config.nullls')
-config.outline = require('plugins.config.outline')
 config.tabout = require('plugins.config.tabout')
 config.telescope = require('plugins.config.telescope')
 config.theme = require('plugins.config.theme')
@@ -21,7 +20,7 @@ config.filetree = require('plugins.config.filetree')
 config.treesitter = require('plugins.config.treesitter')
 config.imguploader = require('plugins.config.imguploader')
 config.dashboard = require('plugins.config.dashboard')
-config.lspsignature = require('plugins.config.lspsignature')
+config.outline = require('plugins.config.outline')
 
 
 return config

@@ -19,31 +19,36 @@ window#waybar {
   color: white;
   margin: 0px;
   margin-left: 10px;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 #workspaces button {
-  padding: 0 9px;
+  padding: 0 10px;
   color: white;
   min-width: 50px;
-  border-top: 1px solid #373737;
-  border-bottom: 1px solid #373737;
+  border-top: 1px solid #212124;
+  border-bottom: 1px solid #212124;
+  border-left: 1px solid #212124;
+  border-right: 1px solid #212124;
 }
 
 #workspaces button.focused {
   color: #7aa2f7;
+  border-radius: 1px;
   border-top: 1px solid #7aa2f7;
   border-bottom: 1px solid #7aa2f7;
+  border-left: 1px solid #7aa2f7;
+  border-right: 1px solid #7aa2f7;
 }
 
 #workspaces button:hover {
   color: white;
   /* background: #5e81ac; */
   background: #373737;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 
-#custom-gpu-usage, #custom-date, #clock, #battery, #pulseaudio, #network, #temperature,#cpu,#memory, #bluetooth, #custom-books, #custom-ML,#custom-forest-coin, #custom-forest{
+#custom-gpu-usage, #custom-date, #clock, #battery, #pulseaudio, #network, #temperature,#cpu,#memory, #bluetooth, #custom-books, #custom-ML,#custom-forest-coin, #custom-forest, #custom-todo{
   background-color: #4c566a;
   background-color: #373737;
   padding: 0px 10px;
@@ -58,12 +63,12 @@ window#waybar {
 
 #clock {
   color: #b48ead;
-  border-radius: 0px 10px 10px 0px;
+  /* border-radius: 0px 10px 10px 0px; */
 }
 
 #battery {
   color: #a3be8c;
-  border-radius: 10px 0px 0px 10px;
+  /* border-radius: 10px 0px 0px 10px; */
 }
 
 #custom-gpu-usage {
@@ -93,7 +98,7 @@ window#waybar {
 
 #network {
   color: #2aa198;
-  border-radius: 0px 10px 10px 0px;
+  /* border-radius: 0px 10px 10px 0px; */
 }
 
 #memory {
@@ -124,6 +129,11 @@ window#waybar {
 
 #custom-books {
   color: #ffffff;
+}
+
+#custom-todo {
+  color: #7AA2F7;
+  /* border-radius: 10px 0px 0px 10px; */
 }
 
 #custom-forest-coin {

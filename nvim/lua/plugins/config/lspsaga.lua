@@ -14,20 +14,11 @@ M = function()
             vsplit = 'v',
             split = 's',
             tabe = 't',
-            close = '<ESC>',
+            quit = '<ESC>',
         },
         rename = {
             quit = '<ESC>',
             exec = '<CR>',
-        },
-        outline = {
-            win_width = 20,
-            auto_preview = false,
-            keys = {
-                jump = "<CR>",
-                quit = "q",
-                expand_collapse = 'l',
-            }
         }
     })
 end

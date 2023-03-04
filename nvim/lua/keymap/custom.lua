@@ -6,18 +6,30 @@ M.DeleteWinOrBuf = function()
     local cmd1 = 'write'
     local cmd2 = 'Bdelete'
     local current_buffer_name = vim.api.nvim_buf_get_name(0)
+    -- close all popup window
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        local config = vim.api.nvim_win_get_config(win);
+        if config.relative ~= "" then
+            vim.api.nvim_win_close(win, false);
+            -- print('Closing window', win)
+        end
+    end
     -- if current buf is NvimTree
     if current_buffer_name:match("NvimTree_") ~= nil then
+        vim.pretty_print('1')
         cmd1 = ''
         cmd2 = 'quit'
     elseif current_buffer_name:match("nvim/runtime/doc") ~= nil then
+        vim.pretty_print('2')
         cmd1 = ''
         cmd2 = 'quit'
     elseif vim.fn.win_gettype(0):match("quickfix") ~= nil then
+        vim.pretty_print('3')
         cmd1 = ''
         cmd2 = 'quit'
-    -- if the buffer is [No Name]
+        -- if the buffer is [No Name]
     elseif current_buffer_name == "" then
+        vim.pretty_print('4')
         -- get valid buffer number
         local is_valid = function(buf_num)
             if not buf_num or buf_num < 1 then return false end
@@ -35,6 +47,7 @@ M.DeleteWinOrBuf = function()
             cmd2 = 'quitall'
         end
     elseif #vim.api.nvim_list_wins() == 2 then
+        vim.pretty_print('4')
         -- check if there is NvimTree open
         cmd2 = 'quit'
         for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -44,24 +57,26 @@ M.DeleteWinOrBuf = function()
             end
         end
     elseif #vim.api.nvim_list_wins() > 2 then
+        vim.pretty_print('5')
         cmd2 = 'quit'
     end
+    vim.pretty_print(cmd2)
     vim.cmd(cmd1)
     vim.cmd(cmd2)
 end
 
 M.ReferenceToggle = function()
-    -- local pre_win = vim.api.nvim_get_current_win()
-    local wins = vim.fn.getwininfo()
-    local quickfix
-    -- if there is quickfix window, close it
-    for _, win in ipairs(wins) do
-        if win.quickfix == 1 then
-            quickfix = win.winid
-            vim.api.nvim_win_close(quickfix, 1)
-            return
-        end
-    end
+    -- -- local pre_win = vim.api.nvim_get_current_win()
+    -- local wins = vim.fn.getwininfo()
+    -- local quickfix
+    -- -- if there is quickfix window, close it
+    -- for _, win in ipairs(wins) do
+    --     if win.quickfix == 1 then
+    --         quickfix = win.winid
+    --         vim.api.nvim_win_close(quickfix, 1)
+    --         return
+    --     end
+    -- end
     -- if there is no quickfix, open it
     vim.lsp.buf.references()
     -- vim.api.nvim_set_current_win(pre_win)

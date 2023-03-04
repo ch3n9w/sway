@@ -12,38 +12,66 @@ vim.api.nvim_create_autocmd({ 'InsertLeave', 'BufCreate', 'BufEnter', 'BufLeave'
     command = 'silent !fcitx5-remote -c'
 })
 
-vim.g.after_dashboard = 0
+vim.g.firstBufferOrDashboard = 1
+vim.g.dashboard = 0
 vim.g.width_open_tree = 100
 
-vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
+
+local toggle_tree = function()
+    -- if there is no nvim-tree, just exit
+    if package.loaded['nvim-tree'] == nil then
+        return
+    end
+    local open_tree_without_focus = function()
+        require('nvim-tree.api').tree.toggle(false, true)
+    end
+    -- decide whether to open nvim-tree according to the window size
+    if vim.api.nvim_list_uis()[1].width > vim.g.width_open_tree then
+        -- call open_tree_without_focus directly
+        -- will cause `vim xxx` unable to keep focus on buffer
+        vim.fn.timer_start(2, open_tree_without_focus)
+    else
+        return
+    end
+end
+
+vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
     callback = function()
-        -- only launch after dashboard.nvim once
-        if vim.g.after_dashboard == 1 then
+        if vim.g.firstBufferOrDashboard ~= 1 then
+            if vim.g.dashboard == 1 then
+                vim.g.dashboard = 0
+                toggle_tree()
+            end
             return
         end
-        vim.g.after_dashboard = 1
-        -- if there is no nvim-tree, just exit
-        if package.loaded['nvim-tree'] == nil then
-            return
-        end
-        local open_tree_without_focus = function()
-            require('nvim-tree.api').tree.toggle(false, true)
-        end
-        -- decide whether to open nvim-tree according to the window size
-        if vim.api.nvim_list_uis()[1].width > vim.g.width_open_tree then
-            -- call open_tree_without_focus directly
-            -- will cause `vim xxx` unable to keep focus on buffer
-            vim.fn.timer_start(1, open_tree_without_focus)
+
+        vim.g.firstBufferOrDashboard = 0
+        -- start without filename
+        if vim.fn.argc() == 0 and vim.fn.line2byte('$') == -1 then
+            local ok, _ = pcall(
+                function()
+                    require('dashboard'):instance()
+                end
+            )
+            if ok then
+                vim.g.dashboard = 1
+            end
         else
-            return
+            -- start with filename, check whether to open nvim-tree
+            vim.g.dashboard = 0
+            toggle_tree()
         end
+        vim.pretty_print("BufWinEnter")
+        vim.pretty_print(vim.g.firstBufferOrDashboard)
+        vim.pretty_print(vim.g.dashboard)
     end
 })
 
 vim.api.nvim_create_autocmd({ 'VimResized' }, {
     callback = function()
         -- will not take effect before dashboard end
-        if vim.g.after_dashboard == 0 then
+        vim.pretty_print("VimResized")
+        if vim.g.firstBufferOrDashboard == 1 or vim.g.dashboard == 1 then
             return
         end
         -- if there is no nvim-tree, just exit
@@ -118,3 +146,13 @@ vim.api.nvim_create_autocmd({ 'VimResized' }, {
         end
     end
 }) ]]
+vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
+    pattern = { "*.norg", "*.md" },
+    callback = function()
+        if vim.bo.filetype == "norg" then
+            vim.cmd('execute \"normal gg=G\\<C-o>\"')
+        else
+            vim.lsp.buf.format()
+        end
+    end
+})

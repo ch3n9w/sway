@@ -44,7 +44,7 @@ M = function()
             -- press enter will select the first candidate
             ['<CR>'] = cmp.mapping.confirm({ select = true }),
             ['<Tab>'] = cmp.mapping(function(fallback)
-                if luasnip.expand_or_jumpable() then
+                if luasnip.expand_or_locally_jumpable() then
                     luasnip.expand_or_jump()
                 else
                     fallback()

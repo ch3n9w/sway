@@ -6,6 +6,7 @@ M.DeleteWinOrBuf = function()
     local pre_exit = ''
     local exit = 'quit'
     local current_bufnr = vim.api.nvim_win_get_buf(0)
+    local current_buf_name = vim.api.nvim_buf_get_name(current_bufnr)
     local is_valid = function(bufnr)
         if not bufnr or bufnr < 1 then return false end
         local exists = vim.api.nvim_buf_is_valid(bufnr)
@@ -15,13 +16,25 @@ M.DeleteWinOrBuf = function()
     if is_valid(current_bufnr) then
         pre_exit = 'write'
         exit = 'Bdelete'
+        local should_quit = 0
         -- check if there is other window contains valid buffer
         for _, win in ipairs(vim.api.nvim_list_wins()) do
             local bufnr = vim.api.nvim_win_get_buf(win)
             if bufnr ~= current_bufnr and is_valid(bufnr) then
                 pre_exit = 'write'
                 exit = 'quit'
+                should_quit = 1
                 break
+            end
+        end
+        if should_quit == 0 then
+            -- if there is only [No Name], quitall
+            local valid_buffer_number = #vim.tbl_filter(is_valid, vim.api.nvim_list_bufs())
+            vim.pretty_print(valid_buffer_number)
+            vim.pretty_print(current_buf_name)
+            if current_buf_name == "" and valid_buffer_number == 1 then
+                pre_exit = ''
+                exit = 'quitall'
             end
         end
     end

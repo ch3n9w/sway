@@ -61,16 +61,12 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
             vim.g.dashboard = 0
             toggle_tree()
         end
-        vim.pretty_print("BufWinEnter")
-        vim.pretty_print(vim.g.firstBufferOrDashboard)
-        vim.pretty_print(vim.g.dashboard)
     end
 })
 
 vim.api.nvim_create_autocmd({ 'VimResized' }, {
     callback = function()
         -- will not take effect before dashboard end
-        vim.pretty_print("VimResized")
         if vim.g.firstBufferOrDashboard == 1 or vim.g.dashboard == 1 then
             return
         end
@@ -146,13 +142,3 @@ vim.api.nvim_create_autocmd({ 'VimResized' }, {
         end
     end
 }) ]]
-vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
-    pattern = { "*.norg", "*.md" },
-    callback = function()
-        if vim.bo.filetype == "norg" then
-            vim.cmd('execute \"normal gg=G\\<C-o>\"')
-        else
-            vim.lsp.buf.format()
-        end
-    end
-})

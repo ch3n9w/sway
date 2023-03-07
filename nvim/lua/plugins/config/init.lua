@@ -21,6 +21,7 @@ config.treesitter = require('plugins.config.treesitter')
 config.imguploader = require('plugins.config.imguploader')
 config.dashboard = require('plugins.config.dashboard')
 config.outline = require('plugins.config.outline')
+config.fold = require('plugins.config.fold')
 
 
 return config

@@ -56,20 +56,22 @@ local Edit = {
 }
 
 local Cmd = {
-    { 'n', ';',         ':',                                     { nowait = true } },
-    { 'v', ';',         ':',                                     { nowait = true } },
-    { 'n', '<C-s>',     '<CMD>w<CR>' },
-    { 'i', '<C-s>',     '<CMD>w<CR>' },
-    { 'v', '<C-s>',     '<CMD>w<CR>' },
-    { 'n', 'Q',         'q' },
+    { 'n', ';',     ':',                                { nowait = true } },
+    { 'v', ';',     ':',                                { nowait = true } },
+    { 'n', '<C-s>', '<CMD>w<CR>' },
+    { 'i', '<C-s>', '<CMD>w<CR>' },
+    { 'v', '<C-s>', '<CMD>w<CR>' },
+    { 'n', 'Q',     'q' },
     -- format code using lsp
     -- { 'n', 'g=', ':lua vim.lsp.buf.format()<CR>' },
-    { 'n', 'g=',        require("keymap.custom").FormatCode },
+    { 'n', 'g=',    require("keymap.custom").FormatCode },
     -- keep virtual mode after indent
-    { 'v', '>',         '>gv' },
-    { 'v', '<',         '<gv' },
+    { 'v', '>',     '>gv' },
+    { 'v', '<',     '<gv' },
     -- show variable reference
-    { 'n', 'gr', vim.lsp.buf.references }
+    { 'n', 'gr',    vim.lsp.buf.references },
+    -- enter to toggle fold
+    { 'n', '<CR>',  'za' }
 }
 
 -- keymaps that need plugin context are not include, like nvim-cmp

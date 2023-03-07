@@ -19,10 +19,15 @@ vim.o.cursorline = true
 vim.o.clipboard = 'unnamedplus'
 
 -- folder view setting
-vim.o.foldmethod='indent'
-vim.o.foldlevel=99
+-- vim.o.foldmethod = 'expr'
+-- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.o.foldlevel = 20
+vim.o.foldcolumn = '0' -- '0' is not bad
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
 
-vim.o.scrolloff=0
+vim.o.scrolloff = 0
 
 -- indent setting
 vim.o.autoindent = true
@@ -31,10 +36,10 @@ vim.o.smartindent = true
 -- no additional files
 vim.o.swapfile = false
 vim.o.backup = false -- insert mode compeleting menu setting
-vim.o.completeopt='menuone,noinsert,noselect'
+vim.o.completeopt = 'menuone,noinsert,noselect'
 
 -- visual selection mode
-vim.o.sel='inclusive'
+vim.o.sel = 'inclusive'
 
 -- set tab to 4 spaces, could be override by ftplugin
 vim.o.tabstop = 4
@@ -55,7 +60,7 @@ vim.o.wrap = true
 vim.g.mapleader = ' '
 
 -- load preview view
-vim.o.viewoptions='folds,cursor,curdir'
+vim.o.viewoptions = 'folds,cursor,curdir'
 
 -- setting for nvim-tree
 vim.g.loaded_netrw = 1
@@ -75,4 +80,3 @@ vim.g.neovide_cursor_vfx_mode = "wireframe"
 -- adjust this to disable animation
 vim.g.neovide_cursor_animation_length = 0
 vim.g.neovide_cursor_trail_size = 0
-

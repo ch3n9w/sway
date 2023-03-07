@@ -51,8 +51,8 @@ M = function()
                 end
             end, { 'i', 's' }),
             ['<S-Tab>'] = cmp.mapping(function(fallback)
-                if luasnip.jumpable(-1) then
-                    luasnip.jump(-1)
+                if luasnip.jumpable( -1) then
+                    luasnip.jump( -1)
                 else
                     fallback()
                 end
@@ -98,6 +98,12 @@ M = function()
 
     local lspconfig = require('lspconfig')
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    -- for folding
+    -- capabilities.textDocument.foldingRange = {
+    --     dynamicRegistration = false,
+    --     lineFoldingOnly = true
+    -- }
+
     lspconfig.intelephense.setup {
         capabilities = capabilities,
         init_options = {
@@ -144,7 +150,7 @@ M = function()
         }
     end
     -- for clangd
-    capabilities.offsetEncoding = {"utf-16"}
+    capabilities.offsetEncoding = { "utf-16" }
     lspconfig.clangd.setup {
         capabilities = capabilities
     }

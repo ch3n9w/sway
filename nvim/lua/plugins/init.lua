@@ -71,7 +71,7 @@ local plugins = {
     -- useless but interesting animation
     {
         'Eandrju/cellular-automaton.nvim',
-        cmd = {'CellularAutomaton'}
+        cmd = { 'CellularAutomaton' }
     },
     {
         'hoob3rt/lualine.nvim',
@@ -126,10 +126,17 @@ local plugins = {
         dependencies = { 'williamboman/mason.nvim' },
         config = config.nullls
     },
-    -- lua for nvim plugin dev
-    { 'folke/neodev.nvim', config = true,         ft = 'lua' },
+    {
+        'kevinhwang91/nvim-ufo',
+        config = config.fold,
+        dependencies = { 'kevinhwang91/promise-async' }
+    },
     -- orgmode !!!
-    { 'nvim-neorg/neorg',  config = config.neorg, ft = 'norg' },
+    {
+        'nvim-neorg/neorg',
+        config = config.neorg,
+        ft = 'norg'
+    },
     {
         'mfussenegger/nvim-dap',
         lazy = true,
@@ -147,7 +154,6 @@ local plugins = {
     { 'onsails/lspkind-nvim' },
     { 'lewis6991/gitsigns.nvim',     config = true },
     { 'phaazon/hop.nvim',            config = config.hop,         cmd = { 'HopWord' } },
-    { 'ch3n9w/nvim-github-uploader', config = config.imguploader, ft = 'markdown' },
 }
 
 require("lazy").setup(plugins)

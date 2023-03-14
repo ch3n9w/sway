@@ -50,7 +50,7 @@ local Edit = {
     { 'i', '<C-k>',  '<ESC>O' },
     -- { 'n', '<LeftRelease>', '<LeftRelease><cmd>startinsert<CR>'},
     { 'i', '<C-z>',  '<cmd>undo<CR>' },
-    { 'n', '<C-v>',  '<C-R>+' },
+    -- { 'n', '<C-v>',  '<C-R>+' },
     { 'i', '<C-v>',  '<C-R>+' },
     { 'v', 'y',      '"*ygvy' },
 }

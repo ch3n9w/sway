@@ -13,6 +13,11 @@ M = function()
         { "└", "FloatBorder" },
         { "│", "FloatBorder" },
     }
+    -- -- https://github.com/L3MON4D3/LuaSnip/issues/780
+    luasnip.setup({
+        update_events = { "TextChanged", "TextChangedI" },
+        region_check_events = { "CursorMoved", "CursorHold", "InsertEnter", "CursorMovedI" },
+    })
     cmp.setup({
         completion = {
             -- highlight the first candidate
@@ -44,14 +49,18 @@ M = function()
             -- press enter will select the first candidate
             ['<CR>'] = cmp.mapping.confirm({ select = true }),
             ['<Tab>'] = cmp.mapping(function(fallback)
-                if luasnip.expand_or_locally_jumpable() then
+                if cmp.visible() then
+                    cmp.select_next_item()
+                elseif luasnip.expand_or_locally_jumpable() then
                     luasnip.expand_or_jump()
                 else
                     fallback()
                 end
             end, { 'i', 's' }),
             ['<S-Tab>'] = cmp.mapping(function(fallback)
-                if luasnip.jumpable( -1) then
+                if cmp.visible() then
+                    cmp.select_prev_item()
+                elseif luasnip.jumpable( -1) then
                     luasnip.jump( -1)
                 else
                     fallback()
@@ -74,7 +83,7 @@ M = function()
         },
         sources = cmp.config.sources({
             { name = 'nvim_lsp' },
-            { name = 'buffer' },
+            -- { name = 'buffer' },
             { name = 'luasnip' },
             { name = 'neorg' },
         }),

@@ -7,6 +7,7 @@ M.DeleteWinOrBuf = function()
     local exit = 'quit'
     local current_bufnr = vim.api.nvim_win_get_buf(0)
     local current_buf_name = vim.api.nvim_buf_get_name(current_bufnr)
+    local current_win_number = vim.api.nvim_win_get_number(0)
     local is_valid = function(bufnr)
         if not bufnr or bufnr < 1 then return false end
         local exists = vim.api.nvim_buf_is_valid(bufnr)
@@ -20,7 +21,7 @@ M.DeleteWinOrBuf = function()
         -- check if there is other window contains valid buffer
         for _, win in ipairs(vim.api.nvim_list_wins()) do
             local bufnr = vim.api.nvim_win_get_buf(win)
-            if bufnr ~= current_bufnr and is_valid(bufnr) then
+            if win ~= current_win_number and is_valid(bufnr) then
                 pre_exit = 'write'
                 exit = 'quit'
                 should_quit = 1

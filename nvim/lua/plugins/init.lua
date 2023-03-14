@@ -30,12 +30,15 @@ local plugins = {
         config = true,
         event = { 'InsertEnter' }
     },
-    {
-        'abecodes/tabout.nvim',
-        dependencies = { 'nvim-cmp' },
-        config = config.tabout,
-        event = { 'InsertEnter' }
-    },
+    -- how to mark sure tabout load before luasnip
+    -- {
+    --     'abecodes/tabout.nvim',
+    --     dependencies = {
+    --         'nvim-cmp',
+    --         'nvim-treesitter/nvim-treesitter'
+    --     },
+    --     config = config.tabout,
+    -- },
     -- { 'chentoast/marks.nvim', config = config.marks },
     {
         'folke/todo-comments.nvim',
@@ -152,8 +155,8 @@ local plugins = {
         config = config.lspsaga,
     },
     { 'onsails/lspkind-nvim' },
-    { 'lewis6991/gitsigns.nvim',     config = true },
-    { 'phaazon/hop.nvim',            config = config.hop,         cmd = { 'HopWord' } },
+    { 'lewis6991/gitsigns.nvim', config = true },
+    { 'phaazon/hop.nvim',        config = config.hop, cmd = { 'HopWord' } },
 }
 
 require("lazy").setup(plugins)

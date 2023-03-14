@@ -91,6 +91,8 @@ vim.api.nvim_create_autocmd({ 'VimResized' }, {
             if nvim_tree_view.is_visible() then
                 require('nvim-tree.api').tree.close()
             end
+            -- if outline is open, close it
+            require('aerial').close_all()
         end
     end
 })

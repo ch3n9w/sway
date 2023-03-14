@@ -80,7 +80,8 @@ local Plugins = {
         -- { 'n', 'q', ':write<CR>:Bdelete<CR>' },
         -- { 'v', 'q', ':write<CR>:Bdelete<CR>' },
         { 'n', 'q', require("keymap.custom").DeleteWinOrBuf },
-        { 'v', 'q', require("keymap.custom").DeleteWinOrBuf },
+        -- will affect lspsaga
+        -- { 'v', 'q', require("keymap.custom").DeleteWinOrBuf },
     },
     telescope = {
         { 'n', 'sw', ':Telescope grep_string<CR>' },
@@ -101,7 +102,6 @@ local Plugins = {
     },
     hop = {
         { 'n', 'm', ':HopWord<CR>' },
-        { 'v', 'm', '<CMD>HopWord<CR>' },
     },
     lspsaga = {
         { 'n', 'ga', ':Lspsaga code_action<CR>',          { silent = true } },

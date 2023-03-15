@@ -20,14 +20,9 @@ M.DeleteWinOrBuf = function()
         local should_quit = 0
         -- check if there is other window contains valid buffer
         for _, win in ipairs(vim.api.nvim_list_wins()) do
-            vim.pretty_print("hello?")
             local bufnr = vim.api.nvim_win_get_buf(win)
             -- bufnr ~= current_bufnr
             if win ~= current_win_number and is_valid(bufnr) then
-                vim.pretty_print("hello?man")
-                vim.pretty_print(win)
-                local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(0))
-                vim.pretty_print(bufname)
                 pre_exit = 'write'
                 exit = 'quit'
                 should_quit = 1

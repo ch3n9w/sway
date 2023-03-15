@@ -16,6 +16,6 @@ mkdir ./fcitx5
 cp -r ~/.local/share/fcitx5/themes ./fcitx5/
 mkdir ./zsh
 cp -r ~/.zshrc ./zsh/zshrc
-cp -r ~/.p10k.zsh ./zsh/p10k.zsh
+cp -r ~/.config/zsh ./zsh/
 
 

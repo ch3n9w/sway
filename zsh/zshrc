@@ -1,163 +1,20 @@
-# wayland variables
-# source $XDG_CONFIG_HOME/zsh/wayland
 # zmodload zsh/zprof
 
-export WORKSPACE=$HOME/.local/workspace
-export gw="http://120.53.236.211:8081"
-export CGO_ENABLED=1
-export GOPATH=$HOME/Projects/go
-export GOPROXY=https://goproxy.cn
-export GO111MODULE=on
-export XDG_CONFIG_HOME=$HOME/.config
-# export https_proxy=http://127.0.0.1:7890
-# export http_proxy=http://127.0.0.1:7890
-# export ALL_PROXY="socks5://127.0.0.1:7891"
-export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:/usr/lib:$GOPATH/bin
 
-# For jetbrains
-# export IDEA_JDK=/usr/lib/jvm/jre-jetbrains
-# export STUDIO_JDK=/usr/lib/jvm/jre-jetbrains
+export XDG_CONFIG_HOME=~/.config
+# load software configuration
+for conf in "$XDG_CONFIG_HOME/zsh/software/"*.zsh; do
+  source "${conf}"
+done
+unset conf
 
-# export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --history=$HOME/.local/share/fzf/fzfhistory --preview 'bat --style=numbers --color=always --line-range :500 {}'"
-export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --history=$HOME/.local/share/fzf/fzfhistory --preview '$HOME/Tools/Other/fzf-scope.sh {}'"
-export FZF_DEFAULT_COMMAND="fd --exclude={.wine,.git,.idea,.vscode,.sass-cache,node_modules,build,.local,.steam,.m2,.rangerdir,.ssh,.ghidra,.mozilla} --type f --hidden --follow"
+source $XDG_CONFIG_HOME/zsh/environment.zsh
+source $XDG_CONFIG_HOME/zsh/functions.zsh
+source $XDG_CONFIG_HOME/zsh/theme.zsh
+source $XDG_CONFIG_HOME/zsh/plugins.zsh
+source $XDG_CONFIG_HOME/zsh/alias.zsh
+source $XDG_CONFIG_HOME/zsh/keybinds.zsh
+source $XDG_CONFIG_HOME/zsh/exec.zsh
 
-xdg_fzf() {
-    local fzf_result=$(fzf)
-    local directory=$(dirname $fzf_result)
-    if [ -z "$fzf_result" ]
-    then
-        echo "No file specific"
-    else
-        # xdg-open $fzf_result &
-        cd $directory
-    fi
-}
-man() {
-    local width=$(tput cols)
-    [ $width -gt $MANWIDTH ] && width=$MANWIDTH
-    env MANWIDTH=$width \
-    man "$@"
-}
-# make alacritty show current directory in title
-precmd() {
-    [[ $TERM == "xterm-256color" ]] && print "\033]0;:> $(pwd)"
-}
-
-code()
-{
-    if [ -d "${1}" ]; then
-        local dir="${1}"
-        shift 1
-        ( cd "${dir}" && nvim "." "${@}" )
-    else
-        nvim "${@}"
-    fi
-}
-
-export LC_ALL="en_US.UTF-8"
-export EDITOR=/usr/bin/nvim
-export VISUAL=/usr/bin/nvim
-
-# for tomcat debug
-# export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
-# export JRE_HOME=$JAVA_HOME/jre
-# export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
-# export CATALINA_HOME=/usr/share/tomcat8530/apache-tomcat-8.5.30
-#
-export CLASSPATH=$HOME:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$CATALINA_HOME/lib
-
-export TODO_DIR=~/.local/share/todo
-export TODO_ACTIONS_DIR=$XDG_CONFIG_HOME/todo/actions
-export TODOTXT_DEFAULT_ACTION=ls
-export TODOTXT_CFG_FILE=$XDG_CONFIG_HOME/todo/todo.cfg
-export TODO_FILE=~/.local/share/todo/todo.txt
-
-# let zsh-autosuggestions to work
-export SAVEHIST=1000
-export HISTSIZE=1000
-export HISTFILESIZE=1000
-export HISTFILE=$HOME/.zsh_history
-# share history in different terminal
-setopt SHARE_HISTORY
-setopt EXTENDED_HISTORY
-# This will make only alphanumeric characters count as words.
-# better experience for ctrl+left/right
-export WORDCHARS=''
-export LS_COLORS='no=00;37:fi=00:di=00;34:ln=04;36:pi=40;33:so=01;35:bd=40;33;01:'
-
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-extract/extract.plugin.zsh
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-autoswitch-virtualenv/zsh-autoswitch-virtualenv.plugin.zsh
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-autoload -U compinit; compinit
-
-zstyle ':completion:*:default' list-colors '=(#b)(-*)(-- *)===34' '=(#b)(-- *)=34'
-# zstyle ':completion:*' list-colors '=*=34'
-zstyle ':completiom:*' list-colors 'di=1:fi=96:*.m=31:*.py=32:*.txt=36:*.out=35'
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}  
-
-# keybindings must be provided after plugin source
-bindkey -e
-bindkey -s '\er' 'ranger\n'
-bindkey -s '\ef' 'xdg_fzf\n'
-bindkey -s '\ed' 'dolphin .\n'
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
-bindkey '^H' backward-kill-word
-
-# alias ssh="kitty +kitten ssh"
-alias msf="msfconsole"
-alias timeshift="sudo timeshift"
-alias clear_cache="yay -Scc;yay -Rns $(yay -Qtdq)"
-alias clear_packages="yay -Qtdq | yay -Rs -"
-alias idea="nohup /opt/intellij-idea-ultimate-edition/bin/idea.sh .  >/dev/null 2>&1 &"
-alias check_log="journalctl -p5"
-alias vi="nvim"
-alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR";zoxide add "$LASTDIR"'
-alias nvmstart="source /usr/share/nvm/init-nvm.sh"
-alias java7="/usr/lib/jvm/java-7-openjdk/bin/java"
-alias javac7="/usr/lib/jvm/java-7-openjdk/bin/javac"
-alias java8="/usr/lib/jvm/java-8-openjdk/bin/java"
-alias javac8="/usr/lib/jvm/java-8-openjdk/bin/javac"
-alias py="python"
-alias ipy="ipython"
-alias desktop="ssh root@192.168.31.247"
-alias server="ssh root@103.149.91.46 -p 65522"
-alias tencent="ssh root@120.53.236.211"
-alias rasp="ssh root@192.168.31.135"
-alias ubuntu="ssh root@192.168.59.113"
-alias master="ssh root@192.168.31.208"
-alias worker="ssh root@192.168.31.212"
-
-alias sshk="ssh -i .ssh/ssh.pem"
-alias kali="ssh root@192.168.59.114"
-alias centos="ssh root@192.168.59.108"
-# alias k="minikube kubectl --"
-alias k="kubectl"
-alias hm="helm"
-alias faas="faas-cli"
-alias cat="bat --style=plain --paging=never"
-alias top="htop"
-alias ls="exa --icons"
-alias t="todo.sh"
-alias cp="rsync -a"
-alias d="docker"
-alias dc="docker-compose"
-alias docker_rm_all="docker ps -aq | xargs docker stop | xargs docker rm"
-alias rslsync="rslsync --config ~/.config/rslsync/rslsync.conf"
-alias mach_on='swaymsg input "1:1:AT_Translated_Set_2_keyboard" events toggle'
-
-eval "$(zoxide init zsh --cmd cd)"
-
-[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
-# todo.sh list
 
 # zprof

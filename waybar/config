@@ -95,7 +95,7 @@
         },
         "memory": {
             "states": {
-                "critical": 80,
+                "critical": 90,
             },
             "interval": 10,
             "format": " {}%",

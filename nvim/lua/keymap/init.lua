@@ -33,6 +33,7 @@ local Movement = {
 
     { 'i', '<C-Down>',  '<C-O><C-E>' },
     { 'i', '<C-Up>',    '<C-O><C-Y>' },
+    { 'n', 'gd',        vim.lsp.buf.definition },
 
 }
 

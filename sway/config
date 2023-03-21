@@ -28,6 +28,7 @@ assign [title="WPS"] 9
 assign [title="Spreadsheets"] 9
 assign [app_id="libreoffice"] 9
 assign [app_id="zathura"] 7
+assign [class="mGBA"] 7
 assign [app_id="okular"] 7
 assign [class="Zotero"] 5
 assign [class="ivySCI"] 5
@@ -40,6 +41,7 @@ assign [class="VirtualBox"] 8
 assign [app_id="mpv"] 10
 assign [app_id="FeelUOwn"] 10
 assign [app_id="telegram"] 10
+assign [app_id="monero"] 10
 assign [app_id="konsole"] 4
 for_window [app_id="scratchpad"] {
     floating enable

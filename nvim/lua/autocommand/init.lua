@@ -12,6 +12,7 @@ vim.api.nvim_create_autocmd({ 'InsertLeave', 'BufCreate', 'BufEnter', 'BufLeave'
     command = 'silent !fcitx5-remote -c'
 })
 
+
 vim.g.firstBufferOrDashboard = 1
 vim.g.dashboard = 0
 vim.g.width_open_tree = 100
@@ -78,7 +79,7 @@ vim.api.nvim_create_autocmd({ 'VimResized' }, {
         -- decide whether to open nvim-tree according to the window size
         vim.pretty_print(vim.fn.winwidth(0))
         if vim.api.nvim_list_uis()[1].width > vim.g.width_open_tree then
-
+            -- if the number of valid window > 1, then dont start tree
             local is_valid_window = function(winnr)
                 local bufnr = vim.api.nvim_win_get_buf(winnr)
                 if not bufnr or bufnr < 1 then return false end

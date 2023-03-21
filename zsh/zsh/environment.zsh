@@ -20,12 +20,13 @@ export VISUAL=/usr/bin/nvim
 # export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 # export CATALINA_HOME=/usr/share/tomcat8530/apache-tomcat-8.5.30
 #
+export TERMCMD=alacritty
 export CLASSPATH=$HOME:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$CATALINA_HOME/lib
 
 # let zsh-autosuggestions to work
-export SAVEHIST=1000
-export HISTSIZE=1000
-export HISTFILESIZE=1000
+export SAVEHIST=100000
+export HISTSIZE=100000
+export HISTFILESIZE=100000
 export HISTFILE=$HOME/.zsh_history
 # share history in different terminal
 setopt SHARE_HISTORY

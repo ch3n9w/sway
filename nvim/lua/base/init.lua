@@ -1,5 +1,7 @@
 local vim = vim
 
+-- set title for alacritty
+vim.o.title = true
 vim.o.termguicolors = true
 vim.o.background = "dark"
 vim.o.errorbells = false

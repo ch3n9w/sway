@@ -1,8 +1,11 @@
 
 # keybindings must be provided after plugin source
 bindkey -e
-bindkey -s '\er' 'ranger\n'
-bindkey -s '\ef' 'xdg_fzf\n'
+# set title
+bindkey '\er' filemanager
+bindkey '\ef' cd_fzf
+bindkey '\eF' cd_fzf_from_home
+bindkey '\eo' open_fzf
 bindkey -s '\ed' 'dolphin .\n'
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word

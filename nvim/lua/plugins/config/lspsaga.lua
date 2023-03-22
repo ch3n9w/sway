@@ -9,13 +9,13 @@ M = function()
                 exec = '<CR>',
             }
         },
-        definition = {
-            edit = '<CR>',
-            vsplit = 'v',
-            split = 's',
-            tabe = 't',
-            quit = '<ESC>',
-        },
+        -- definition = {
+        --     edit = '<CR>',
+        --     vsplit = 'v',
+        --     split = 's',
+        --     tabe = 't',
+        --     quit = '<ESC>',
+        -- },
         rename = {
             quit = '<ESC>',
             exec = '<CR>',

@@ -111,7 +111,8 @@ local plugins = {
         cmd = { 'Mason', 'MasonInstall' },
         config = config.mason,
     },
-    { -- Autocompletion
+    {
+        -- Autocompletion
         'hrsh7th/nvim-cmp',
         dependencies = {
             'neovim/nvim-lspconfig',
@@ -121,6 +122,11 @@ local plugins = {
             'hrsh7th/cmp-buffer'
         },
         config = config.cmp,
+    },
+    {
+        'tzachar/cmp-tabnine',
+        build = './install.sh',
+        dependencies = 'hrsh7th/nvim-cmp',
     },
     -- format
     {

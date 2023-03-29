@@ -61,11 +61,16 @@ open_fzf() {
 
 filemanager() {
     echo -e "\e]2;>RANGER<\007"
-    ranger --choosedir=$HOME/.rangerdir < $TTY
-    LASTDIR=`cat $HOME/.rangerdir`
-    cd "$LASTDIR"
-    zoxide add "$LASTDIR"
-    redraw-prompt
+    # avoid nested ranger instances
+    if [ -z "$RANGER_LEVEL" ]; then
+        ranger --choosedir=$HOME/.rangerdir < $TTY
+        LASTDIR=`cat $HOME/.rangerdir`
+        cd "$LASTDIR"
+        zoxide add "$LASTDIR"
+        redraw-prompt
+    else
+        exit
+    fi
 }
 
 man() {

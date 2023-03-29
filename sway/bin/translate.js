@@ -54,12 +54,6 @@ const rl = readline.createInterface({
 rl.question("", function (text) {
   var strip_text = text.replace(/\n/g, '')
   var target_language = 'zh-CN';
-  for (let i=0; i<strip_text.length; i++) {
-    if (strip_text.charCodeAt(i) > 10000) {
-      target_language = 'en';
-      break;
-    }
-  }
   const options = {
     hostname: "translate.google.com",
     path: `/translate_a/single?client=webapp&sl=auto&tl=${target_language}&hl=${target_language}&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&source=bh&ssel=0&tsel=0&kc=1&tk=${TL(strip_text)}&q=${encodeURIComponent(strip_text)}`,

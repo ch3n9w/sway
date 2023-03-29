@@ -40,7 +40,7 @@ alias mach_on='swaymsg input "1:1:AT_Translated_Set_2_keyboard" events toggle'
 
 alias master="ssh root@192.168.31.171"
 alias worker1="ssh root@192.168.31.152"
-alias worker2="ssh root@192.168.31.86"
+alias worker2="ssh root@192.168.31.85"
 
 eval "$(zoxide init zsh --cmd cd)"
 

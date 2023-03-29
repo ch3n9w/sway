@@ -30,6 +30,7 @@ assign [app_id="libreoffice"] 9
 assign [app_id="zathura"] 7
 assign [class="mGBA"] 7
 assign [app_id="okular"] 7
+assign [class="jadx"] 7
 assign [class="Zotero"] 5
 assign [class="ivySCI"] 5
 assign [app_id="waydroid"] 7 
@@ -270,15 +271,18 @@ bar {
 exec dunst
 exec_always autotiling --limit 2
 
+# ctrl-; to navigate clipboard history
 exec fcitx5 
 # no need for Ctrl-C to copy message!
-exec wl-paste --primary --watch wl-copy
+# there is some bug, dont know why
+# exec wl-paste --primary --watch wl-copy
 
 # exec swayidle -w \
 #      timeout 1800 'swaymsg "output * dpms off"' \
 #          resume 'swaymsg "output * dpms on"' 
 # exec mpvpaper -o "no-audio --loop-playlist --hwdec=auto" eDP-1 ~/Media/Pictures/videos/mylivewallpapers-com-Boreal-Valley-Dark-Souls-3.mp4
 
+# use swaymsg exit to logout
 exec swayidle -w timeout 1800 'sudo systemctl suspend' 
 
 # make waybar start immediately

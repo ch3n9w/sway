@@ -72,7 +72,10 @@ local Cmd = {
     -- show variable reference
     { 'n', 'gr',    vim.lsp.buf.references },
     -- enter to toggle fold
-    { 'n', '<CR>',  'za' }
+    { 'n', '<CR>',  'za' },
+    -- save file with root permissions
+    { 'c', 'w!',    require("keymap.custom").sudo_write },
+
 }
 
 -- keymaps that need plugin context are not include, like nvim-cmp

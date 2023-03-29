@@ -14,6 +14,11 @@ M = function()
         dims = false
         tree_theme = "dark"
         theme = 'storm'
+    elseif os.getenv("NVIM_GUI") == "3" then
+        trans = false
+        dims = false
+        tree_theme = "light"
+        theme = "day"
     else
         trans = true
         dims = true

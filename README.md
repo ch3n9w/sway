@@ -7,9 +7,6 @@ This repo aimed to backup my configuration, including configuration of sway, way
 
 ![](image/second.png)
 
-![](image/neovim-dashboard.png)
-![](image/neovim.png)
-
 <!--toc:start-->
 - [Sway DE configuration](#sway-de-configuration)
   - [Configuration](#configuration)
@@ -23,9 +20,6 @@ This repo aimed to backup my configuration, including configuration of sway, way
       - [firefox](#firefox)
     - [filemanager(ranger + dolphin)](#filemanagerranger-dolphin)
       - [ranger](#ranger)
-    - [Editor (Neovim + nvim-qt)](#editor-neovim-nvim-qt)
-      - [Neovim](#neovim)
-      - [nvim-qt](#nvim-qt)
     - [reader(zathura+zotero)](#readerzathurazotero)
       - [zathura](#zathura)
       - [zotero](#zotero)
@@ -116,19 +110,6 @@ ps: if firefox's font looks extremely small after change scale in sway, try to d
 - use [ranger_udisk_menu](https://github.com/SL-RU/ranger_udisk_menu) to mount usb device
 - customize copy paste and cut command to let ranger paste file in different instances
 
-### Editor (Neovim + nvim-qt)
-
-#### Neovim
-
-Just copy the config file to `~/.config/nvim` and open nvim, waiting plugins download finish, and then enjoy it!
-
-#### nvim-qt
-
-fcitx5 cannot input chinese under wayland alacritty, so I use nvim-qt for chinse note-taking.
-
-nvim-qt use `ginit.vim`for configuration，
-
-run `:GuiFont *` to set font for nvim-qt
 
 ### reader(zathura+zotero)
 

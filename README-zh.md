@@ -5,8 +5,6 @@
 
 ![](image/second.png)
 
-![](image/neovim-dashboard.png)
-![](image/neovim.png)
 
 <!--toc:start-->
 - [Sway DE configuration](#sway-de-configuration)
@@ -21,9 +19,6 @@
       - [firefox](#firefox)
     - [文件管理(ranger + dolphin)](#文件管理ranger-dolphin)
       - [ranger](#ranger)
-    - [编辑器 (Neovim + nvim-qt)](#编辑器-neovim-nvim-qt)
-      - [Neovim](#neovim)
-      - [nvim-qt](#nvim-qt)
     - [阅读器(zathura+zotero)](#阅读器zathurazotero)
       - [zathura](#zathura)
       - [zotero](#zotero)
@@ -106,18 +101,6 @@ ps: 如果sway改变显示器scale之后发现firefox的字和组件都变得很
 - 使用[ranger_udisk_menu](https://github.com/SL-RU/ranger_udisk_menu)插件来方便ranger挂载设备
 - 修改了copy paste 和 cut 命令，让ranger可以跨实例张贴文件
 
-
-### 编辑器 (Neovim + nvim-qt)
-#### Neovim
-
-只需要将配置文件复制到`~/.config/nvim`路径下,然后打开nvim,等待完成自动安装就可以了.
-
-#### nvim-qt
-alacritty在wayland环境下无法输入中文，为了方便做笔记，我选用了nvim-qt来作为自己的笔记软件。
-
-nvim-qt使用`ginit.lua`作为配置文件，要让其加载nvim的lua配置文件
-
-可以运行命令`:GuiFont *`来设置nvim-qt的字体
 
 ### 阅读器(zathura+zotero)
 

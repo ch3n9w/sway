@@ -1,12 +1,9 @@
-rm -r sway waybar zathura nvim rofi xkb alacritty dunst zsh swaylock
+rm -r sway waybar zathura rofi xkb alacritty dunst zsh swaylock
 cp -r ~/.config/sway ./
 cp -r ~/.config/swaylock ./
 cp -r ~/.config/waybar ./
 rm ./waybar/bin/forest
 cp -r ~/.config/zathura ./
-cp -r ~/.config/nvim ./
-rm ./nvim/intelephense_license_key
-rm ./nvim/lazy-lock.json
 cp -r ~/.config/rofi ./
 cp -r ~/.config/xkb ./
 cp -r ~/.config/alacritty ./

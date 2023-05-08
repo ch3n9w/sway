@@ -20,7 +20,8 @@ export VISUAL=/usr/bin/nvim
 # export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 # export CATALINA_HOME=/usr/share/tomcat8530/apache-tomcat-8.5.30
 #
-export TERMCMD=alacritty
+# export TERMCMD=alacritty
+export TERMCMD=kitty
 export CLASSPATH=$HOME:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$CATALINA_HOME/lib
 
 # let zsh-autosuggestions to work

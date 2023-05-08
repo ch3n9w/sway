@@ -58,9 +58,30 @@ open_fzf() {
     fi
     redraw-prompt
 }
+function fzf_rg () {
+    local selected_pattern=$(printf '%s' "$@" | sed -e 's/"/\\"/g' -e "s/'/\\\\'/g" -e 's/\[/\\\[/g' -e 's/\]/\\\]/g' -e 's/-/\\-/g')
+    rg -l "${selected_pattern}" | fzf 
+}
+
+function tag () {
+    # tag should be like xxx.tag
+    local base_dir="/home/ch4ser/Documents/Paper"
+    local current_dir=$(pwd)
+    if [[ "$current_dir" != "$base_dir"* ]] then
+        # local result=$(rg -l "${selected_pattern}" | fzf --delimiter / --with-nth -2)
+        # local result=$(fd -i "tags/${selected_pattern}" $directory | fzf --delimiter / --with-nth -3 --no-preview)
+        # local result=$(fd --follow -t f | grep 'tags' | fzf --no-preview)
+        builtin cd $base_dir
+    fi
+    local result=$(fd --follow -t f -e tag | fzf --no-preview)
+
+    local paper=$(dirname $result)
+    builtin cd $paper
+    redraw-prompt
+}
 
 filemanager() {
-    echo -e "\e]2;>RANGER<\007"
+    # echo -e "\e]2;>RANGER<\007"
     # avoid nested ranger instances
     if [ -z "$RANGER_LEVEL" ]; then
         ranger --choosedir=$HOME/.rangerdir < $TTY
@@ -99,5 +120,7 @@ code()
 zle -N cd_fzf
 zle -N cd_fzf_from_home
 zle -N open_fzf
+zle -N fzf_rg
+zle -N tag
 zle -N filemanager
 

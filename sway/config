@@ -36,7 +36,7 @@ assign [class="ivySCI"] 5
 assign [app_id="waydroid"] 7 
 assign [app_id="Waydroid"] 7
 assign [class="VirtualBox"] 8
-# assign [class="Steam"] 6
+assign [class="Steam"] 7
 # assign [class="hmcl"] 7
 # assign [class="Minecraft"] 7
 assign [app_id="mpv"] 10
@@ -48,6 +48,9 @@ for_window [app_id="scratchpad"] {
     floating enable
 }
 
+for_window [app_id="imv"] {
+    floating enable
+}
 for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The Key"] {
   floating enable
   sticky enable
@@ -62,10 +65,10 @@ set $up k
 set $right l
 
 # set $term kitty
-set $term alacritty
+set $term alacritty --working-directory "$(~/.config/sway/bin/sway-cwd)"
 set $menu rofi -show drun -m -1 -theme ~/.config/rofi/tokyonight.rasi | xargs swaymsg exec --
 set $run rofi -show run -m -1 -theme ~/.config/rofi/tokyonight.rasi | xargs swaymsg exec --
-set $todo rofi -modi TODO:~/.config/waybar/bin/todo.sh -show TODO -theme ~/.config/rofi/tokyonight.rasi
+set $todo ~/.config/sway/bin/todofi.sh -c ~/.config/todo/todofish.conf
 
 
 # output * bg ~/Media/Pictures/1080/wallpaper_switch/5-54902_high-resolution-macbook-wallpaper-hd.jpg fill
@@ -98,7 +101,7 @@ bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
-# bindsym $mod+Tab focus next
+bindsym $mod+Tab focus next
 
 
 bindsym $mod+a focus parent
@@ -239,6 +242,11 @@ output 'Unknown Mi Monitor 2479800115814' {
     resolution 1920x1080
     pos 2240 0
 } 
+output 'XMI Mi Monitor 2479800115814' {
+    scale 1
+    resolution 1920x1080
+    pos 0 -1080
+} 
 output 'Dell Inc. DELL U2720QM 8P55193' {
     scale 1
 }
@@ -273,6 +281,8 @@ exec_always autotiling --limit 2
 
 # ctrl-; to navigate clipboard history
 exec fcitx5 
+exec wl-paste -t text --watch clipman store
+exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
 # no need for Ctrl-C to copy message!
 # there is some bug, dont know why
 # exec wl-paste --primary --watch wl-copy
@@ -285,6 +295,7 @@ exec fcitx5
 # use swaymsg exit to logout
 exec swayidle -w timeout 1800 'sudo systemctl suspend' 
 
+exec /usr/lib/polkit-kde-authentication-agent-1
 # make waybar start immediately
 exec hash dbus-update-activation-environment 2>/dev/null && \
     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK

@@ -56,15 +56,9 @@ window#waybar {
 }
 
 
-#custom-gpu-usage, #custom-date, #battery, #pulseaudio, #network, #temperature,#cpu,#memory, #bluetooth, #custom-books, #custom-ML,#custom-forest-coin, #custom-forest, #custom-todo{
-  /*background-color: #4c566a;*/
-  /*background-color: #373737;*/
-  padding: 0px 10px;
-  margin: 0px 0px;
-  border-radius: 0px 0px 0px 0px;
-}
-
-#clock {
+#custom-gpu-usage, #custom-date, #clock, #battery, #pulseaudio, #network, #temperature,#cpu,#memory, #bluetooth, #custom-books, #custom-ML,#custom-forest-coin, #custom-forest, #custom-todo{
+  background-color: #4c566a;
+  background-color: #373737;
   padding: 0px 10px;
   margin: 0px 0px;
   border-radius: 0px 0px 0px 0px;
@@ -76,7 +70,7 @@ window#waybar {
 
 
 #clock {
-  color: #ffffff;
+  color: #b48ead;
   /* border-radius: 0px 10px 10px 0px; */
 }
 

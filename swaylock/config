@@ -1,9 +1,12 @@
 ignore-empty-password
 
+clock
+
 disable-caps-lock-text
-image=~/Media/Pictures/OS/kali/kali-cubism.jpg
+image=~/Media/Pictures/OS/kali/kali-neon-16x10.png
 font=JetBrainMono Nerd Font
 
+indicator
 indicator-radius=240
 indicator-thickness=20
 indicator-caps-lock
@@ -41,3 +44,4 @@ caps-lock-bs-hl-color=ee2e24FF
 disable-caps-lock-text
 text-caps-lock-color=009ddc
 
+fade-in=0.2

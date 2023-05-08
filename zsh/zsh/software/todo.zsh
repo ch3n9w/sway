@@ -1,4 +1,3 @@
-
 export TODO_DIR=~/.local/share/todo
 export TODO_ACTIONS_DIR=$XDG_CONFIG_HOME/todo/actions
 export TODOTXT_DEFAULT_ACTION=ls

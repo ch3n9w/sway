@@ -1,8 +1,8 @@
 {
     "position": "bottom", 
-        "modules-left": ["wlr/workspaces"],
+        "modules-left": ["sway/workspaces"],
         "modules-center": ["clock"],
-        "modules-right": ["network","bluetooth","memory","temperature","pulseaudio","battery"],
+        "modules-right": ["custom/todo","network","bluetooth","memory","temperature","pulseaudio","battery"],
         "sway/workspaces": {
             "disable-scroll": true,
             "all-outputs": false,
@@ -25,26 +25,6 @@
                 "10": " ",
             },
         },
-        "wlr/workspaces": {
-            "all-outputs": false,
-            /*"format": "{name} <span font='30'>{icon}</span>"*/
-            "format": "{name} {icon}",
-            "on-click": "activate",
-            "format-icons": {
-                "1": " ",
-                "2": " ",
-                "3": " ",
-                "4": " ",
-                "5": " ",
-                "6": " ",
-                "7": " ",
-                "8": " ",
-                "9": " ",
-                "10": " ",
-                "11": " ",
-            },
-            "sort-by-number": true
-        },
         "clock": {
             "format": "{:%a %m-%d %H:%M}",
             "format-alt": "The quieter you are, the more you are able to hear",
@@ -57,7 +37,7 @@
             },
             "tooltip": false,
             "format": "{icon} {capacity}%",
-            "format-charging": "󰂄{capacity}%",
+            "format-charging": "{capacity}%",
             "format-plugged": " {capacity}%",
             "format-full": " {capacity}%",
             "format-icons": [" ", " ", " "],
@@ -70,22 +50,22 @@
             "format-linked": "{ifname} (No IP) ",
             "format-disconnected": " ",
             "format-disabled": "Disabled",
-            /*"on-click": "~/.config/waybar/bin/rofi-wifi-menu.sh",*/
+            "on-click": "~/.config/waybar/bin/rofi-wifi-menu.sh",
             "max-length": 5,
         },
         "pulseaudio": {
             "format": "{icon} {volume}%",
             "tooltip": false,
-            "format-muted": "󰝟 Muted" ,
+            "format-muted": "婢 Muted" ,
             "format-bluetooth": " {volume}%",
             "format-icons": {
                 "headphone": "",
-                "default": ["", "", "󰕾"],
+                "default": ["", "", ""],
             },
-            /*"on-click": "pavucontrol"*/
+            "on-click": "pavucontrol"
         },
         "temperature": {
-            "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+            "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
             "critical-threshold": 70,
             "format-critical": " !{temperatureC}°C",
             "format": " {temperatureC}°C"
@@ -115,8 +95,8 @@
                 "tooltip": false,
                 "tooltip-format": "{status}",
                 "format-on": "",
-                "format-off": "󰂲",
-                /*"on-click": "~/.config/waybar/bin/rofi-bluetooth.sh &",*/
+                "format-off": "",
+                "on-click": "~/.config/waybar/bin/rofi-bluetooth.sh &",
                 "max-length": 5,
             },
             "custom/books": {
@@ -137,7 +117,7 @@
             },
             "custom/todo": {
                 "format": " TODO",
-                "on-click": "rofi -modi TODO:~/.config/waybar/bin/todo.sh -show TODO -theme ~/.config/rofi/tokyonight.rasi",
+                "on-click": "~/.config/sway/bin/todofi.sh -c ~/.config/todo/todofish.conf",
                 "tooltip": false,
             },
             /*"custom/forest": {

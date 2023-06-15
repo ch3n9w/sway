@@ -1,0 +1,21 @@
+# This file is parsed by pam_env module
+#
+# Syntax: simple "KEY=VAL" pairs on separate lines
+#
+QT_QPA_PLATFORM=wayland
+MOZ_ENABLE_WAYLAND=1
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+SDL_IM_MODULE=fcitx
+SDL_VIDEODRIVER=wayland
+GLFW_IM_MODULE=ibus
+_JAVA_AWT_WM_NONREPARENTING=1
+
+QT_QPA_PLATFORMTHEME=gtk4
+#QT_QPA_PLATFORMTHEME=qt5ct
+GTK_THEME=Adwaita:dark
+XCURSOR_SIZE=24
+XDG_CURRENT_DESKTOP=sway
+XDG_SESSION_DESKTOP=sway
+XDG_SESSION_TYPE=wayland

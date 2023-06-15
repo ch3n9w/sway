@@ -83,7 +83,7 @@ The complete collection of symbols is in [Nerd Font](https://www.nerdfonts.com/c
    - [zoxide](https://github.com/ajeetdsouza/zoxide) replaces cd and autojump
    - [rsync](https://github.com/WayneD/rsync) replaces cp
 
-#### Alacritty
+#### Kitty
 
 Using the Tokyonight theme and Firacode Nerd Font, the profile file has been given
 

@@ -76,7 +76,7 @@
     - [zoxide](https://github.com/ajeetdsouza/zoxide) 替代 cd and autojump
     - [rsync](https://github.com/WayneD/rsync) 替代 cp
 
-#### alacritty
+#### Kitty
 
 使用Tokyonight主题和Firacode Nerd Font字体,profile文件已经给出
 

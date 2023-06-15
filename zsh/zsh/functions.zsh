@@ -81,7 +81,6 @@ function tag () {
 }
 
 filemanager() {
-    # echo -e "\e]2;>RANGER<\007"
     # avoid nested ranger instances
     if [ -z "$RANGER_LEVEL" ]; then
         ranger --choosedir=$HOME/.rangerdir < $TTY
@@ -110,7 +109,8 @@ code()
     if [ -d "${1}" ]; then
         local dir="${1}"
         shift 1
-        ( cd "${dir}" && NVIM_GUI="2" alacritty --class 'neovide' -e 'nvim' . &)
+        # ( cd "${dir}" && NVIM_GUI="2" kitty --class 'neovide' -e 'nvim' . &)
+        ( cd "${dir}" && kitty --config ~/.config/kitty/code.conf --class 'neovide' -e 'nvim' . &)
     else
         nvim "${@}"
     fi

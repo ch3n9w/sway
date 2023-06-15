@@ -8,21 +8,20 @@ export XDG_CONFIG_HOME=$HOME/.config
 # export https_proxy=http://127.0.0.1:7890
 # export http_proxy=http://127.0.0.1:7890
 # export ALL_PROXY="socks5://127.0.0.1:7891"
-export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:/usr/lib:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:/usr/lib:$GOPATH/bin:$JAVA_HOME/bin:$JRE_HOME/bin
 
 export LC_ALL="en_US.UTF-8"
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 
 # for tomcat debug
-# export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
-# export JRE_HOME=$JAVA_HOME/jre
-# export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
-# export CATALINA_HOME=/usr/share/tomcat8530/apache-tomcat-8.5.30
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+export JRE_HOME=$JAVA_HOME/jre
+export CATALINA_HOME=/home/ch4ser/work/apache-tomcat-8.5.89
+export CLASSPATH=$HOME:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$CATALINA_HOME/lib
 #
 # export TERMCMD=alacritty
 export TERMCMD=kitty
-export CLASSPATH=$HOME:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$CATALINA_HOME/lib
 
 # let zsh-autosuggestions to work
 export SAVEHIST=100000

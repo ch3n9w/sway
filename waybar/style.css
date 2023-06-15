@@ -8,14 +8,14 @@
 window#waybar {
   background: #3b4252;
   background: #212124;
-  /* background: transparent; */
   /* background: #002b36; */
   color: white;
   opacity: 1;
 }
 
 #workspaces {
-  /* background-color: #373737; */
+  background-color: #373737;
+  background: #212124;
   color: white;
   margin: 0px;
   margin-left: 10px;
@@ -25,32 +25,31 @@ window#waybar {
   padding: 0 10px;
   color: white;
   min-width: 50px;
-  border-top: 1px solid #212124;
-  border-bottom: 1px solid #212124;
-  border-left: 1px solid #212124;
-  border-right: 1px solid #212124;
+  /* border-top: 1px solid #212124; */
+  border-bottom: 2px solid #212124;
+  /* border-left: 1px solid #212124; */
+  /* border-right: 1px solid #212124; */
 }
 
 #workspaces button.focused {
   color: #7aa2f7;
   border-radius: 1px;
-  border-top: 1px solid #7aa2f7;
-  border-bottom: 1px solid #7aa2f7;
-  border-left: 1px solid #7aa2f7;
-  border-right: 1px solid #7aa2f7;
+  /* border-top: 1px solid #7aa2f7; */
+  border-bottom: 2px solid #7aa2f7;
+  /* border-left: 1px solid #7aa2f7; */
+  /* border-right: 1px solid #7aa2f7; */
 }
 
 #workspaces button.active {
   color: #7aa2f7;
   border-radius: 1px;
-  border-top: 1px solid #7aa2f7;
-  border-bottom: 1px solid #7aa2f7;
-  border-left: 1px solid #7aa2f7;
-  border-right: 1px solid #7aa2f7;
+  /* border-top: 1px solid #7aa2f7; */
+  border-bottom: 2px solid #7dcfff;
+  /* border-left: 1px solid #7aa2f7; */
+  /* border-right: 1px solid #7aa2f7; */
 }
 #workspaces button:hover {
   color: white;
-  /* background: #5e81ac; */
   background: #373737;
   border-radius: 0px;
 }
@@ -58,13 +57,16 @@ window#waybar {
 
 #custom-gpu-usage, #custom-date, #battery, #pulseaudio, #network, #temperature,#cpu,#memory, #bluetooth, #custom-books, #custom-ML,#custom-forest-coin, #custom-forest, #custom-todo{
   /*background-color: #4c566a;*/
-  /*background-color: #373737;*/
+  background-color: #373737;
+  background: #212124;
   padding: 0px 10px;
   margin: 0px 0px;
   border-radius: 0px 0px 0px 0px;
 }
 
 #clock {
+  background-color: #373737;
+  background: #212124;
   padding: 0px 10px;
   margin: 0px 0px;
   border-radius: 0px 0px 0px 0px;

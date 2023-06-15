@@ -1,7 +1,21 @@
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+set $wallpaper ~/Media/Pictures/landscape/city_from_sky.jpg
+set $term kitty
+# set $term alacritty --working-directory "$(~/.config/sway/bin/sway-cwd)"
+set $menu rofi -show drun -m -1 -theme ~/.config/rofi/tokyonight.rasi | xargs swaymsg exec --
+set $run rofi -show run -m -1 -theme ~/.config/rofi/tokyonight.rasi | xargs swaymsg exec --
+set $todo ~/.config/sway/bin/todofi.sh -c ~/.config/todo/todofish.conf
+set $switch_workspace exec --no-startup-id  ~/.config/sway/bin/workspaceloop.sh
+
 xwayland enabled
 # let title bar friendly with chinese
 for_window [title=".*"] title_format ゜%title゜
 title_align center
+
 # for_window [title="^(File|Folder)\s*Already Exists\s*—\s*" app_id="dolphin|org.kde.ark"] floating enable
 # for_window [title="^(Copying|Moving|Deleting)\s*—\s*Dolphin" app_id="dolphin"] inhibit_idle open; floating enable
 # for_window [title="^Extracting\s" app_id="(dolphin|org.kde.ark)"] inhibit_idle open; floating enable
@@ -13,15 +27,13 @@ assign [app_id="terminal"] 1
 assign [title="Visual Studio Code"] 3
 assign [class="jetbrains"] 3
 assign [app_id="neovide"] 3
-assign [app_id="qtcreator"] 3
 assign [class="Typora"] 4
-assign [app_id="nvim-qt"] 4
+assign [class="note"] 4
 assign [title="Freeplane"] 4
 assign [class="burp"] 6
 assign [app_id="wireshark"] 6
 assign [title="Godzilla"] 7
 assign [class="behinder"] 7
-# assign [app_id="dolphin"] 6
 for_window [app_id="dolphin"] floating enable
 assign [class="wemeetapp"] 7
 assign [title="WPS"] 9
@@ -37,10 +49,7 @@ assign [app_id="waydroid"] 7
 assign [app_id="Waydroid"] 7
 assign [class="VirtualBox"] 8
 assign [class="Steam"] 7
-# assign [class="hmcl"] 7
-# assign [class="Minecraft"] 7
 assign [app_id="mpv"] 10
-assign [app_id="FeelUOwn"] 10
 assign [app_id="telegram"] 10
 assign [app_id="monero"] 10
 assign [app_id="konsole"] 4
@@ -56,35 +65,13 @@ for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The
   sticky enable
 }
 
-set $mod Mod4
 font Firacode Nerd Font Bold 10
 
-set $left h
-set $down j
-set $up k
-set $right l
+output * bg $wallpaper fill
 
-# set $term kitty
-set $term alacritty --working-directory "$(~/.config/sway/bin/sway-cwd)"
-set $menu rofi -show drun -m -1 -theme ~/.config/rofi/tokyonight.rasi | xargs swaymsg exec --
-set $run rofi -show run -m -1 -theme ~/.config/rofi/tokyonight.rasi | xargs swaymsg exec --
-set $todo ~/.config/sway/bin/todofi.sh -c ~/.config/todo/todofish.conf
-
-
-# output * bg ~/Media/Pictures/1080/wallpaper_switch/5-54902_high-resolution-macbook-wallpaper-hd.jpg fill
-output * bg ~/Media/Pictures/landscape/city_from_sky.jpg fill
-# output * bg ~/Media/Pictures/landscape/rain_city.png fill
-# output * bg ~/Media/Pictures/GameorCarton/arknight/FfgdNAbakAQ_WeB.jpg fill
-# output * bg ~/Media/Pictures/1080/OS/thinkpad_wallpaper.png fill
-# output * bg ~/Media/Pictures/jarvis.jpg fill
-
-
-# bindgesture swipe:right workspace prev
-# bindgesture swipe:left workspace next
-bindsym Ctrl+Return exec $term --class=terminal
 bindsym $mod+Return exec $term
 bindsym $mod+p reload
-bindsym $mod+q exec ~/.config/sway/bin/kill-behavior.py
+bindsym $mod+q kill
 bindsym $mod+d exec $menu
 bindsym $mod+r exec $run
 bindsym $mod+t exec $todo
@@ -95,14 +82,11 @@ bindsym $mod+Ctrl+Mod1+l exec swaylock
 
 floating_modifier $mod normal
 
-# INFO: windows: 
-# Move your focus around
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
 bindsym $mod+Tab focus next
-
 
 bindsym $mod+a focus parent
 
@@ -111,10 +95,8 @@ bindsym $mod+Control+$down move down
 bindsym $mod+Control+$up move up
 bindsym $mod+Control+$right move right
 
-
-# INFO: workspaces:
 workspace_auto_back_and_forth yes
-
+bindsym $mod+slash workspace back_and_forth
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace number 3
@@ -125,8 +107,6 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
-
-
 
 # bindgesture swipe:right workspace prev 
 # bindgesture swipe:left workspace next
@@ -147,7 +127,6 @@ workspace 7 output HDMI-A-1
 workspace 8 output HDMI-A-1
 workspace 9 output HDMI-A-1
 workspace 10 output eDP-1
-set $switch_workspace exec --no-startup-id  ~/.config/sway/bin/workspaceloop.sh
 bindsym Mod1+1 $switch_workspace Left
 bindsym Mod1+2 $switch_workspace Right
 bindsym $mod+Left  $switch_workspace Left
@@ -182,7 +161,6 @@ bindsym $mod+Control+Shift+Up move workspace to output up
 # bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
-# Make the current focus fullscreen
 bindsym $mod+f fullscreen
 
 bindsym $mod+space floating toggle
@@ -193,29 +171,27 @@ bindsym $mod+s exec swaymsg scratchpad show || exec ~/.config/sway/bin/scratchpa
 
 
 # INFO: Hardware setting:
+input "type:keyboard" {
+    xkb_options caps:swapescape
+}
+
 input "9741:19:DAREU_EK871_BT_keyboard" {
     xkb_layout custom-pc
 }
 input "9741:19:EK871_BT_keyboard_Keyboard" {
     xkb_layout custom-pc
 }
-input "1:1:AT_Translated_Set_2_keyboard" {
-    xkb_options caps:swapescape
-}
-input "1241:41543:HOLTEK_USB-HID_AP" {
-    xkb_options caps:swapescape
-}
 
-seat seat0 xcursor_theme breeze_cursors 20
+#seat seat0 xcursor_theme breeze_cursors 20
 
 input "type:touchpad" {
     tap enabled
-        drag enabled
-        natural_scroll enabled
-        scroll_factor 0.5
-        dwt enable
-        accel_profile "adaptive"
-        pointer_accel 0.6
+    drag enabled
+    natural_scroll enabled
+    scroll_factor 0.5
+    dwt enable
+    accel_profile "adaptive"
+    pointer_accel 0.5
 }
 
 bindswitch --reload --locked lid:on output eDP-1 disable
@@ -229,7 +205,7 @@ bindsym --locked XF86MonBrightnessUp exec "sudo light -A 5"
 
 # display setting
 output eDP-1 {
-    pos 0 0
+    pos 160 1440
 }
 
 output 'Unknown 0xA195 0x00000000' {
@@ -251,21 +227,18 @@ output 'Dell Inc. DELL U2720QM 8P55193' {
     scale 1
 }
 output 'Dell Inc. DELL U2718QM MYPFK98N094L' {
-    pos 2240 0
-    # resolution 2560x1440
+    # pos 2240 0
+    pos 0 0
+    resolution 3840x2160
     scale 1.5
 }
-
-# output 'Unknown MSI G273Q CA8A521900577' {
-#         scale 1
-#         resolution 2560x1440
-#         pos 0 0
-#     }
 
 default_border pixel 3
 default_floating_border pixel 3
 hide_edge_borders smart
 client.focused           #2e9ef4 #7AA2F7 #FFFFFF #7AA2F7
+client.unfocused        #2e3440 #1f222d #888888
+client.focused_inactive #2e3440 #1f222d #888888 
 
 gaps inner 10
 # gaps outer 10
@@ -283,17 +256,9 @@ exec_always autotiling --limit 2
 exec fcitx5 
 exec wl-paste -t text --watch clipman store
 exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
-# no need for Ctrl-C to copy message!
-# there is some bug, dont know why
-# exec wl-paste --primary --watch wl-copy
-
-# exec swayidle -w \
-#      timeout 1800 'swaymsg "output * dpms off"' \
-#          resume 'swaymsg "output * dpms on"' 
-# exec mpvpaper -o "no-audio --loop-playlist --hwdec=auto" eDP-1 ~/Media/Pictures/videos/mylivewallpapers-com-Boreal-Valley-Dark-Souls-3.mp4
 
 # use swaymsg exit to logout
-exec swayidle -w timeout 1800 'sudo systemctl suspend' 
+exec swayidle -w timeout 1800 'swaylock;sudo systemctl suspend' 
 
 exec /usr/lib/polkit-kde-authentication-agent-1
 # make waybar start immediately

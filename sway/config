@@ -4,8 +4,7 @@ set $down j
 set $up k
 set $right l
 set $wallpaper ~/Media/Pictures/landscape/city_from_sky.jpg
-set $term kitty
-# set $term alacritty --working-directory "$(~/.config/sway/bin/sway-cwd)"
+set $term alacritty
 set $menu rofi -show drun -m -1 -theme ~/.config/rofi/tokyonight.rasi | xargs swaymsg exec --
 set $run rofi -show run -m -1 -theme ~/.config/rofi/tokyonight.rasi | xargs swaymsg exec --
 set $todo ~/.config/sway/bin/todofi.sh -c ~/.config/todo/todofish.conf
@@ -16,22 +15,15 @@ xwayland enabled
 for_window [title=".*"] title_format ゜%title゜
 title_align center
 
-# for_window [title="^(File|Folder)\s*Already Exists\s*—\s*" app_id="dolphin|org.kde.ark"] floating enable
-# for_window [title="^(Copying|Moving|Deleting)\s*—\s*Dolphin" app_id="dolphin"] inhibit_idle open; floating enable
-# for_window [title="^Extracting\s" app_id="(dolphin|org.kde.ark)"] inhibit_idle open; floating enable
-# for_window [title="^Information\s*—\s*Dolphin" app_id="dolphin"] floating enable
-# for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable, resize set width 1030 height 710
-
-assign [app_id="firefox"] 2
-assign [app_id="terminal"] 1
-assign [title="Visual Studio Code"] 3
-assign [class="jetbrains"] 3
-assign [app_id="neovide"] 3
-assign [class="Typora"] 4
-assign [class="note"] 4
-assign [title="Freeplane"] 4
-assign [class="burp"] 6
-assign [app_id="wireshark"] 6
+assign [app_id="firefox"] 1
+assign [app_id="chrome"] 1
+assign [app_id="terminal"] 2
+assign [class="Typora"] 3
+assign [class="note"] 3
+assign [class="burp"] 4
+assign [app_id="wireshark"] 4
+assign [title="Visual Studio Code"] 5
+assign [class="jetbrains"] 5
 assign [title="Godzilla"] 7
 assign [class="behinder"] 7
 for_window [app_id="dolphin"] floating enable
@@ -52,17 +44,12 @@ assign [class="Steam"] 7
 assign [app_id="mpv"] 10
 assign [app_id="telegram"] 10
 assign [app_id="monero"] 10
-assign [app_id="konsole"] 4
 for_window [app_id="scratchpad"] {
     floating enable
 }
 
 for_window [app_id="imv"] {
     floating enable
-}
-for_window [app_id="one.alynx.showmethekey" title="Floating Window - Show Me The Key"] {
-  floating enable
-  sticky enable
 }
 
 font Firacode Nerd Font Bold 10
@@ -108,14 +95,6 @@ bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
 
-# bindgesture swipe:right workspace prev 
-# bindgesture swipe:left workspace next
-# bindsym $mod+Left  workspace prev
-# bindsym $mod+Right workspace next
-# bindsym Mod1+1 workspace prev
-# bindsym Mod1+2 workspace next
-# bindsym Mod1+Tab workspace back_and_forth 
-
 # switch workspace while skip workspace 10
 workspace 1 output HDMI-A-1
 workspace 2 output HDMI-A-1
@@ -151,38 +130,22 @@ bindsym $mod+Control+0 move container to workspace number 10; workspace number 1
 bindsym $mod+Control+Left move container to workspace prev; workspace prev
 bindsym $mod+Control+Right move container to workspace next; workspace next
 
-
 bindsym $mod+Control+Shift+Right move workspace to output right
 bindsym $mod+Control+Shift+Left move workspace to output left
 bindsym $mod+Control+Shift+Down move workspace to output down
 bindsym $mod+Control+Shift+Up move workspace to output up
 
-# Switch the current container between different layout styles
-# bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
-
 bindsym $mod+f fullscreen
-
 bindsym $mod+space floating toggle
 
-# INFO: Scratchpad:
 bindsym $mod+Control+s move scratchpad
 bindsym $mod+s exec swaymsg scratchpad show || exec ~/.config/sway/bin/scratchpad.sh
 
 
-# INFO: Hardware setting:
 input "type:keyboard" {
     xkb_options caps:swapescape
 }
-
-input "9741:19:DAREU_EK871_BT_keyboard" {
-    xkb_layout custom-pc
-}
-input "9741:19:EK871_BT_keyboard_Keyboard" {
-    xkb_layout custom-pc
-}
-
-#seat seat0 xcursor_theme breeze_cursors 20
 
 input "type:touchpad" {
     tap enabled
@@ -241,9 +204,7 @@ client.unfocused        #2e3440 #1f222d #888888
 client.focused_inactive #2e3440 #1f222d #888888 
 
 gaps inner 10
-# gaps outer 10
 smart_gaps on
-
 
 bar {
     swaybar_command waybar

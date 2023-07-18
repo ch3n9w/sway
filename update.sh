@@ -1,18 +1,17 @@
-rm -r sway waybar zathura rofi xkb kitty dunst zsh swaylock
+rm -r sway waybar zathura rofi dunst swaylock 
 cp -r ~/.config/sway ./
 cp -r ~/.config/swaylock ./
 cp -r ~/.config/waybar ./
 rm ./waybar/bin/forest
+rm ./waybar/config.hypr
+mv ./waybar/style.css.sway ./waybar/style.css
+mv ./waybar/config.sway ./waybar/config
 cp -r ~/.config/zathura ./
 cp -r ~/.config/rofi ./
-cp -r ~/.config/xkb ./
-cp -r ~/.config/kitty ./
 cp -r ~/.config/dunst ./
 rm -r ./fcitx5
 mkdir ./fcitx5
 cp -r ~/.local/share/fcitx5/themes ./fcitx5/
-mkdir ./zsh
-cp -r ~/.zshrc ./zsh/zshrc
-cp -r ~/.config/zsh ./zsh/
+cp /etc/environment.sway ./environment
 
 

@@ -1,0 +1,20 @@
+[Desktop Entry]
+Comment[en_US]=Burpsuite
+Comment=Burpsuite
+Exec=/usr/lib/jvm/java-11-openjdk/bin/java --illegal-access=permit -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dfile.encoding=utf-8 -javaagent:/opt/Burpsuite/BurpSuiteLoader_v2022.8.jar -noverify -jar /opt/Burpsuite/burpsuite_pro_v2022.8.jar '&'
+GenericName[en_US]=
+GenericName=
+Icon=BurpSuiteCommunity
+MimeType=
+Name[en_US]= Burpsuite
+Name= Burpsuite
+Path=
+StartupNotify=true
+StartupWMClass=Burpsuite
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

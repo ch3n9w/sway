@@ -1,0 +1,19 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec=vboxmanage startvm windows_the_one
+GenericName[en_US]=
+GenericName=
+Icon=codeblocks
+MimeType=
+Name[en_US]= Windows
+Name= Windows
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

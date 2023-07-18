@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name= Note
+# Exec=env NVIM_GUI=2 kitty --class 'note' -e 'nvim' -d '/home/ch4ser/Documents/NOTES'
+Exec=alacritty --class 'note' -e 'nvim' -d '/home/ch4ser/Documents/NOTES'
+Type=Application
+Terminal=false
+Keywords=note;

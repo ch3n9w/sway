@@ -1,4 +1,5 @@
-rm -r sway waybar zathura rofi dunst swaylock 
+rm -r sway waybar zathura rofi dunst swaylock applications
+cp -r ~/.local/share/applications ./
 cp -r ~/.config/sway ./
 cp -r ~/.config/swaylock ./
 cp -r ~/.config/waybar ./

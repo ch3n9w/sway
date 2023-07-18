@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Icon=io.mgba.mGBA
+Exec=env QT_QPA_PLATFORM=xcb mgba-qt %f
+Terminal=false
+Type=Application
+Name= mGBA
+GenericName=Game Boy Advance Emulator
+Comment=Nintendo Game Boy Advance Emulator
+Categories=Game;Emulator;
+MimeType=application/x-gameboy-advance-rom;application/x-agb-rom;application/x-gba-rom;
+Keywords=emulator;Nintendo;advance;gba;Game Boy Advance;

@@ -4,7 +4,7 @@ cp -r ~/.config/swaylock ./
 cp -r ~/.config/waybar ./
 rm ./waybar/bin/forest
 rm ./waybar/config.hypr
-mv ./waybar/style.css.sway ./waybar/style.css
+rm ./waybar/style.css.sway
 mv ./waybar/config.sway ./waybar/config
 cp -r ~/.config/zathura ./
 cp -r ~/.config/rofi ./

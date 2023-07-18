@@ -9,9 +9,6 @@ mv ./waybar/config.sway ./waybar/config
 cp -r ~/.config/zathura ./
 cp -r ~/.config/rofi ./
 cp -r ~/.config/dunst ./
-rm -r ./fcitx5
-mkdir ./fcitx5
-cp -r ~/.local/share/fcitx5/themes ./fcitx5/
 cp /etc/environment.sway ./environment
 
 

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 TryExec=alacritty
-Exec=alacritty --class=terminal -e /home/ch4ser/.config/hypr/bin/tmux.sh
+Exec=alacritty --class=terminal
 Icon=Alacritty
 Terminal=false
 Categories=System;TerminalEmulator;

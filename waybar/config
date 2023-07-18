@@ -120,13 +120,4 @@
                 "on-click": "~/.config/sway/bin/todofi.sh -c ~/.config/todo/todofish.conf",
                 "tooltip": false,
             },
-            /*"custom/forest": {
-                "exec":  "~/.config/waybar/bin/forest status",
-                "format": " {}",
-                /* "format": "󰐅 {}", */
-                "interval": 1,
-                "return-type": "string",
-                "on-click": "~/.config/waybar/bin/forest start --email 'ch4xer@gmail.com' --password roottoor --time 30",
-                "tooltip": false,
-            }*/
 }

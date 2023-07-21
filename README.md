@@ -43,7 +43,7 @@ The complete collection of symbols is in [Nerd Font](https://www.nerdfonts.com/c
 
 ### terminal environment(zsh + alacritty + tmux + neovim)
 
-see [](https://github.com/ch3n9w/dev)
+see [https://github.com/ch3n9w/dev](https://github.com/ch3n9w/dev)
 
 
 ## Others

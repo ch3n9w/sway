@@ -4,7 +4,7 @@ set $down j
 set $up k
 set $right l
 set $wallpaper ~/Media/Pictures/landscape/city_from_sky.jpg
-set $term alacritty
+set $term kitty
 set $menu rofi -show drun -m -1 -theme ~/.config/rofi/tokyonight.rasi | xargs swaymsg exec --
 set $run rofi -show run -m -1 -theme ~/.config/rofi/tokyonight.rasi | xargs swaymsg exec --
 set $todo ~/.config/sway/bin/todofi.sh -c ~/.config/todo/todofish.conf
@@ -19,6 +19,7 @@ assign [app_id="firefox"] 1
 assign [app_id="chrome"] 1
 assign [app_id="terminal"] 2
 assign [class="Typora"] 3
+assign [app_id="zathura"] 3
 assign [class="note"] 3
 assign [class="burp"] 4
 assign [app_id="wireshark"] 4
@@ -31,7 +32,6 @@ assign [class="wemeetapp"] 7
 assign [title="WPS"] 9
 assign [title="Spreadsheets"] 9
 assign [app_id="libreoffice"] 9
-assign [app_id="zathura"] 7
 assign [class="mGBA"] 7
 assign [app_id="okular"] 7
 assign [class="jadx"] 7

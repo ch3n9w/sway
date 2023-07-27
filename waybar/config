@@ -8,10 +8,6 @@
             "all-outputs": false,
             "enable-bar-scroll": false,
             "format": "{index} {icon}",
-            "persistent_workspaces": {
-                /* "7": [], 
-                "10": " ",󱍢 󰯈 󱓈 󱙝 󰹻 󰮠  󰈺 󰣘 󰻝 󰭟 󰄛 󰛓 󱃽 󱅻 󰘩 󰨞 󰒶 󰯉 󱇪 󱎷  󰈹      */
-            },
             "format-icons": {
                 "1": " ",
                 "2": " ",
@@ -37,7 +33,7 @@
             },
             "tooltip": false,
             "format": "{icon} {capacity}%",
-            "format-charging": "{capacity}%",
+            "format-charging": "󰂄{capacity}%",
             "format-plugged": " {capacity}%",
             "format-full": " {capacity}%",
             "format-icons": [" ", " ", " "],
@@ -56,7 +52,7 @@
         "pulseaudio": {
             "format": "{icon} {volume}%",
             "tooltip": false,
-            "format-muted": "婢 Muted" ,
+            "format-muted": "󰝟 Muted" ,
             "format-bluetooth": " {volume}%",
             "format-icons": {
                 "headphone": "",
@@ -88,14 +84,13 @@
             "tooltip": false,
             "tooltip-format": "{status}",
             "format-on": "",
-            "format-off": "",
+            "format-off": "󰂲",
             "on-click": "~/.config/waybar/bin/rofi-bluetooth.sh &",
             "max-length": 5,
         },
         "custom/books": {
             "on-click": "~/.config/waybar/bin/books-search.sh",
             "format": " Book",
-            /* "format": "󱉟 Book", */
             "tooltip": false,
         },
         "custom/todo": {

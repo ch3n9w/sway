@@ -1,9 +1,10 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name= kitty
+Name= kitty
 GenericName=Terminal emulator
 Comment=Fast, feature-rich, GPU based terminal
-Exec=kitty --class=terminal -e 'tmux'
-Icon=kitty
+
+Exec=/home/ch4ser/.local/kitty.app/bin/kitty --class=terminal
+Icon=/home/ch4ser/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png
 Categories=System;TerminalEmulator;

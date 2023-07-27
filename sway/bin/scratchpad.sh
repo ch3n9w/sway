@@ -1,6 +1,6 @@
 #!/bin/sh
 
-alacritty --class "scratchpad" &
+kitty --class "scratchpad" &
 
 sleep 0.5
 swaymsg move scratchpad

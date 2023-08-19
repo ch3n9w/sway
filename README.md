@@ -1,4 +1,5 @@
-[中文介绍](README-zh.md)
+
+**I use hyprland now, see [Hyprland](https://github.com/ch3n9w/hyprland)**
 
 # Sway DE configuration
 

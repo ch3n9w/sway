@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name= Neovim
-Exec=kitty --config /home/ch4ser/.config/kitty/code.conf --class 'neovide' -e 'nvim'
-# Exec=env NVIM_GUI="1" GOPATH=/home/ch4ser/Projects/go neovide --multigrid /home/ch4ser/Projects
-Type=Application
-Terminal=false
-Keywords=code;

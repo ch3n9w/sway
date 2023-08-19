@@ -7,4 +7,3 @@ Comment=Fast, feature-rich, GPU based terminal
 
 Exec=/home/ch4ser/.local/kitty.app/bin/kitty --class=terminal
 Icon=/home/ch4ser/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png
-Categories=System;TerminalEmulator;

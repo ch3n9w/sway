@@ -1,0 +1,20 @@
+[Desktop Entry]
+Comment=Use WPS Presentation to edit and play presentations.
+Comment[zh_CN]=使用 WPS 演示编辑、播放演示文稿
+Exec=/usr/bin/wpp %F
+GenericName=WPS Presentation
+GenericName[zh_CN]=WPS 演示
+MimeType=application/wps-office.dps;application/wps-office.dpt;application/wps-office.dpss;application/wps-office.dpso;application/wps-office.ppt;application/wps-office.pot;application/vnd.ms-powerpoint;application/vnd.mspowerpoint;application/mspowerpoint;application/powerpoint;application/x-mspowerpoint;application/wps-office.pptx;application/wps-office.potx;application/vnd.openxmlformats-officedocument.presentationml.presentation;application/vnd.openxmlformats-officedocument.presentationml.slideshow;application/wps-office.uop;
+Name= WPS Presentation
+Name[zh_CN]=WPS 演示
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Office;Presentation;Qt;
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+Icon=wps-office2019-wppmain
+InitialPreference=3
+StartupWMClass=wpp

@@ -1,0 +1,20 @@
+[Desktop Entry]
+Comment=Use WPS Spreadsheets to analyze manage data.
+Comment[zh_CN]=使用WPS表格分析、管理数据
+Exec=/usr/bin/et %F
+GenericName=WPS Spreadsheets
+GenericName[zh_CN]=WPS 表格
+MimeType=application/wps-office.et;application/wps-office.ett;application/wps-office.ets;application/wps-office.eto;application/wps-office.xls;application/wps-office.xlt;application/vnd.ms-excel;application/msexcel;application/x-msexcel;application/wps-office.xlsx;application/wps-office.xltx;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;application/wps-office.uos;
+Name= WPS Spreadsheets
+Name[zh_CN]=WPS 表格
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Office;Spreadsheet;Qt;
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+Icon=wps-office2019-etmain
+InitialPreference=3
+StartupWMClass=et

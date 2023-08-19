@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=  Kali
-Exec=vboxmanage startvm "kali" --type headless
-Type=Application
-Terminal=false
